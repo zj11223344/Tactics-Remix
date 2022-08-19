@@ -1,36 +1,36 @@
 IF
   See(NearestEnemyOf(Myself))
-  Global("KR_GhastHorror","LOCALS",0)
+  Global("MO_GhastHorror","LOCALS",0)
 THEN
   RESPONSE #100
     ReallyForceSpell(Myself,WIZARD_HORROR)
-    SetGlobal("KR_GhastHorror","LOCALS",1)
+    SetGlobal("MO_GhastHorror","LOCALS",1)
 END
 
 IF
   See(NearestEnemyOf(Myself))
-  Global("KR_SPAWN_ENEMIES","LOCALS",0)
+  Global("MO_SPAWN_ENEMIES","LOCALS",0)
 THEN
   RESPONSE #100
-    SetGlobalTimer("KR_SPAWN_MORE","GLOBAL",20)
-    DisplayStringHead(Myself,@5000)  // ~Rise... rise and listen to what must be said. ~ [ELLESD11]
+    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",20)
+    DisplayStringHead(Myself,@5000)  // ~Rise... rise and listen to what must be said.~
     CreateCreature("SKELWA01",[-3.2],0)  // ~Skeleton Warrior~
     CreateCreature("SKELWA01",[2.-3],0)  // ~Skeleton Warrior~
     CreateCreature("SKELWA01",[3.2],0)  // ~Skeleton Warrior~
     Wait(2)
-    DisplayStringHead(Myself,@5001)  // ~Fight! Kill him! ~
-    SetGlobal("KR_SPAWN_ENEMIES","LOCALS",1)
+    DisplayStringHead(Myself,@5001)  // ~Fight! Kill him!~
+    SetGlobal("MO_SPAWN_ENEMIES","LOCALS",1)
 END
 
 IF
-  GlobalTimerExpired("KR_SPAWN_MORE","GLOBAL")
+  GlobalTimerExpired("MO_SPAWN_MORE","GLOBAL")
 THEN
   RESPONSE #100
-    DisplayStringHead(Myself,@5000)  // ~Rise... rise and listen to what must be said. ~ [ELLESD11]
+    DisplayStringHead(Myself,@5000)  // ~Rise... rise and listen to what must be said.~
     CreateCreature("SKELWA01",[2.-3],0)  // ~Skeleton Warrior~
     CreateCreature("SKELWA01",[3.2],0)  // ~Skeleton Warrior~
     Wait(2)
-    DisplayStringHead(Myself,@5001)  // ~Fight! Kill him! ~
-    SetGlobalTimer("KR_SPAWN_MORE","GLOBAL",20)
+    DisplayStringHead(Myself,@5001)  // ~Fight! Kill him!~
+    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",20)
 END
 
