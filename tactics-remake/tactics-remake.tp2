@@ -21,6 +21,7 @@ AUTO_TRA ~tactics-remake/languages/%s~
 LANGUAGE ~English~
          ~english~
          ~tactics-remake/languages/english/setup.tra~
+         ~tactics-remake/languages/english/script_dialog.tra~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
