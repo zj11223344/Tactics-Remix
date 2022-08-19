@@ -1,0 +1,19 @@
+// Enhanced Powergaming Scripts, American English
+
+@1 = ~Initialize Base Components (Required)~
+@2 = ~Install Enhanced Powergaming Scripts~
+@3 = ~Restore Vanilla Belm and Kundane~
+@4 = ~Restore Vanilla Gargoyle Boots~
+@5 = ~Restore Vanilla Amulet of the Cheetah~
+@6 = ~Restore Vanilla Haste and Improved Haste~
+@7 = ~Normal Pre-Buffing Speed~
+@8 = ~Accelerated Pre-Buffing Speed~
+@9 = ~Install Enhanced Scripts for Summoned Celestials~
+@10 = ~Install Enhanced Scripts for Simulacrum~
+
+@3000 = ~Component requires BG: EE, BGII: EE, EET, or IWD: EE~
+// @3000 = ~Component requires BG: EE, BGII: EE, EET, IWD: EE, Vanilla BG2 (with ToB), or BGT~
+@3001 = ~DLCMerger is needed before modding SoD games~
+@3002 = ~Skipping since Spell Revisions is not installed~
+@3003 = ~Skipping since Item Revisions is not installed~
+@3004 = ~Component requires BGII: EE or EET~

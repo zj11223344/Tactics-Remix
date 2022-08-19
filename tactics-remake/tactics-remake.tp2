@@ -1,0 +1,71 @@
+/* Tactics Remake
+ *
+ * New Encounters for BGII: EE and EET
+ *
+ */
+
+BACKUP ~tactics-remake/backup~
+AUTHOR ~morpheus562~
+
+VERSION ~v0.1~
+README ~tactics-remake/readme.%LANGUAGE%.html~ ~tactics-remake/readme.html~
+AUTO_EVAL_STRINGS
+
+ASK_EVERY_COMPONENT
+
+ALWAYS
+	INCLUDE ~tactics-remake/lib/always.tph~
+END
+
+AUTO_TRA ~tactics-remake/languages/%s~
+LANGUAGE ~English~
+         ~english~
+         ~tactics-remake/languages/english/setup.tra~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Tactics Remake by Morpheus562                                         //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Main Component Base Game                                              //
+///////////////////////////////////////////////////////////////////////////
+
+BEGIN @7 DESIGNATED 14 SUBCOMPONENT @2 LABEL EnhancedPowergamingScripts-MainNormal
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+LOAD_TRA ~tactics-remake/languages/%LANGUAGE%/script_descriptions.tra~
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+	INCLUDE ~tactics-remake/components/BG2EE/initialize.tpa~
+	INCLUDE ~tactics-remake/components/BG2EE/prebuff.tpa~
+	INCLUDE ~tactics-remake/components/BG2EE/main_component.tpa~
+END ELSE ACTION_IF GAME_IS ~iwdee~ BEGIN
+	INCLUDE ~tactics-remake/components/IWDEE/initialize.tpa~
+	INCLUDE ~tactics-remake/components/IWDEE/main_component.tpa~
+END
+
+////////////////////////////////////////////////////
+
+BEGIN @8 DESIGNATED 15 SUBCOMPONENT @2 LABEL EnhancedPowergamingScripts-MainAccelerated
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+	INCLUDE ~tactics-remake/components/BG2EE/initialize.tpa~
+	INCLUDE ~tactics-remake/components/BG2EE/prebuff_a.tpa~
+	INCLUDE ~tactics-remake/components/BG2EE/main_component.tpa~
+END ELSE ACTION_IF GAME_IS ~iwdee~ BEGIN
+	INCLUDE ~tactics-remake/components/IWDEE/initialize.tpa~
+	INCLUDE ~tactics-remake/components/IWDEE/main_component_a.tpa~
+END
+
+///////////////////////////////////////////////////////////////////////////
+// Enhanced Scripts for Summoned Celestials - BGII: EE and EET           //
+///////////////////////////////////////////////////////////////////////////
+
+BEGIN @9 DESIGNATED 9 LABEL EnhancedPowergamingScripts-Celestials
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3004
+
+INCLUDE ~tactics-remake/components/BG2EE/celestials.tpa~
