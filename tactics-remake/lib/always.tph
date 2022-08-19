@@ -1,0 +1,47 @@
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Things to do only once - Borrowed and modified from SCS               //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
+
+  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @3001 END // Modmerge check
+
+  CLEAR_EVERYTHING            // occasionally, e.g. after installing IWD spells, we call this again. Make sure we get a fresh start.
+  //SILENT
+  OUTER_SET initialise=1
+
+///////////////////////////////////////////////////////////////////////////
+// Set up ini system                                                     //
+///////////////////////////////////////////////////////////////////////////
+	/*
+   INCLUDE ~enhanced-powergaming-scripts/lib/lib_ini.tpa~
+    OUTER_SPRINT ini_to_read "enhanced-powergaming-scripts/enhanced-powergaming-scripts.ini"
+    LAF SFO_read_ini_file RET_ARRAY SFO_reserved_ini_hash END
+   */
+
+///////////////////////////////////////////////////////////////////////////
+// General variables, macros and functions                               //
+///////////////////////////////////////////////////////////////////////////
+   /*
+   INCLUDE ~enhanced-powergaming-scripts/sfo/install_sfo.tpa~
+   INCLUDE ~enhanced-powergaming-scripts/func/misc_functions.tpa~ //Block of code provided by subtledoctor
+   INCLUDE ~enhanced-powergaming-scripts/func/replace_multiline.tpa~ //Block of code in EET
+   INCLUDE ~enhanced-powergaming-scripts/lib/ds/ds.tph~ // Detectable Spells
+   */
+
+   //SILENT
+
+///////////////////////////////////////////////////////////////////////////
+// Detect third-party mods                                               //
+///////////////////////////////////////////////////////////////////////////
+/*
+   // Detect Item Revisions      
+   ACTION_IF MOD_IS_INSTALLED "item_rev.tp2" 0 BEGIN
+      OUTER_SET item_revisions=1
+   END ELSE BEGIN
+      OUTER_SET item_revisions=0
+   END
+*/
+
+END

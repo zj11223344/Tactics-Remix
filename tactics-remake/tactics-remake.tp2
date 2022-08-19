@@ -29,43 +29,55 @@ LANGUAGE ~English~
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-// Main Component Base Game                                              //
+// The Ritual                                                            //
 ///////////////////////////////////////////////////////////////////////////
-
-BEGIN @7 DESIGNATED 14 SUBCOMPONENT @2 LABEL EnhancedPowergamingScripts-MainNormal
+BEGIN @1 DESIGNATED 1 LABEL TacticsRemake-Ritual
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-LOAD_TRA ~tactics-remake/languages/%LANGUAGE%/script_descriptions.tra~
-
-ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
-	INCLUDE ~tactics-remake/components/BG2EE/initialize.tpa~
-	INCLUDE ~tactics-remake/components/BG2EE/prebuff.tpa~
-	INCLUDE ~tactics-remake/components/BG2EE/main_component.tpa~
-END ELSE ACTION_IF GAME_IS ~iwdee~ BEGIN
-	INCLUDE ~tactics-remake/components/IWDEE/initialize.tpa~
-	INCLUDE ~tactics-remake/components/IWDEE/main_component.tpa~
-END
-
-////////////////////////////////////////////////////
-
-BEGIN @8 DESIGNATED 15 SUBCOMPONENT @2 LABEL EnhancedPowergamingScripts-MainAccelerated
-
-ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
-	INCLUDE ~tactics-remake/components/BG2EE/initialize.tpa~
-	INCLUDE ~tactics-remake/components/BG2EE/prebuff_a.tpa~
-	INCLUDE ~tactics-remake/components/BG2EE/main_component.tpa~
-END ELSE ACTION_IF GAME_IS ~iwdee~ BEGIN
-	INCLUDE ~tactics-remake/components/IWDEE/initialize.tpa~
-	INCLUDE ~tactics-remake/components/IWDEE/main_component_a.tpa~
-END
+INCLUDE ~tactics-remake/components/ritual.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
-// Enhanced Scripts for Summoned Celestials - BGII: EE and EET           //
+// "Kuroisan", the Acid Kensai                                           //
 ///////////////////////////////////////////////////////////////////////////
+BEGIN @2 DESIGNATED 2 LABEL TacticsRemake-Kuroisan
 
-BEGIN @9 DESIGNATED 9 LABEL EnhancedPowergamingScripts-Celestials
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3004
+INCLUDE ~tactics-remake/components/kuroisan.tpa~
 
-INCLUDE ~tactics-remake/components/BG2EE/celestials.tpa~
+///////////////////////////////////////////////////////////////////////////
+// "Red Badge" Poison-Based Encounter                                    //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @3 DESIGNATED 3 LABEL TacticsRemake-RedBadge
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remake/components/red_badge.tpa~
+
+///////////////////////////////////////////////////////////////////////////
+// Gebhard Blucher's Lich in the Docks                                   //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @4 DESIGNATED 4 LABEL TacticsRemake-LichDocks
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remake/components/lich_docks.tpa~
+
+///////////////////////////////////////////////////////////////////////////
+// Kensai Ryu's Gnome Fighter/Illusionist in the Docks                   //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @5 DESIGNATED 5 LABEL TacticsRemake-GnomeFI
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remake/components/gnomefi.tpa~
+
+///////////////////////////////////////////////////////////////////////////
+// Kensai Ryu's Improved Crypt King                                      //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @6 DESIGNATED 6 LABEL TacticsRemake-CryptKing
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remake/components/crypt_king.tpa~
