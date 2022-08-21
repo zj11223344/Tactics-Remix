@@ -1,0 +1,10 @@
+IF
+  Global("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",0)
+THEN
+  RESPONSE #100
+    CreateCreature("KRGNOME",[475.268],0)  // KRGNOME
+    CreateCreature("KRFAM01",[558.330],0)  // KRFAM01
+    CreateCreature("KRFAM02",[390.231],0)  // KRFAM02
+    SetGlobal("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",1)
+END
+
