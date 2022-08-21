@@ -1,6 +1,20 @@
 // Tactics Remake, Gnome Fighter/Illusionist
 
 ///////////////////////////////////////////////////////////////////////////
+// Import Files                                                          //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remake/cre/mofam01.cre~ ~override~
+COPY ~tactics-remake/cre/mofam02.cre~ ~override~
+COPY ~tactics-remake/cre/mognome.cre~ ~override~
+COPY ~tactics-remake/dlg/mognome.dlg~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 EXTEND_TOP ~AR0326.bcs~ ~tactics-remake/baf/ar0326.baf~
+
+COPY ~tactics-remake/baf/mofam01.baf~ ~override/mofam01.bcs~
+     ~tactics-remake/baf/mofam02.baf~ ~override/mofam02.bcs~
+     ~tactics-remake/baf/mognome.baf~ ~override/mognome.bcs~
+  COMPILE_BAF_TO_BCS
+
