@@ -3,6 +3,24 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
+// Ebon Blade
+COPY ~tactics-remake/itm/MO1H11.ITM~ ~override~
+        SAY NAME1 @4000
+        SAY NAME2 @4002
+        SAY UNIDENTIFIED_DESC @4001
+        SAY DESC @4003
+        WRITE_ASCII 0x58 csw1h09
+        WRITE_LONG 0x34 4000
+
+// The Lucky One
+COPY ~tactics-remake/itm/MO1H12.ITM~ ~override~
+        SAY NAME1 @4000
+        SAY NAME2 @4004
+        SAY UNIDENTIFIED_DESC @4001
+        SAY DESC @4005
+        WRITE_ASCII 0x58 csw1h07
+        WRITE_LONG 0x34 1000
+
 COPY ~tactics-remake/cre/mofam01.cre~ ~override~
   SAY NAME1 @2001
   SAY NAME2 @2001
@@ -12,10 +30,8 @@ COPY ~tactics-remake/cre/mofam02.cre~ ~override~
 COPY ~tactics-remake/cre/mognome.cre~ ~override~
   SAY NAME1 @2000
   SAY NAME2 @2000
-  /*
-  REPLACE_CRE_ITEM ~MOAX01~ #0 #0 #0 ~UNSTEALABLE~ ~WEAPON1~ EQUIP
-  REPLACE_CRE_ITEM ~MO1H07~ #0 #0 #0 ~UNSTEALABLE~ ~SHIELD~ EQUIP
-  */
+  REPLACE_CRE_ITEM ~MO1H11~ #0 #0 #0 ~UNSTEALABLE~ ~WEAPON1~ EQUIP
+  REPLACE_CRE_ITEM ~MO1H12~ #0 #0 #0 ~UNSTEALABLE~ ~SHIELD~ EQUIP
   REPLACE_CRE_ITEM ~CHAN13~ #0 #0 #0 ~UNSTEALABLE~ ~ARMOR~ EQUIP
   REPLACE_CRE_ITEM ~HELM01~ #0 #0 #0 ~UNSTEALABLE~ ~HELMET~ EQUIP
   SET_BG2_PROFICIENCY ~PROFICIENCY2WEAPON~ 3

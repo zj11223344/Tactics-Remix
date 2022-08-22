@@ -1,0 +1,69 @@
+// Tactics Remake, Items
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Short Swords                                                          //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Short Sword                                                           //
+///////////////////////////////////////////////////////////////////////////
+@4000 = ~Short Sword~
+@4001 = ~The short sword is the first type of sword to come into existence. In the simplest of terms, a short sword can be considered a dagger with a blade so long that it can no longer be called a dagger. The term short sword does not exist in sword classifications. However, it has come to be used to describe a double-edged blade about two feet in length. The sword tip is usually pointed, ideal for thrusting.
+
+STATISTICS:
+
+Damage: 1d6
+Damage type: Piercing
+Speed Factor: 3
+Proficiency Type: Short Sword
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Ebon Blade                                                            //
+///////////////////////////////////////////////////////////////////////////
+@4002 = ~Ebon Blade +3~
+@4003 = ~The wide blade of this short sword is wickedly sharp, but its extra bite pales in significance when compared to its other, more insidious property: even the slightest nick from the sword is enough to cause its victim's sight to shut down temporarily. Needless to say, this blade is highly prized by assassins, who can render their targets virtually defenseless before closing in for the kill.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target must save vs. Spell or be blinded for 1 round
+
+THAC0: +3
+Damage: 1d6+3
+Damage type: Piercing
+Speed Factor: 2
+Proficiency Type: Short Sword
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// The Lucky One                                                         //
+///////////////////////////////////////////////////////////////////////////
+@4004 = ~The Lucky One +1~
+@4005 = ~This is a swashbuckler's blade that has seen endless use in grand fights against "big nasties" sent forth by whomever. The Lucky Ones mercenary company commissioned these blades while still flush from their last big score. After their windfall they only adventured for the thrill of it, challenging each other to ever-greater feats of daring-do. Why are these weapons no longer with them? Sometimes the "big nasty" wins.
+
+STATISTICS:
+
+Equipped abilities:
+– Luck: +1
+
+THAC0: +1
+Damage: 1d6+1
+Damage type: Piercing
+Speed Factor: 2
+Proficiency Type: Short Sword
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
