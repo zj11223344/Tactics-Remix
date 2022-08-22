@@ -15,7 +15,7 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
 // Set up ini system                                                     //
 ///////////////////////////////////////////////////////////////////////////
 	/*
-   INCLUDE ~enhanced-powergaming-scripts/lib/lib_ini.tpa~
+   INCLUDE ~tactics-remake/lib/lib_ini.tpa~
     OUTER_SPRINT ini_to_read "enhanced-powergaming-scripts/enhanced-powergaming-scripts.ini"
     LAF SFO_read_ini_file RET_ARRAY SFO_reserved_ini_hash END
    */
@@ -23,25 +23,21 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
 ///////////////////////////////////////////////////////////////////////////
 // General variables, macros and functions                               //
 ///////////////////////////////////////////////////////////////////////////
-   /*
-   INCLUDE ~enhanced-powergaming-scripts/sfo/install_sfo.tpa~
-   INCLUDE ~enhanced-powergaming-scripts/func/misc_functions.tpa~ //Block of code provided by subtledoctor
-   INCLUDE ~enhanced-powergaming-scripts/func/replace_multiline.tpa~ //Block of code in EET
-   INCLUDE ~enhanced-powergaming-scripts/lib/ds/ds.tph~ // Detectable Spells
-   */
+   //INCLUDE ~tactics-remake/sfo/install_sfo.tpa~
+   INCLUDE ~tactics-remake/func/misc_functions.tpa~ //Block of code provided by subtledoctor
+   INCLUDE ~tactics-remake/func/replace_multiline.tpa~ //Block of code in EET
+   INCLUDE ~tactics-remake/lib/ds/ds.tph~ // Detectable Spells
 
    //SILENT
 
 ///////////////////////////////////////////////////////////////////////////
 // Detect third-party mods                                               //
 ///////////////////////////////////////////////////////////////////////////
-/*
-   // Detect Item Revisions      
-   ACTION_IF MOD_IS_INSTALLED "item_rev.tp2" 0 BEGIN
-      OUTER_SET item_revisions=1
+// Detect IWD Spells - IWDification
+   ACTION_IF MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ 30 && MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ 40 BEGIN
+      OUTER_SET iwdification=1
    END ELSE BEGIN
-      OUTER_SET item_revisions=0
+      OUTER_SET iwdification=0
    END
-*/
 
 END

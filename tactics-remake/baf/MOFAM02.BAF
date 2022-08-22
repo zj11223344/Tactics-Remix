@@ -40,7 +40,7 @@ IF
   GlobalLT("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",100)
 THEN
   RESPONSE #100
-    CreateCreatureObject("rat01",LastSeenBy(Myself),0,0,0)  // rat01
+    CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)
     Continue()
 END
 
@@ -56,7 +56,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell("rat01",WIZARD_ABI_DALZIMS_HORRID_WILTING)
+    Spell("rat",WIZARD_ABI_DALZIMS_HORRID_WILTING)
 END
 
 IF
@@ -240,7 +240,7 @@ IF
   Global("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",0)
 THEN
   RESPONSE #100
-    CreateCreatureObject("rat01",LastSeenBy(Myself),0,0,0)  // rat01
+    CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)  // rat
     SetGlobal("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",1)
     Continue()
 END
@@ -258,7 +258,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell("Rat01",WIZARD_LIGHTNING_BOLT)
+    Spell("rat",WIZARD_LIGHTNING_BOLT)
 END
 
 IF

@@ -1,5 +1,6 @@
 IF
   Global("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",0)
+  Difficulty(HARDEST)
 THEN
   RESPONSE #100
     CreateCreature("KRGNOME",[475.268],0)  // KRGNOME
@@ -8,3 +9,21 @@ THEN
     SetGlobal("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",1)
 END
 
+IF
+  Global("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",0)
+  Difficulty(HARD)
+THEN
+  RESPONSE #100
+    CreateCreature("KRGNOME",[475.268],0)  // KRGNOME
+    CreateCreature("KRFAM01",[558.330],0)  // KRFAM01
+    SetGlobal("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",1)
+END
+
+IF
+  Global("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",0)
+  DifficultyLT(HARD)
+THEN
+  RESPONSE #100
+    CreateCreature("KRGNOME",[475.268],0)  // KRGNOME
+    SetGlobal("KR_MAGE_AND_FAMILIARS_SPAWN","GLOBAL",1)
+END
