@@ -17,19 +17,6 @@ END
 
 IF
   !Specifics(Myself,2001)
-  Global("ProdigalSon","LOCALS",1)
-  See(SecondNearest([ENEMY.HUMANOID.GNOME.FIGHTER_MAGE]))
-  !Specifics(LastSeenBy(Myself),2001)
-THEN
-  RESPONSE #100
-    DisplayStringHead(LastSeenBy(Myself),26234)  // ~Simulacrum~
-    ActionOverride(LastSeenBy(Myself),ChangeAIScript("MOGNOME",DEFAULT))
-    ChangeSpecifics(LastSeenBy(Myself),2001)
-    SetGlobal("ProdigalSon","LOCALS",0)
-END
-
-IF
-  !Specifics(Myself,2001)
   See([PC])
   Global("MO_GNOME_TALKED","LOCALS",0)
 THEN
@@ -90,8 +77,8 @@ THEN
     DisplayString(Myself,26328)  // ~Chain Contingency~
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
-    ApplySpell(Myself,WIZARD_MISLEAD)
     ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_DIVINATION)
+    ApplySpell(Myself,WIZARD_MISLEAD) 
     SetGlobal("MO_Prep","LOCALS",1)
     SetGlobal("MO_SpellTrigger","LOCALS",0)
 END
@@ -205,7 +192,6 @@ THEN
   RESPONSE #100
     SetGlobal("MO_CONT","LOCALS",1)
     ApplySpell(Myself,WIZARD_SIMULACRUM)
-    SetGlobal("ProdigalSon","LOCALS",1)
 END
 
 IF
