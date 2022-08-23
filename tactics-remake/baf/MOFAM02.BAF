@@ -1,332 +1,440 @@
 IF
-  RandomNumGT(4,2)
-  Global("MO_OFFENSIVE_TIME","LOCALS",0)
+  OR(6)
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_MAGE]))
+  Global("MO_Prep","LOCALS",0)
+  RandomNum(2,1)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",1)
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    DisplayString(Myself,26328)  // ~Chain Contingency~
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    ApplySpell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)
+    ApplySpell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)
+    SetGlobal("MO_Prep","LOCALS",1)
+  RESPONSE #50
+    DisplayString(Myself,26328)  // ~Chain Contingency~
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    ApplySpell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)
+    ApplySpell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)
+    SetGlobal("MO_Prep","LOCALS",1)
 END
 
 IF
-  RandomNumLT(4,2)
-  Global("MO_DEFENSIVE_TIME","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  Global("MO_Prep","LOCALS",0)
+  RandomNum(2,1)
 THEN
   RESPONSE #100
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",1)
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+    DisplayString(Myself,26328)  // ~Chain Contingency~
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    ApplySpell(LastSeenBy(Myself),WIZARD_ANIMATE_DEAD)
+    ApplySpell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)
+    SetGlobal("MO_Prep","LOCALS",1)
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  See(NearestEnemyOf(Myself))
+  Global("MO_Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,26328)  // ~Chain Contingency~
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    ApplySpell(LastSeenBy(Myself),WIZARD_HORROR)
+    ApplySpell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)
+    SetGlobal("MO_Prep","LOCALS",1)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !GlobalTimerNotExpired("MO_SpellCastSummonKillTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
+  HaveSpell(WIZARD_FINGER_OF_DEATH)
+  HaveSpell(WIZARD_DEATH_SPELL)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastSummonKillTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastSummonKillTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !GlobalTimerNotExpired("MO_SpellCastSummonKillTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
+  !HaveSpell(WIZARD_FINGER_OF_DEATH)
+  HaveSpell(WIZARD_DEATH_SPELL)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastSummonKillTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !GlobalTimerNotExpired("MO_SpellCastSummonKillTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
+  HaveSpell(WIZARD_FINGER_OF_DEATH)
+  !HaveSpell(WIZARD_DEATH_SPELL)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastSummonKillTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !HasBounceEffects(LastSeenBy(Myself))
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
-  !CheckStatGT(LastSeenBy(Myself),0,SHIELDGLOBE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)
-END
-
-IF
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  HasBounceEffects(LastSeenBy(Myself))
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
-  !CheckStatGT(LastSeenBy(Myself),0,SHIELDGLOBE)
-  GlobalLT("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",100)
-THEN
-  RESPONSE #100
+  RESPONSE #50
     CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)
+    SetGlobal("MO_TARGET_RAT","LOCALS",1)
+    Continue()
+  RESPONSE #50
     Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  HasBounceEffects(LastSeenBy(Myself))
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
-  !CheckStatGT(LastSeenBy(Myself),0,SHIELDGLOBE)
-  GlobalLT("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",100)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+  Global("MO_TARGET_RAT","LOCALS",1)
 THEN
   RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobal("MO_TARGET_RAT","LOCALS",0)
+    SetInterrupt(FALSE)
     Spell("rat",WIZARD_ABI_DALZIMS_HORRID_WILTING)
+    SetInterrupt(TRUE)
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
-  HaveSpell(WIZARD_FINGER_OF_DEATH)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-END
-
-IF
-  Global("MO_DEFENSIVE_TIME","LOCALS",1)
-  OR(4)
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
-  HaveSpell(WIZARD_SUMMON_HAKEASHAR)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)
-END
-
-IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
-  HaveSpell(WIZARD_DEATH_SPELL)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-END
-
-IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF.UNDEAD]))
   HaveSpell(WIZARD_CONTROL_UNDEAD)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_CONTROL_UNDEAD)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_DEFENSIVE_TIME","LOCALS",1)
-  OR(4)
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
-  HaveSpell(WIZARD_SUMMON_NISHRUU)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)
-END
-
-IF
-  Global("MO_DEFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  HaveSpell(WIZARD_ANIMATE_DEAD)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_ANIMATE_DEAD)
-END
-
-IF
-  Global("MO_DEFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_FIRE_SHIELD_RED)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !GlobalTimerNotExpired("MO_FIRE_SHIELD","LOCALS")
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_FIRE_SHIELD","LOCALS",126)
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
-    Spell(Myself,WIZARD_FIRE_SHIELD_RED)
-END
-
-IF
-  Global("MO_DEFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  OR(2)
-    Range(LastSeenBy(Myself),4)
-    Range(LastHitter(Myself),4)
-  See("KRFAM01")  // KRFAM01
-  HaveSpell(WIZARD_DIMENSION_DOOR)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)
-END
-
-IF
-  Global("MO_DEFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  OR(2)
-    Range(LastSeenBy(Myself),4)
-    Range(LastHitter(Myself),4)
-  See("MOGNOME")  // MOGNOME
-  HaveSpell(WIZARD_DIMENSION_DOOR)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_DEFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)
-END
-
-IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_CONTAGION)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SLOWED)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_CONTAGION)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   Range(LastSeenBy(Myself),4)
   HaveSpell(WIZARD_VAMPIRIC_TOUCH)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_VAMPIRIC_TOUCH)
-END
-
-IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  Range(LastSeenBy(Myself),4)
-  HaveSpell(WIZARD_SKULL_TRAP)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_SKULL_TRAP)
-END
-
-IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_LIGHTNING_BOLT)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !HasBounceEffects(LastSeenBy(Myself))
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
-  !CheckStatGT(LastSeenBy(Myself),45,RESISTELECTRICITY)
-  !CheckStatGT(LastSeenBy(Myself),0,SHIELDGLOBE)
-  !CheckStatGT(LastSeenBy(Myself),0,MINORGLOBE)
-  !StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell(LastSeenBy(Myself),WIZARD_LIGHTNING_BOLT)
-END
-
-IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_LIGHTNING_BOLT)
-  HasBounceEffects(LastSeenBy(Myself))
-  Global("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",0)
-THEN
-  RESPONSE #100
-    CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)  // rat
-    SetGlobal("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",1)
+    SetInterrupt(TRUE)
+  RESPONSE #50
     Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),4)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SKULL_TRAP)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_LIGHTNING_BOLT)
-  HasBounceEffects(LastSeenBy(Myself))
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
-  !CheckStatGT(LastSeenBy(Myself),30,RESISTELECTRICITY)
-  !CheckStatGT(LastSeenBy(Myself),0,SHIELDGLOBE)
-  !CheckStatGT(LastSeenBy(Myself),0,MINORGLOBE)
-  Global("MO_NEED_A_RAT_OR_SOMETHING","LOCALS",1)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
-    Spell("rat",WIZARD_LIGHTNING_BOLT)
+  RESPONSE #50
+    CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)
+    SetGlobal("MO_TARGET_RAT","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  HaveSpell(WIZARD_LIGHTNING_BOLT)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+  Global("MO_TARGET_RAT","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobal("MO_TARGET_RAT","LOCALS",0)
+    SetInterrupt(FALSE)
+    Spell("rat",WIZARD_LIGHTNING_BOLT)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_STINKING_CLOUD)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_STINKING_CLOUD)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_HORROR)
   !General(LastSeenBy(Myself),UNDEAD)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_HORROR)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_GHOUL_TOUCH)
   Range(LastSeenBy(Myself),4)
   !General(LastSeenBy(Myself),UNDEAD)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Class(LastSeenBy(Myself),MONK)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_GHOUL_TOUCH)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_LARLOCH_MINOR_DRAIN)
   Range(LastSeenBy(Myself),4)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_LARLOCH_MINOR_DRAIN)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  Global("MO_OFFENSIVE_TIME","LOCALS",1)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_CHILL_TOUCH)
   Range(LastSeenBy(Myself),4)
-  !CheckStatGT(Myself,25,SPELLFAILUREMAGE)
-  !CheckStatGT(LastSeenBy(Myself),40,RESISTMAGIC)
   !CheckStatGT(LastSeenBy(Myself),40,RESISTCOLD)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
-    SetGlobal("MO_OFFENSIVE_TIME","LOCALS",0)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_CHILL_TOUCH)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
