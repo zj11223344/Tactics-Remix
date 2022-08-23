@@ -125,29 +125,12 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #50
-    CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)
-    SetGlobal("MO_TARGET_RAT","LOCALS",1)
-    Continue()
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_ABI_DALZIMS_HORRID_WILTING)
+    SetInterrupt(TRUE)
   RESPONSE #50
     Continue()
-END
-
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-  Global("MO_TARGET_RAT","LOCALS",1)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobal("MO_TARGET_RAT","LOCALS",0)
-    SetInterrupt(FALSE)
-    Spell("rat",WIZARD_ABI_DALZIMS_HORRID_WILTING)
-    SetInterrupt(TRUE)
 END
 
 IF
@@ -264,29 +247,12 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #50
-    CreateCreatureObject("rat",LastSeenBy(Myself),0,0,0)
-    SetGlobal("MO_TARGET_RAT","LOCALS",1)
-    Continue()
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_LIGHTNING_BOLT)
+    SetInterrupt(TRUE)
   RESPONSE #50
     Continue()
-END
-
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_LIGHTNING_BOLT)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-  Global("MO_TARGET_RAT","LOCALS",1)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobal("MO_TARGET_RAT","LOCALS",0)
-    SetInterrupt(FALSE)
-    Spell("rat",WIZARD_LIGHTNING_BOLT)
-    SetInterrupt(TRUE)
 END
 
 IF
