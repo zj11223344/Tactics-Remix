@@ -3,7 +3,9 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remake/itm/SW1H59.ITM~ ~override~
 // Ebon Blade
+/*
 COPY ~tactics-remake/itm/MO1H11.ITM~ ~override~
         SAY NAME1 @4000
         SAY NAME2 @4002
@@ -11,8 +13,11 @@ COPY ~tactics-remake/itm/MO1H11.ITM~ ~override~
         SAY DESC @4003
         WRITE_ASCII 0x58 csw1h09
         WRITE_LONG 0x34 4000
+        */
 
+COPY ~tactics-remake/itm/SW1H25.ITM~ ~override~
 // The Lucky One
+/*
 COPY ~tactics-remake/itm/MO1H12.ITM~ ~override~
         SAY NAME1 @4000
         SAY NAME2 @4004
@@ -20,6 +25,7 @@ COPY ~tactics-remake/itm/MO1H12.ITM~ ~override~
         SAY DESC @4005
         WRITE_ASCII 0x58 csw1h07
         WRITE_LONG 0x34 1000
+        */
 
 COPY ~tactics-remake/cre/mofam01.cre~ ~override~
   SAY NAME1 @2001
