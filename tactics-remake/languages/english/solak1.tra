@@ -1,0 +1,24 @@
+// Acid Kensai Dialogue
+@101      = ~So, we finally meet. You are just as impressive as I had imagined.~
+@102              = ~Who are you?~
+@103              = ~What do you want with me?~
+@104              = ~Let me guess, you're not even going to listen to what I say.~
+@105      = ~I am Kuroisan, a Kensai and Wu Jen of no small merit. I have come to this land chasing a densetsu no katana. The katana, you see, is my particular specialty and my singular obsession.~
+@106      = ~Of course I will listen to you. Do the people you meet normally ignore you? Trust me, that's probably more of a blessing than a curse.~
+@107      = ~You have a very powerful katana, one that I have been seeking for quite some time.~
+@108      = ~I would very much appreciate it if you would hand over Celestial Fury. I would prefer to settle things peacefully, but I am not above the use of force.~
+@109              = ~OK, sure, you can have it.~
+@110             = ~I think not.~
+@111      = ~I would very much appreciate it if you would hand over Malakar. I would prefer to settle things peacefully, but I am not above the use of force.~
+@112     = ~Very well. Iku yo!~
+@114     = ~What you are doing is wrong! Why are you threatening to rob me?~
+@113     = ~Thank you, friend! May the Kami watch over us both. Your generosity will not be forgotten. Sayonara.~
+
+@115     = ~Wrong? By what standards? Certainly not by my internal sensibilities. Perhaps you speak of the Kami? Some of them would agree, some would disagree. I fail to see one as clearly superior to the others.~
+@116     = ~Why should I not take what I want, here in this barbarian land? The only thing I have to fear is the retribution of your law. Your guards enforce your local rules by threat of violence, inflicting your morals on visitors like me.~ 
+@117     = ~Well, I have bribed the local enforcers. So now the only thing that stands between me and my desire ... is you. And are you so much better? Exactly how did you come by this katana anyway? Legally purchased? I think not: you looted it from a corpse.~ 
+@118     = ~So, will you hand it over peacefully?~
+
+@120     = ~Once again we embark on our twisted dance.~
+
+@121     = ~Ano ... clearly I am mistaken. There is no legendary katana here. Forgive this lowly one for intruding. Farewell.~
