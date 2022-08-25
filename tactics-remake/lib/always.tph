@@ -22,6 +22,20 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
    */
 
 ///////////////////////////////////////////////////////////////////////////
+// EET and BG2EE Chapter Selection courtesy of Jastey                    //
+///////////////////////////////////////////////////////////////////////////
+   ACTION_IF GAME_IS ~eet~ BEGIN
+      OUTER_SET bg2_chapter = 12
+   END ELSE BEGIN
+      OUTER_SET bg2_chapter = 0
+   END
+   OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+      OUTER_SET bg2_chapter = bg2_chapter + 1
+      OUTER_SPRINT name_source ~bg2_chapter_%i%~
+      OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+   END
+
+///////////////////////////////////////////////////////////////////////////
 // General variables, macros and functions                               //
 ///////////////////////////////////////////////////////////////////////////
    //INCLUDE ~tactics-remake/sfo/install_sfo.tpa~

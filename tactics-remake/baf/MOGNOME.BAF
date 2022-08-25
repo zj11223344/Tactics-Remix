@@ -72,7 +72,7 @@ IF
 THEN
   RESPONSE #100
     DisplayString(Myself,26328)  // ~Chain Contingency~
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    //SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
     ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_DIVINATION)
     ApplySpell(Myself,WIZARD_MISLEAD) 
