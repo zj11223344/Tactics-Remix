@@ -7,10 +7,10 @@ COPY ~tactics-remake/itm/solak1b.itm~ ~override~
 COPY ~tactics-remake/itm/solak1.itm~  ~override~
         SAY NAME1 @4100
         SAY NAME2 @4102
-        SAY UNIDENTIFIED_DESC @4201
+        SAY UNIDENTIFIED_DESC @4101
         SAY DESC @4103
 
-COPY ~tactics2/kuroisan/solak1.cre~ ~override~
+COPY ~tactics-remake/cre/solak1.cre~ ~override~
   SAY NAME1 @2003
   SAY NAME2 @2003
 
@@ -48,13 +48,8 @@ END
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-ACTION_IF GAME_IS ~eet~ BEGIN
-  EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1mo.baf~
-  EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1mo.baf~
-END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
-  EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1me.baf~
-  EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1me.baf~
-END
+EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1me.baf~
+EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1me.baf~
 
 COPY ~tactics-remake/baf/solak1.baf~ ~override/solak1.bcs~
   COMPILE_BAF_TO_BCS
