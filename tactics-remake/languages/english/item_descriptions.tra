@@ -117,3 +117,37 @@ Requires:
  6 Strength
 
 Weight: 8~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Robes                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Robe                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4200 = ~Mage Robe~
+@4201 = ~Since the age of Netheril, mages have learned to bestow a wide variety of magical properties upon the everyday objects that surround them. A favorite item of such enchantment is the common robe. It is lightweight, affordable, and holds its enchantment well, thereby making it ideal equipment for a mage. Due to their magical heritage, however, only single-, dual-, and multi-class mages may wear these enchanted robes.
+
+STATISTICS:
+
+Weight: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Greater Robe of Eyes                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4202 = ~Greater Robe of Eyes~
+@4203 = ~The greater robe of eyes provides the wearer with improved vision and the ability to detect many things that are hidden. Invisibility and ethereal effects have no power to cloud the wearer's vision.
+
+When not fully armored, the more powerful clerics of Helm often wear such robes to allow them to maintain their vigilance, even when unable to maintain their armament.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: 5
+– Find Traps: +10%
+– Detect Illusion: +10%
+– True Sight
+
+Weight: 3~

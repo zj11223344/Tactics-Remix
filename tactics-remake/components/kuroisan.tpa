@@ -10,9 +10,18 @@ COPY ~tactics-remake/itm/solak1.itm~  ~override~
         SAY UNIDENTIFIED_DESC @4101
         SAY DESC @4103
 
+COPY ~tactics-remake/eff/morb03.eff~  ~override~
+COPY ~tactics-remake/itm/morb03.itm~  ~override~
+        SAY NAME1 @4200
+        SAY NAME2 @4202
+        SAY UNIDENTIFIED_DESC @4201
+        SAY DESC @4203
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 2 STR_VAR resource = ~morb03~ END
+
 COPY ~tactics-remake/cre/solak1.cre~ ~override~
   SAY NAME1 @2003
   SAY NAME2 @2003
+  REPLACE_CRE_ITEM ~morb03~ #0 #0 #0 ~UNSTEALABLE~ ~ARMOR~ EQUIP
 
 COMPILE EVALUATE_BUFFER ~tactics-remake/dlg/solak1.d~
 
