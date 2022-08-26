@@ -151,3 +151,35 @@ Equipped abilities:
 – True Sight
 
 Weight: 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Boots                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Boot                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4300 = ~Boots~
+@4301 = ~Boots are normally handmade by cobblers. Common boots are made by using a form, but good boots are designed for the foot of an individual. 
+
+STATISTICS:
+
+Weight: 4~
+
+///////////////////////////////////////////////////////////////////////////
+// Resilient Trodders                                                    //
+///////////////////////////////////////////////////////////////////////////
+@4302 = ~Resilient Trodders~
+@4303 = ~Though bearing an inelegant name, these sturdy boots carry with them a powerful magic. Crafted by a talented young smith, they were to be the masterwork that earned him a right to study under the greatest blacksmith in the city. Instead, he became smitten with a cleric of Helm - and subsequently mocked by his peers, for the cleric was half-orc and ugly to their eyes. Unlike them, the young smith saw the cleric's beauty reflected in her kindness and unwavering devotion, and dedicated himself to the church soon after giving these boots to her. Alas, the smith did not live long in his duities as a Helmite - perishing in the defense of a merchant caravan who had appealed to the church for protection from bandits - but his boots were enchanted to honor his memory and dedication, and the cleric he gifted them to wore them until the day she died.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +1
+– Constitution: +2
+– Saving Throws: +2
+– Protects against all forms of panic and boosts morale
+
+Weight: 4~
