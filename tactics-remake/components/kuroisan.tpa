@@ -71,8 +71,13 @@ END
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1me.baf~
-EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1me.baf~
+ACTION_IF GAME_IS ~eet~ BEGIN
+  EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1mo.baf~
+  EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1mo.baf~
+END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
+  EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1me.baf~
+  EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1me.baf~
+END
 
 COPY ~tactics-remake/baf/solak1.baf~ ~override/solak1.bcs~
   COMPILE_BAF_TO_BCS
