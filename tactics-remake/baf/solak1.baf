@@ -24,14 +24,14 @@ END
 
 IF
   Global("Prep","LOCALS",0)
+  See(NearestEnemyOf(Myself))
 THEN
   RESPONSE #100
     DisplayString(Myself,56010)  // ~I intend to destroy you.~
-    SetGlobalTimer("MyCast","LOCALS",0)
-    SetGlobalTimer("DoneCasting","LOCALS",0)
     SetGlobal("Prep","LOCALS",1)
     ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_SPELL_SHIELD)
     ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
 END
 
@@ -107,16 +107,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HasItemEquiped("SCRL7R",Myself)
-  OR(9)
-    See(ThirdNearestEnemyOfType([0.0.0.MAGE_ALL]))
-    See(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]))
-    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
-    See(ThirdNearestEnemyOfType([0.0.0.SORCERER]))
-    See(SecondNearestEnemyOfType([0.0.0.SORCERER]))
-    See(NearestEnemyOfType([0.0.0.SORCERER]))
-    See(ThirdNearestEnemyOfType([0.0.0.BARD_ALL]))
-    See(SecondNearestEnemyOfType([0.0.0.BARD_ALL]))
-    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+  See(NearestEnemyOf(Myself))
 THEN
   RESPONSE #50
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
@@ -127,15 +118,16 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  HasItemEquiped("SCRL7R",Myself)
-  OR(3)
-    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
-    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
-    See(NearestEnemyOf(Myself))
+  Detect(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_SHADOW_DOOR)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #50
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    UseItem("SCRL7R",LastSeenBy(Myself))  // ~Death Fog~
+    Spell(Myself,WIZARD_SHADOW_DOOR)
   RESPONSE #50
     Continue()
 END
@@ -176,25 +168,8 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  Detect(NearestEnemyOf(Myself))
-  HaveSpell(WIZARD_SHADOW_DOOR)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #50
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    Spell(Myself,WIZARD_SHADOW_DOOR)
-  RESPONSE #50
-    Continue()
-END
-
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  StateCheck(Myself,STATE_INVISIBLE)
   HasItemEquiped("POTN52",Myself)
-  HPPercentLT(Myself,80)
+  HPPercentLT(Myself,60)
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
