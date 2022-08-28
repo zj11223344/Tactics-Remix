@@ -103,6 +103,7 @@ STATISTICS:
 Equipped abilities:
 – Regeneration (1 hit point every two seconds)
 – Immunity to Acid
+– 2 points of acid damage to any who damage the wielder
 
 Combat abilities:
 – Each hit lowers the target's acid resistance by 25% for 18 seconds and inflicts 2d4 acid damage. 
@@ -117,6 +118,8 @@ Requires:
  6 Strength
 
 Weight: 8~
+
+@4104 = ~Acidic Backlash~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////

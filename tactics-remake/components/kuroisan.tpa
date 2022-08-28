@@ -3,12 +3,16 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remake/spl/solak1.spl~  ~override~ 
+        SAY NAME1 @4104 
+        SAY NAME2 @4104
 COPY ~tactics-remake/itm/solak1b.itm~ ~override~
 COPY ~tactics-remake/itm/solak1.itm~  ~override~
         SAY NAME1 @4100
         SAY NAME2 @4102
         SAY UNIDENTIFIED_DESC @4101
         SAY DESC @4103
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 232 target = 1 parameter1 = 1 parameter2 = 0 timing = 2 resist_dispel = 1 probability1 = 100 STR_VAR resource = ~solak1~ END
 
 COPY ~tactics-remake/eff/morb03.eff~  ~override~
 COPY ~tactics-remake/itm/morb03.itm~  ~override~
