@@ -103,6 +103,29 @@ STATISTICS:
 Equipped abilities:
 – Regeneration (1 hit point every two seconds)
 – Immunity to Acid
+
+Combat abilities:
+– Each hit lowers the target's acid resistance by 25% for 18 seconds and inflicts 2d4 acid damage. 
+
+THAC0: +4
+Damage: 1d10+4
+Damage Type: Slashing
+Speed Factor: 4
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 8~
+
+/*
+@4103 = ~This green blade was forged by a Kara-Turan Wu Jen as a gift for his paranoid overlord; its name means "Acidic Poisoning". The sword was enchanted using the fresh blood of a Black Dragon and the hilt guard is decorated with Wolfwere bone fragments. The blade heals its user's wounds at an alarming rate and powerful acid seem to fly from it whenever an attack is made on the user. 
+
+STATISTICS:
+
+Equipped abilities:
+– Regeneration (1 hit point every two seconds)
+– Immunity to Acid
 – 2 points of acid damage to any who damage the wielder
 
 Combat abilities:
@@ -118,6 +141,7 @@ Requires:
  6 Strength
 
 Weight: 8~
+*/
 
 @4104 = ~Acidic Backlash~
 
