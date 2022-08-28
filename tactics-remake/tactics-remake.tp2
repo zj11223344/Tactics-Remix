@@ -63,7 +63,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remake/components/red_badge.tpa~
 */
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Gebhard Blucher's Lich in the Docks                                   //
 ///////////////////////////////////////////////////////////////////////////
@@ -72,7 +71,6 @@ BEGIN @4 DESIGNATED 4 LABEL TacticsRemake-LichDocks
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remake/components/lich_docks.tpa~
-*/
 
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Gnome Fighter/Illusionist in the Docks                   //

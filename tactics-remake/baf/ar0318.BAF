@@ -1,0 +1,24 @@
+IF
+  Global("MO_LichSpawn","Ar0318",0)
+THEN
+  RESPONSE #100
+    TriggerActivation("Tran0300",FALSE)
+    CreateCreature("gblich01",[290.378],0)  // gblich01
+    CreateCreature("skelwa03",[520.321],0)  // ~Skeleton Warrior~
+    CreateCreature("skelwa03",[632.335],0)  // ~Skeleton Warrior~
+    CreateCreature("skelwa01",[542.512],0)  // ~Skeleton Warrior~
+    CreateCreature("skelwa01",[631.537],0)  // ~Skeleton Warrior~
+    CreateCreature("icbone01",[651.458],0)  // ~Bone Golem~
+    CreateCreatureImpassable("gblichob",[320.212],0)
+    SetGlobal("MO_LichSpawn","Ar0318",1)
+END
+
+IF
+  Dead("gblich01")  // gblich01
+  Global("MO_LichIsDead","Ar0318",0)
+THEN
+  RESPONSE #100
+    TriggerActivation("Tran0300",TRUE)
+    SetGlobal("MO_LichIsDead","Ar0318",1)
+END
+

@@ -1,0 +1,29 @@
+// Tactics Remake, Gebhard Blucher's Lich in the Docks
+
+///////////////////////////////////////////////////////////////////////////
+// Import Files                                                          //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remake/bmp/molich01.bmp~  ~override~ 
+COPY ~tactics-remake/cre/molich01.cre~  ~override~
+COPY ~tactics-remake/cre/molichob.cre~  ~override~
+COPY ~tactics-remake/dlg/molich01.dlg~  ~override~
+COPY ~tactics-remake/spl/wwundead.spl~  ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Update AI Scripts Based on Installed Mods                             //
+///////////////////////////////////////////////////////////////////////////
+/*
+ACTION_IF iwdification BEGIN
+  INCLUDE ~tactics-remake/lib/iwd_dispelling_ak.tph~
+END
+*/
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remake/baf/ar0318.baf~   ~override/ar0318.bcs~
+     ~tactics-remake/baf/molich1b.baf~ ~override/molich1b.bcs~
+     ~tactics-remake/baf/molich1c.baf~ ~override/molich1c.bcs~
+     ~tactics-remake/baf/molichob.baf~ ~override/molichob.bcs~
+  COMPILE_BAF_TO_BCS
+
