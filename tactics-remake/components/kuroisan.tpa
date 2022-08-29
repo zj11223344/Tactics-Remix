@@ -6,6 +6,26 @@
 COPY ~tactics-remake/spl/solak1.spl~  ~override~ 
         SAY NAME1 @4104 
         SAY NAME2 @4104
+        PATCH_FOR_EACH fireshield IN
+          balshld2
+          bdbarbde
+          bdsha12a
+          bdshld02
+          keldorn
+          leat23a
+          spcl237d
+          spimixd
+          sppr730d
+          sppr951d
+          sppr952d
+          spwi403d
+          spwi418d
+        BEGIN
+          ACTION_IF !FILE_EXISTS_IN_GAME ~%fireshield%.SPL~ THEN BEGIN
+            LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 timing = 10 resist_dispel = 0 duration = 2 probability1 = 100 STR_VAR resource = ~%fireshield%~ END
+          END
+        END
+        
 COPY ~tactics-remake/itm/solak1b.itm~ ~override~
 COPY ~tactics-remake/itm/solak1.itm~  ~override~
         SAY NAME1 @4100
