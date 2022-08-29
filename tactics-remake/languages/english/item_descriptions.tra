@@ -96,6 +96,7 @@ Weight: 6~
 // Sanchuudoku +4                                                        //
 ///////////////////////////////////////////////////////////////////////////
 @4102 = ~Sanchuudoku +4~
+/*
 @4103 = ~This green blade was forged by a Kara-Turan Wu Jen as a gift for his paranoid overlord; its name means "Acidic Poisoning". The sword was enchanted using the fresh blood of a Black Dragon and the hilt guard is decorated with Wolfwere bone fragments. The blade heals its user's wounds at an alarming rate and powerful acid seem to fly from it whenever an attack is made on the user. 
 
 STATISTICS:
@@ -117,8 +118,8 @@ Requires:
  6 Strength
 
 Weight: 8~
-
-/*
+*/
+///*
 @4103 = ~This green blade was forged by a Kara-Turan Wu Jen as a gift for his paranoid overlord; its name means "Acidic Poisoning". The sword was enchanted using the fresh blood of a Black Dragon and the hilt guard is decorated with Wolfwere bone fragments. The blade heals its user's wounds at an alarming rate and powerful acid seem to fly from it whenever an attack is made on the user. 
 
 STATISTICS:
@@ -141,7 +142,7 @@ Requires:
  6 Strength
 
 Weight: 8~
-*/
+//*/
 
 @4104 = ~Acidic Backlash~
 
