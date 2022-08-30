@@ -3,8 +3,16 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remake/itm/moclk05.itm~  ~override~
+  SAY NAME1 @4400
+  SAY NAME2 @4402
+  SAY UNIDENTIFIED_DESC @4401
+  SAY DESC @4403
+
 COPY ~tactics-remake/bmp/molich01.bmp~  ~override~ 
 COPY ~tactics-remake/cre/molich01.cre~  ~override~
+  REPLACE_CRE_ITEM ~moclk05~ #0 #0 #0 ~UNSTEALABLE~ ~CLOAK~ EQUIP
+  
 COPY ~tactics-remake/cre/molichob.cre~  ~override~
 COPY ~tactics-remake/dlg/molich01.dlg~  ~override~
 COPY ~tactics-remake/spl/wwundead.spl~  ~override~
