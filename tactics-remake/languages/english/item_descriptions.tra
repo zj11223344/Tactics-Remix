@@ -243,3 +243,47 @@ Charge abilities:
 – Finger of Death two times per day
 
 Weight: 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Rings                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Ring                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4500 = ~Ring~
+@4501 = ~A ring is a small band of precious metal that is used as jewelry. Some rare rings have had enchantments placed upon them that confer various magical abilities. These rings are highly sought after, especially by those of the adventuring profession.
+
+STATISTICS:
+
+Weight: 0~
+
+///////////////////////////////////////////////////////////////////////////
+// Ring of Leeched Abjuration                                            //
+///////////////////////////////////////////////////////////////////////////
+@4502 = ~Ring of Leeched Abjuration~
+@4503 = ~This potent ring consumes some of its wearer's stamina to provide an impressive array of defenses from enemy magic.
+
+STATISTICS:
+
+Equipped abilities:
+– Strength: -3
+– Dexterity: -3
+– Constitution -3
+– Immunity to spell level 2 or lower
+– Immunity to Spell School: Evocation
+– Magic Resistance: +20%
+– May only be removed with a Remove Curse spell
+
+Charge abilities:
+– Mantle once per day
+  Special: Confers complete invulnerability to all weapons of +2 or lower enchantment.
+  Duration: 4 rounds
+
+– Globe of Invulnerability once per day
+  Special: User is immune to 1st-, 2nd-, 3rd-, and 4th-level spells
+  Duration: 2 turns
+
+Weight: 0~
