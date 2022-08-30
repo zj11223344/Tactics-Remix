@@ -23,6 +23,8 @@ COPY ~tactics-remake/cre/molichob.cre~  ~override~
 COPY ~tactics-remake/dlg/molich01.dlg~  ~override~
 COPY ~tactics-remake/spl/wwundead.spl~  ~override~
 
+APPEND ~tooltip.2da~ ~morng04%TAB%7612%TAB%391%TAB%-1~
+
 ///////////////////////////////////////////////////////////////////////////
 // Update AI Scripts Based on Installed Mods                             //
 ///////////////////////////////////////////////////////////////////////////
