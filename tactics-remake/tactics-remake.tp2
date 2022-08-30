@@ -52,7 +52,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remake/components/kuroisan.tpa~
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // "Red Badge" Poison-Based Encounter                                    //
 ///////////////////////////////////////////////////////////////////////////
@@ -61,7 +60,6 @@ BEGIN @3 DESIGNATED 3 LABEL TacticsRemake-RedBadge
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remake/components/red_badge.tpa~
-*/
 
 ///////////////////////////////////////////////////////////////////////////
 // Gebhard Blucher's Lich in the Docks                                   //
