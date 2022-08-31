@@ -794,6 +794,19 @@ END
 
 IF
   ActionListEmpty()
+  See(MostDamagedOf([PC]))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
   See(WorstAC([PC]))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
