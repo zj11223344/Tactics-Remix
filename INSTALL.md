@@ -4,7 +4,7 @@ If you've installed an earlier version of the mod, please uninstall it prior to 
 
 ## Windows
 
-Tactics Remake for Windows is distributed as a self-extracting archive and includes a WeiDU installer. To install, simply double-click the archive and follow the instructions on screen.
+Tactics Remix for Windows is distributed as a self-extracting archive and includes a WeiDU installer. To install, simply double-click the archive and follow the instructions on screen.
 
 Alternatively, the files can be extracted into your game directory using [7zip] or [WinRAR]. When properly extracted, your game directory will contain **setup-tactics-remix.exe** and the folder **tactics-remix**. To install, double-click **setup-tactics-remix.exe** and follow the instructions on screen.
 
@@ -12,7 +12,7 @@ You can run **setup-tactics-remix.exe** in your game folder to reinstall, uninst
 
 ## macOS
 
-Tactics Remake for macOS is distributed as a compressed ZIP file and includes a WeiDU installer.
+Tactics Remix for macOS is distributed as a compressed ZIP file and includes a WeiDU installer.
 
 First, extract the files from the ZIP file into your game directory. When properly extracted, your game directory will contain **setup-tactics-remix**, **setup-tactics-remix.command**, and the folder **tactics-remix**. To install, double-click **setup-tactics-remix.command** and follow the instructions on screen.
 
@@ -20,7 +20,7 @@ You can run **setup-tactics-remix.command** in your game folder to reinstall, un
 
 ## Linux
 
-Tactics Remake for Linux is distributed as a compressed ZIP file and does not include a WeiDU installer.
+Tactics Remix for Linux is distributed as a compressed ZIP file and does not include a WeiDU installer.
 
 Extract the contents of the mod to the folder of the game you wish to modify.
 

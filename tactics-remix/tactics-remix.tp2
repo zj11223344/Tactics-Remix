@@ -1,4 +1,4 @@
-/* Tactics Remake
+/* Tactics Remix
  *
  * New Encounters for BGII: EE and EET
  *
@@ -28,7 +28,7 @@ LANGUAGE ~English~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-// Tactics Remake by Morpheus562                                         //
+// Tactics Remix by Morpheus562                                         //
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +36,7 @@ LANGUAGE ~English~
 ///////////////////////////////////////////////////////////////////////////
 // The Ritual                                                            //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @1 DESIGNATED 1 LABEL TacticsRemake-Ritual
+BEGIN @1 DESIGNATED 1 LABEL TacticsRemix-Ritual
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
@@ -46,7 +46,7 @@ INCLUDE ~tactics-remix/components/ritual.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // "Kuroisan", the Acid Kensai                                           //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @2 DESIGNATED 2 LABEL TacticsRemake-Kuroisan
+BEGIN @2 DESIGNATED 2 LABEL TacticsRemix-Kuroisan
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
@@ -55,7 +55,7 @@ INCLUDE ~tactics-remix/components/kuroisan.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // "Red Badge" Poison-Based Encounter                                    //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @3 DESIGNATED 3 LABEL TacticsRemake-RedBadge
+BEGIN @3 DESIGNATED 3 LABEL TacticsRemix-RedBadge
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
@@ -64,7 +64,7 @@ INCLUDE ~tactics-remix/components/red_badge.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // Gebhard Blucher's Lich in the Docks                                   //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @4 DESIGNATED 4 LABEL TacticsRemake-LichDocks
+BEGIN @4 DESIGNATED 4 LABEL TacticsRemix-LichDocks
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
@@ -73,7 +73,7 @@ INCLUDE ~tactics-remix/components/lich_docks.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Gnome Fighter/Illusionist in the Docks                   //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @5 DESIGNATED 5 LABEL TacticsRemake-GnomeFI
+BEGIN @5 DESIGNATED 5 LABEL TacticsRemix-GnomeFI
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
@@ -82,7 +82,7 @@ INCLUDE ~tactics-remix/components/gnomefi.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Improved Crypt King                                      //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @6 DESIGNATED 6 LABEL TacticsRemake-CryptKing
+BEGIN @6 DESIGNATED 6 LABEL TacticsRemix-CryptKing
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
