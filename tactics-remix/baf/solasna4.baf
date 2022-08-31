@@ -1,0 +1,63 @@
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    Enemy()
+    Continue()
+END
+
+IF
+  See(WorstAC)
+  Global("RedBadgeFight","GLOBAL",1)
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  OR(4)
+    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  See(NearestEnemyOfType([PC]))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(NearestEnemyOf(Myself),ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(NearestEnemyOf(Myself))
+END
+

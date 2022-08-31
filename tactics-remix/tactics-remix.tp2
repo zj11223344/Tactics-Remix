@@ -20,11 +20,11 @@ END
 AUTO_TRA ~tactics-remix/languages/%s~
 LANGUAGE ~English~
          ~english~
+         ~tactics-remix/languages/english/cre_dialog.tra~
          ~tactics-remix/languages/english/creatures.tra~
          ~tactics-remix/languages/english/item_descriptions.tra~
          ~tactics-remix/languages/english/script_dialog.tra~
          ~tactics-remix/languages/english/setup.tra~
-         ~tactics-remix/languages/english/solak1.tra~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////

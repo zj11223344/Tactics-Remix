@@ -1,0 +1,72 @@
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    Enemy()
+    Continue()
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  See(NearestEnemyOf(Myself))
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+  Delay(5)
+THEN
+  RESPONSE #100
+    ReallyForceSpell(LastSeenBy(Myself),PSIONIC_PROJECT_FORCE)
+    Continue()
+END
+
+IF
+  See(WorstAC)
+  Global("RedBadgeFight","GLOBAL",1)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  OR(4)
+    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  See(NearestEnemyOfType([PC]))
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("RedBadgeFight","GLOBAL",1)
+  See(NearestEnemyOf(Myself))
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(NearestEnemyOf(Myself))
+END
+
