@@ -8,25 +8,19 @@ COPY ~tactics-remix/itm/solasna3.itm~  ~override~
 COPY ~tactics-remix/itm/solasna4.itm~  ~override~
 COPY ~tactics-remix/are/sola0002.are~  ~override~
 
-COPY ~tactics-remix/cre/solasna1.cre~ ~override~
-  SAY NAME1 @2004
-  SAY NAME2 @2004
-
-COPY ~tactics-remix/cre/solasna2.cre~ ~override~
-  SAY NAME1 @2005
-  SAY NAME2 @2005
-
-COPY ~tactics-remix/cre/solasna3.cre~ ~override~
-  SAY NAME1 @2006
-  SAY NAME2 @2006
-
-COPY ~tactics-remix/cre/solasna4.cre~ ~override~
-  SAY NAME1 @2007
-  SAY NAME2 @2007
-
-COPY ~tactics-remix/cre/solasna5.cre~ ~override~
-  SAY NAME1 @2008
-  SAY NAME2 @2008
+ACTION_FOR_EACH redbadge IN
+        1 // Bittersnake
+        2 // Bloodcaster
+        3 // Fallowmist
+        4 // Redspike
+        5 // Bloodspear
+      BEGIN
+        COPY ~tactics-remix/cre/solasna%redbadge%.cre~ ~override~
+          SAY NAME1 @201%redbadge%
+          SAY NAME2 @201%redbadge%
+          REPLACE_CRE_ITEM ~AMUL20~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~ EQUIP // Add Kaligun's Amulet of Magic Resistance
+          REPLACE_CRE_ITEM ~BELT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP // Add Belt of Inertial Barrier
+      END
 
 COPY ~tactics-remix/itm/solasna5.itm~  ~override~
   SAY NAME1 @4600

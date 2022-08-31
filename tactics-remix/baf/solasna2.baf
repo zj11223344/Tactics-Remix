@@ -1,4 +1,15 @@
 IF
+  HasItem("AMUL20",Myself)
+  HasItem("BELT10",Myself)
+  DifficultyLT(HARDEST)
+THEN
+  RESPONSE #100
+    DestroyItem("AMUL20")
+    DestroyItem("BELT10")
+    Continue()
+END
+
+IF
   Global("RedBadgeFight","GLOBAL",1)
   !Allegiance(Myself,ENEMY)
 THEN
