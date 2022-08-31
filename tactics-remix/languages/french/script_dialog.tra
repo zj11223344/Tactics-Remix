@@ -1,0 +1,10 @@
+// Tactics Remix, Script Dialog
+
+// Crypt King
+@5000 = ~Lève-toi... lève-toi et écoute ce qui doit être énoncé.~
+@5001 = ~Bat-toi ! Élimine-le !~
+@5002 = ~Ton essence m'appartient !~
+@5003 = ~Je vais me repaître de ta force vitale !~
+
+// Kuroisan
+@5004 = ~Je suis un collectionneur de sabres !~

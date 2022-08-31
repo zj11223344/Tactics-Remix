@@ -1,0 +1,48 @@
+// Acid Kensai Dialogue
+@101     = ~Ainsi, je te rencontre enfin. Tu es aussi impressionnant que je le pensais.~ ~Ainsi, je te rencontre enfin. Tu es aussi impressionnante que je le pensais.~
+@102      		= ~Qui es-tu ?~
+@103      		= ~Qu'est-ce que tu me veux ?~
+@104      		= ~Laisse-moi deviner, tu ne vas même pas écouter ce que j'ai à dire.~
+@105     = ~Je suis Kuroisan, un Kensai et Wu Jen de grande renommée. Je suis venu dans ce pays à la recherche d'un katana légendaire. Les katanas, vois-tu, sont ma spécialité et mon obsession.~
+@106     = ~Bien sûr que si, je vais t'écouter. Est-ce que les gens que tu rencontres habituellement t'ignorent ? Crois-moi c'est probablement plus un bien qu'un mal.~
+@107     = ~Tu as un katana très puissant, un que je cherche depuis un certain temps.~
+@108     = ~J'apprécierais beaucoup que tu me remettes la Furie Céleste. Je préférerais régler les choses pacifiquement si possible, mais s'il le faut j'emploierai la force.~
+@109      		= ~D'accord, bien sûr tu peux l'avoir.~
+@110     		= ~Je ne crois pas.~
+@111     = ~J'apprécierais beaucoup que tu me remettes Malakar. Je préférerais régler les choses pacifiquement si possible, mais si il le faut j'emploierai la force.~
+@112     = ~Très bien. En garde !~
+@114     = ~Ce que tu fais est mal ! Pourquoi menaces-tu de me voler ?~
+@113     = ~Merci mon ami ! Puissent les dieux veiller sur toi. Ta générosité ne sera pas oubliée. Sayonara.~ ~Merci mon amie ! Puissent les dieux veiller sur toi. Ta générosité ne sera pas oubliée. Sayonara.~
+
+@115     = ~Mal ? Selon quels critères ? Certainement pas de mon point de vue. Peut-être parles-tu des Dieux ? Une partie d'entre eux serait d'accord, l'autre serait contre. On ne peut pas vraiment dire qui a raison.~
+@116     = ~Pourquoi ne pourrais-je prendre ce que je désire, ici dans cette contrée barbare ? La seule chose que j'ai à craindre c'est votre loi. Vos gardes régissent la ville par la menace de la violence.~ 
+@117     = ~Bien, de toute manière j'ai acheté les gardes locaux. Donc la seule chose qui se tient entre moi et mon désir... c'est toi. Et es-tu tellement différent ? De quelle manière as-tu obtenu ce katana ? Acheté légalement ? Je ne pense pas : tu l'as pris sur un corps.~ ~Bien, de toute manière j'ai acheté les gardes locaux. Donc la seule chose qui se tient entre moi et mon désir... c'est toi. Et es-tu tellement différente ? De quelle manière as-tu obtenu ce katana ? Acheté légalement ? Je ne pense pas : tu l'as pris sur un corps.~ 
+@118     = ~Ainsi, vas-tu me le donner sans violence ?~
+
+@120     = ~Une fois de plus nous nous embarquons dans une danse mortelle.~
+
+@121     = ~Un au... je me suis visiblement trompé. Il n'y a aucun katana légendaire par ici. Pardonnez-moi humblement de vous imposer ma présence. Au revoir.~
+
+// Red Badge Dialog
+@201 = ~Bonjourssssss... Bienvenue, <CHARNAME>. tu te croyais en ssssécurité dans ton...~ [SNAKE01]
+// @202 = ~... Pocket Plane, but that is not so. The taint of your Sssire is like ...~
+@203 = ~... le chant d'une sssirène, une promessssse délicieuse. Et plus tu deviens puissssssant...~ ~... le chant d'une sssirène, une promessssse délicieuse. Et plus tu deviens puissssssante...~
+@204 = ~... plusss nousss le devenons, et plussss va notre faim. Ta puisssssanssse coule comme un poison...~
+@205 = ~... dans tes veines, dans ton essssprit. Ton faible essssprit de mortel...~ ~... dans tes veines, dans ton essssprit. Ton faible essssprit de mortelle...~
+@206 = ~... et sssouille ton corps de mortel... je frémis à l'avansssse.~ ~... et sssouille ton corps de mortelle... je frémis à l'avansssse.~
+@207 = ~Il y aura toujours quelqu'un pour vouloir te tuer, comme tu...~ [SNAKE03]
+@208 = ~... te nourris de la mort dessss autres. Mais peu d'autres sssont comme nous.~
+@209 = ~Peu ssssont des avatars du poison. Ssssertains créent...~ [SNAKE04]
+@210 = ~... mais nous détruisssons. Sssssertains ont de nombreux déssssirs...~
+@211 = ~... mais nous n'en avons qu'Un. Notre coeur ne bat que pour ton Ssssang.~
+@212 = ~Mais le temps n'est pas venu. Tu vas te préparer pour...~ [SNAKE01]
+@213 = ~... le massssacre. Nous attendrons.~
+@214 = ~Pfff. Pourquoi ce genre de choses n'arrivent-elles qu'à moi ?~
+@215 = ~Tu n'es pas le premier à vouloir me tuer, serpent, et tu ne seras pas le dernier.~
+@216 = ~Tu sais, j'ai entendu dire que les créatures comme toi sont vraiment bonnes avec une bonne sauce.~
+@217 = ~Pourquoi attendre ? Allons-y maintenant !~
+@218 = ~Tes mot ne sssignifient rien pour nous. Nousss attendrons.~ [SNAKE02]
+@219 = ~Maintenant... est... venue l'heure. Notre appétit nous appelle...~ [SNAKE01]
+@220 = ~... et nous arrivons pour le fesssstin.~
+
+@222 = ~... monde mortel, mais ce n'est pas ainsi. La ssssouillure de ton père est comme...~

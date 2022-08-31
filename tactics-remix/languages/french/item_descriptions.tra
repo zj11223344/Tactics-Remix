@@ -1,0 +1,309 @@
+// Tactics Remix, Items
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Short Swords                                                          //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Short Sword                                                           //
+///////////////////////////////////////////////////////////////////////////
+@4000 = ~Épée courte~
+@4001 = ~L'épée courte est le premier type d'épée à être apparu. Grossièrement, on peut comparer une épée courte à une dague dont la lame serait si longue qu'on ne pourrait plus l'appeler dague. Le terme épée courte n'entre pas dans les catégories d'épées. Pourtant, il est utilisé pour décrire une lame à double tranchant longue d'environ 60 cm. L'estoc de l'épée est généralement pointu, et on la range donc parmi les armes perforantes.
+
+PARAMÈTRES :
+
+Dégâts : 1d6 (perforant)
+Facteur de vitesse : 3
+Type de compétence : Épée courte
+Type : arme à une main
+Nécessite : 5 en Force
+
+Poids : 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Littlefang                                                            //
+///////////////////////////////////////////////////////////////////////////
+@4002 = ~Petit croc +2~
+@4003 = ~Bien que sa lame brille d'un éclat métallique, son poids suggère qu'elle ait été taillée à partir de la dent d'une bête gigantesque, la garde elle est véritablement en métal afin de protéger de la main du porteur.
+Une présence vorace semble l'habiter et des cavités poreuses dévorent la moindre goutte de sang qui entre en contact avec cette arme.
+
+PARAMÈTRES :
+
+Capacités de combat :
+– Chaque coup porté vole 1 point de vie à la cible pour l'ajouter au porteur (qui ne peut pas dépasser sa vie maximale)
+
+TAC0 : +2
+Dégâts : 1d6+2
+Type de dégâts : Perforant
+Facteur de vitesse : 2
+Type de compétence : Épée courte
+Type : arme à une main
+Nécessite :
+ 5 en Force
+
+Poids : 3~
+
+///////////////////////////////////////////////////////////////////////////
+// The Lucky One                                                         //
+///////////////////////////////////////////////////////////////////////////
+@4004 = ~Le Veinard +1~
+@4005 = ~Il s'agit d'une lame de bretteur, elle fut utilisée à maintes reprises dans des combats héroïques contre les plus « gros vilains »" envoyés par on ne sait trop qui. La compagnie de mercenaires Les Veinards ont fait fabriquer ces lames alors que leur dernier gros coup était encore chaud. Après cette aubaine, ils n'ont continuer l'aventure que pour le frisson, se défiant les uns les autres pour accomplir des exploits toujours plus audacieux. 
+Pourquoi ces armes ne sont-elles plus entre leurs mains ? Parfois, le « gros vilain » gagne...
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+– Chance : +1
+
+TAC0 : +1
+Dégâts : 1d6+1
+Type de dégâts : Perforant
+Facteur de vitesse : 2
+Type de compétence : Épée courte
+Type : arme à 1 main
+Nécessite :
+ 5 en Force
+
+Poids : ~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Katanas                                                               //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Katana                                                                //
+///////////////////////////////////////////////////////////////////////////
+@4100 = ~Katana~
+@4101 = ~Le katana est une épée légèrement courbée à simple tranchant, dont la lame se termine en pointe. C'est probablement une des meilleures épées jamais conçues. Les étapes de sa fabrication constituent un procédé long et secret qui est considéré plus comme un art que comme une technique. Cette lame représente un aspect important de la culture de Kara-Tur. C'est faire insulte à un samouraï et provoquer sa colère que d'utiliser ou même de toucher son katana. Il est très rare pour un gaïjin, un étranger, de posséder une telle lame. Cela implique que le gaïjin soit l'ami estimé d'un personnage important, ou bien qu'il ait assassiné un samouraï.
+
+PARAMÈTRES :
+
+Dégâts : 1d10 (tranchant)
+Facteur de vitesse : 4
+Type de compétence : katana
+Type : arme à une main
+Nécessite : 6 en Force
+
+Poids : 6~
+
+///////////////////////////////////////////////////////////////////////////
+// Sanchuudoku +4                                                        //
+///////////////////////////////////////////////////////////////////////////
+@4102 = ~Sanchuudoku +4~
+@4103 = ~Sanchuudoku +4 : Katana Acide
+Cette lame verte a été forgée par un Wu Jen Kara-Turien comme cadeau pour son seigneur paranoïaque ; son nom signifie « Empoisonnement Acide ». L'épée fut enchantée en utilisant le sang frais d'un Dragon Noir et sa garde est décorée avec des fragments d'os de Muloups. La lame guérit les blessures de son porteur à une vitesse alarmante et un acide puissant semble s'en envoler chaque fois qu'une attaque est portée sur l'utilisateur.
+
+PARAMETRES :
+
+Capacités d'équipement :
+– Régénération (1 point de vie toutes les 2 secondes)
+– Immunité à l'acide
+– Inflige 2 points de dégâts d'acide à chaque attaque effectuée sur le porteur (quiconque attaque ou jette un sort sur le porteur est sujet à un Contrecoup Acide.)
+
+Capacités de combat :
+– Chaque coup diminue la résistance à l'acide de la cible de 10 % pour 18 secondes. 
+
+TAC0 : +4
+Dégâts : 1d10+4, +1d8 dégâts d'acide
+Type de dégâts : tranchant
+Facteur de Vitesse : 4
+Type de compétence : Katana
+Type : arme à 1 main
+Nécessite :
+ 6 en Force
+
+Poids : 8~
+
+@4104 = ~Contrecoup Acide~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Robes                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Robe                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4200 = ~Robe~
+@4201 = ~Depuis l'ère de Néthéril, les mages ont appris à conférer aux objets quotidiens qui les entouraient une grande variété de propriétés magiques. L'un des plus usités de ces objets est la robe courante. Elle est légère, peu onéreuse et conserve bien ses enchantements. Cela en fait une parure de mage idéale. Cependant, en raison de leur héritage magique, ces robes enchantées ne peuvent être portées que par des mages mono classés, à classes jumelées ou multiclassés.
+
+Poids : 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Greater Robe of Eyes                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4202 = ~Robe aux grands yeux~
+@4203 = ~La robe aux grands yeux offre à son porteur une vision accrue et la capacité de détecter de nombreuses choses dissimulées. L'invisibilité et les effets éthérés ne sont plus un problème pour le porteur.
+
+Lorsqu'ils ne sont pas en armure, les clercs de Helm les plus puissants portent souvent de telles robes afin de garder leur vigilance, alors même qu'ils ne gardent pas leurs équipements.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Classe d'armure de base : 5
+– Détection des pièges : +10 %
+– Détection des illusions : +10 %
+– Vision véritable
+
+Poids : 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Boots                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Boot                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4300 = ~Bottes~
+@4301 = ~Les bottes sont généralement fabriquées artisanalement par des cordonniers. Les bottes ordinaires sont fabriquées à l'aide d'un moule, mais les bottes de qualité supérieure sont faites sur mesure. 
+
+PARAMETRES :
+
+Poids : 4~
+
+///////////////////////////////////////////////////////////////////////////
+// Resilient Trodders                                                    //
+///////////////////////////////////////////////////////////////////////////
+@4302 = ~les trotteurs du résilient~
+@4303 = ~Bien qu'elles portent un nom inélégant, ces bottes robustes possèdent une puissante magie. Fabriquées par un jeune forgeron talentueux, elles devaient être le chef-d'œuvre qui lui permettrait de devenir l'apprenti du plus grand forgeron de la ville. Cependant, il tomba amoureux d'une clerc de Helm et fut ridiculisé par ses pairs, la clerc était une demi-orque, ce qui la rendait laide aux yeux de ses camarades. Contrairement à eux, le jeune forgeron vit la beauté de la demi-orque dans sa gentillesse et sa dévotion inébranlable, il lui offra ses bottes peu de temps avant de se consacrer à l'église. Hélas, le forgeron ne vécut pas très longtemps sous l'égide de Helm - il périt en défendant une caravane de marchands qui avait fait appel à l'église pour être protégée des bandits - alors les bottes furent enchantées pour honorer sa mémoire et son dévouement, et la clerc à qui il les avait offertes les porta jusqu'à son dernier soupir.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+– Classe d'armure : +1
+– Constitution : +2
+– Jets de sauvegarde : +2
+– Protège contre toute forme de terreur et renforce le moral
+
+Poids : 4~// A REVOIR //
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Cloaks                                                                //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Cloak                                                                 //
+///////////////////////////////////////////////////////////////////////////
+@4400 = ~Cape~
+@4401 = ~La cape peut être fabriquée dans presque n'importe quel type de tissu et prendre n'importe quelle forme. Les capes les plus courantes sont faites d'un morceau de tissu circulaire troué en son centre pour passer la tête et d'un tissu drapé à partir du cou, attaché par une chaîne, une broche, une ficelle ou des épingles.
+
+
+Poids : 4~
+
+///////////////////////////////////////////////////////////////////////////
+// Shroud of Elder Doom                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4402 = ~Le linceul des Maudits~ // des premiers Désastres // des premiers Maudits // des anciennes Calamités // des vielles // premières Faucheuses
+@4403 = ~D'une taille et d'une forme intimidantes, les manteaux de cette nature n'étaient portés que par les plus hauts dignitaires du clergé de Myrkul, connus sous le sinistre nom de « Maudit ». Depuis la mort de Myrkul, certain d'entre eux sont parvenus à échappé à l'emprise de l'ancien dieu de la mort et ont réussis à rejoindre le monde extérieur... plutôt surprenant d'ailleurs, car la plupart des Maudits se seraient immolés par le feu en portant leurs propres capes, ne supportant pas que leurs précieux artefacts tombent entre des mains indignes.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Immunité contre toutes les formes de mort magique
+
+Charge abilities:
+- Doigt de mort (2 fois par jour)
+
+Poids : 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Rings                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Ring                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4500 = ~Anneau~
+@4501 = ~Un anneau est une fine lanière de métal précieux. Il sert en général d'ornement. Plus rares, certains sont enchantés et permettent à quiconque les porte d'user de la magie qu'ils contiennent. Ils sont de ce fait très recherchés par les aventuriers.
+
+Poids : 0~
+
+///////////////////////////////////////////////////////////////////////////
+// Ring of Leeched Abjuration                                            //
+///////////////////////////////////////////////////////////////////////////
+@4502 = ~Anneau d'abjuration pique-assiette~ // Le siphon d'abjuration
+@4503 = ~Cet anneau de puissance consume une partie de la vitalité de son porteur afin de lui fournir une panoplie impressionnante de défenses contre la magie de ses adversaires.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+– Force : -3
+– Dextérité: -3
+– Constitution : -3
+- Points de vie : -20
+– Immunité aux sorts de niveau 2 ou inférieur
+– Immunité aux sorts de l'école de magie : Évocation
+– Résistance à la magie : +20 %
+– Ne peut être ôtée qu'à l'aide d'un sort de Délivrance de la malédiction
+
+Capacités de charge :
+– Manteau (une fois par jour)
+  Spécial : Immunité total aux armes +2 et inférieur.
+  Durée : 4 rounds
+
+– Globe of Invulnerability once per day
+  Spécial : Immunité aux sorts de niveau 1 à 4
+  Durée : 2 tours
+
+Poids : 0~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Spears                                                                //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Spear                                                                 //
+///////////////////////////////////////////////////////////////////////////
+@4600 = ~Lance~
+@4601 = ~La lance, l'une des premières armes jamais créées, remonte à l'époque primitive et était initialement constitué d'un pic ou d'un bâton de bois taillé en pointe à une extrémité. Avec la découverte et la maîtrise des métaux, les races civilisées ont commencé à remplacer les pointes en bois par des pointes en fer et en acier. Les armuriers ont alors pu essayer différents types de pointes, ce qui a permis l'élaboration de certains types d'armes d'hast.
+
+PARAMÈTRES :
+
+Dégâts : 1d6 (perforant)
+Facteur de vitesse : 6
+Type de compétence : lance
+Type : arme à deux mains
+Nécessite : 5 en Force
+
+Poids : 5~
+
+///////////////////////////////////////////////////////////////////////////
+// Bloodbane +5                                                          //
+///////////////////////////////////////////////////////////////////////////
+@4602 = ~Fléau Sanglant +5~
+@4603 = ~Fléau Sanglant +5 : Lance de jet
+Cette lance écarlate a été trouvée sur le corps d'un des assaillants de <CHARNAME>, un des « Avatars de Poison ». La lance en elle-même est chaude au toucher et semble s'insinuer légèrement sous vos doigts, battant d'un rythme effréné comme des pulsations cardiaques irrégulières. L'effet est assez déconcertant, mais c'est toujours préférable que de se trouver embroché à son extrémité. Les victimes transpercées par la lance sont souvent frappées de convulsions paralysantes tandis que la magie tente de coaguler le sang dans leurs veines.
+
+Contrairement à toutes les autres lances que vous avez rencontrées, celle-ci a été conçue pour être jetée. La lance retourne instantanément dans les mains de son porteur après chaque attaque. Le Fléau Sanglant peut aussi être utilisé comme une arme de mêlée.
+
+PARAMETRES :
+
+Capacités d'équipement :
+- 1 attaque supplémentaire par round
+
+Capacités de combat :
+– Chaque coup réussi inflige 6 points de dégâts de poison répartis sur 6 secondes (pas de jet de sauvegarde) et assommera la victime pour 10 secondes si un jet de sauvegarde contre les souffles, avec une pénalité de -4, échoue.
+
+TAC0 : +5
+Dégâts : 1d6 +5
+Type de dégâts : perforant
+Facteur de Vitesse : 0
+Type de compétence : Lance
+Type : arme à 2 mains
+Nécessite :
+ 5 en force
+
+Poids : 5~
