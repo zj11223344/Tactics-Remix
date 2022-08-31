@@ -3,25 +3,25 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remake/itm/moclk05.itm~  ~override~
+COPY ~tactics-remix/itm/moclk05.itm~  ~override~
   SAY NAME1 @4400
   SAY NAME2 @4402
   SAY UNIDENTIFIED_DESC @4401
   SAY DESC @4403
 
-COPY ~tactics-remake/itm/morng04.itm~  ~override~
+COPY ~tactics-remix/itm/morng04.itm~  ~override~
   SAY NAME1 @4500
   SAY NAME2 @4502
   SAY UNIDENTIFIED_DESC @4501
   SAY DESC @4503
 
-COPY ~tactics-remake/bmp/molich01.bmp~  ~override~ 
-COPY ~tactics-remake/cre/molich01.cre~  ~override~
+COPY ~tactics-remix/bmp/molich01.bmp~  ~override~ 
+COPY ~tactics-remix/cre/molich01.cre~  ~override~
   REPLACE_CRE_ITEM ~moclk05~ #0 #0 #0 ~UNSTEALABLE~ ~CLOAK~ EQUIP
   
-COPY ~tactics-remake/cre/molichob.cre~  ~override~
-COPY ~tactics-remake/dlg/molich01.dlg~  ~override~
-COPY ~tactics-remake/spl/wwundead.spl~  ~override~
+COPY ~tactics-remix/cre/molichob.cre~  ~override~
+COPY ~tactics-remix/dlg/molich01.dlg~  ~override~
+COPY ~tactics-remix/spl/wwundead.spl~  ~override~
 
 APPEND ~tooltip.2da~ ~morng04%TAB%7612%TAB%391%TAB%-1~
 
@@ -30,16 +30,16 @@ APPEND ~tooltip.2da~ ~morng04%TAB%7612%TAB%391%TAB%-1~
 ///////////////////////////////////////////////////////////////////////////
 /*
 ACTION_IF iwdification BEGIN
-  INCLUDE ~tactics-remake/lib/iwd_dispelling_ak.tph~
+  INCLUDE ~tactics-remix/lib/iwd_dispelling_ak.tph~
 END
 */
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remake/baf/ar0318.baf~   ~override/ar0318.bcs~
-     ~tactics-remake/baf/molich1b.baf~ ~override/molich1b.bcs~
-     ~tactics-remake/baf/molich1c.baf~ ~override/molich1c.bcs~
-     ~tactics-remake/baf/molichob.baf~ ~override/molichob.bcs~
+COPY ~tactics-remix/baf/ar0318.baf~   ~override/ar0318.bcs~
+     ~tactics-remix/baf/molich1b.baf~ ~override/molich1b.bcs~
+     ~tactics-remix/baf/molich1c.baf~ ~override/molich1c.bcs~
+     ~tactics-remix/baf/molichob.baf~ ~override/molichob.bcs~
   COMPILE_BAF_TO_BCS
 

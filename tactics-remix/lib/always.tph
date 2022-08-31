@@ -16,7 +16,7 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
 // Set up ini system                                                     //
 ///////////////////////////////////////////////////////////////////////////
 	/*
-   INCLUDE ~tactics-remake/lib/lib_ini.tpa~
+   INCLUDE ~tactics-remix/lib/lib_ini.tpa~
     OUTER_SPRINT ini_to_read "enhanced-powergaming-scripts/enhanced-powergaming-scripts.ini"
     LAF SFO_read_ini_file RET_ARRAY SFO_reserved_ini_hash END
    */
@@ -38,10 +38,10 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
 ///////////////////////////////////////////////////////////////////////////
 // General variables, macros and functions                               //
 ///////////////////////////////////////////////////////////////////////////
-   //INCLUDE ~tactics-remake/sfo/install_sfo.tpa~
-   INCLUDE ~tactics-remake/func/misc_functions.tpa~ //Block of code provided by subtledoctor
-   INCLUDE ~tactics-remake/func/replace_multiline.tpa~ //Block of code in EET
-   INCLUDE ~tactics-remake/lib/ds/ds.tph~ // Detectable Spells
+   //INCLUDE ~tactics-remix/sfo/install_sfo.tpa~
+   INCLUDE ~tactics-remix/func/misc_functions.tpa~ //Block of code provided by subtledoctor
+   INCLUDE ~tactics-remix/func/replace_multiline.tpa~ //Block of code in EET
+   INCLUDE ~tactics-remix/lib/ds/ds.tph~ // Detectable Spells
 
    //SILENT
 

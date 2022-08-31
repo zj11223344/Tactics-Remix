@@ -1,4 +1,4 @@
-COPY ~tactics-remake/baf/mognome.baf~ ~tactics-remake/baf/mognome.baf~
+COPY ~tactics-remix/baf/mognome.baf~ ~tactics-remix/baf/mognome.baf~
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Dispelling Checks                                              //

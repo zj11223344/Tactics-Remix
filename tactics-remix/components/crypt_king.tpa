@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // Strengthen the Crypt King                                             //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remake/itm/MORNG03.ITM~ ~override/MORNG03.ITM~
+COPY ~tactics-remix/itm/MORNG03.ITM~ ~override/MORNG03.ITM~
 
 COPY_EXISTING ~BHCRYPT.CRE~ ~override~
   WRITE_BYTE 0x234 14 // Level 14
@@ -17,5 +17,5 @@ COPY_EXISTING ~BHCRYPT.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remake/baf/bhcrypt.baf~ ~override/bhcrypt.bcs~
+COPY ~tactics-remix/baf/bhcrypt.baf~ ~override/bhcrypt.bcs~
   COMPILE_BAF_TO_BCS

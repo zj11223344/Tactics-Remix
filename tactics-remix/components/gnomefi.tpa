@@ -4,7 +4,7 @@
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
 // Littlefang
-COPY ~tactics-remake/itm/MO1H11.ITM~ ~override~
+COPY ~tactics-remix/itm/MO1H11.ITM~ ~override~
   SAY NAME1 @4000
   SAY NAME2 @4002
   SAY UNIDENTIFIED_DESC @4001
@@ -13,7 +13,7 @@ COPY ~tactics-remake/itm/MO1H11.ITM~ ~override~
   WRITE_LONG 0x34 4000
 
 // The Lucky One
-COPY ~tactics-remake/itm/MO1H12.ITM~ ~override~
+COPY ~tactics-remix/itm/MO1H12.ITM~ ~override~
   SAY NAME1 @4000
   SAY NAME2 @4004
   SAY UNIDENTIFIED_DESC @4001
@@ -21,13 +21,13 @@ COPY ~tactics-remake/itm/MO1H12.ITM~ ~override~
   WRITE_ASCII 0x58 csw1h07
   WRITE_LONG 0x34 1000
 
-COPY ~tactics-remake/cre/mofam01.cre~ ~override~
+COPY ~tactics-remix/cre/mofam01.cre~ ~override~
   SAY NAME1 @2001
   SAY NAME2 @2001
-COPY ~tactics-remake/cre/mofam02.cre~ ~override~
+COPY ~tactics-remix/cre/mofam02.cre~ ~override~
   SAY NAME1 @2002
   SAY NAME2 @2002
-COPY ~tactics-remake/cre/mognome.cre~ ~override~
+COPY ~tactics-remix/cre/mognome.cre~ ~override~
   SAY NAME1 @2000
   SAY NAME2 @2000
   REPLACE_CRE_ITEM ~MO1H11~ #0 #0 #0 ~UNSTEALABLE~ ~WEAPON1~ EQUIP
@@ -36,7 +36,7 @@ COPY ~tactics-remake/cre/mognome.cre~ ~override~
   REPLACE_CRE_ITEM ~HELM01~ #0 #0 #0 ~UNSTEALABLE~ ~HELMET~ EQUIP
   SET_BG2_PROFICIENCY ~PROFICIENCY2WEAPON~ 3
   SET_BG2_PROFICIENCY ~PROFICIENCYSHORTSWORD~ 5
-COPY ~tactics-remake/dlg/mognome.dlg~ ~override~
+COPY ~tactics-remix/dlg/mognome.dlg~ ~override~
 
 ///////////////////////////////////////////////////////////////////////////
 // Create and Add Spell State to Track Prior Target                      //
@@ -63,7 +63,7 @@ ACTION_IF !target_tracking BEGIN
     OUTER_SET pr_trgt = %new_state_ind%
   END
 
-  COPY ~tactics-remake/spl/motrgt.spl~ ~override~
+  COPY ~tactics-remix/spl/motrgt.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 2 special = 1 parameter2 = %pr_trgt% timing = 0 duration = 10 END
 END
 
@@ -71,17 +71,17 @@ END
 // Update AI Scripts Based on Installed Mods                             //
 ///////////////////////////////////////////////////////////////////////////
 ACTION_IF iwdification BEGIN
-  INCLUDE ~tactics-remake/lib/iwd_dispelling.tph~
-  INCLUDE ~tactics-remake/lib/iwd_dispelling_f1.tph~
+  INCLUDE ~tactics-remix/lib/iwd_dispelling.tph~
+  INCLUDE ~tactics-remix/lib/iwd_dispelling_f1.tph~
 END
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-EXTEND_TOP ~AR0326.bcs~ ~tactics-remake/baf/ar0326.baf~
+EXTEND_TOP ~AR0326.bcs~ ~tactics-remix/baf/ar0326.baf~
 
-COPY ~tactics-remake/baf/mofam01.baf~ ~override/mofam01.bcs~
-     ~tactics-remake/baf/mofam02.baf~ ~override/mofam02.bcs~
-     ~tactics-remake/baf/mognome.baf~ ~override/mognome.bcs~
+COPY ~tactics-remix/baf/mofam01.baf~ ~override/mofam01.bcs~
+     ~tactics-remix/baf/mofam02.baf~ ~override/mofam02.bcs~
+     ~tactics-remix/baf/mognome.baf~ ~override/mognome.bcs~
   COMPILE_BAF_TO_BCS
 

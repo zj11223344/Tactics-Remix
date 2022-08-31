@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remake/spl/solak1.spl~  ~override~ 
+COPY ~tactics-remix/spl/solak1.spl~  ~override~ 
         SAY NAME1 @4104 
         SAY NAME2 @4104
         PATCH_FOR_EACH fireshield IN
@@ -26,35 +26,35 @@ COPY ~tactics-remake/spl/solak1.spl~  ~override~
           END
         END
         
-COPY ~tactics-remake/itm/solak1b.itm~ ~override~
-COPY ~tactics-remake/itm/solak1.itm~  ~override~
+COPY ~tactics-remix/itm/solak1b.itm~ ~override~
+COPY ~tactics-remix/itm/solak1.itm~  ~override~
         SAY NAME1 @4100
         SAY NAME2 @4102
         SAY UNIDENTIFIED_DESC @4101
         SAY DESC @4103
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 232 target = 1 parameter1 = 1 parameter2 = 0 timing = 2 resist_dispel = 1 probability1 = 100 STR_VAR resource = ~solak1~ END
 
-COPY ~tactics-remake/eff/morb03.eff~  ~override~
-COPY ~tactics-remake/itm/morb03.itm~  ~override~
+COPY ~tactics-remix/eff/morb03.eff~  ~override~
+COPY ~tactics-remix/itm/morb03.itm~  ~override~
         SAY NAME1 @4200
         SAY NAME2 @4202
         SAY UNIDENTIFIED_DESC @4201
         SAY DESC @4203
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 2 STR_VAR resource = ~morb03~ END
 
-COPY ~tactics-remake/itm/mobt04.itm~  ~override~
+COPY ~tactics-remix/itm/mobt04.itm~  ~override~
         SAY NAME1 @4300
         SAY NAME2 @4302
         SAY UNIDENTIFIED_DESC @4301
         SAY DESC @4303
 
-COPY ~tactics-remake/cre/solak1.cre~ ~override~
+COPY ~tactics-remix/cre/solak1.cre~ ~override~
   SAY NAME1 @2003
   SAY NAME2 @2003
   REPLACE_CRE_ITEM ~morb03~ #0 #0 #0 ~UNSTEALABLE~ ~ARMOR~ EQUIP
   REPLACE_CRE_ITEM ~mobt04~ #0 #0 #0 ~UNSTEALABLE~ ~BOOTS~ EQUIP
 
-COMPILE EVALUATE_BUFFER ~tactics-remake/dlg/solak1.d~
+COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/solak1.d~
 
 ///////////////////////////////////////////////////////////////////////////
 // Create and Add Spell State to Track Prior Target                      //
@@ -81,7 +81,7 @@ ACTION_IF !target_tracking BEGIN
     OUTER_SET pr_trgt = %new_state_ind%
   END
 
-  COPY ~tactics-remake/spl/motrgt.spl~ ~override~
+  COPY ~tactics-remix/spl/motrgt.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 2 special = 1 parameter2 = %pr_trgt% timing = 0 duration = 10 END
 END
 
@@ -89,20 +89,20 @@ END
 // Update AI Scripts Based on Installed Mods                             //
 ///////////////////////////////////////////////////////////////////////////
 ACTION_IF iwdification BEGIN
-  INCLUDE ~tactics-remake/lib/iwd_dispelling_ak.tph~
+  INCLUDE ~tactics-remix/lib/iwd_dispelling_ak.tph~
 END
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 ACTION_IF GAME_IS ~eet~ BEGIN
-  EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1mo.baf~
-  EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1mo.baf~
+  EXTEND_TOP ~baldur.bcs~   ~tactics-remix/baf/solak1mo.baf~
+  EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/solak1mo.baf~
 END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
-  EXTEND_TOP ~baldur.bcs~   ~tactics-remake/baf/solak1me.baf~
-  EXTEND_TOP ~baldur25.bcs~ ~tactics-remake/baf/solak1me.baf~
+  EXTEND_TOP ~baldur.bcs~   ~tactics-remix/baf/solak1me.baf~
+  EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/solak1me.baf~
 END
 
-COPY ~tactics-remake/baf/solak1.baf~ ~override/solak1.bcs~
+COPY ~tactics-remix/baf/solak1.baf~ ~override/solak1.bcs~
   COMPILE_BAF_TO_BCS
 

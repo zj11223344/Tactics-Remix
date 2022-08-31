@@ -6,17 +6,17 @@ If you've installed an earlier version of the mod, please uninstall it prior to 
 
 Tactics Remake for Windows is distributed as a self-extracting archive and includes a WeiDU installer. To install, simply double-click the archive and follow the instructions on screen.
 
-Alternatively, the files can be extracted into your game directory using [7zip] or [WinRAR]. When properly extracted, your game directory will contain **setup-tactics-remake.exe** and the folder **tactics-remake**. To install, double-click **setup-tactics-remake.exe** and follow the instructions on screen.
+Alternatively, the files can be extracted into your game directory using [7zip] or [WinRAR]. When properly extracted, your game directory will contain **setup-tactics-remix.exe** and the folder **tactics-remix**. To install, double-click **setup-tactics-remix.exe** and follow the instructions on screen.
 
-You can run **setup-tactics-remake.exe** in your game folder to reinstall, uninstall or otherwise change components.
+You can run **setup-tactics-remix.exe** in your game folder to reinstall, uninstall or otherwise change components.
 
 ## macOS
 
 Tactics Remake for macOS is distributed as a compressed ZIP file and includes a WeiDU installer.
 
-First, extract the files from the ZIP file into your game directory. When properly extracted, your game directory will contain **setup-tactics-remake**, **setup-tactics-remake.command**, and the folder **tactics-remake**. To install, double-click **setup-tactics-remake.command** and follow the instructions on screen.
+First, extract the files from the ZIP file into your game directory. When properly extracted, your game directory will contain **setup-tactics-remix**, **setup-tactics-remix.command**, and the folder **tactics-remix**. To install, double-click **setup-tactics-remix.command** and follow the instructions on screen.
 
-You can run **setup-tactics-remake.command** in your game folder to reinstall, uninstall or otherwise change components.
+You can run **setup-tactics-remix.command** in your game folder to reinstall, uninstall or otherwise change components.
 
 ## Linux
 
@@ -26,7 +26,7 @@ Extract the contents of the mod to the folder of the game you wish to modify.
 
 Download the latest version of WeiDU for Linux from [WeiDU.org] and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, `cd` to your game installation directory, run `tolower` and answer Y to both queries. You can avoid running the second option (linux.ini) if you've already ran it once in the same directory. To save time, the archive is already tolowered, so there's no need to run the first option (lowercasing file names) either if you've extracted only this mod since the last time you lowercased file names. If you're unsure, running `tolower` and choosing both options is the safe bet.
 
-To install, run `WeInstall tactics-remake` in your game folder. Then run `wine BGMain.exe` and start playing.
+To install, run `WeInstall tactics-remix` in your game folder. Then run `wine BGMain.exe` and start playing.
 
 [7zip]: http://www.7-zip.org/download.html
 [winrar]: http://www.rarlab.com/download.htm

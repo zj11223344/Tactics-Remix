@@ -1,4 +1,4 @@
-COPY ~tactics-remake/baf/solak1.baf~ ~tactics-remake/baf/solak1.baf~
+COPY ~tactics-remix/baf/solak1.baf~ ~tactics-remix/baf/solak1.baf~
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Dispelling Checks                                              //

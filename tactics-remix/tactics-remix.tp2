@@ -4,27 +4,27 @@
  *
  */
 
-BACKUP ~tactics-remake/backup~
+BACKUP ~tactics-remix/backup~
 AUTHOR ~morpheus562~
 
 VERSION ~v0.1~
-README ~tactics-remake/readme.%LANGUAGE%.html~ ~tactics-remake/readme.html~
+README ~tactics-remix/readme.%LANGUAGE%.html~ ~tactics-remix/readme.html~
 AUTO_EVAL_STRINGS
 
 ASK_EVERY_COMPONENT
 
 ALWAYS
-	INCLUDE ~tactics-remake/lib/always.tph~
+	INCLUDE ~tactics-remix/lib/always.tph~
 END
 
-AUTO_TRA ~tactics-remake/languages/%s~
+AUTO_TRA ~tactics-remix/languages/%s~
 LANGUAGE ~English~
          ~english~
-         ~tactics-remake/languages/english/creatures.tra~
-         ~tactics-remake/languages/english/item_descriptions.tra~
-         ~tactics-remake/languages/english/script_dialog.tra~
-         ~tactics-remake/languages/english/setup.tra~
-         ~tactics-remake/languages/english/solak1.tra~
+         ~tactics-remix/languages/english/creatures.tra~
+         ~tactics-remix/languages/english/item_descriptions.tra~
+         ~tactics-remix/languages/english/script_dialog.tra~
+         ~tactics-remix/languages/english/setup.tra~
+         ~tactics-remix/languages/english/solak1.tra~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -40,7 +40,7 @@ BEGIN @1 DESIGNATED 1 LABEL TacticsRemake-Ritual
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-INCLUDE ~tactics-remake/components/ritual.tpa~
+INCLUDE ~tactics-remix/components/ritual.tpa~
 */
 
 ///////////////////////////////////////////////////////////////////////////
@@ -50,7 +50,7 @@ BEGIN @2 DESIGNATED 2 LABEL TacticsRemake-Kuroisan
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-INCLUDE ~tactics-remake/components/kuroisan.tpa~
+INCLUDE ~tactics-remix/components/kuroisan.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
 // "Red Badge" Poison-Based Encounter                                    //
@@ -59,7 +59,7 @@ BEGIN @3 DESIGNATED 3 LABEL TacticsRemake-RedBadge
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-INCLUDE ~tactics-remake/components/red_badge.tpa~
+INCLUDE ~tactics-remix/components/red_badge.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
 // Gebhard Blucher's Lich in the Docks                                   //
@@ -68,7 +68,7 @@ BEGIN @4 DESIGNATED 4 LABEL TacticsRemake-LichDocks
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-INCLUDE ~tactics-remake/components/lich_docks.tpa~
+INCLUDE ~tactics-remix/components/lich_docks.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Gnome Fighter/Illusionist in the Docks                   //
@@ -77,7 +77,7 @@ BEGIN @5 DESIGNATED 5 LABEL TacticsRemake-GnomeFI
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-INCLUDE ~tactics-remake/components/gnomefi.tpa~
+INCLUDE ~tactics-remix/components/gnomefi.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Improved Crypt King                                      //
@@ -86,4 +86,4 @@ BEGIN @6 DESIGNATED 6 LABEL TacticsRemake-CryptKing
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
-INCLUDE ~tactics-remake/components/crypt_king.tpa~
+INCLUDE ~tactics-remix/components/crypt_king.tpa~
