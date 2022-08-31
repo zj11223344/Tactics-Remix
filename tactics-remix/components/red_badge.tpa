@@ -3,25 +3,36 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/itm/moclk05.itm~  ~override~
-  SAY NAME1 @4400
-  SAY NAME2 @4402
-  SAY UNIDENTIFIED_DESC @4401
-  SAY DESC @4403
+COPY ~tactics-remix/itm/solasna1.itm~  ~override~
+COPY ~tactics-remix/itm/solasna3.itm~  ~override~
+COPY ~tactics-remix/itm/solasna4.itm~  ~override~
+COPY ~tactics-remix/are/sola0002.are~  ~override~
 
-COPY ~tactics-remix/itm/morng04.itm~  ~override~
-  SAY NAME1 @4500
-  SAY NAME2 @4502
-  SAY UNIDENTIFIED_DESC @4501
-  SAY DESC @4503
+COPY ~tactics-remix/cre/solasna1.cre~ ~override~
+  SAY NAME1 @2004
+  SAY NAME2 @2004
 
-COPY ~tactics-remix/bmp/molich01.bmp~  ~override~ 
-COPY ~tactics-remix/cre/molich01.cre~  ~override~
-  REPLACE_CRE_ITEM ~moclk05~ #0 #0 #0 ~UNSTEALABLE~ ~CLOAK~ EQUIP
-  
-COPY ~tactics-remix/cre/molichob.cre~  ~override~
-COPY ~tactics-remix/dlg/molich01.dlg~  ~override~
-COPY ~tactics-remix/spl/wwundead.spl~  ~override~
+COPY ~tactics-remix/cre/solasna2.cre~ ~override~
+  SAY NAME1 @2005
+  SAY NAME2 @2005
+
+COPY ~tactics-remix/cre/solasna3.cre~ ~override~
+  SAY NAME1 @2006
+  SAY NAME2 @2006
+
+COPY ~tactics-remix/cre/solasna4.cre~ ~override~
+  SAY NAME1 @2007
+  SAY NAME2 @2007
+
+COPY ~tactics-remix/cre/solasna5.cre~ ~override~
+  SAY NAME1 @2008
+  SAY NAME2 @2008
+
+COPY ~tactics-remix/itm/solasna5.itm~  ~override~
+  SAY NAME1 @4600
+  SAY NAME2 @4602
+  SAY UNIDENTIFIED_DESC @4601
+  SAY DESC @4603
 
 COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/solasna1.d~
 

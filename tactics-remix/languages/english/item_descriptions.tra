@@ -287,3 +287,54 @@ Charge abilities:
   Duration: 2 turns
 
 Weight: 0~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Spears                                                                //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Spear                                                                 //
+///////////////////////////////////////////////////////////////////////////
+@4600 = ~Spear~
+@4601 = ~One of the earliest weapons, dating back to the most primitive of times, the first spears were simply wooden poles or sticks sharpened at one end. When the civilized races mastered metals, spearheads were made from iron and steel. Having reached this end, weaponsmiths began experimenting with different types of spearheads, thus leading to the development of certain polearm types.
+
+STATISTICS:
+
+Damage: 1d6 (piercing)
+Speed Factor: 6
+Proficiency Type: Spear
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 5~
+
+///////////////////////////////////////////////////////////////////////////
+// Bloodbane +5                                                          //
+///////////////////////////////////////////////////////////////////////////
+@4602 = ~Bloodbane +5~
+@4603 = ~Bloodbane +5: Throwing Spear
+This incarnadine lance was found on the body of one of <CHARNAME>'s assailants, a self-styled "Avatar of Poison." The spear itself is hot to the touch and seems to thrum slightly beneath your fingers, beating out a stacatto rhythm like an irregular pulse. The effect is quite disconcerting, but it is much more comfortable than being on the receiving end. Victims pierced by the spear are often struck with paralytic seizures as its magic tries to coagulate the blood within their veins.  
+
+Unlike many other spears you have encountered, this spear was designed to be thrown. The spear instantly returns to the hands of the wielder after every attack. Bloodbane may also be used as a melee weapon. 
+
+STATISTICS:
+
+Equipped abilities:
+– 1 extra attack per round
+
+Combat abilities:
+– Each successful hit inflicts 6 points of poison damage on the target over the course of 6 seconds (no save) and will stun the target for 10 seconds if a save vs. breath weapons at -4 is failed. 
+
+THAC0: +5
+Damage: 1d6+5
+Damage Type: Piercing
+Speed Factor: 0
+Proficiency Type: Spear
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 5~
