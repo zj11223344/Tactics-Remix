@@ -130,10 +130,10 @@ Equipped abilities:
 – 2 points of acid damage to any who damage the wielder
 
 Combat abilities:
-– Each hit lowers the target's acid resistance by 10% for 18 seconds and inflicts 2d4 acid damage. 
+– Each hit lowers the target's acid resistance by 10% for 18 seconds
 
 THAC0: +4
-Damage: 1d10+4
+Damage: 1d10+4, +1d8 acid damage
 Damage Type: Slashing
 Speed Factor: 4
 Proficiency Type: Katana
