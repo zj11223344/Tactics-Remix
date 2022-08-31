@@ -16,8 +16,8 @@ ACTION_FOR_EACH redbadge IN
         5 // Bloodspear
       BEGIN
         COPY ~tactics-remix/cre/solasna%redbadge%.cre~ ~override~
-          SAY NAME1 @201%redbadge%
-          SAY NAME2 @201%redbadge%
+          SAY NAME1 @201~%redbadge%~
+          SAY NAME2 @201~%redbadge%~
           REPLACE_CRE_ITEM ~AMUL20~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~ EQUIP // Add Kaligun's Amulet of Magic Resistance
           REPLACE_CRE_ITEM ~BELT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP // Add Belt of Inertial Barrier
       END

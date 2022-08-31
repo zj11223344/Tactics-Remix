@@ -2,6 +2,7 @@ IF
   HasItem("AMUL20",Myself)
   HasItem("BELT10",Myself)
   DifficultyLT(HARDEST)
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
     DestroyItem("AMUL20")
@@ -28,10 +29,13 @@ THEN
 END
 
 IF
-  See(WorstAC)
-  Global("RedBadgeFight","GLOBAL",1)
+  ActionListEmpty()
+  See(WorstAC([PC]))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
   Allegiance(Myself,ENEMY)
-  !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
@@ -41,38 +45,13 @@ THEN
 END
 
 IF
-  Global("RedBadgeFight","GLOBAL",1)
-  OR(4)
-    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
-    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
-    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
-    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
-  !Allegiance(LastSeenBy(Myself),ENEMY)
-  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
-  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
-  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
-THEN
-  RESPONSE #100
-    Attack(LastSeenBy(Myself))
-END
-
-IF
-  Global("RedBadgeFight","GLOBAL",1)
-  See(NearestEnemyOfType([PC]))
-  Allegiance(Myself,ENEMY)
-  !Allegiance(LastSeenBy(Myself),ENEMY)
-  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
-  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
-  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
-THEN
-  RESPONSE #100
-    Attack(LastSeenBy(Myself))
-END
-
-IF
-  Global("RedBadgeFight","GLOBAL",1)
+  ActionListEmpty()
   See(NearestEnemyOf(Myself))
-  !Allegiance(NearestEnemyOf(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
   !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
@@ -81,3 +60,172 @@ THEN
     Attack(NearestEnemyOf(Myself))
 END
 
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+  Allegiance(Myself,ENEMY)
+  !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
+  !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
+THEN
+  RESPONSE #100
+    Attack(SixthNearestEnemyOf(Myself))
+END

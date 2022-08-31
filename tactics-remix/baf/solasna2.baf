@@ -2,6 +2,7 @@ IF
   HasItem("AMUL20",Myself)
   HasItem("BELT10",Myself)
   DifficultyLT(HARDEST)
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
     DestroyItem("AMUL20")
