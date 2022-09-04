@@ -1,0 +1,147 @@
+/////////////////////////////////////////////////////////////////////
+// Ender, Ritual Bard
+/////////////////////////////////////////////////////////////////////
+// Spells:
+// missile x2
+// invis x3
+// remove magic x1
+// stoneskin x1
+
+
+IF
+  NumTimesTalkedTo(0)
+  See([PC])
+THEN
+  RESPONSE #100
+    StartDialogueNoSet(Player1)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Prep==0      - Diurnal Rhythms
+/////////////////////////////////////////////////////////////////////
+IF
+    Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobalTimer("PrepTimer","LOCALS",0)
+    SetGlobalTimer("KaiTimer","LOCALS",0)
+END
+
+/////////////////////////////////////////////////////////////////////
+// PrepTimer==0 - Short Spell Protections 
+/////////////////////////////////////////////////////////////////////
+IF
+    GlobalTimerExpired("PrepTimer","LOCALS")
+    Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+        SetGlobalTimer("PrepTimer","LOCALS",3600)
+        SetGlobalTimer("Cast","LOCALS",0)
+        GiveItemCreate("potn10",Myself,5,0,0)   // invis
+        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+        Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Stoneskin (if out)
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+        HaveSpell(WIZARD_STONE_SKIN)
+	CheckStatLT(Myself,1,STONESKINS)
+        GlobalTimerExpired("Cast","LOCALS")
+THEN
+	RESPONSE #100
+          SetGlobalTimer("Cast","LOCALS",6)
+          Spell(Myself,WIZARD_STONE_SKIN)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Hide!
+/////////////////////////////////////////////////////////////////////
+IF
+    !StateCheck(Myself,STATE_INVISIBLE)
+    HasItem("potn10",Myself)
+    GlobalTimerExpired("Cast","LOCALS")
+    Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn10",Myself)
+END
+
+IF
+    !StateCheck(Myself,STATE_INVISIBLE)
+    HaveSpell(WIZARD_INVISIBILITY)
+    GlobalTimerExpired("Cast","LOCALS")
+    Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+          Spell(Myself,WIZARD_INVISIBILITY)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Find the action!
+/////////////////////////////////////////////////////////////////////
+IF
+  Allegiance(Myself,ENEMY)
+  StateCheck(Myself,STATE_INVISIBLE)
+  !Range([ENEMY],50)
+  !Range([PC],50)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spells
+/////////////////////////////////////////////////////////////////////
+IF
+    !StateCheck(Myself,STATE_INVISIBLE)
+    !HasItem("potn10",Myself)
+    !HaveSpell(WIZARD_INVISIBILITY)
+    GlobalTimerExpired("Cast","LOCALS")
+    HaveSpell(WIZARD_DISPEL_MAGIC)
+    Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(Myself,WIZARD_DISPEL_MAGIC)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Minor
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,90)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Bard Song
+/////////////////////////////////////////////////////////////////////
+IF
+  Delay(6)
+  True()
+THEN
+  RESPONSE #100
+    ReallyForceSpellRES("spcl542a",Myself)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Move to the action 
+/////////////////////////////////////////////////////////////////////
+IF
+  Heard([ENEMY],125)
+  !Detect([ENEMY])
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END

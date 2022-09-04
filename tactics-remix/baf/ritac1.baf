@@ -1,0 +1,288 @@
+/////////////////////////////////////////////////////////////////////
+// Ritual Archer/Cleric
+/////////////////////////////////////////////////////////////////////
+// 
+// Spells:
+// Sant
+// Remove Fear
+// CLW x3
+// Bless
+// Hold x2
+// DUHM x2
+// Chant x2
+// Call Light x4
+// CWB x2
+// Insect Plauge x1
+// Called Shot 
+
+/////////////////////////////////////////////////////////////////////
+// Prep==0      - Diurnal Rhythms
+/////////////////////////////////////////////////////////////////////
+IF
+    Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobalTimer("PrepTimer","LOCALS",0)
+END
+
+/////////////////////////////////////////////////////////////////////
+// PrepTimer==0 - Short Spell Protections 
+/////////////////////////////////////////////////////////////////////
+IF
+    GlobalTimerExpired("PrepTimer","LOCALS")
+    Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+        SetGlobalTimer("PrepTimer","LOCALS",3600)
+        SetGlobalTimer("Cast","LOCALS",0)
+        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+        Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Find a Target
+/////////////////////////////////////////////////////////////////////
+// Target!
+IF
+    OR(8) // default ...
+      See(Player1)
+      See(Player2)
+      See(Player3)
+      See(Player4)
+      See(Player5)
+      See(Player6)
+      See(WorstAC)
+      See(LastAttackerOf(Myself))
+    False()
+THEN
+    RESPONSE #100
+END
+
+
+IF
+  CheckStatLT(NearestEnemyOfType([GOODCUTOFF]),30,RESISTMAGIC)
+  !Allegiance(NearestEnemyOfType([GOODCUTOFF]),ENEMY)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  False()
+THEN 
+  RESPONSE #100
+END
+
+IF
+  CheckStatLT(NearestEnemyOfType([0.0.0.BARD_ALL]),30,RESISTMAGIC)
+  !Allegiance(NearestEnemyOfType([0.0.0.BARD_ALL]),ENEMY)
+  See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+  False()
+THEN 
+  RESPONSE #100
+END
+
+IF
+  CheckStatLT(NearestEnemyOfType([0.0.0.CLERIC_ALL]),30,RESISTMAGIC)
+  !Allegiance(NearestEnemyOfType([0.0.0.CLERIC_ALL]),ENEMY)
+  See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+  False()
+THEN 
+  RESPONSE #100
+END
+
+IF
+  CheckStatLT(NearestEnemyOfType([0.0.0.DRUID_ALL]),30,RESISTMAGIC)
+  !Allegiance(NearestEnemyOfType([0.0.0.DRUID_ALL]),ENEMY)
+  See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+  False()
+THEN 
+  RESPONSE #100
+END
+
+IF
+  CheckStatLT(NearestEnemyOfType([0.0.0.MAGE_ALL]),30,RESISTMAGIC)
+  !Allegiance(NearestEnemyOfType([0.0.0.MAGE_ALL]),ENEMY)
+  See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+  False()
+THEN 
+  RESPONSE #100
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spells
+/////////////////////////////////////////////////////////////////////
+IF 
+  HaveSpell(CLERIC_INSECT_PLAGUE)
+  GlobalTimerExpired("Cast","LOCALS")
+  !Gender(LastSeenBy(Myself),SUMMONED)
+  CheckStatLT(LastSeenBy(Myself),30,RESISTMAGIC)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(LastSeenBy(Myself),CLERIC_INSECT_PLAGUE)
+END
+
+IF 
+  HaveSpell(CLERIC_CALL_LIGHTNING)
+  GlobalTimerExpired("Cast","LOCALS")
+  !Gender(LastSeenBy(Myself),SUMMONED)
+  CheckStatLT(LastSeenBy(Myself),30,RESISTELECTRICITY)
+  CheckStatLT(LastSeenBy(Myself),30,RESISTMAGIC)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(LastSeenBy(Myself),CLERIC_CALL_LIGHTNING)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Major
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,50)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+IF 
+  HaveSpell(CLERIC_CALL_WOODLAND_BEINGS)
+  GlobalTimerExpired("Cast","LOCALS")
+  !CombatCounter(0)
+  Range([GOODCUTOFF],100)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(Myself,CLERIC_CALL_WOODLAND_BEINGS)
+END
+
+IF 
+  HaveSpell(CLERIC_HOLD_PERSON)
+  GlobalTimerExpired("Cast","LOCALS")
+  CheckStatLT(LastSeenBy(Myself),30,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),1,SAVEVSSPELL)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+   OR(6) // only slow fighter-types
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+    Gender(LastSeenBy(Myself),SUMMONED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Helping Spells
+/////////////////////////////////////////////////////////////////////
+IF
+  HaveSpell(CLERIC_CHANT)
+  GlobalTimerExpired("Cast","LOCALS")
+  OR(4)
+    See([ENEMY.0.0.FIGHTER_ALL])
+    See([ENEMY.0.0.RANGER_ALL])
+    See([ENEMY.0.0.PALADIN_ALL])
+    See([ENEMY.0.0.0.0.SUMMONED])
+  !StateCheck(LastSeenBy(Myself),STATE_CHANT)
+  !CombatCounter(0)
+  Range([GOODCUTOFF],100)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(LastSeenBy(Myself),CLERIC_CHANT)
+END
+
+IF
+  HaveSpell(CLERIC_BLESS)
+  GlobalTimerExpired("Cast","LOCALS")
+  OR(4)
+    See([ENEMY.0.0.FIGHTER_ALL])
+    See([ENEMY.0.0.RANGER_ALL])
+    See([ENEMY.0.0.PALADIN_ALL])
+    See([ENEMY.0.0.0.0.SUMMONED])
+  !StateCheck(LastSeenBy(Myself),STATE_BLESS)
+  !CombatCounter(0)
+  Range([GOODCUTOFF],100)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(LastSeenBy(Myself),CLERIC_BLESS)
+END
+
+IF
+  HaveSpell(CLERIC_DRAW_UPON_HOLY_MIGHT)
+  GlobalTimerExpired("Cast","LOCALS")
+  !CombatCounter(0)
+  !StateCheck(Myself,STATE_DRAWUPONHOLYMIGHT)
+  Range([GOODCUTOFF],100)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(Myself,CLERIC_DRAW_UPON_HOLY_MIGHT)
+END
+
+IF
+  HaveSpell(ARCHER_CALL_SHOT)
+  !CombatCounter(0)
+  GlobalTimerExpired("Cast","LOCALS")
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    Spell(Myself,ARCHER_CALL_SHOT)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Minor
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,90)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Normal Attack
+/////////////////////////////////////////////////////////////////////
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerExpired("Cast","LOCALS")
+  See(WorstAC)
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerExpired("Cast","LOCALS")
+  See(NearestEnemyOfType([PC]))
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+/////////////////////////////////////////////////////////////////////
+// Find them!
+/////////////////////////////////////////////////////////////////////
+IF
+  Heard([ENEMY],125)
+  !Detect([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END

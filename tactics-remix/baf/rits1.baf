@@ -1,0 +1,226 @@
+/////////////////////////////////////////////////////////////////////
+// Ritual Sorcerer
+/////////////////////////////////////////////////////////////////////
+// 
+// Spell Count:  6 6 6 5 3
+// Spells Known: 5 4 3 2 1
+// 3 Remove Magic
+// 3 Slow
+// 2 Melf
+// 1 Magic Missile
+
+IF
+  NumTimesTalkedTo(0)
+  See([PC])
+THEN
+  RESPONSE #100
+    StartDialogueNoSet(Player1)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Prep==0      - Diurnal Rhythms
+/////////////////////////////////////////////////////////////////////
+IF
+    Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobal("One","LOCALS",6) // 6 1st level spells left!
+    SetGlobal("Two","LOCALS",5)
+    SetGlobal("Three","LOCALS",6)
+    SetGlobal("Four","LOCALS",5)
+    SetGlobal("Five","LOCALS",3)
+    SetGlobalTimer("PrepTimer","LOCALS",0)
+    SetGlobalTimer("RemoveTimer","LOCALS",18)
+END
+
+/////////////////////////////////////////////////////////////////////
+// PrepTimer==0 - Short Spell Protections 
+/////////////////////////////////////////////////////////////////////
+IF
+    GlobalTimerExpired("PrepTimer","LOCALS")
+    Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+        SetGlobalTimer("PrepTimer","LOCALS",3600)
+        SetGlobalTimer("Cast","LOCALS",0)
+        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+        Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Stoneskin
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Four","LOCALS",0)
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Four","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_STONE_SKIN)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Remove Magic
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalTimerExpired("RemoveTimer","LOCALS")
+	GlobalGT("Three","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Three","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+          SetGlobalTimer("RemoveTimer","LOCALS",44)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Malison
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Four","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+        Global("Malison","LOCALS",0)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Four","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+          SetGlobal("Malison","LOCALS",1)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Chaos
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Five","LOCALS",0)
+	See(NearestEnemyOf(Myself))
+        !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Five","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Slow
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Three","LOCALS",0)
+	See(NearestEnemyOf(Myself))
+        !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Three","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Major
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,50)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Melf
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Two","LOCALS",0)
+	See(NearestEnemyOf(Myself))
+        !HasItem("clck26",LastSeenBy(Myself))
+        !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Two","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Melf
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Two","LOCALS",0)
+	See(SecondNearestEnemyOf(Myself))
+        !HasItem("clck26",LastSeenBy(Myself))
+        !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Two","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Magic Missile
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("One","LOCALS",0)
+	See(NearestEnemyOf(Myself))
+        !HasItem("clck26",LastSeenBy(Myself))
+        !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("One","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Magic Missile
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("One","LOCALS",0)
+	See(SecondNearestEnemyOf(Myself))
+        !HasItem("clck26",LastSeenBy(Myself))
+        !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("One","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Minor
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,90)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Find them!
+/////////////////////////////////////////////////////////////////////
+IF
+  Heard([ENEMY],125)
+  !Detect([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END

@@ -1,0 +1,218 @@
+// Ritual Kensai Mage
+IF
+    Global("Prep","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Prep","LOCALS",1)
+        SetGlobalTimer("PrepTimer","LOCALS",0)
+END
+
+IF
+    GlobalTimerExpired("PrepTimer","LOCALS")
+    Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("PrepTimer","LOCALS",3600)
+        SetGlobalTimer("Cast","LOCALS",0)
+        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+        Continue()
+END
+
+IF
+    OR(8) // default ...
+      See(Player1)
+      See(Player2)
+      See(Player3)
+      See(Player4)
+      See(Player5)
+      See(Player6)
+      See(WorstAC)
+      See(LastAttackerOf(Myself))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    CheckStatLT(NearestEnemyOfType([GOODCUTOFF]),30,RESISTMAGIC)
+    !Allegiance(NearestEnemyOfType([GOODCUTOFF]),ENEMY)
+    See(NearestEnemyOfType([GOODCUTOFF]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    CheckStatLT(NearestEnemyOfType([0.0.0.BARD_ALL]),30,RESISTMAGIC)
+    !Allegiance(NearestEnemyOfType([0.0.0.BARD_ALL]),ENEMY)
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    CheckStatLT(NearestEnemyOfType([0.0.0.CLERIC_ALL]),30,RESISTMAGIC)
+    !Allegiance(NearestEnemyOfType([0.0.0.CLERIC_ALL]),ENEMY)
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    CheckStatLT(NearestEnemyOfType([0.0.0.DRUID_ALL]),30,RESISTMAGIC)
+    !Allegiance(NearestEnemyOfType([0.0.0.DRUID_ALL]),ENEMY)
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    CheckStatLT(NearestEnemyOfType([0.0.0.MAGE_ALL]),30,RESISTMAGIC)
+    !Allegiance(NearestEnemyOfType([0.0.0.MAGE_ALL]),ENEMY)
+    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    HaveSpell(WIZARD_CHAOS)
+    GlobalTimerExpired("Cast","LOCALS")
+    !Allegiance(LastSeenBy(Myself),ENEMY)
+    CheckStatLT(LastSeenBy(Myself),30,RESISTMAGIC)
+    CheckStatGT(LastSeenBy(Myself),1,SAVEVSSPELL)
+    !StateCheck(LastSeenBy(Myself),STATE_BERSERK)
+    CheckStat(LastSeenBy(Myself),0,SCRIPTINGSTATE3)
+    !HasItemEquiped("AMUL17",LastSeenBy(Myself)) // Greenstone Amulet
+    !HasItemEquiped("LEAT20",LastSeenBy(Myself)) // Aeger's Hide +3
+    !HasItemEquiped("SHLD25",LastSeenBy(Myself)) // Shield of Harmony +2
+    !HasItemEquipedReal("SW1H54",LastSeenBy(Myself)) // The Equalizer
+    !HasItemEquipedReal("SW2H14",LastSeenBy(Myself)) // Lilarcor
+    !HasItemEquipedReal("SW2H21",LastSeenBy(Myself)) // Psion's Blade +5
+THEN
+    RESPONSE #100
+        SetGlobalTimer("Cast","LOCALS",6)
+        Spell(LastSeenBy(Myself),WIZARD_CHAOS)
+END
+
+IF
+    GlobalTimerExpired("Cast","LOCALS")
+    HaveSpell(WIZARD_SLOW)
+    CheckStatGT(LastSeenBy(Myself),1,SAVEVSSPELL)
+    !Allegiance(LastSeenBy(Myself),ENEMY)
+    !Class(LastSeenBy(Myself),MONK)
+    !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+    !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+    !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+    !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Arvoreen
+    OR(6)
+        Class(LastSeenBy(Myself),RANGER_ALL)
+        Class(LastSeenBy(Myself),FIGHTER_ALL)
+        Class(LastSeenBy(Myself),PALADIN)
+        Class(LastSeenBy(Myself),THIEF)
+        Kit(LastSeenBy(Myself),BARBARIAN)
+        Gender(LastSeenBy(Myself),SUMMONED)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("Cast","LOCALS",6)
+        Spell(LastSeenBy(Myself),WIZARD_SLOW)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Major
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,50)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+
+IF
+    HaveSpell(WIZARD_BLUR)
+    GlobalTimerExpired("Cast","LOCALS")
+    !CombatCounter(0)
+    Range([GOODCUTOFF],50)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("Cast","LOCALS",6)
+        Spell(Myself,WIZARD_BLUR)
+END
+
+IF
+    HaveSpell(WIZARD_MIRROR_IMAGE)
+    GlobalTimerExpired("Cast","LOCALS")
+    !CombatCounter(0)
+    Range([GOODCUTOFF],50)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("Cast","LOCALS",6)
+        Spell(Myself,WIZARD_MIRROR_IMAGE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal, Minor
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("Cast","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,90)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Cast","LOCALS",6)
+    UseItem("potn52",Myself)
+END
+
+IF
+    GlobalTimerExpired("Cast","LOCALS")
+    HaveSpell(WIZARD_MAGIC_MISSILE)
+    !HasItemEquiped("CLCK26",LastSeenBy(Myself)) // Cloak of Mirroring
+    !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("Cast","LOCALS",6)
+        Spell(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
+END
+
+IF
+    HaveSpell(KENSAI_KIA)
+    Range([PC],10)
+    GlobalTimerExpired("Cast","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobalTimer("Cast","LOCALS",6)
+        Spell(Myself,KENSAI_KIA)
+END
+
+IF
+    Allegiance(Myself,ENEMY)
+    See(WorstAC)
+THEN
+    RESPONSE #100
+        Attack(LastSeenBy(Myself))
+END
+
+IF
+    Allegiance(Myself,ENEMY)
+    See(NearestEnemyOfType([PC]))
+THEN
+    RESPONSE #100
+        Attack(LastSeenBy(Myself))
+END
+
+IF
+    Heard([ENEMY],125)
+    !Detect([GOODCUTOFF])
+THEN
+    RESPONSE #100
+        MoveToObject(LastHeardBy(Myself))
+END
+
+

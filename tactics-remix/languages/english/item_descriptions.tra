@@ -212,6 +212,20 @@ Equipped abilities:
 Weight: 4~
 
 ///////////////////////////////////////////////////////////////////////////
+// Preserving Boots                                                      //
+///////////////////////////////////////////////////////////////////////////
+@4304 = ~Resilient Trodders~
+@4305 = ~These magically-endowed boots are useless on their own, but when worn by a powerful magician they become deadly indeed. The Preserving Boots make the wearer immune to almost all dispelling effects. For example, Khelben's Warding Whip, the potent Breach, the all-seeing True Sight and the Inquisitor's Divine Dispelling all slide harmlessly around enchantments that protect the mage's person. Magically created weapons carried by the mage (like Melf's Minute Meteors) may still be dispelled normally. Note that even friendly attempts to dispel sorceries on the mage are deflected, so the wearer is advised to avoid Charm and Confusion. In addition, the wearer is immune to the backstabbing effects of thieves.
+
+STATISTICS:
+
+Equipped abilities:
+– Immunity to Dispelling Effects
+– Immunity to Backstab
+
+Weight: 4~
+
+///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 // Cloaks                                                                //
 ///////////////////////////////////////////////////////////////////////////
@@ -338,3 +352,70 @@ Requires:
  5 Strength
 
 Weight: 5~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Amulets                                                               //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Amulet                                                                //
+///////////////////////////////////////////////////////////////////////////
+@4700 = ~Amulet~
+@4701 = ~Amulets are usually magical devices that are commonly worn around the neck, suspended from a chain. The type of chain that comes with an amulet generally increases the item's aesthetic value, not its magical properties. Only one amulet can be dangled from the neck at a time.
+
+STATISTICS:
+
+Weight: 1~
+
+///////////////////////////////////////////////////////////////////////////
+// Lillith Amulet                                                        //
+///////////////////////////////////////////////////////////////////////////
+@4702 = ~Lillith Amulet~
+@4703 = ~Amulet of the Lillim
+This accursed amulet smells strongly of blood and dust. It came into your possession during your involvement with the Ritual affair. Both the Ritual and this amulet remain shrouded in mystery, but some of the powers of the amulet can be understood. It appears to grant the bearer all of the magical immunities and defenses normally associated with a young vampire: regeneration; resistance to cold and electricity; immunity to poison, fear, sleep, level drain, hold, charm and non-magical weapons. Truly noble hearts cannot bear to don the amulet and it cannot be removed without clerical aid. You feel certain that the powers of the amulet must come with a terrible price, but you cannot detect any such downside. In fact, the amulet feels strangely natural and stirs something deep in your memory.
+
+*CURSED ITEM*
+
+STATISTICS:
+
+Provides Vampiric defenses~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Armor                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Studded Leather                                                       //
+///////////////////////////////////////////////////////////////////////////
+@4800 = ~Studded Leather Armor~
+@4801 = ~Studded leather armor has little in common with normal leather armor. Instead of a hardened shell, studded leather offers hundreds of metal rivets affixed to a supple backing. The numerous studs form a flexible coat of metal that helps to turn aside slashing and cutting attacks, while the leather is little more than a means of securing the rivets in place. 
+
+STATISTICS:
+
+Armor Class: 7 (5 vs. slashing, 6 vs. piercing and missile)
+Requires:
+ 6 Strength
+
+Weight: 25~
+
+///////////////////////////////////////////////////////////////////////////
+// Yellow Dragon Armor                                                   //
+///////////////////////////////////////////////////////////////////////////
+@4802 = ~Yellow Dragon Armor~
+@4803 = ~Amulet of the Lillim
+This suit of armor is formed from interlocking Yellow Dragon scales. Yellow Dragons are known for their fiery sand attacks and resistance to piercing weapons. This particular suit was obtained by <CHARNAME> while <PRO_HESHE> was investigating the Ritual. The armor is magically light and unencumbering. 
+
+STATISTICS:
+
+Equipped abilities:
+– +50% resistance to piercing and missile
+
+Armor Class: -1
+Requires:
+ 6 Strength
+
+Weight: 10~
