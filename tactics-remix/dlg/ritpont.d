@@ -3,7 +3,7 @@
 BEGIN RITPONT
 
 IF ~AreaCheck("AR0086")~ THEN BEGIN arrived
-  SAY @120
+  SAY @413
   IF ~~ THEN DO ~GiveItemCreate("Potn11",Player1,5,5,5)
 GiveItemCreate("Potn42",Player1,5,5,5)
 GiveItemCreate("Restore",Player1,5,5,5)
@@ -18,12 +18,12 @@ ReallyForceSpell(Myself,DRYAD_TELEPORT)~ EXIT
 END
 
 IF ~Global("Fight","LOCALS",1)~ THEN BEGIN fight
-  SAY @210 = @211 = @212
+  SAY @422 = @423 = @424
   IF ~~ THEN DO ~Enemy()~ EXIT
 END
 
 IF ~Global("RitPrep","GLOBAL",1)~ THEN BEGIN rit
-  SAY @200
+  SAY @414
   /* decision tree ahoy! */
   IF ~~ THEN GOTO perfect
   IF ~Dead("ritcount")~ THEN GOTO dead_disrupt
@@ -32,7 +32,7 @@ IF ~Global("RitPrep","GLOBAL",1)~ THEN BEGIN rit
 END
 
 IF ~~ THEN BEGIN never_got_in
-  SAY @201 = @202 
+  SAY @415 = @416 
   IF ~~ THEN DO ~GiveItemCreate("ritamul",Player1,1,0,0)
 GiveItemCreate("ritamul",Player2,1,0,0)
 GiveItemCreate("ritamul",Player3,1,0,0)
@@ -43,7 +43,7 @@ Enemy()~ EXIT
 END
 
 IF ~~ THEN BEGIN dead_nodisrupt
-  SAY @203 = @204
+  SAY @417 = @418
   IF ~~ THEN DO ~GiveItemCreate("ritamul",Player1,1,0,0)
 GiveItemCreate("ritamul",Player2,1,0,0)
 GiveItemCreate("ritamul",Player3,1,0,0)
@@ -60,7 +60,7 @@ AddXPObject(Player6,30000)~ EXIT
 END
 
 IF ~~ THEN BEGIN dead_disrupt
-  SAY @205 = @204
+  SAY @419 = @418
   IF ~~ THEN DO ~GiveItemCreate("ritamul",Player1,1,0,0)
 GiveItemCreate("ritamul",Player2,1,0,0)
 GiveItemCreate("ritamul",Player3,1,0,0)
@@ -77,7 +77,7 @@ AddXPObject(Player6,30000)~ EXIT
 END
 
 IF ~~ THEN BEGIN perfect
-  SAY @206 = @207
+  SAY @420 = @421
   IF ~~ THEN DO ~GiveItemCreate("ritamul",Player1,1,0,0)
 GiveItemCreate("ritamul",Player2,1,0,0)
 GiveItemCreate("ritamul",Player3,1,0,0)
@@ -139,14 +139,14 @@ END
 IF ~!NumTimesTalkedTo(0)~ THEN BEGIN main_quest
   SAY @349
   IF ~~ THEN REPLY @350 GOTO say_defenses
-  IF ~~ THEN REPLY @35 GOTO say_people
-  IF ~~ THEN REPLY @45 GOTO say_advice
-  IF ~~ THEN REPLY @55 GOTO say_ritual
-  IF ~~ THEN REPLY @65 GOTO say_betray
-  IF ~~ THEN REPLY @75 GOTO say_reward
-  IF ~~ THEN REPLY @85 GOTO say_whoare
-  IF ~~ THEN REPLY @95 GOTO say_moretime
-  IF ~~ THEN REPLY @100 GOTO g1
+  IF ~~ THEN REPLY @358 GOTO say_people
+  IF ~~ THEN REPLY @368 GOTO say_advice
+  IF ~~ THEN REPLY @375 GOTO say_ritual
+  IF ~~ THEN REPLY @383 GOTO say_betray
+  IF ~~ THEN REPLY @386 GOTO say_reward
+  IF ~~ THEN REPLY @390 GOTO say_whoare
+  IF ~~ THEN REPLY @395 GOTO say_moretime
+  IF ~~ THEN REPLY @397 GOTO g1
 END
 
 CHAIN2 RITPONT say_defenses
@@ -154,84 +154,84 @@ CHAIN2 RITPONT say_defenses
 END RITPONT main_quest
 
 CHAIN2 RITPONT say_people
-  @36 = @37 = @38 = @39 = @40 = @41 = @42 = @43 = @44
+  @359 = @360 = @361 = @362 = @363 = @364 = @365 = @366 = @367
 END RITPONT main_quest
 
 CHAIN2 RITPONT say_advice
-  @46 = @47 = @48 = @49 = @50 = @51
+  @369 = @370 = @371 = @372 = @373 = @374
 END RITPONT main_quest
 
 // explain the Ritual .. not!
 IF ~~ THEN BEGIN say_ritual
-  SAY @56 IF ~~ THEN REPLY @57 GOTO say_r2
+  SAY @376 IF ~~ THEN REPLY @377 GOTO say_r2
 END
 IF ~~ THEN BEGIN say_r2
-  SAY @58 IF ~~ THEN REPLY @59 GOTO say_r3
+  SAY @378 IF ~~ THEN REPLY @379 GOTO say_r3
 END
 IF ~~ THEN BEGIN say_r3
-  SAY @60 IF ~~ THEN REPLY @61 GOTO say_r4
+  SAY @380 IF ~~ THEN REPLY @381 GOTO say_r4
 END
 IF ~~ THEN BEGIN say_r4
-  SAY @62
+  SAY @382
   IF ~~ THEN GOTO main_quest
 END
 
 // cute little trick: we'll use a CHAIN to ourselves!
 CHAIN2 RITPONT say_betray
-  @66 = @67
+  @384 = @385
 END RITPONT main_quest
 
 CHAIN2 RITPONT say_reward
-  @76 = @77 = @78
+  @387 = @388 = @389
 END RITPONT main_quest
 
 CHAIN2 RITPONT say_whoare
-  @86 = @87 = @88 = @88 = @89
+  @391 = @392 = @393 = @393 = @394
 END RITPONT main_quest
 
 IF ~~ THEN BEGIN say_moretime
-  SAY @96 IF ~~ THEN EXIT
+  SAY @396 IF ~~ THEN EXIT
 END
 
 IF ~~ THEN BEGIN g1
-  SAY @101
-  IF ~~ THEN REPLY @102 GOTO trustme
-  IF ~~ THEN REPLY @104 GOTO moretime2
+  SAY @398
+  IF ~~ THEN REPLY @399 GOTO trustme
+  IF ~~ THEN REPLY @401 GOTO moretime2
 END
 
 IF ~~ THEN BEGIN trustme
-  SAY @103 = @106
-  IF ~~ THEN REPLY @107 GOTO accept
-  IF ~~ THEN REPLY @104 GOTO moretime2
+  SAY @400 = @403
+  IF ~~ THEN REPLY @404 GOTO accept
+  IF ~~ THEN REPLY @401 GOTO moretime2
 END
 
 IF ~~ THEN BEGIN accept
-  SAY @110 
+  SAY @405 
   // ONE_DAY = 7200, so one hour = 300 time units
-  IF ~~ THEN REPLY @112 DO ~SetGlobalTimer("RitualIsNowOver","GLOBAL",4500)~
+  IF ~~ THEN REPLY @406 DO ~SetGlobalTimer("RitualIsNowOver","GLOBAL",4500)~
         GOTO want_more_time
-  IF ~~ THEN REPLY @113 DO ~SetGlobalTimer("RitualIsNowOver","GLOBAL",2100)~ 
+  IF ~~ THEN REPLY @409 DO ~SetGlobalTimer("RitualIsNowOver","GLOBAL",2100)~ 
         GOTO accept_fine
-  IF ~~ THEN REPLY @114 DO ~SetGlobalTimer("RitualIsNowOver","GLOBAL",2100)~ 
+  IF ~~ THEN REPLY @410 DO ~SetGlobalTimer("RitualIsNowOver","GLOBAL",2100)~ 
         GOTO accept_heckle
 END
 
 IF ~~ THEN BEGIN want_more_time
-  SAY @115
-  IF ~~ THEN REPLY @116 GOTO accept_fine
+  SAY @407
+  IF ~~ THEN REPLY @408 GOTO accept_fine
 END
 
 IF ~~ THEN BEGIN accept_heckle
-  SAY @117
+  SAY @411
   IF ~~ THEN GOTO accept_fine
 END
 
 IF ~~ THEN BEGIN accept_fine
-  SAY @111
+  SAY @412
   IF ~~ THEN DO ~SetGlobal("RitualAccept","GLOBAL",1)~ EXIT
 END
 
 IF ~~ THEN BEGIN moretime2
-  SAY @105 IF ~~ THEN GOTO main_quest
+  SAY @402 IF ~~ THEN GOTO main_quest
 END
 
