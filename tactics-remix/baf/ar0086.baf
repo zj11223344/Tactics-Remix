@@ -139,8 +139,8 @@ IF
 THEN
   RESPONSE #100
     StartCutSceneMode()
-    DisplayString(Player1,@88821)
-    DisplayStringHead(Player1,@88821)
+    DisplayString(Player1,@5006)
+    DisplayStringHead(Player1,@5006)
     ScreenShake([5.5],30)
     SetGlobal("RitualDisrupted","GLOBAL",1)
     EndCutSceneMode()
@@ -156,8 +156,8 @@ IF
 THEN
   RESPONSE #100
     StartCutSceneMode()
-    DisplayString(Player1,@88821)
-    DisplayStringHead(Player1,@88821)
+    DisplayString(Player1,@5006)
+    DisplayStringHead(Player1,@5006)
     ScreenShake([5.5],30)
     SetGlobal("RitualDisrupted","GLOBAL",1)
     EndCutSceneMode()
@@ -173,7 +173,7 @@ THEN
     StartCutSceneMode()
     SetGlobal("RitualNotDisruptedMentioned","GLOBAL",1)
     ScreenShake([5.5],30)
-    DisplayStringHead(Player1,@88822)
-    DisplayString(Player1,@88822)
+    DisplayStringHead(Player1,@5007)
+    DisplayString(Player1,@5007)
     EndCutSceneMode()
 END
