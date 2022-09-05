@@ -8,7 +8,7 @@ THEN
   RESPONSE #100
     DialogInterrupt(FALSE)
     SetInterrupt(FALSE)
-    DisplayStringHead(Myself,@88823) // Strange transformation
+    DisplayStringHead(Myself,@5008) // Strange transformation
     DestroyAllEquipment()
     CreateVisualEffectObject("SPPORTAL",Myself)
     Wait(2)
