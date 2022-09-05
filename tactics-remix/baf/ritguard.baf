@@ -12,7 +12,7 @@ THEN
     SetInterrupt(FALSE)
     SetGlobal("MadeCountess","LOCALS",1)
     SetGlobal("RitualGuardPassed","GLOBAL",1)
-    DisplayString(Myself,@88816)
+    DisplayString(Myself,@5011)
     ForceSpell(Myself,RED_PILLAR_VISUAL)
     CreateCreature("ritgol0",[1762.2158],0)
     CreateCreature("ritgol1",[2056.2370],0)
@@ -33,7 +33,7 @@ THEN
     DialogInterrupt(FALSE)
     SetInterrupt(FALSE)
     SetGlobal("RitualGuardPassed","GLOBAL",1)
-    DisplayString(Myself,@88816)
+    DisplayString(Myself,@5011)
     ForceSpell(Myself,RED_PILLAR_VISUAL)
     Wait(1)
     DestroySelf()
@@ -45,6 +45,6 @@ THEN
   RESPONSE #100
      CreateVisualEffectObject("SPPORTAL",LastSeenBy(Myself))
      ActionOverride(LastSeenBy(Myself),JumpToPoint([1048.2544]))
-     DisplayString(LastSeenBy(Myself),@88815)
+     DisplayString(LastSeenBy(Myself),@5012)
      Continue()
 END
