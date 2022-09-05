@@ -86,7 +86,7 @@
       @324 = ~Perhaps 'heap' is an ambiguous term that should not be used in a logical conversation.~
         @325 = ~Perhaps you are right. I merely wanted to see how you think, since you seem so intent on destroying all that I hold dear. Now, however, it is time for me to put a stop to your evil incursion! Draw your weapons!~
 
-RIT Pont
+// RIT Pont
 @326    = ~Ah, adventurers, and hardy ones at that. Exactly the sort of people I was looking for. Of course, that's why I'm waiting here in front of the Watcher's Keep, a legendary adventurer magnet. Might I trouble you for a moment of your time?~
 @327    = ~Of course.~
 @328    = ~You may, but in my experience people who act nice initially usually end up stabbing me in the back.~
