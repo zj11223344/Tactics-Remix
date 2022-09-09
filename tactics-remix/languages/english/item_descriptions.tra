@@ -212,16 +212,18 @@ Equipped abilities:
 Weight: 4~
 
 ///////////////////////////////////////////////////////////////////////////
-// Preserving Boots                                                      //
+// Dragon Slippers                                                      //
 ///////////////////////////////////////////////////////////////////////////
-@4304 = ~Resilient Trodders~
-@4305 = ~These magically-endowed boots are useless on their own, but when worn by a powerful magician they become deadly indeed. The Preserving Boots make the wearer immune to almost all dispelling effects. For example, Khelben's Warding Whip, the potent Breach, the all-seeing True Sight and the Inquisitor's Divine Dispelling all slide harmlessly around enchantments that protect the mage's person. Magically created weapons carried by the mage (like Melf's Minute Meteors) may still be dispelled normally. Note that even friendly attempts to dispel sorceries on the mage are deflected, so the wearer is advised to avoid Charm and Confusion. In addition, the wearer is immune to the backstabbing effects of thieves.
+@4304 = ~Dragon Slippers~
+@4305 = ~Feryl Dragonhunter was a monster of a man who, with four kills to his credit, thought he had perfected the art of dragon slaying. He aided his efforts by creating magical equipment from his previous victories, including several different boots he mockingly called his Dragon Slippers. Amazingly, Feryl was not defeated by his preferred enemy, but was surprised by a small band of goblins on his way to a hunt.
 
 STATISTICS:
 
 Equipped abilities:
-– Immunity to Dispelling Effects
-– Immunity to Backstab
+– Dexterity: +2
+– Protects against all forms of panic and boosts morale
+– Immunity to Wing Buffet
+– Magic Resistance: +10%
 
 Weight: 4~
 
@@ -414,7 +416,7 @@ STATISTICS:
 Equipped abilities:
 – +50% resistance to piercing and missile
 
-Armor Class: -1
+Armor Class: -1 (-3 vs. slashing, -2 vs. piercing and missile)
 Requires:
  6 Strength
 

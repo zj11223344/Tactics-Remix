@@ -32,7 +32,7 @@ THEN
       CreateCreatureOffScreen("ritgol3",4)
       Wait(1)
       CreateCreatureObject("ritdrag",Myself,1,0,0)
-      CreateVisualEffectObject("SPPORTAL","ritgrad")
+      CreateVisualEffectObject("SPPORTAL","ritdrag")
       DestroySelf()
       EndCutSceneMode()
 END
