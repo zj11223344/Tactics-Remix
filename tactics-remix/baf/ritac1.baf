@@ -19,7 +19,7 @@
 // Prep==0      - Diurnal Rhythms
 /////////////////////////////////////////////////////////////////////
 IF
-    Global("Prep","LOCALS",0)
+  Global("Prep","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
@@ -30,14 +30,13 @@ END
 // PrepTimer==0 - Short Spell Protections 
 /////////////////////////////////////////////////////////////////////
 IF
-    GlobalTimerExpired("PrepTimer","LOCALS")
-    Allegiance(Myself,ENEMY)
+  GlobalTimerExpired("PrepTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-        SetGlobalTimer("PrepTimer","LOCALS",3600)
-        SetGlobalTimer("Cast","LOCALS",0)
-        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
-        Continue()
+    SetGlobalTimer("PrepTimer","LOCALS",3600)
+    GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+    Continue()
 END
 
 IF
@@ -55,7 +54,7 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     DisplayStringHead(Myself,@5007)
     Spell(Myself,CLERIC_SANCTUARY)  // SPPR109.SPL (Sanctuary)
@@ -435,6 +434,10 @@ IF
     Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
@@ -447,22 +450,17 @@ IF
   !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
   CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_SPELL_TURNING)
-  !CheckSpellState(LastSeenBy(Myself),SPELL_TURNING)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
   !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
   !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_GLOBE)
-  !CheckSpellState(LastSeenBy(Myself),GLOBE)
   !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  !CheckSpellState(Myself,WILD_MAGIC_AREA)
-  !CheckSpellState(Myself,DEAD_MAGIC_AREA)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
     SetInterrupt(TRUE)
@@ -481,6 +479,10 @@ IF
     Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
@@ -493,22 +495,17 @@ IF
   !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
   CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_SPELL_TURNING)
-  !CheckSpellState(LastSeenBy(Myself),SPELL_TURNING)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
   !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
   !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_GLOBE)
-  !CheckSpellState(LastSeenBy(Myself),GLOBE)
   !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  !CheckSpellState(Myself,WILD_MAGIC_AREA)
-  !CheckSpellState(Myself,DEAD_MAGIC_AREA)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
     SetInterrupt(TRUE)
@@ -527,6 +524,10 @@ IF
     Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
@@ -539,22 +540,17 @@ IF
   !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
   CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_SPELL_TURNING)
-  !CheckSpellState(LastSeenBy(Myself),SPELL_TURNING)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
   !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
   !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_GLOBE)
-  !CheckSpellState(LastSeenBy(Myself),GLOBE)
   !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  !CheckSpellState(Myself,WILD_MAGIC_AREA)
-  !CheckSpellState(Myself,DEAD_MAGIC_AREA)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
     SetInterrupt(TRUE)
@@ -573,6 +569,10 @@ IF
     Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
@@ -585,22 +585,17 @@ IF
   !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
   CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_SPELL_TURNING)
-  !CheckSpellState(LastSeenBy(Myself),SPELL_TURNING)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
   !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
   !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_GLOBE)
-  !CheckSpellState(LastSeenBy(Myself),GLOBE)
   !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  !CheckSpellState(Myself,WILD_MAGIC_AREA)
-  !CheckSpellState(Myself,DEAD_MAGIC_AREA)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
     SetInterrupt(TRUE)
@@ -619,6 +614,10 @@ IF
     Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
@@ -631,22 +630,17 @@ IF
   !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
   CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_SPELL_TURNING)
-  !CheckSpellState(LastSeenBy(Myself),SPELL_TURNING)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
   !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
   !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_GLOBE)
-  !CheckSpellState(LastSeenBy(Myself),GLOBE)
   !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  !CheckSpellState(Myself,WILD_MAGIC_AREA)
-  !CheckSpellState(Myself,DEAD_MAGIC_AREA)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
     SetInterrupt(TRUE)
@@ -665,6 +659,10 @@ IF
     Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
@@ -677,22 +675,17 @@ IF
   !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
   CheckStatLT(Myself,1,WIZARD_SPELL_DEFLECTION)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_SPELL_TURNING)
-  !CheckSpellState(LastSeenBy(Myself),SPELL_TURNING)
+  CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
   !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
   !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  !CheckSpellState(LastSeenBy(Myself),MINOR_GLOBE)
-  !CheckSpellState(LastSeenBy(Myself),GLOBE)
   !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  !CheckSpellState(Myself,WILD_MAGIC_AREA)
-  !CheckSpellState(Myself,DEAD_MAGIC_AREA)
 THEN
   RESPONSE #100
-    SetGlobal("MO_SpellCast","LOCALS",1)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
     SetInterrupt(TRUE)
@@ -766,86 +759,160 @@ END
 
 IF
   ActionListEmpty()
-  See(WorstAC([PC]))
+  See(MostDamagedOf([PC]))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(LastSeenBy(Myself))
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(WorstAC([PC]))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
   ActionListEmpty()
   See(NearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(SecondNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(ThirdNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(FourthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(FifthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(SixthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(MostDamagedOf([PC]))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(WorstAC([PC]))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
@@ -856,7 +923,7 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
@@ -867,7 +934,7 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
@@ -878,7 +945,7 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
@@ -889,7 +956,7 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
@@ -900,7 +967,7 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
@@ -911,7 +978,7 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
 IF

@@ -408,7 +408,7 @@ IF
    See([PC])
 THEN
   RESPONSE #100
-    Attack(LastSeenBy(Myself))
+    AttackOneRound(LastSeenBy(Myself))
 END
 
 /////////////////////////////////////////////////////////////////////

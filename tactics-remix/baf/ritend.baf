@@ -20,66 +20,78 @@ END
 // Prep==0      - Diurnal Rhythms
 /////////////////////////////////////////////////////////////////////
 IF
-    Global("Prep","LOCALS",0)
+  Global("Prep","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
     SetGlobalTimer("PrepTimer","LOCALS",0)
-    SetGlobalTimer("KaiTimer","LOCALS",0)
 END
 
 /////////////////////////////////////////////////////////////////////
 // PrepTimer==0 - Short Spell Protections 
 /////////////////////////////////////////////////////////////////////
 IF
-    GlobalTimerExpired("PrepTimer","LOCALS")
-    Allegiance(Myself,ENEMY)
+  GlobalTimerExpired("PrepTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-        SetGlobalTimer("PrepTimer","LOCALS",3600)
-        SetGlobalTimer("Cast","LOCALS",0)
-        GiveItemCreate("potn10",Myself,5,0,0)   // invis
-        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
-        Continue()
+    SetGlobalTimer("PrepTimer","LOCALS",3600)
+    GiveItemCreate("potn10",Myself,5,0,0)   // invis
+    GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+    Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
 // Spell: Stoneskin (if out)
 /////////////////////////////////////////////////////////////////////
 IF
-	GlobalTimerExpired("Cast","LOCALS")
-        HaveSpell(WIZARD_STONE_SKIN)
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  HaveSpell(WIZARD_STONE_SKIN)
 	CheckStatLT(Myself,1,STONESKINS)
-        GlobalTimerExpired("Cast","LOCALS")
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !StateCheck(Myself,STATE_SILENCED)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
 THEN
 	RESPONSE #100
-          SetGlobalTimer("Cast","LOCALS",6)
-          Spell(Myself,WIZARD_STONE_SKIN)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_STONE_SKIN)
+    SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
 // Hide!
 /////////////////////////////////////////////////////////////////////
 IF
-    !StateCheck(Myself,STATE_INVISIBLE)
-    HasItem("potn10",Myself)
-    GlobalTimerExpired("Cast","LOCALS")
-    Allegiance(Myself,ENEMY)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  HasItem("potn10",Myself)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-    SetGlobalTimer("Cast","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     UseItem("potn10",Myself)
+    SetInterrupt(TRUE)
 END
 
 IF
-    !StateCheck(Myself,STATE_INVISIBLE)
-    HaveSpell(WIZARD_INVISIBILITY)
-    GlobalTimerExpired("Cast","LOCALS")
-    Allegiance(Myself,ENEMY)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  HaveSpell(WIZARD_INVISIBILITY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !StateCheck(Myself,STATE_SILENCED)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-    SetGlobalTimer("Cast","LOCALS",6)
-          Spell(Myself,WIZARD_INVISIBILITY)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_INVISIBILITY)
+    SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -99,29 +111,37 @@ END
 // Spells
 /////////////////////////////////////////////////////////////////////
 IF
-    !StateCheck(Myself,STATE_INVISIBLE)
-    !HasItem("potn10",Myself)
-    !HaveSpell(WIZARD_INVISIBILITY)
-    GlobalTimerExpired("Cast","LOCALS")
-    HaveSpell(WIZARD_DISPEL_MAGIC)
-    Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !HasItem("potn10",Myself)
+  !HaveSpell(WIZARD_INVISIBILITY)
+  HaveSpell(WIZARD_DISPEL_MAGIC)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !StateCheck(Myself,STATE_SILENCED)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-    SetGlobalTimer("Cast","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(Myself,WIZARD_DISPEL_MAGIC)
+    SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
 // Heal, Minor
 /////////////////////////////////////////////////////////////////////
 IF
-  GlobalTimerExpired("Cast","LOCALS")
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HasItem("potn52",Myself)
   HPPercentLT(Myself,90)
 THEN
   RESPONSE #100
-    SetGlobalTimer("Cast","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     UseItem("potn52",Myself)
+    SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////

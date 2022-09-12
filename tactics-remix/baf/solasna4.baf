@@ -23,6 +23,11 @@ IF
   ActionListEmpty()
   See(WorstAC([PC]))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
@@ -32,13 +37,18 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(LastSeenBy(Myself))
+    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
   ActionListEmpty()
   See(NearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
@@ -48,13 +58,18 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(SecondNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
@@ -64,13 +79,18 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(ThirdNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
@@ -80,13 +100,18 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(FourthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
@@ -96,13 +121,18 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(FifthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
@@ -112,13 +142,18 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
   See(SixthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
@@ -128,7 +163,7 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
 IF
@@ -143,7 +178,7 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
@@ -158,7 +193,7 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
@@ -173,7 +208,7 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
@@ -188,7 +223,7 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
@@ -203,7 +238,7 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
@@ -218,5 +253,5 @@ IF
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
 THEN
   RESPONSE #100
-    Attack(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END

@@ -4,7 +4,7 @@
 // Prep==0      - Diurnal Rhythms
 /////////////////////////////////////////////////////////////////////
 IF
-    Global("Prep","LOCALS",0)
+  Global("Prep","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
@@ -16,152 +16,190 @@ END
 // PrepTimer==0 - Short Spell Protections 
 /////////////////////////////////////////////////////////////////////
 IF
-    GlobalTimerExpired("PrepTimer","LOCALS")
-    Allegiance(Myself,ENEMY)
+  GlobalTimerExpired("PrepTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-        SetGlobalTimer("PrepTimer","LOCALS",3600)
-        SetGlobalTimer("Cast","LOCALS",0)
-        GiveItemCreate("potn10",Myself,5,0,0)   // invis
-        GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
-        Continue()
+    SetGlobalTimer("PrepTimer","LOCALS",3600)
+    GiveItemCreate("potn10",Myself,5,0,0)   // invis
+    GiveItemCreate("potn52",Myself,2,0,0)   // extra healing
+    Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
 // Hide!
 /////////////////////////////////////////////////////////////////////
 IF
-    !StateCheck(Myself,STATE_INVISIBLE)
-    !Detect(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !Detect(NearestEnemyOf(Myself))
 THEN
   RESPONSE #100
     Hide()
 END
 
 IF
-    !StateCheck(Myself,STATE_INVISIBLE)
-    HasItem("potn10",Myself)
-    GlobalTimerExpired("Cast","LOCALS")
-    Allegiance(Myself,ENEMY)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  HasItem("potn10",Myself)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
 THEN
   RESPONSE #100
-    SetGlobalTimer("Cast","LOCALS",6)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     UseItem("potn10",Myself)
-END
-
-/////////////////////////////////////////////////////////////////////
-// Find a Target
-/////////////////////////////////////////////////////////////////////
-
-// Target!
-IF
-    OR(8) // default ...
-      See(Player1)
-      See(Player2)
-      See(Player3)
-      See(Player4)
-      See(Player5)
-      See(Player6)
-      See(WorstAC)
-      See(LastAttackerOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-
-// Sixth Nearest.
-IF
-    CheckStat(SixthNearestEnemyOf(Myself),0,STONESKINS)
-    !StateCheck(SixthNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
-    CheckStat(SixthNearestEnemyOf(Myself),0,SANCTUARY)
-    See(SixthNearestEnemyOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-// Fifth Nearest.
-IF
-    CheckStat(FifthNearestEnemyOf(Myself),0,STONESKINS)
-    !StateCheck(FifthNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
-    CheckStat(FifthNearestEnemyOf(Myself),0,SANCTUARY)
-    See(FifthNearestEnemyOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-// Fourth Nearest.
-IF
-    CheckStat(FourthNearestEnemyOf(Myself),0,STONESKINS)
-    !StateCheck(FourthNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
-    CheckStat(FourthNearestEnemyOf(Myself),0,SANCTUARY)
-    See(FourthNearestEnemyOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-// Third Nearest.
-IF
-    CheckStat(ThirdNearestEnemyOf(Myself),0,STONESKINS)
-    !StateCheck(ThirdNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
-    CheckStat(ThirdNearestEnemyOf(Myself),0,SANCTUARY)
-    See(ThirdNearestEnemyOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-// Second Nearest.
-IF
-    CheckStat(SecondNearestEnemyOf(Myself),0,STONESKINS)
-    !StateCheck(SecondNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
-    CheckStat(SecondNearestEnemyOf(Myself),0,SANCTUARY)
-    See(SecondNearestEnemyOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-//  Nearest.
-IF
-    CheckStat(NearestEnemyOf(Myself),0,STONESKINS)
-    !StateCheck(NearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
-    CheckStat(NearestEnemyOf(Myself),0,SANCTUARY)
-    See(NearestEnemyOf(Myself))
-    False()
-THEN
-    RESPONSE #100
-END
-//  WorstAC.
-IF
-    CheckStat(WorstAC,0,STONESKINS)
-    !StateCheck(WorstAC,STATE_IMPROVEDINVISIBILITY)
-    CheckStat(WorstAC,0,SANCTUARY)
-    See(WorstAC)
-    False()
-THEN
-    RESPONSE #100
 END
 
 /////////////////////////////////////////////////////////////////////
 // Invisible Kia Backstab
 /////////////////////////////////////////////////////////////////////
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Allegiance(Myself,ENEMY)
-  StateCheck(Myself,STATE_INVISIBLE)
-  GlobalTimerExpired("Cast","LOCALS")
-  GlobalTimerExpired("KaiTimer","LOCALS")
+  See(NearestEnemyOf(Myself))
   HaveSpell(KENSAI_KIA)
-  Range([PC],10)
+  !CheckSpellState(Myself,KENSAI_KIA)
+  Range(LastSeenBy(Myself),10)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(Myself,KENSAI_KIA)
-    SetGlobalTimer("KaiTimer","LOCALS",6)
-    SetGlobalTimer("Cast","LOCALS",6)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See(SecondNearestEnemyOf(Myself))
+  HaveSpell(KENSAI_KIA)
+  !CheckSpellState(Myself,KENSAI_KIA)
+  Range(LastSeenBy(Myself),10)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,KENSAI_KIA)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See(ThirdNearestEnemyOf(Myself))
+  HaveSpell(KENSAI_KIA)
+  !CheckSpellState(Myself,KENSAI_KIA)
+  Range(LastSeenBy(Myself),10)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,KENSAI_KIA)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See(FourthNearestEnemyOf(Myself))
+  HaveSpell(KENSAI_KIA)
+  !CheckSpellState(Myself,KENSAI_KIA)
+  Range(LastSeenBy(Myself),10)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,KENSAI_KIA)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See(FifthNearestEnemyOf(Myself))
+  HaveSpell(KENSAI_KIA)
+  !CheckSpellState(Myself,KENSAI_KIA)
+  Range(LastSeenBy(Myself),10)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,KENSAI_KIA)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See(SixthNearestEnemyOf(Myself))
+  HaveSpell(KENSAI_KIA)
+  !CheckSpellState(Myself,KENSAI_KIA)
+  Range(LastSeenBy(Myself),10)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,KENSAI_KIA)
+    SetInterrupt(TRUE)
 END
 
 IF
   Allegiance(Myself,ENEMY)
   StateCheck(Myself,STATE_INVISIBLE)
-  !GlobalTimerExpired("Cast","LOCALS")
-  GlobalTimerExpired("KaiTimer","LOCALS")
+  //!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !CheckSpellState(Myself,KENSAI_KIA)
   HaveSpell(KENSAI_KIA)
 THEN
   RESPONSE #100
@@ -172,15 +210,120 @@ IF
   See(NearestEnemyOf(Myself))
   Allegiance(Myself,ENEMY)
   StateCheck(Myself,STATE_INVISIBLE)
-  !GlobalTimerExpired("KaiTimer","LOCALS")
+  CheckSpellState(Myself,KENSAI_KIA)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
     DisplayStringHead(Myself,25511) // Intruders!
     Shout(125)
-    Attack(LastSeenBy(Myself))
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  See(SecondNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckSpellState(Myself,KENSAI_KIA)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,25511) // Intruders!
+    Shout(125)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  See(ThirdNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckSpellState(Myself,KENSAI_KIA)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,25511) // Intruders!
+    Shout(125)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  See(FourthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckSpellState(Myself,KENSAI_KIA)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,25511) // Intruders!
+    Shout(125)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  See(FifthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckSpellState(Myself,KENSAI_KIA)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,25511) // Intruders!
+    Shout(125)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  See(SixthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  StateCheck(Myself,STATE_INVISIBLE)
+  CheckSpellState(Myself,KENSAI_KIA)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,25511) // Intruders!
+    Shout(125)
+    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
@@ -196,7 +339,7 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
-// Normal Attack
+// Normal Attack - LEGACY STUFF
 /////////////////////////////////////////////////////////////////////
 //IF
 //  Allegiance(Myself,ENEMY)
@@ -207,110 +350,179 @@ END
 //  RESPONSE #100
 //    DisplayStringHead(Myself,25511) // Intruders!
 //    Shout(125)
-//    Attack(LastSeenBy(Myself))
+//    AttackOneRound(LastSeenBy(Myself))
 //END
-
+////////////////////////////////////////////////////////////////////
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
-  See(WorstAC([PC]))
+  See(MostDamagedOf([PC]))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(LastSeenBy(Myself))
+    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
+  !StateCheck(Myself,STATE_INVISIBLE)
+  See(WorstAC([PC]))
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
   !StateCheck(Myself,STATE_INVISIBLE)
   See(NearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(SecondNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(ThirdNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(FourthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(FifthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(SixthNearestEnemyOf(Myself))
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
+  !StateCheck(Myself,STATE_INVISIBLE)
+  See(MostDamagedOf([PC]))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !StateCheck(Myself,STATE_INVISIBLE)
+  See(WorstAC([PC]))
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
   !StateCheck(Myself,STATE_INVISIBLE)
   See(NearestEnemyOf(Myself))
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -318,12 +530,11 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(SecondNearestEnemyOf(Myself))
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -331,12 +542,11 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(ThirdNearestEnemyOf(Myself))
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -344,12 +554,11 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(FourthNearestEnemyOf(Myself))
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -357,12 +566,11 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(FifthNearestEnemyOf(Myself))
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -370,12 +578,11 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  !GlobalTimerNotExpired("KaiTimer","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   See(SixthNearestEnemyOf(Myself))
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -383,7 +590,7 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    Attack(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
 IF
