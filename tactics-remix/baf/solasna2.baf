@@ -24,6 +24,7 @@ IF
   Global("RedBadgeFight","GLOBAL",1)
   GlobalTimerExpired("Cloud","LOCALS")
   See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
   Allegiance(Myself,ENEMY)
   !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
@@ -44,6 +45,7 @@ IF
   !StateCheck(SixthNearestEnemyOf(Myself),STATE_POISONED)
   CheckStat(SixthNearestEnemyOf(Myself),0,SANCTUARY)
   See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
@@ -61,6 +63,7 @@ IF
   !StateCheck(FifthNearestEnemyOf(Myself),STATE_POISONED)
   CheckStat(FifthNearestEnemyOf(Myself),0,SANCTUARY)
   See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~
@@ -78,6 +81,7 @@ IF
   !StateCheck(FourthNearestEnemyOf(Myself),STATE_POISONED)
   CheckStat(FourthNearestEnemyOf(Myself),0,SANCTUARY)
   See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("solasna1",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna3",LastSeenBy(Myself))  // ~Hallowed Redeemer~
   !HasItem("solasna4",LastSeenBy(Myself))  // ~Ixil's Spike +6~

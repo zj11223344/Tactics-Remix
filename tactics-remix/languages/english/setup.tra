@@ -9,3 +9,9 @@
 
 @3000 = ~Component requires BGII: EE or EET~
 @3001 = ~DLCMerger is needed before modding SoD games~
+
+///////////////////////////////////////////////////////////////////////////
+// Groups                                                                //
+///////////////////////////////////////////////////////////////////////////
+@3010 = ~Add New Encounters - Install BEFORE SCS~
+@3011 = ~Update Existing Encounters - Install AFTER SCS~
