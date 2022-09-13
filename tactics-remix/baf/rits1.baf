@@ -842,10 +842,10 @@ END
 // Spell: Melf Acid Arrow
 /////////////////////////////////////////////////////////////////////
 IF
-	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-	GlobalGT("Two","LOCALS",0)
-	See(NearestEnemyOf(Myself))
-	!Allegiance(LastSeenBy(Myself),ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalGT("Two","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !HasItemEquiped("shld24",LastSeenBy(Myself))
   CheckStatLT(LastSeenBy(Myself),90,RESISTACID)
