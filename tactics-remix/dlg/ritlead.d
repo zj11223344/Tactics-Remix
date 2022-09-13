@@ -11,7 +11,7 @@ IF ~NumTimesTalkedTo(0)~ THEN BEGIN s0
   SAY @315
   IF ~~ THEN REPLY @316 GOTO what
   IF ~~ THEN REPLY @318 GOTO yes
-  IF ~~ THEN REPLY @105 GOTO no
+  IF ~~ THEN REPLY @320 GOTO no
 END
 
 IF ~~ THEN BEGIN what
