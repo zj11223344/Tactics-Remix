@@ -7,6 +7,7 @@ THEN
     ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
     ReallyForceSpell(Myself,WIZARD_MELF_METEOR)
     SetGlobal("MO_Once","LOCALS",1)
+    SetGlobal("MO_TimeStop","LOCALS",0)
     StartDialogNoSet(LastSeenBy(Myself))
 END
 
@@ -28,16 +29,17 @@ THEN
     ForceSpellRES("wwundead",Myself)
 END
 
-IF
-  HPLT(Myself,50)
-  Global("MO_Killed","LOCALS",0)
-THEN
-  RESPONSE #100
-    ActionOverride(Myself,SetGlobal("MO_Killed","LOCALS",1))
-END
+//IF
+//  HPLT(Myself,50)
+//  Global("MO_Killed","LOCALS",0)
+//THEN
+//  RESPONSE #100
+//    ActionOverride(Myself,SetGlobal("MO_Killed","LOCALS",1))
+//END
 
 IF
-  Global("MO_Killed","LOCALS",1)
+  //Global("MO_Killed","LOCALS",1)
+  HPLT(Myself,50)
   Global("MO_Final","LOCALS",0)
 THEN
   RESPONSE #100
@@ -60,128 +62,6 @@ THEN
     Wait(2)
     SetGlobal("MO_Final","LOCALS",1)
     SetInterrupt(TRUE)
-END
-
-IF
-  See(NearestEnemyOf(Myself))
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,1)
-  See(Player1)
-  See(Player2)
-  See(Player3)
-  See(Player4)
-  See(Player5)
-  See(Player6)
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,2)
-  See(Player4)
-  See(Player1)
-  See(Player6)
-  See(Player3)
-  See(Player2)
-  See(Player5)
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,3)
-  See(Player6)
-  See(Player3)
-  See(Player5)
-  See(Player1)
-  See(Player2)
-  See(Player4)
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,4)
-  See(Player4)
-  See(Player2)
-  See(Player6)
-  See(Player1)
-  See(Player5)
-  See(Player3)
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,5)
-  See(Player3)
-  See(Player6)
-  See(Player4)
-  See(Player1)
-  See(Player5)
-  See(Player2)
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,6)
-  See(Player6)
-  See(Player5)
-  See(Player4)
-  See(Player3)
-  See(Player2)
-  See(Player1)
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,7)
-  See(Player6)
-  See(Player5)
-  See(Player4)
-  See(Player3)
-  See(Player2)
-  See(Player1)
-  See(WeakestOf(Myself))
-  False()
-THEN
-  RESPONSE #100
-    Continue()
-END
-
-IF
-  RandomNum(8,8)
-  See(Player6)
-  See(Player5)
-  See(Player4)
-  See(Player3)
-  See(Player2)
-  See(Player1)
-  See(MostDamagedOf(Myself))
-  False()
-THEN
-  RESPONSE #100
-    Continue()
 END
 
 IF
@@ -221,9 +101,9 @@ THEN
   RESPONSE #100
     SetInterrupt(FALSE)
     DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_ICE_STORM)
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_ICE_STORM)
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_ICE_STORM)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_ICE_STORM)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_ICE_STORM)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_ICE_STORM)
     SetGlobal("MO_SpTrig","LOCALS",1)
     SetInterrupt(TRUE)
 END
@@ -235,9 +115,9 @@ THEN
   RESPONSE #100
     SetInterrupt(FALSE)
     DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_SKULL_TRAP)
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_SKULL_TRAP)
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_SKULL_TRAP)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_SKULL_TRAP)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_SKULL_TRAP)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_SKULL_TRAP)
     SetGlobal("MO_SpTrig","LOCALS",1)
     SetInterrupt(TRUE)
 END
@@ -249,22 +129,52 @@ THEN
   RESPONSE #100
     SetInterrupt(FALSE)
     DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_DEATH_FOG)
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_DEATH_FOG)
-    ReallyForceSpell(TenthNearestEnemyOf(Myself),WIZARD_DEATH_FOG)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_DEATH_FOG)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_DEATH_FOG)
+    ReallyForceSpell(FarthestEnemyOf(Myself),WIZARD_DEATH_FOG)
     SetGlobal("MO_SpTrig","LOCALS",1)
     SetInterrupt(TRUE)
 END
 
 IF
-  !GlobalTimerNotExpired("MO_WpnIm","LOCALS")
-  GlobalGT("MO_SpTrig","LOCALS",0)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+  !CheckSpellState(Myself,PROTECTION_FROM_MAGICAL_WEAPONS)
+  !CheckSpellState(Myself,ABSOLUTE_IMMUNITY)
+  !CheckSpellState(Myself,MANTLE)
+  !CheckSpellState(Myself,IMPROVED_MANTLE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
-    SetGlobalTimer("MO_CastAttack","LOCALS",4)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
-    SetGlobalTimer("MO_WpnIm","LOCALS",24)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
+  GlobalLT("MO_TimeStop","LOCALS",3)
+  Global("MO_SpTrig","LOCALS",1)  
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    IncrementGlobal("MO_TimeStop","GLOBAL",0)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_TimeStopTimer","LOCALS",18)
+    DisplayStringHead(Myself,46153)  // ~uses a scroll~
+    SetInterrupt(FALSE)
+    ForceSpell(Myself,WIZARD_TIME_STOP)
+    SetInterrupt(TRUE)
 END
 
 IF
