@@ -46,15 +46,6 @@ LANGUAGE ~Francais (original translation by Ly Meng, Laurent Duvernet et Cocobar
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-// The Ritual                                                            //
-///////////////////////////////////////////////////////////////////////////
-BEGIN @1 DESIGNATED 1 GROUP @3010 LABEL TacticsRemix-Ritual
-
-REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
-
-INCLUDE ~tactics-remix/components/ritual.tpa~
-
-///////////////////////////////////////////////////////////////////////////
 // "Kuroisan", the Acid Kensai                                           //
 ///////////////////////////////////////////////////////////////////////////
 BEGIN @2 DESIGNATED 2 GROUP @3010 LABEL TacticsRemix-Kuroisan
@@ -62,6 +53,15 @@ BEGIN @2 DESIGNATED 2 GROUP @3010 LABEL TacticsRemix-Kuroisan
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/kuroisan.tpa~
+
+///////////////////////////////////////////////////////////////////////////
+// The Ritual                                                            //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @1 DESIGNATED 1 GROUP @3010 LABEL TacticsRemix-Ritual
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remix/components/ritual.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
 // "Red Badge" Poison-Based Encounter                                    //
