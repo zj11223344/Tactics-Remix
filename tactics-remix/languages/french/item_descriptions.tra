@@ -49,7 +49,7 @@ Poids : 3~
 // The Lucky One                                                         //
 ///////////////////////////////////////////////////////////////////////////
 @4004 = ~Le Veinard +1~
-@4005 = ~Il s'agit d'une lame de bretteur, elle fut utilisée à maintes reprises dans des combats héroïques contre les plus « gros vilains »" envoyés par on ne sait trop qui. La compagnie de mercenaires Les Veinards ont fait fabriquer ces lames alors que leur dernier gros coup était encore chaud. Après cette aubaine, ils n'ont continuer l'aventure que pour le frisson, se défiant les uns les autres pour accomplir des exploits toujours plus audacieux. 
+@4005 = ~Il s'agit d'une lame de bretteur, elle fut utilisée à maintes reprises dans des combats héroïques contre les plus « gros vilains » envoyés par on ne sait trop qui. La compagnie de mercenaires Les Veinards ont fait fabriquer ces lames alors que leur dernier gros coup était encore chaud. Après cette aubaine, ils n'ont continuer l'aventure que pour le frisson, se défiant les uns les autres pour accomplir des exploits toujours plus audacieux. 
 Pourquoi ces armes ne sont-elles plus entre leurs mains ? Parfois, le « gros vilain » gagne...
 
 PARAMÈTRES :
@@ -66,7 +66,7 @@ Type : arme à 1 main
 Nécessite :
  5 en Force
 
-Poids : ~
+Poids :  3~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -172,7 +172,7 @@ Poids : 4~
 // Resilient Trodders                                                    //
 ///////////////////////////////////////////////////////////////////////////
 @4302 = ~les trotteurs du résilient~
-@4303 = ~Bien qu'elles portent un nom inélégant, ces bottes robustes possèdent une puissante magie. Fabriquées par un jeune forgeron talentueux, elles devaient être le chef-d'œuvre qui lui permettrait de devenir l'apprenti du plus grand forgeron de la ville. Cependant, il tomba amoureux d'une clerc de Helm et fut ridiculisé par ses pairs, la clerc était une demi-orque, ce qui la rendait laide aux yeux de ses camarades. Contrairement à eux, le jeune forgeron vit la beauté de la demi-orque dans sa gentillesse et sa dévotion inébranlable, il lui offra ses bottes peu de temps avant de se consacrer à l'église. Hélas, le forgeron ne vécut pas très longtemps sous l'égide de Helm - il périt en défendant une caravane de marchands qui avait fait appel à l'église pour être protégée des bandits - alors les bottes furent enchantées pour honorer sa mémoire et son dévouement, et la clerc à qui il les avait offertes les porta jusqu'à son dernier soupir.
+@4303 = ~Bien qu'elles portent un nom inélégant, ces bottes robustes possèdent une puissante magie. Fabriquées par un jeune forgeron talentueux, elles auraient du être le chef-d'œuvre qui lui permettrait de devenir l'apprenti du plus grand forgeron de la ville. Cependant, il tomba amoureux d'une clerc de Helm et fut ridiculisé par ses pairs, la clerc était une demi-orque, ce qui la rendait laide aux yeux de ses camarades. Contrairement à eux, le jeune forgeron vit la beauté de la demi-orque dans sa gentillesse et sa dévotion inébranlable, il lui offrit ses bottes peu de temps avant de se consacrer lui aussi au Vigilant. Hélas, le forgeron ne vécut pas très longtemps sous l'égide de Helm - il périt en défendant une caravane de marchands qui avait fait appel à l'église pour être protégée des bandits - les bottes furent alors enchantées pour honorer sa mémoire et son dévouement, et la clerc à qui il les avait offertes les porta jusqu'à son dernier soupir.
 
 PARAMÈTRES :
 
@@ -182,7 +182,24 @@ Capacités d'équipement :
 – Jets de sauvegarde : +2
 – Protège contre toute forme de terreur et renforce le moral
 
-Poids : 4~// A REVOIR //
+Poids : 4~
+
+///////////////////////////////////////////////////////////////////////////
+// Dragon Slippers                                                      //
+///////////////////////////////////////////////////////////////////////////
+@4304 = ~Les Chaussons du Dragon~
+@4305 = ~Feryl le Chasseur de Dragon était un sacré gaillard qui, avec quatre morts à son actif, pensait avoir perfectionné l'art de tuer les dragons. Il avait créé un certain nombre d'équipements magiques, à partir de ses précédentes victoires, dont plusieurs étaient des bottes qu'il appelait, par plaisanterie, ses chaussons du dragon.
+Étonnamment, Feryl ne fut pas vaincu par son ennemi favori, mais se retrouva pris en embuscade par une petite bande de gobelins alors qu'il se rendait à la chasse.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+– Dextérité : +2
+– Protège contre toute forme de terreur et renforce le moral
+– Immunité au Coups d'ailes des dragons
+– Résistance à la magie : +10%
+
+Poids : 4~
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -195,7 +212,6 @@ Poids : 4~// A REVOIR //
 ///////////////////////////////////////////////////////////////////////////
 @4400 = ~Cape~
 @4401 = ~La cape peut être fabriquée dans presque n'importe quel type de tissu et prendre n'importe quelle forme. Les capes les plus courantes sont faites d'un morceau de tissu circulaire troué en son centre pour passer la tête et d'un tissu drapé à partir du cou, attaché par une chaîne, une broche, une ficelle ou des épingles.
-
 
 Poids : 4~
 
@@ -252,7 +268,7 @@ Capacités de charge :
   Spécial : Immunité total aux armes +2 et inférieur.
   Durée : 4 rounds
 
-– Globe of Invulnerability once per day
+– Globe d'invulnérabilité (une fois par jour)
   Spécial : Immunité aux sorts de niveau 1 à 4
   Durée : 2 tours
 
@@ -307,3 +323,75 @@ Nécessite :
  5 en force
 
 Poids : 5~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Amulets                                                               //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Amulet                                                                //
+///////////////////////////////////////////////////////////////////////////
+@4700 = ~Amulette~
+@4701 = ~Les amulettes sont généralement des objets magiques suspendus autour du cou par une chaîne. Le type de chaîne accompagnant l'amulette augmente souvent la valeur esthétique de l'objet, mais pas ses propriétés magiques. On ne peut porter qu'une seule amulette autour du cou. 
+
+Poids : 1~
+
+///////////////////////////////////////////////////////////////////////////
+// Lillith Amulet                                                        //
+///////////////////////////////////////////////////////////////////////////
+@4702 = ~Amulette de Lillith~
+@4703 = ~Amulette des Lillim
+Cette amulette maudite dégage une forte odeur de sang et de poussière. Elle est venue en votre possession lors de votre implication dans l'affaire du Rituel. Cette amulette tout comme le Rituel demeurent enveloppés de mystère, mais certains des pouvoirs de l'amulette peuvent être appréhendés. Manifestement, elle offre au porteur certaines immunités et protections magiques que possèdent en général les vampires : régénération, résistance au froid et à l'électricité, immunité au poison, à la peur, au sommeil, au drain de niveau, à l'immobilisation, aux charmes et aux armes non magiques. Ceux qui ont un cœur véritablement pur ne peuvent supporter de la porter, et elle ne peut être ôtée sans l'aide d'un clerc. Vous êtes persuadé que les pouvoirs de l'amulette sont accompagnés d'un prix terrible, sans pouvoir toutefois détecter nul inconvénient. En fait, l'amulette vous semble étrangement familière, elle remue quelque chose de profondément enfoui dans votre mémoire.
+
+*OBJET MAUDIT*
+
+PARAMETRES :
+
+Offre des protections vampiriques
+
+Inutilisable par :
+ Paladin~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Armor                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Studded Leather                                                       //
+///////////////////////////////////////////////////////////////////////////
+@4800 = ~Besantine~
+@4801 = ~La besantine a peu de choses en commun avec une armure de cuir normale. L'armure de cuir est une protection renforcée, la besantine est souple et comporte des centaines de rivets. Ces derniers sont tellement rapprochés qu'ils forment une couche flexible de métal dur qui permet de contrer toute attaque cinglante et tranchante. Le renforcement de cuir souple n'est rien de plus qu'un moyen de maintenir les rivets en place. 
+
+PARAMETRES :
+
+Classe d'Armure : 7 (5 contre les attaques tranchantes, 6 contre les attaques perforantes et les projectiles)
+
+Poids : 25
+
+Nécessite : 
+- Force : 6~
+
+///////////////////////////////////////////////////////////////////////////
+// Yellow Dragon Armor                                                   //
+///////////////////////////////////////////////////////////////////////////
+@4802 = ~Armure de Dragon Jaune~
+@4803 = ~Armure de Dragon Jaune
+Cette armure est faite d'écailles de Dragon Jaune qui s'entremêlent. Les Dragons Jaunes sont connus pour leurs attaques de sable brûlant et pour leur résistance aux armes perforantes. Cette armure a été obtenue par <CHARNAME> lors de son intervention dans le Rituel. L'armure est d'une légèreté surnaturelle, et d'encombrement réduit. 
+
+PARAMETRES :
+
+Bonus : +50 % de résistance aux projectiles et aux armes perforantes
+Classe d'armure : -1
+
+Poids : 10
+
+Nécessite : 
+- Force : 6
+
+Inutilisable par :
+ Mage~
+
