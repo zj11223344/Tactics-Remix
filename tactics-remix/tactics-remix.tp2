@@ -26,7 +26,7 @@ LANGUAGE ~English~
          ~tactics-remix/languages/english/script_dialog.tra~
          ~tactics-remix/languages/english/setup.tra~
 		 
-LANGUAGE ~Francais~
+LANGUAGE ~Francais (original translation by Ly Meng, Laurent Duvernet et Cocobard)~
          ~french~
          ~tactics-remix/languages/english/cre_dialog.tra~
          ~tactics-remix/languages/english/creatures.tra~
