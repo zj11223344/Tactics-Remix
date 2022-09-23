@@ -63,6 +63,7 @@ Large overhaul for the original Crypt King fight within the Graveyard district. 
 
 - Wes thank you for your permission to update such an amazing mod! I appreciate being a steward of your work, and I hope you find it enjoyable.
 - Gebhard Blucher, Kensai Ryu, Xyx and Ishan, thank you for all your amazing work on the original Tactics mod. I hope you too enjoy the work I have put into it.
+- Cam for all of your help and assistance. The reasons are many, thank you.
 - JohnBob for providing French translation.
 
 ## Further Reading
