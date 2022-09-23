@@ -6,4 +6,4 @@ September 22, 2022
 
 ### Changed 
 
-- Initial creation of folder
+- Initial creation and alpha release.
