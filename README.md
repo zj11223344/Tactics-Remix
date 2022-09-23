@@ -47,7 +47,7 @@ A gnome fighter/illusionist is looking for Valygar inside a building in the dock
 
 ### Update Existing Encounters - Install AFTER SCS
 
-#### Gebhard Blucher's Improved Demon Knights
+#### Gebhard Blucher's Improved Demon Knights (In Progress)
 
 This makes the Demon Knights (notably, those at the Demogorgon altar in the Underdark) better opponents. They have more powerful spells and are more resistant to cheese. 
 
