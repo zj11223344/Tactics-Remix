@@ -12,7 +12,7 @@
 
 ## Introduction
 
-It is with great pleasure I have been given permission from Wes to update his original [Tactics mod](https://weidu.org/tactics.html) to be compatible with the Enhanced Editions. Tactics Remix adds quite a few optional, but difficult, encounters to BG2:EE and EET aimed to make the game more challenging and rewarding.
+It is with great pleasure I have been given permission from Wes to update his original [Tactics mod](https://weidu.org/tactics.html) to be compatible with the Enhanced Editions. Tactics Remix adds quite a few optional, but difficult, encounters to BG2:EE and EET aims to make the game more challenging and rewarding.
 
 Many of these components have been drawn from different mod authors; I did not write everything here. In particular, Wes Weimer, Gebhard Blucher, Kensai Ryu, Xyx and Ishan have made contributions. I have gone through, updated the components for the EE's, and redid most of the AI from the ground up. The goal is for the encounters to feel similar to their oBG counterparts with more challenging enemy AI.
 
