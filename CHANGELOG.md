@@ -1,8 +1,8 @@
 # Changelog
 
-## Version 0.1
+## Version 0.1-alpha
 
-August xx, 2022
+September 22, 2022
 
 ### Changed 
 
