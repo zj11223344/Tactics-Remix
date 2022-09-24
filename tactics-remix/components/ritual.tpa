@@ -17,12 +17,19 @@ COPY ~tactics-remix/are/ar0086.are~   ~override~
 
 // Item Files
 COPY ~tactics-remix/itm/ritgol.itm~   ~override~
+// use immunity spellstates, if available (e.g. EE Fixpack)
+OUTER_SET charm_immunity     = IDS_OF_SYMBOL (~splstate~ ~CHARM_IMMUNITY~)  
+OUTER_SET panic_immunity     = IDS_OF_SYMBOL (~splstate~ ~PANIC_IMMUNITY~)    
+OUTER_SET sleep_immunity     = IDS_OF_SYMBOL (~splstate~ ~SLEEP_IMMUNITY~)    
 COPY ~tactics-remix/itm/ritamul.itm~  ~override~ 
   SAY NAME1 @4700
   SAY NAME2 @4702
   SAY UNIDENTIFIED_DESC @4701
   SAY DESC @4703
   WRITE_SHORT   0x42 0
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 101 match_parameter2 =  5 opcode = 328 parameter2 = charm_immunity special = 1 STR_VAR insert = first END // clone immunity to charm into set spell state
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 101 match_parameter2 = 24 opcode = 328 parameter2 = panic_immunity special = 1 STR_VAR insert = first END // clone immunity to fear into set spell state
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 101 match_parameter2 = 39 opcode = 328 parameter2 = sleep_immunity special = 1 STR_VAR insert = first END // clone immunity to sleep into set spell state
   
 COPY ~tactics-remix/itm/mysboot.itm~  ~override~
   SAY NAME1 @4300
