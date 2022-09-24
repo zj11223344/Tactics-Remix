@@ -60,6 +60,15 @@ COPY ~tactics-remix/itm/solasna5.itm~  ~override~
   SAY UNIDENTIFIED_DESC @4601
   SAY DESC @4603
 
+// poison, stun subspells for solasna5.itm
+COPY ~tactics-remix/spl/solasn5p.spl~  ~override~ // poison effect
+
+OUTER_SET stun_immunity      = IDS_OF_SYMBOL (~splstate~ ~STUN_IMMUNITY~)  
+COPY ~tactics-remix/spl/solasn5s.spl~  ~override~ // stun effect
+  PATCH_IF (stun_immunity > 0) BEGIN // if stun_immunity state is present from EE Fixpack
+    LPF CLONE_EFFECT INT_VAR match_opcode = 45 opcode = 324 parameter1 = stun_immunity parameter2 = 110 timing = 0 duration = 0 resist_dispel = 0 savingthrow = 0 STR_VAR insert = above resource = EVAL ~%SOURCE_RES%~ END
+  END  
+
 COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/solasna1.d~
 
 ///////////////////////////////////////////////////////////////////////////
