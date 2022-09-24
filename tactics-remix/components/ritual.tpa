@@ -23,11 +23,17 @@ COPY ~tactics-remix/itm/ritamul.itm~  ~override~
   SAY UNIDENTIFIED_DESC @4701
   SAY DESC @4703
   WRITE_SHORT   0x42 0
+  
 COPY ~tactics-remix/itm/mysboot.itm~  ~override~
   SAY NAME1 @4300
   SAY NAME2 @4304
   SAY UNIDENTIFIED_DESC @4301
   SAY DESC @4305
+  PATCH_IF FILE_EXISTS_IN_GAME ~#curefer.spl~ BEGIN // fear cure from EEFP
+    LPF ALTER_EFFECT INT_VAR match_opcode = 161 opcode = 146 parameter1 = 0 parameter2 = 2 STR_VAR resource = ~#curefer~ END // instead of curing fear, cast fear removal spell
+    LPF DELETE_EFFECT INT_VAR match_opcode = 240 match_parameter2 = 36 END // delete removal of fear icon (handled by spell)
+  END 
+        
 COPY ~tactics-remix/itm/ritdrag.itm~  ~override~
   SAY NAME1 @4800
   SAY NAME2 @4802
