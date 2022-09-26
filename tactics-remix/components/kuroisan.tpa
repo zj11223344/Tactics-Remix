@@ -47,6 +47,10 @@ COPY ~tactics-remix/itm/mobt04.itm~  ~override~
         SAY NAME2 @4302
         SAY UNIDENTIFIED_DESC @4301
         SAY DESC @4303
+        PATCH_IF FILE_EXISTS_IN_GAME ~#curefer.spl~ BEGIN // fear cure from EEFP
+          LPF ALTER_EFFECT INT_VAR match_opcode = 161 opcode = 146 parameter1 = 0 parameter2 = 2 STR_VAR resource = ~#curefer~ END // instead of curing fear, cast fear removal spell
+          LPF DELETE_EFFECT INT_VAR match_opcode = 240 match_parameter2 = 36 END // delete removal of fear icon (handled by spell)
+        END 
 
 COPY ~tactics-remix/cre/solak1.cre~ ~override~
   SAY NAME1 @2003
