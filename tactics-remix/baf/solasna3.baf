@@ -20,10 +20,14 @@ THEN
 END
 
 IF
-  Delay(5)
+  !GlobalTimerNotExpired("MO_InvisibilityTimer","LOCALS")
   Global("RedBadgeFight","GLOBAL",1)
+  OR(2)
+    Difficulty(HARDEST)
+    Difficulty(HARD)
 THEN
   RESPONSE #100
+    SetGlobalTimer("MO_InvisibilityTimer","LOCALS",6)
     ReallyForceSpell(Myself,WIZARD_INVISIBILITY)
     Continue()
 END
