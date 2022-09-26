@@ -3,11 +3,17 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
+
+OUTER_SET death_immunity     = IDS_OF_SYMBOL (~splstate~ ~DEATH_IMMUNITY~)   
 COPY ~tactics-remix/itm/moclk05.itm~  ~override~
   SAY NAME1 @4400
   SAY NAME2 @4402
   SAY UNIDENTIFIED_DESC @4401
   SAY DESC @4403
+  PATCH_IF (death_immunity > 0) BEGIN // eefp compat
+    LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 101 match_parameter2 = 13 opcode = 328 parameter2 = death_immunity special = 1 STR_VAR insert = first END // clone immunity to slay into set spell state
+  END  
+      
 
 COPY ~tactics-remix/itm/morng04.itm~  ~override~
   SAY NAME1 @4500
