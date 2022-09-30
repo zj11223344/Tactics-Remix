@@ -66,9 +66,16 @@ END
 IF
   Global("GB_DeathKnightDispel","LOCALS",0)
   See(NearestEnemyOf(Myself))
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     ReallyForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SetInterrupt(TRUE)
     SetGlobal("GB_DeathKnightDispel","LOCALS",1)
 END
 
