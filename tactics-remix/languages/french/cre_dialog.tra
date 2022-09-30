@@ -6,7 +6,7 @@
 @105     = ~Je suis Kuroisan, un Kensai et Wu Jen de grande renommée. Je suis venu dans ce pays à la recherche d'un katana légendaire. Les katanas, vois-tu, sont ma spécialité et mon obsession.~
 @106     = ~Bien sûr que si, je vais t'écouter. Est-ce que les gens que tu rencontres habituellement t'ignorent ? Crois-moi c'est probablement un mal pour un bien.~
 @107     = ~Tu possèdes un katana très puissant, le genre de lame que je recherche depuis pas mal de temps.~
-@108     = ~J'apprécierais beaucoup que tu me remettes la Furie Céleste. Je préférerais régler les choses pacifiquement si possible, mais s'il le faut j'emploierai la force.~ // la ou le ou rien du tout ?
+@108     = ~J'apprécierais beaucoup que tu me remettes Furie Céleste. Je préférerais régler les choses pacifiquement si possible, mais s'il le faut j'emploierai la force.~ // la ou le ou rien du tout ?
 @109      		= ~D'accord, bien sûr tu peux l'avoir.~
 @110     		= ~Je ne crois pas, non.~
 @111     = ~J'apprécierais beaucoup que tu me remettes Malakar. Je préférerais régler les choses pacifiquement si possible, mais si il le faut j'emploierai la force.~
@@ -120,8 +120,6 @@
 @355    = ~Les Crânes sont répartis à travers toute le Clairière. Chacun se trouve près d'un grand crâne sculpté dans la pierre. Un groupe d'environ sept humanoïdes garde chacun des Crânes. Les Crânes tirent leur pouvoir de la foi de ces sept gardiens, et ne peuvent être vaincus tant que l'un d'entre eux reste en vie. Ne faites aucun prisonnier.~
 @356    = ~Les autres gardiens ont contribué en offrant une part de leurs propres énergies vitales aux mages qui se sont sacrifiés pour devenir les crânes du rituel. En retour, cela a eu pour effet de lier les vies des gardiens aux crânes. C'est un pont entre la vie et la non-vie qui protège les crânes, tant que tous les laquais ne sont pas éliminés.~
 @357    = ~Il vous faut trouver chaque Crâne, tuer d'abord tous les défenseurs qui l'accompagnent, puis le Crâne lui-même. Quand tous les Crânes sont morts, franchissez la porte, et interrompez le Rituel.~
-
-// I STILL NEED TO DO THE BELOW, SO PLEASE DO NOT TRANSLATE YET!!!
 
 @358    = ~Dites m'en plus sur les mortels qui défendent le Rituel.~
 @359    = ~Le stratège du Rituel a créé l'Armée du Rituel  choisissant les plus valeureux éléments parmi des aventuriers modérément expérimentés. Chacun d'entre eux est à peu près deux ou trois fois plus expérimenté que vous ne l'étiez au moment de votre capture par Irenicus (oui, je suis au courant pour cela : tous les gens d'importance ont suivi votre parcours avec intérêt). Cela signifie qu'ils sont un peu plus puissant que vous à l'époque de votre capture.~
