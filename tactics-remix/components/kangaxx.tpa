@@ -1,0 +1,28 @@
+// Tactics Remix, Kensai Ryu's Tougher Kangaxx
+
+///////////////////////////////////////////////////////////////////////////
+// Import Creatures                                                      //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/cre/archlich.cre~ ~override~
+COPY ~tactics-remix/cre/hldemi.cre~   ~override~
+COPY ~tactics-remix/cre/krdualwf.cre~ ~override~
+COPY ~tactics-remix/cre/krdwarf.cre~  ~override~
+COPY ~tactics-remix/cre/krfight.cre~  ~override~
+COPY ~tactics-remix/cre/krlich2.cre~  ~override~
+COPY ~tactics-remix/cre/rat01.cre~    ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+ACTION_IF FILE_EXISTS ~override/ar0330.bcs~ THEN BEGIN
+  EXTEND_TOP ~AR0330.bcs~ ~tactics-remix/baf/ar0330.baf~
+END ELSE BEGIN
+  COPY ~tactics-remix/baf/ar0330.baf~ ~override/ar0330.bcs~
+    COMPILE_BAF_TO_BCS
+END
+
+COPY ~tactics-remix/baf/archlich.baf~ ~override/archlich.bcs~
+     ~tactics-remix/baf/demilich.baf~ ~override/demilich.bcs~
+     ~tactics-remix/baf/krfight.baf~  ~override/krfight.bcs~
+     ~tactics-remix/baf/krlich.baf~   ~override/krlich.bcs~
+  COMPILE_BAF_TO_BCS
