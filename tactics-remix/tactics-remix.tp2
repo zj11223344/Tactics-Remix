@@ -173,7 +173,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/maevar.tpa~
 */
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Gebhard Blucher's Improved Demon Knights                              //
 ///////////////////////////////////////////////////////////////////////////
@@ -182,7 +181,6 @@ BEGIN @14 DESIGNATED 14 GROUP @3011 LABEL TacticsRemix-DemonKnights
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/demon_knights.tpa~
-*/
 
 /*
 ///////////////////////////////////////////////////////////////////////////
