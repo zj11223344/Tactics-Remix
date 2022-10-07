@@ -146,7 +146,7 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_EnemyTrueSightTimer","GLOBAL")
-  SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
+  Global("MO_EnemyTrueSight","GLOBAL",1)
 THEN
   RESPONSE #100
     SetGlobal("MO_EnemyTrueSight","GLOBAL",0)
