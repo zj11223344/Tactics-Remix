@@ -1,0 +1,17 @@
+// Tactics Remix, Update All Enemy Hit Points
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+SPRINT source ~%SOURCE_FILE%~
+READ_BYTE  0x24  current_hp
+READ_BYTE  0x26  max_hp
+READ_BYTE  0x237 gender
+READ_ASCII 0x280 deathvar
+
+PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND ((gender != 6) OR (gender !=9)) BEGIN
+  current_hp = (current_hp * dmg_multiplier) + dmg_bonus
+  max_hp = (max_hp * dmg_multiplier) + dmg_bonus
+
+  WRITE_BYTE 0x24 current_hp
+  WRITE_BYTE 0x26 max_hp
+END
+BUT_ONLY

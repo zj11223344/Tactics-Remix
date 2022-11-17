@@ -289,3 +289,46 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/fire_giants.tpa~
 */
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Enemy Improvements (Group 3012)                                       //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Improve All Enemies Hit Points                                        //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @25 DESIGNATED 25 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints1 
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
+
+OUTER_SET dmg_multiplier = 2 // x2 multiplier
+OUTER_SET dmg_bonus = 0      // Damage bonus +0
+INCLUDE ~tactics-remix/components/hit_points.tpa~
+
+////////////////////////////////////////////////////
+
+BEGIN @26 DESIGNATED 26 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints2 
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
+
+OUTER_SET dmg_multiplier = 2 // x2 multiplier
+OUTER_SET dmg_bonus = 20     // Damage bonus +0
+INCLUDE ~tactics-remix/components/hit_points.tpa~
+
+////////////////////////////////////////////////////
+
+BEGIN @27 DESIGNATED 27 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints3 
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
+
+OUTER_SET dmg_multiplier = 3 // x2 multiplier
+OUTER_SET dmg_bonus = 0      // Damage bonus +0
+INCLUDE ~tactics-remix/components/hit_points.tpa~
+
+////////////////////////////////////////////////////
+
+BEGIN @28 DESIGNATED 28 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints4 
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
+
+OUTER_SET dmg_multiplier = 3 // x2 multiplier
+OUTER_SET dmg_bonus = 30     // Damage bonus +0
+INCLUDE ~tactics-remix/components/hit_points.tpa~
