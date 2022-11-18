@@ -23,6 +23,11 @@
 @21 = ~Les Monts de la Marche de Mike Barnes~
 @22 = ~Bosquet des Druides plus difficile~
 @23 = ~Geants du Feu plus coriaces~
+@24 = ~Augmenter les points de vie de tous les ennemis~
+@25 = ~Multiplier les points de vie par 2~
+@26 = ~Multiplier les points de vie par 2 et ajouter 20 points supplementaires~
+@27 = ~Multiplier les points de vie par 3~
+@28 = ~Multiplier les points de vie par 3 et ajouter 30 points supplementaires~
 
 @3000 = ~Ce composant necessite BG: EE, BGII: EE, ou EET~
 @3001 = ~DLCMerger est necessaire avant d'installer des mods sur les jeux SoD~
@@ -32,6 +37,7 @@
 ///////////////////////////////////////////////////////////////////////////
 @3010 = ~Ajouter de nouvelles rencontres - Installer ces composants AVANT Sword Coast Stratagems~
 @3011 = ~Mise à jour de rencontres existantes - Installer ces composants APRES Sword Coast Stratagems~
+@3012 = ~Amelioration des ennemis - Installer ces composants APRES Sword Coast Stratagems~
 
 
 /* =============== *
