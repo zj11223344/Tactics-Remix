@@ -13,8 +13,8 @@ PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND !("%gender%" S
   current_hp = (current_hp * dmg_multiplier) + dmg_bonus
   max_hp = (max_hp * dmg_multiplier) + dmg_bonus
 
-  WRITE_BYTE 0x24 current_hp
-  WRITE_BYTE 0x26 max_hp
+  WRITE_SHORT 0x24 current_hp
+  WRITE_SHORT 0x26 max_hp
   PATCH_PRINT ~Hit Points for %source% improved to %current_hp%~
 END
 BUT_ONLY
