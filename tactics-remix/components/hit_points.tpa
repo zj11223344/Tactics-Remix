@@ -15,5 +15,6 @@ PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND !("%gender%" S
 
   WRITE_BYTE 0x24 current_hp
   WRITE_BYTE 0x26 max_hp
+  PATCH_PRINT ~Hit Points for %source% improved to %current_hp%~
 END
 BUT_ONLY
