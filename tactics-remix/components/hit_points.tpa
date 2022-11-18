@@ -6,8 +6,7 @@ READ_BYTE  0x24  current_hp
 READ_BYTE  0x26  max_hp
 READ_BYTE  0x237 gender
 READ_ASCII 0x280 deathvar
-
-PATCH_PRINT ~Improving Hit Points for: %source%~
+//PATCH_PRINT ~Improving Hit Points for: %source%~
 
 PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND !("%gender%" STRING_EQUAL_CASE summoned) BEGIN
   current_hp = (current_hp * dmg_multiplier) + dmg_bonus
