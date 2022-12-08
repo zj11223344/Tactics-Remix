@@ -55,6 +55,10 @@ This makes the Demon Knights (notably, those at the Demogorgon altar in the Unde
 
 Large overhaul for the original Crypt King fight within the Graveyard district. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
 
+#### Morpheus562's Improved Drizzt (BGEE - In Progress)
+
+This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
+
 #### More encounters will be added.
 
 ## Special Thanks
