@@ -28,9 +28,11 @@
 @26 = ~Enemies Have x2+20 Hit Points~
 @27 = ~Enemies Have x3 Hit Points~
 @28 = ~Enemies Have x3+30 Hit Points~
+@29 = ~Morpheus562's Improved Drizzt (BGEE)~
 
 @3000 = ~Component requires BGII: EE or EET~
 @3001 = ~DLCMerger is needed before modding SoD games~
+@3002 = ~Component requires BG: EE or EET~
 
 ///////////////////////////////////////////////////////////////////////////
 // Groups                                                                //
