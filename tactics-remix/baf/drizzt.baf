@@ -17,7 +17,6 @@ END
 
 IF
   Global("MO_Prep","LOCALS",0)
-  See(NearestEnemyOf(Myself))
   Global("DrizztFight","GLOBAL",1)
 THEN
   RESPONSE #100
@@ -441,6 +440,7 @@ THEN
 END
 
 IF
+  ActionListEmpty()
   See([0.0.GNOLL])
   OR(2)
     Detect([GOODCUTOFF])
@@ -451,6 +451,7 @@ THEN
 END
 
 IF
+  ActionListEmpty()
   See(NearestEnemyOf(Myself))
   Detect([GOODCUTOFF])
 THEN
