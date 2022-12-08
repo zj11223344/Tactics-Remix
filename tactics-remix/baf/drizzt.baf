@@ -16,10 +16,26 @@ THEN
 END
 
 IF
+  Global("MO_Prep","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  Global("DrizztFight","GLOBAL",1)
+THEN
+  RESPONSE #100
+    ApplySpell(Myself,CLERIC_BLESS)  // SPPR101.SPL (Bless)
+    ApplySpell(Myself,CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Armor of Faith)
+    ApplySpell(Myself,CLERIC_RESIST_FIRE)  // SPPR210.SPL (Resist Fire and Cold)
+    RemoveSpell(CLERIC_BLESS)  // SPPR101.SPL (Bless)
+    RemoveSpell(CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Armor of Faith)
+    RemoveSpell(CLERIC_RESIST_FIRE)  // SPPR210.SPL (Resist Fire and Cold)
+    SetGlobal("MO_Prep","LOCALS",1)
+END
+
+IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([0.0.GNOLL])
   HasItemEquiped("POTN26",Myself)  // Potion of Explosions
   Allegiance(Myself,ENEMY)
+  Global("DrizztFight","GLOBAL",1)
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
@@ -74,20 +90,6 @@ THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     Spell(Myself,CLERIC_INVISIBILITY_PURGE)  // SPPR309.SPL (Invisibility Purge)
-END
-
-IF
-  Detect([GOODCUTOFF])
-  GlobalLT("OH_DRPREP","AR4200",1)  // Fisherman's Lake (Drizzt. Bjornin's half-ogres)
-THEN
-  RESPONSE #100
-    ApplySpell(Myself,CLERIC_BLESS)  // SPPR101.SPL (Bless)
-    ApplySpell(Myself,CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Armor of Faith)
-    ApplySpell(Myself,CLERIC_RESIST_FIRE)  // SPPR210.SPL (Resist Fire and Cold)
-    RemoveSpell(CLERIC_BLESS)  // SPPR101.SPL (Bless)
-    RemoveSpell(CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Armor of Faith)
-    RemoveSpell(CLERIC_RESIST_FIRE)  // SPPR210.SPL (Resist Fire and Cold)
-    SetGlobal("OH_DRPREP","AR4200",1)  // Fisherman's Lake (Drizzt. Bjornin's half-ogres)
 END
 
 IF
