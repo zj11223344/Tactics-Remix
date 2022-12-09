@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~DRIZZT.CRE~ ~override~
   //WRITE_BYTE 0x59 50 // Fire Resist
-  LPF ADD_CRE_EFFECT INT_VAR opcode = 44 parameter1 = 19 parameter2 = 1 power = 4 timing = 9 probability1 = 100 resist_dispel = 1 STR_VAR resource = ~POTN03~ END
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 44 parameter1 = 19 parameter2 = 1 power = 4 timing = 9 probability1 = 100 resist_dispel = 3 STR_VAR resource = ~POTN03~ END
   REPLACE_CRE_ITEM ~BOOT01~ #0 #0 #0 ~UNSTEALABLE~ ~BOOTS~ EQUIP
   ADD_CRE_ITEM ~POTN26~ #1 #0 #0 ~UNSTEALABLE~ ~QITEM1~
   ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~UNSTEALABLE~ ~QITEM2~
