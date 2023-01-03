@@ -299,6 +299,7 @@ REQUIRE_PREDICATE GAME_IS ~bgee eet~ @3002
 
 INCLUDE ~tactics-remix/components/drizzt_bgee.tpa~
 
+/*
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 // Enemy Improvements (Group 3012)                                       //
@@ -341,3 +342,4 @@ REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
 OUTER_SET dmg_multiplier = 3 // x2 multiplier
 OUTER_SET dmg_bonus = 30     // Damage bonus +0
 INCLUDE ~tactics-remix/components/hit_points.tpa~
+*/
