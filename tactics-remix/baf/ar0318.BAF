@@ -19,6 +19,7 @@ IF
   OR(2)
     Difficulty(Hard)
     Difficulty(Hardest)
+  Global("MO_LichIsDead","Ar0318",0)
 THEN
   RESPONSE #60
     DisplayStringHead(Myself,@5000)  // ~Rise... rise and listen to what must be said.~
