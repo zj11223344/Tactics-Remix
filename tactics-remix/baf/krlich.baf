@@ -284,7 +284,6 @@ IF
   StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
@@ -371,7 +370,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -398,7 +396,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -425,7 +422,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -452,7 +448,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -479,7 +474,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -506,7 +500,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -533,7 +526,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -560,7 +552,6 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("MO_TrueSightActive","LOCALS",1)
@@ -823,12 +814,203 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobal("MO_CastAbiDalzim","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    SetGlobal("MO_CastAbiDalzim","LOCALS",0)
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  Global("MO_CastAbiDalzim","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStatLT(LastSeenBy(Myself),80,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),80,MAGICDAMAGERESISTANCE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  Global("MO_CastAbiDalzim","LOCALS",1)
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStatLT(LastSeenBy(Myself),80,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),80,MAGICDAMAGERESISTANCE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  Global("MO_CastAbiDalzim","LOCALS",1)
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStatLT(LastSeenBy(Myself),80,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),80,MAGICDAMAGERESISTANCE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  Global("MO_CastAbiDalzim","LOCALS",1)
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStatLT(LastSeenBy(Myself),80,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),80,MAGICDAMAGERESISTANCE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  Global("MO_CastAbiDalzim","LOCALS",1)
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStatLT(LastSeenBy(Myself),80,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),80,MAGICDAMAGERESISTANCE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  Global("MO_CastAbiDalzim","LOCALS",1)
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+  !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStatLT(LastSeenBy(Myself),80,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),80,MAGICDAMAGERESISTANCE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  See([GOODCUTOFF])
   HasItem("SCRL9S",Myself)  // Imprisonment
   CheckStatLT(Myself,20,SPELLFAILUREMAGE)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #50
     SetGlobal("MO_UseImprisonmentScroll","LOCALS",1)
@@ -1039,7 +1221,6 @@ IF
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #50
     SetGlobal("MO_UseMazeScroll","LOCALS",1)
@@ -1274,7 +1455,6 @@ IF
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #50
     SetGlobal("MO_CastEnergyDrain","LOCALS",1)
@@ -1506,6 +1686,27 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Specifics(Myself,2001)
+  HaveSpell(WIZARD_SIMULACRUM)  // SPWI804.SPL (Simulacrum)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #80
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_SIMULACRUM)  // SPWI804.SPL (Simulacrum)
+    SetGlobal("ProdigalSon","LOCALS",1)
+    SetInterrupt(TRUE)
+  RESPONSE #20
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
   OR(7)
     See([GOODCUTOFF.0.0.MAGE_ALL])
     See([GOODCUTOFF.0.0.BARD_ALL])
@@ -1520,7 +1721,6 @@ IF
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
-  Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #50
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
@@ -1566,65 +1766,11 @@ END
 
 
 
-IF
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-  !CheckStatGT(LastSeenBy(Myself),35,RESISTMAGIC)
-  !HasBounceEffects(LastSeenBy(Myself))
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-END
 
-IF
-  See(SecondNearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-  !CheckStatGT(LastSeenBy(Myself),35,RESISTMAGIC)
-  !HasBounceEffects(LastSeenBy(Myself))
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-END
 
-IF
-  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-  !CheckStatGT(LastSeenBy(Myself),35,RESISTMAGIC)
-  !HasBounceEffects(LastSeenBy(Myself))
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-END
 
-IF
-  See(FourthNearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-  !CheckStatGT(LastSeenBy(Myself),35,RESISTMAGIC)
-  !HasBounceEffects(LastSeenBy(Myself))
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-END
 
-IF
-  See(TenthNearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-  !CheckStatGT(LastSeenBy(Myself),35,RESISTMAGIC)
-  !HasBounceEffects(LastSeenBy(Myself))
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-END
 
-IF
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  !Specifics(Myself,2001)
-  HaveSpell(WIZARD_SIMULACRUM)  // SPWI804.SPL (Simulacrum)
-THEN
-  RESPONSE #100
-    Spell(Myself,WIZARD_SIMULACRUM)  // SPWI804.SPL (Simulacrum)
-    SetGlobal("ProdigalSon","LOCALS",1)
-END
 
 IF
   OR(2)
