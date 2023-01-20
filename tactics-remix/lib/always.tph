@@ -36,7 +36,7 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
 ///////////////////////////////////////////////////////////////////////////
 // General variables, macros and functions                               //
 ///////////////////////////////////////////////////////////////////////////
-   //INCLUDE ~tactics-remix/sfo/install_sfo.tpa~
+   INCLUDE ~tactics-remix/sfo/install_sfo.tpa~
    INCLUDE ~tactics-remix/func/misc_functions.tpa~ //Block of code provided by subtledoctor
    INCLUDE ~tactics-remix/func/replace_multiline.tpa~ //Block of code in EET
    INCLUDE ~tactics-remix/lib/ds/ds.tph~ // Detectable Spells
