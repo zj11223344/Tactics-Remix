@@ -42,7 +42,7 @@ COPY ~tactics-remix/itm/morb03.itm~  ~override~
         SAY DESC @4203
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 2 STR_VAR resource = ~morb03~ END
 
-COPY ~tactics-remix/itm/mobt04.itm~  ~override~
+COPY ~tactics-remix/itm/mobt09.itm~  ~override~
         SAY NAME1 @4300
         SAY NAME2 @4302
         SAY UNIDENTIFIED_DESC @4301
@@ -56,7 +56,7 @@ COPY ~tactics-remix/cre/solak1.cre~ ~override~
   SAY NAME1 @2003
   SAY NAME2 @2003
   REPLACE_CRE_ITEM ~morb03~ #0 #0 #0 ~UNSTEALABLE~ ~ARMOR~ EQUIP
-  REPLACE_CRE_ITEM ~mobt04~ #0 #0 #0 ~UNSTEALABLE~ ~BOOTS~ EQUIP
+  REPLACE_CRE_ITEM ~mobt09~ #0 #0 #0 ~UNSTEALABLE~ ~BOOTS~ EQUIP
 
 COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/solak1.d~
 

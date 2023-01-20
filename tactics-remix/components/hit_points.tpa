@@ -7,6 +7,21 @@ OUTER_SET multiplier = dmg_multiplier * 100
 COPY ~tactics-remix/itm/MORNG05.ITM~ ~override~ // HP Ring
   LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%multiplier%~ END
   LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
+COPY ~tactics-remix/itm/MOAM05.ITM~ ~override~ // HP Amulet
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%multiplier%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
+COPY ~tactics-remix/itm/MOBR03.ITM~ ~override~ // HP Bracers
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%multiplier%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
+COPY ~tactics-remix/itm/MOBL06.ITM~ ~override~ // HP Belt
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%multiplier%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
+COPY ~tactics-remix/itm/MOBT10.ITM~ ~override~ // HP Boots
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%multiplier%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
+COPY ~tactics-remix/itm/MOCLK06.ITM~ ~override~ // HP Cloak
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%multiplier%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
 
 ///////////////////////////////////////////////////////////////////////////
 // Iterate through all Creatures                                         //
@@ -32,6 +47,16 @@ PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) BEGIN
     ADD_CRE_ITEM ~MORNG05~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~ EQUIP
   END ELSE PATCH_IF (rring_slot = ~-1~) BEGIN
     ADD_CRE_ITEM ~MORNG05~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~ EQUIP
+  END ELSE PATCH_IF (amulet_slot = ~-1~) BEGIN
+    ADD_CRE_ITEM ~MOAM05~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~ EQUIP
+  END ELSE PATCH_IF (gloves_slot = ~-1~) BEGIN
+    ADD_CRE_ITEM ~MOBR03~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~ EQUIP
+  END ELSE PATCH_IF (belt_slot = ~-1~) BEGIN
+    ADD_CRE_ITEM ~MOBL06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP
+  END ELSE PATCH_IF (boots_slot = ~-1~) BEGIN
+    ADD_CRE_ITEM ~MOBT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BOOTS~ EQUIP
+  END ELSE PATCH_IF (cloak_slot = ~-1~) BEGIN
+    ADD_CRE_ITEM ~MOCLK06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~CLOAK~ EQUIP
   END
 
   current_hp = (current_hp * dmg_multiplier) + dmg_bonus
