@@ -1,19 +1,33 @@
 // Tactics Remix, Update All Enemy Hit Points
 
+///////////////////////////////////////////////////////////////////////////
+// Import Files                                                          //
+///////////////////////////////////////////////////////////////////////////
+SET dmg_multiplier = dmg_multiplier * 100
+COPY ~tactics-remix/itm/MORNG05.ITM~ ~override~ // HP Ring
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%dmg_multiplier%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
+
+/*
+///////////////////////////////////////////////////////////////////////////
+// Iterate through all Creatures                                         //
+///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 SPRINT source ~%SOURCE_FILE%~
 READ_BYTE  0x24  current_hp
 READ_BYTE  0x26  max_hp
 READ_BYTE  0x237 gender
 READ_ASCII 0x280 deathvar
-//PATCH_PRINT ~Improving Hit Points for: %source%~
 
-PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND !("%gender%" STRING_EQUAL_CASE summoned) BEGIN
+//PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND !("%gender%" STRING_EQUAL_CASE summoned) AND !("%gender%" STRING_EQUAL_CASE summoned_demon) BEGIN
+PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) BEGIN
   current_hp = (current_hp * dmg_multiplier) + dmg_bonus
   max_hp = (max_hp * dmg_multiplier) + dmg_bonus
 
   WRITE_SHORT 0x24 current_hp
   WRITE_SHORT 0x26 max_hp
+  //ADD_CRE_ITEM ~MORNG05~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING LRING~ EQUIP
   PATCH_PRINT ~Hit Points for %source% improved to %current_hp%~
 END
 BUT_ONLY
+*/
