@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import Files                                                          //
 ///////////////////////////////////////////////////////////////////////////
-SET dmg_multiplier = dmg_multiplier * 100
+dmg_multiplier = dmg_multiplier * 100
 COPY ~tactics-remix/itm/MORNG05.ITM~ ~override~ // HP Ring
   LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 200 parameter1 = ~%dmg_multiplier%~ END
   LPF ALTER_EFFECT INT_VAR match_opcode = 18 match_parameter1 = 20 parameter1 = ~%dmg_bonus%~ END
