@@ -1770,8 +1770,6 @@ END
 
 
 
-
-
 IF
   OR(2)
     See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
