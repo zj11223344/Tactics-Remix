@@ -1467,7 +1467,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  Global("MO_UseImprisonmentScroll","LOCALS",1)
+  Global("MO_CastEnergyDrain","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
@@ -1503,7 +1503,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  Global("MO_UseImprisonmentScroll","LOCALS",1)
+  Global("MO_CastEnergyDrain","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
@@ -1539,7 +1539,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  Global("MO_UseImprisonmentScroll","LOCALS",1)
+  Global("MO_CastEnergyDrain","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
@@ -1575,7 +1575,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  Global("MO_UseImprisonmentScroll","LOCALS",1)
+  Global("MO_CastEnergyDrain","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
@@ -1611,7 +1611,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  Global("MO_UseImprisonmentScroll","LOCALS",1)
+  Global("MO_CastEnergyDrain","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
@@ -1647,7 +1647,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  Global("MO_UseImprisonmentScroll","LOCALS",1)
+  Global("MO_CastEnergyDrain","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
@@ -1677,6 +1677,158 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  See([GOODCUTOFF])
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobal("MO_CastCloudkill","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    SetGlobal("MO_CastCloudkill","LOCALS",0)
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),15)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),15)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),15)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),15)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),15)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),15)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
     SetInterrupt(TRUE)
 END
 
@@ -1734,6 +1886,93 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
+  OR(7)
+    See([GOODCUTOFF.0.0.MAGE_ALL])
+    See([GOODCUTOFF.0.0.BARD_ALL])
+    See([GOODCUTOFF.0.0.CLERIC_ALL])
+    See([GOODCUTOFF.0.0.DRUID_ALL])
+    See([GOODCUTOFF.0.0.SORCERER])
+    See([GOODCUTOFF.0.0.CLERIC_MAGE])
+    See([GOODCUTOFF.0.0.MAGE_ALL])
+  HaveSpell(WIZARD_SPELL_SHIELD)  // SPWI519.SPL (Spell Shield)
+  !CheckSpellState(Myself,SPELL_SHIELD)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_SPELL_SHIELD)  // SPWI519.SPL (Spell Shield)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  OR(7)
+    See([GOODCUTOFF.0.0.MAGE_ALL])
+    See([GOODCUTOFF.0.0.BARD_ALL])
+    See([GOODCUTOFF.0.0.CLERIC_ALL])
+    See([GOODCUTOFF.0.0.DRUID_ALL])
+    See([GOODCUTOFF.0.0.SORCERER])
+    See([GOODCUTOFF.0.0.CLERIC_MAGE])
+    See([GOODCUTOFF.0.0.MAGE_ALL])
+  HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
+  !CheckSpellState(Myself,SI_ABJURATION)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)  // SPWI590.SPL (Immunity: Abjuration)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  OR(7)
+    See([GOODCUTOFF.0.0.MAGE_ALL])
+    See([GOODCUTOFF.0.0.BARD_ALL])
+    See([GOODCUTOFF.0.0.CLERIC_ALL])
+    See([GOODCUTOFF.0.0.DRUID_ALL])
+    See([GOODCUTOFF.0.0.SORCERER])
+    See([GOODCUTOFF.0.0.CLERIC_MAGE])
+    See([GOODCUTOFF.0.0.MAGE_ALL])
+  HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
+  !CheckSpellState(Myself,SI_ABJURATION)
+  !CheckSpellState(Myself,SI_DIVINATION)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #40
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)  // SPWI590.SPL (Immunity: Abjuration)
+    SetInterrupt(TRUE)
+  RESPONSE #40
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_SPELL_IMMUNITY_DIVINATION)  // SPWI592.SPL (Immunity: Divination)
+    SetInterrupt(TRUE)
+  RESPONSE #20
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
   !StateCheck(Myself,STATE_MIRRORIMAGE)
@@ -1761,130 +2000,419 @@ THEN
     Continue()
 END
 
-
-
-
-
-
-
-
-
-
 IF
-  OR(2)
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
-    See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
-  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-END
-
-IF
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  !GlobalTimerNotExpired("KR_LICH_ABJURATION_TIMES","LOCALS")
-  HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("KR_LICH_ABJURATION_TIMES","LOCALS",72)
-    DisplayString(Myself,5019)  // Spell Immunity
-    Spell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)  // SPWI590.SPL (Immunity: Abjuration)
-END
-
-IF
-  See(NearestEnemyOfType([GOODCUTOFF.UNDEAD]))
-  HaveSpell(WIZARD_CONTROL_UNDEAD)  // SPWI720.SPL (Control Undead)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_CONTROL_UNDEAD)  // SPWI720.SPL (Control Undead)
-END
-
-IF
-  See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.SUMMONED]))
-  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
-END
-
-IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_MORDENKAINENS_SWORD)  // SPWI716.SPL (Mordenkainen's Sword)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_MORDENKAINENS_SWORD)  // SPWI716.SPL (Mordenkainen's Sword)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
 END
 
 IF
-  See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
-  !GlobalTimerNotExpired("KR_LICH_DIVINATION_TIMES","LOCALS")
-  HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  See(NearestEnemyOfType([GOODCUTOFF.UNDEAD]))
+  HaveSpell(WIZARD_CONTROL_UNDEAD)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_CONTROL_UNDEAD)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  See([GOODCUTOFF])
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobal("MO_CastHakeashar","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    SetGlobal("MO_CastHakeashar","LOCALS",0)
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
-    SetGlobalTimer("KR_LICH_DIVINATION_TIMES","LOCALS",72)
-    DisplayString(Myself,5019)  // Spell Immunity
-    Spell(Myself,WIZARD_SPELL_IMMUNITY_DIVINATION)  // SPWI592.SPL (Immunity: Divination)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+    SetInterrupt(TRUE)
 END
 
 IF
-  See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  See([GOODCUTOFF])
   HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobal("MO_CastNishruu","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    SetGlobal("MO_CastNishruu","LOCALS",0)
+    Continue()
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetInterrupt(TRUE)
 END
 
 IF
-  HaveSpell(WIZARD_GREASE)  // SPWI101.SPL (Grease)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  !HasItem("Ring09",LastSeenBy(Myself))  // Edventar's Gift
-  !Kit(LastSeenBy(Myself),16)
-  Range(LastSeenBy(Myself),15)
-  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_GREASE)  // SPWI101.SPL (Grease)
-END
-
-IF
-  HaveSpell(WIZARD_WEB)  // SPWI215.SPL (Web)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  !HasItem("Ring09",LastSeenBy(Myself))  // Edventar's Gift
-  !Kit(LastSeenBy(Myself),16)
-  Range(LastSeenBy(Myself),15)
-  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_WEB)  // SPWI215.SPL (Web)
-END
-
-IF
-  HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  Range(LastSeenBy(Myself),15)
-  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
-END
-
-IF
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  HaveSpell(WIZARD_SPELL_SHIELD)  // SPWI519.SPL (Spell Shield)
-THEN
-  RESPONSE #100
-    Spell(Myself,WIZARD_SPELL_SHIELD)  // SPWI519.SPL (Spell Shield)
-END
-
-IF
-  See(NearestEnemyOfType([GOODCUTOFF]))
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
-    Spell(Myself,WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetInterrupt(TRUE)
 END
 
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
+  Global("MO_CastHakeashar","LOCALS",1)
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    Spell(LastSeenBy(Myself),WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",0)
   OR(4)
     See(NearestEnemyOfType([GOODCUTOFF.0.0.FIGHTER_ALL]))
     See(NearestEnemyOfType([GOODCUTOFF.0.0.RANGER_ALL]))
@@ -1894,8 +2422,11 @@ IF
   !GlobalTimerNotExpired("KR_OTILUKES_TIMER","LOCALS")
 THEN
   RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
     UseItem("SCRL5J",LastSeenBy(Myself))  // Otiluke's Resilient Sphere
     SetGlobalTimer("KR_OTILUKES_TIMER","LOCALS",TEN_ROUNDS)
+    SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
