@@ -182,7 +182,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/demon_knights.tpa~
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Tougher Kangaxx and Guardians                            //
 ///////////////////////////////////////////////////////////////////////////
@@ -191,7 +190,6 @@ BEGIN @15 DESIGNATED 15 GROUP @3011 LABEL TacticsRemix-Kangaxx
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/kangaxx.tpa~
-*/
 
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Improved Crypt King                                      //
