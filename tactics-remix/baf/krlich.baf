@@ -67,7 +67,7 @@ IF
 THEN
   RESPONSE #100
     DestroySelf()
-    CreateCreatureObject("KRLICH",Myself,0,0,0)
+    CreateCreatureObject("KRLICH2",Myself,0,0,0)
     SetGlobal("Resting","LOCALS",0)
 END
 

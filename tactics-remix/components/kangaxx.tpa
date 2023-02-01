@@ -1,8 +1,9 @@
 // Tactics Remix, Kensai Ryu's Tougher Kangaxx
 
 ///////////////////////////////////////////////////////////////////////////
-// Import Creatures                                                      //
+// Import                                                                //
 ///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/spl/wwundead.spl~ ~override~
 COPY ~tactics-remix/cre/archlich.cre~ ~override~
 COPY ~tactics-remix/cre/krdualwf.cre~ ~override~
 COPY ~tactics-remix/cre/krdwarf.cre~  ~override~
