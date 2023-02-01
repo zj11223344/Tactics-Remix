@@ -2,7 +2,7 @@
 
 ## Version 0.2-alpha
 
-January xx, 2022
+February xx, 2023
 
 ### Changed 
 
