@@ -1,0 +1,426 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//            Improved Smarter Guarded Compound Scripts
+/////////////////////////////////////////////////////////////////////
+// 				Version 1
+// Sion, 18th level Conjurer
+// 
+// Fixes: No bugfixes. 
+// 
+// Improvements: His spell picks are completely revamped. An 18th level
+// Conjurer has 3 million XP, and in ToB would get to pick a Feat. We're
+// being generous so we skip that (no Planetars). All of the weird
+// contingencies and sequencers are replaced by a bunch of long-lived
+// spells that are cast at warp speed as soon as you see him (stoneskin,
+// etc). Just as the PCs tend to buff up with Strength and Chaotic Commands 
+// before starting the day, Sion preps well. His basic combat strategy is
+// to remove your buffs, cast malison, and then beat on you with Horrid
+// Wiltin and Chaos until you submit. He won't go downstairs. He will
+// rest and regain all of his spells if you leave him alone for an hour. 
+//
+// We completely ignore in-game memorization (hey, who doesn't?) and
+// use global variables to keep track of spells. 
+//
+// Memorized Spells By Level: 6 6 6 6 6 4 4 3 2
+// Memorized Spells (number, name, casting time): 
+//	1 shield (1)
+//	5 magic missile (1)
+//	4 strength (2)
+//	2 vocalize (2)
+//	1 remove magic (3)
+//	1 pro normal missiles
+//      3 pro fire
+//	1 slow (3)
+//	1 greater malison (4)
+//	2 stoneskin (1) 
+//	1 imp invis (4) 
+//	2 spirit armor (3)
+//	2 animate dead (5)
+//	2 chaos (4)
+//      2 pro-elec
+//	1 mislead (1)
+//	1 pro magic energy (6)
+//	1 pro magic weapons (1)
+//	1 improved haste (3)
+//	2 spell turning (7)
+//	2 mordy (7)
+//	3 wilting (8)
+//	2 time stop (9)
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+// Stuff From The Original Script
+/////////////////////////////////////////////////////////////////////
+IF
+	HasItem("MINHP1",Myself)
+	AreaCheck("AR0907")
+THEN
+	RESPONSE #100
+		DestroyItem("MINHP1")
+		//ChangeAIScript("hlsion",DEFAULT)
+		Continue()
+END
+
+IF
+	Global("TalkedToHlsion","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		StartDialogueNoSet([PC])
+END
+
+/////////////////////////////////////////////////////////////////////
+// Battle Prep (Summoning)
+// 
+// The GC crew knows you are invading, so they prepare by casting
+// a few long-lived animate dead spells while waiting for the demon
+// to take you out. 
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	Global("Prep","LOCALS",0)
+	NumCreatureLT([0.UNDEAD.0.0.0.0.0],4)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+		ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+		Continue()
+END	
+
+/////////////////////////////////////////////////////////////////////
+// Battle Prep
+// 
+// The GC crew knows you are invading, so they prepare by casting
+// a few long-lived buffing spells right before you come in. 
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Cast","LOCALS",1)
+		SetGlobalTimer("TimeStop","LOCALS",1)
+
+		ReallyForceSpell("hlkoshi",WIZARD_STRENGTH)
+		ReallyForceSpell("hlkoshi",WIZARD_STRENGTH)
+		ReallyForceSpell("hlketta",WIZARD_STRENGTH)
+		ReallyForceSpell("hlketta",WIZARD_STRENGTH)
+		ReallyForceSpell("hlkoshi",WIZARD_PROTECTION_FROM_FIRE)
+		ReallyForceSpell("hlstal",WIZARD_PROTECTION_FROM_FIRE)
+		ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_FIRE)
+		ReallyForceSpell("hlstal",WIZARD_PROTECTION_FROM_ELECTRICITY)
+		ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_ELECTRICITY)
+		ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
+		ReallyForceSpell(Myself,WIZARD_SHIELD)
+		ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
+		ReallyForceSpell(Myself,WIZARD_SPIRIT_ARMOR)
+		ReallyForceSpell("hlkoshi",WIZARD_SPIRIT_ARMOR)
+		ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+		ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
+		ReallyForceSpell(Myself,WIZARD_SPELL_TURNING)
+		SetGlobal("Prep","LOCALS",1)
+
+                GiveItemCreate("potn34",Myself,1,0,0)
+                GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
+                UseItem("potn34",Myself)
+
+		// Re-memorize
+		SetGlobal("Time","LOCALS",2)
+		SetGlobal("wilt","LOCALS",3)
+		SetGlobal("Stoneskin","LOCALS",1)
+		SetGlobal("ImpInvis","LOCALS",1)
+		SetGlobal("Turning","LOCALS",1)
+		SetGlobal("Mislead","LOCALS",1)
+		SetGlobal("ImpHaste","LOCALS",1)
+		SetGlobal("Chaos","LOCALS",4)
+		SetGlobal("Malison","LOCALS",1)
+		SetGlobal("Mordy","LOCALS",2)
+		SetGlobal("Slow","LOCALS",1)
+		SetGlobal("Remove","LOCALS",1)
+		SetGlobal("Vocalize","LOCALS",2)
+		SetGlobal("MelfAcid","LOCALS",0)
+		SetGlobal("Missile","LOCALS",5)
+
+		Shout(100)	// wake everyone up!
+
+		Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Vocalize (if silenced)
+/////////////////////////////////////////////////////////////////////
+IF
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Vocalize","LOCALS",0)
+	StateCheck(Myself,STATE_SILENCED)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Vocalize","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_VOCALIZE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Stoneskin (if out)
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Stoneskin","LOCALS",0)
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Stoneskin","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_STONE_SKIN)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Mislead (if nearby enemy or attacked)
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Mislead","LOCALS",0)
+	Exists(NearestEnemyOf(Myself))
+	OR(2)
+	  See(LastAttackerOf(Myself))
+	  Range(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Mislead","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_MISLEAD)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Drink: Potion
+/////////////////////////////////////////////////////////////////////
+IF
+	HPPercentLT(Myself,90)
+	HasItem("potn52",Myself)
+	GlobalTimerExpired("Cast","LOCALS")
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,46150) // quaffs a potion
+		SetGlobalTimer("Cast","LOCALS",6)
+		UseItem("potn52",Myself)
+END
+
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Imp Invis (if threatened, as above)
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("ImpInvis","LOCALS",0)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	Exists(NearestEnemyOf(Myself))
+	OR(2)
+	  See(LastAttackerOf(Myself))
+	  Range(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("ImpInvis","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_IMPROVED_INVISIBILITY)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Spell Turning (if out)
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Turning","LOCALS",0)
+	!HasBounceEffects(Myself)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Turning","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_SPELL_TURNING)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Time Stop
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalTimerExpired("TimeStop","LOCALS")
+	GlobalGT("Time","LOCALS",0)
+	OR(2)
+	  See(NearestEnemyOfType([PC]))
+	  !CombatCounter(0)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Time","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_TIME_STOP)
+	  SetGlobalTimer("TimeStop","LOCALS",18)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Remove Magic
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Remove","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Remove","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_DISPEL_MAGIC) 
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Greater Malison
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Malison","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Malison","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_GREATER_MALISON)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Wilting
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Wilt","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Wilt","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_ABI_DALZIMS_HORRID_WILTING)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Improved Haste
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("ImpHaste","LOCALS",0)
+	See("hlkoshi")
+	!CombatCounter(0)
+THEN
+	RESPONSE #100
+	  IncrementGlobal("ImpHaste","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec("hlkoshi",WIZARD_IMPROVED_HASTE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Chaos
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Chaos","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Chaos","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_CHAOS)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Mordy
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Mordy","LOCALS",0)
+	OR(2)
+	  !CombatCounter(0)
+	  See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Mordy","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,WIZARD_MORDENKAINENS_SWORD)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Slow
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Slow","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Slow","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_SLOW)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Melf Acid
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("MelfAcid","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("MelfAcid","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_MELF_ACID_ARROW)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Magic Missile
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Missile","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Missile","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),WIZARD_MAGIC_MISSILE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Follow the warriors.
+/////////////////////////////////////////////////////////////////////
+IF
+	!Detect(NearestEnemyOf(Myself))
+	Exists(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #34
+		MoveToObject("hlkoshi")
+	RESPONSE #33
+		MoveToObject("hlolaf")
+	RESPONSE #33
+		MoveToObject("hlmafer")
+END
+
+/////////////////////////////////////////////////////////////////////
+// Wait for death. :-) Don't let some other BG script take over. 
+/////////////////////////////////////////////////////////////////////
+IF
+	True()
+THEN
+	RESPONSE #100
+	  NoAction()
+END
