@@ -77,7 +77,6 @@ COPY_EXISTING ~hlketta.CRE~ ~override~
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_kett~ #8 // Add Default Script
 
-
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
