@@ -13,7 +13,7 @@ END
 
 IF
   OR(2)
-    !CombatCounter(0)
+    !CombatCounter(0)!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     Detect(NearestEnemyOf(Myself))
   Global("Resting","LOCALS",1)
 THEN

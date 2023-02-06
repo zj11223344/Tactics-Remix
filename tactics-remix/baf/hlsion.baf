@@ -1,29 +1,29 @@
 IF
-	HasItem("MINHP1",Myself)  // No such index
-	AreaCheck("AR0907")  // Guarded Compound 2nd Floor
+  HasItem("MINHP1",Myself)  // No such index
+  AreaCheck("AR0907")  // Guarded Compound 2nd Floor
 THEN
-	RESPONSE #100
-		DestroyItem("MINHP1")  // No such index
+  RESPONSE #100
+    DestroyItem("MINHP1")  // No such index
 END
 
 IF
-	Global("TalkedToHlsion","GLOBAL",0)
+  Global("TalkedToHlsion","GLOBAL",0)
 THEN
-	RESPONSE #100
-		StartDialogNoSet([PC])
+  RESPONSE #100
+    StartDialogNoSet([PC])
 END
 
 IF
-	Global("TalkedToHlsion","GLOBAL",4)
-	Allegiance(Myself,NEUTRAL)
+  Global("TalkedToHlsion","GLOBAL",4)
+  Allegiance(Myself,NEUTRAL)
 THEN
-	RESPONSE #100
-		Enemy()
+  RESPONSE #100
+    Enemy()
 END
 
 IF
-	Global("EnteredAR0907","GLOBAL",0)
+  Global("EnteredAR0907","GLOBAL",0)
 THEN
-	RESPONSE #100
-		NoAction()
+  RESPONSE #100
+    NoAction()
 END

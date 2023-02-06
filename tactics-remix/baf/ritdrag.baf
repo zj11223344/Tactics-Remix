@@ -838,7 +838,7 @@ IF
   GlobalGT("Mordy","LOCALS",0)
   CheckStatLT(Myself,25,SPELLFAILUREMAGE)
   OR(2)
-    !CombatCounter(0)
+    ActuallyInCombat()
     See(NearestEnemyOf(Myself))
   CheckStatLT(Myself,20,SPELLFAILUREMAGE)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
