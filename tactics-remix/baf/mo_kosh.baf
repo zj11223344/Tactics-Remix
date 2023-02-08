@@ -54,6 +54,14 @@ THEN
     Continue()
 END
 
+IF
+  Detect(NearestEnemyOf(Myself))
+  HasItem("potn06",Myself)
+THEN
+  RESPONSE #100
+    UseItem("potn06",Myself)
+END
+
 /////////////////////////////////////////////////////////////////////
 // Spell: Celestial Fury's Lightning
 // We prefer to strike druids, just in case they are preparing

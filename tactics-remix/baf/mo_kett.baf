@@ -31,6 +31,14 @@ THEN
     Hide()
 END
 
+IF
+  Detect(NearestEnemyOf(Myself))
+  HasItem("potn06",Myself)
+THEN
+  RESPONSE #100
+    UseItem("potn06",Myself)
+END
+
 /////////////////////////////////////////////////////////////////////
 // Shadowstep - When low on health, shadowstep to run away
 /////////////////////////////////////////////////////////////////////

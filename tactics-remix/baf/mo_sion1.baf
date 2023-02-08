@@ -1236,6 +1236,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
     SetInterrupt(TRUE)
@@ -1263,6 +1264,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
     SetInterrupt(TRUE)
@@ -1290,6 +1292,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
     SetInterrupt(TRUE)
@@ -1317,6 +1320,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
     SetInterrupt(TRUE)
@@ -1344,6 +1348,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
     SetInterrupt(TRUE)
@@ -1371,6 +1376,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
     SetInterrupt(TRUE)
