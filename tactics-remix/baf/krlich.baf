@@ -1030,6 +1030,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9S",Myself)  // Imprisonment
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1062,6 +1063,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9S",Myself)  // Imprisonment
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1094,6 +1096,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9S",Myself)  // Imprisonment
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1126,6 +1129,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9S",Myself)  // Imprisonment
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1158,6 +1162,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9S",Myself)  // Imprisonment
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1190,6 +1195,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9S",Myself)  // Imprisonment
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1241,6 +1247,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9H",Myself)  // Maze
+  !Gender(LastSeenBy(Myself),SUMMONED)
   CheckStatLT(LastSeenBy(Myself),18,INT)
   !CheckSpellState(LastSeenBy(Myself),CHAOTIC_COMMANDS)
   !CheckStatGT(LastSeenBy(Myself),25,RESISTMAGIC)
@@ -1277,6 +1284,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9H",Myself)  // Maze
+  !Gender(LastSeenBy(Myself),SUMMONED)
   CheckStatLT(LastSeenBy(Myself),18,INT)
   !CheckSpellState(LastSeenBy(Myself),CHAOTIC_COMMANDS)
   !CheckStatGT(LastSeenBy(Myself),25,RESISTMAGIC)
@@ -1313,6 +1321,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9H",Myself)  // Maze
+  !Gender(LastSeenBy(Myself),SUMMONED)
   CheckStatLT(LastSeenBy(Myself),18,INT)
   !CheckSpellState(LastSeenBy(Myself),CHAOTIC_COMMANDS)
   !CheckStatGT(LastSeenBy(Myself),25,RESISTMAGIC)
@@ -1349,6 +1358,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9H",Myself)  // Maze
+  !Gender(LastSeenBy(Myself),SUMMONED)
   CheckStatLT(LastSeenBy(Myself),18,INT)
   !CheckSpellState(LastSeenBy(Myself),CHAOTIC_COMMANDS)
   !CheckStatGT(LastSeenBy(Myself),25,RESISTMAGIC)
@@ -1385,6 +1395,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9H",Myself)  // Maze
+  !Gender(LastSeenBy(Myself),SUMMONED)
   CheckStatLT(LastSeenBy(Myself),18,INT)
   !CheckSpellState(LastSeenBy(Myself),CHAOTIC_COMMANDS)
   !CheckStatGT(LastSeenBy(Myself),25,RESISTMAGIC)
@@ -1421,6 +1432,7 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Range(LastSeenBy(Myself),4)
   HasItem("SCRL9H",Myself)  // Maze
+  !Gender(LastSeenBy(Myself),SUMMONED)
   CheckStatLT(LastSeenBy(Myself),18,INT)
   !CheckSpellState(LastSeenBy(Myself),CHAOTIC_COMMANDS)
   !CheckStatGT(LastSeenBy(Myself),25,RESISTMAGIC)
@@ -1473,6 +1485,7 @@ IF
   See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1509,6 +1522,7 @@ IF
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1545,6 +1559,7 @@ IF
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1581,6 +1596,7 @@ IF
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1617,6 +1633,7 @@ IF
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
@@ -1653,6 +1670,7 @@ IF
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_ENERGY_DRAIN)  // SPWI914.SPL (Energy Drain)
+  !Gender(LastSeenBy(Myself),SUMMONED)
   !CheckSpellState(LastSeenBy(Myself),SI_NECROMANCY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
   !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)

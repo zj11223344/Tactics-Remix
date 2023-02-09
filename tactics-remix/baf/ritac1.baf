@@ -437,13 +437,12 @@ IF
   HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
   See(NearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
-  OR(6)
+  OR(5)
     Class(LastSeenBy(Myself),RANGER_ALL)
     Class(LastSeenBy(Myself),FIGHTER_ALL)
     Class(LastSeenBy(Myself),PALADIN)
     Class(LastSeenBy(Myself),THIEF)
     Kit(LastSeenBy(Myself),BARBARIAN)
-    Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
   !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
@@ -483,13 +482,12 @@ IF
   HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
   See(SecondNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
-  OR(6)
+  OR(5)
     Class(LastSeenBy(Myself),RANGER_ALL)
     Class(LastSeenBy(Myself),FIGHTER_ALL)
     Class(LastSeenBy(Myself),PALADIN)
     Class(LastSeenBy(Myself),THIEF)
     Kit(LastSeenBy(Myself),BARBARIAN)
-    Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
   !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
@@ -529,13 +527,12 @@ IF
   HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
   See(ThirdNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
-  OR(6)
+  OR(5)
     Class(LastSeenBy(Myself),RANGER_ALL)
     Class(LastSeenBy(Myself),FIGHTER_ALL)
     Class(LastSeenBy(Myself),PALADIN)
     Class(LastSeenBy(Myself),THIEF)
     Kit(LastSeenBy(Myself),BARBARIAN)
-    Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
   !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
@@ -575,13 +572,12 @@ IF
   HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
   See(FourthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
-  OR(6)
+  OR(5)
     Class(LastSeenBy(Myself),RANGER_ALL)
     Class(LastSeenBy(Myself),FIGHTER_ALL)
     Class(LastSeenBy(Myself),PALADIN)
     Class(LastSeenBy(Myself),THIEF)
     Kit(LastSeenBy(Myself),BARBARIAN)
-    Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
   !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
@@ -621,13 +617,12 @@ IF
   HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
   See(FifthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
-  OR(6)
+  OR(5)
     Class(LastSeenBy(Myself),RANGER_ALL)
     Class(LastSeenBy(Myself),FIGHTER_ALL)
     Class(LastSeenBy(Myself),PALADIN)
     Class(LastSeenBy(Myself),THIEF)
     Kit(LastSeenBy(Myself),BARBARIAN)
-    Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
   !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
@@ -667,13 +662,12 @@ IF
   HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
   See(SixthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
-  OR(6)
+  OR(5)
     Class(LastSeenBy(Myself),RANGER_ALL)
     Class(LastSeenBy(Myself),FIGHTER_ALL)
     Class(LastSeenBy(Myself),PALADIN)
     Class(LastSeenBy(Myself),THIEF)
     Kit(LastSeenBy(Myself),BARBARIAN)
-    Gender(LastSeenBy(Myself),SUMMONED)
   !Kit(LastSeenBy(Myself),INQUISITOR)
   !Kit(LastSeenBy(Myself),UNDEADHUNTER)
   !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
@@ -772,40 +766,6 @@ THEN
     SetInterrupt(FALSE)
     Spell(Myself,ARCHER_CALL_SHOT)
     SetInterrupt(TRUE)
-END
-
-IF
-  ActionListEmpty()
-  See(MostDamagedOf([PC]))
-  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
-  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
-  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
-  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
-THEN
-  RESPONSE #100
-    AttackOneRound(LastSeenBy(Myself))
-END
-
-IF
-  ActionListEmpty()
-  See(WorstAC([PC]))
-  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
-  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
-  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
-  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
-  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
-THEN
-  RESPONSE #100
-    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
@@ -914,28 +874,6 @@ IF
 THEN
   RESPONSE #100
     AttackOneRound(SixthNearestEnemyOf(Myself))
-END
-
-IF
-  ActionListEmpty()
-  See(MostDamagedOf([PC]))
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
-  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
-  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
-THEN
-  RESPONSE #100
-    AttackOneRound(LastSeenBy(Myself))
-END
-
-IF
-  ActionListEmpty()
-  See(WorstAC([PC]))
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
-  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
-  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
-THEN
-  RESPONSE #100
-    AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
