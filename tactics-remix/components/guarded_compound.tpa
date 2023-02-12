@@ -66,6 +66,10 @@ COPY_EXISTING ~hlsion.CRE~ ~override~
 // Update Stalman                                                        //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~hlstal.CRE~ ~override~
+  WRITE_ASCII 0x250 ~~        #8 // Clear Class Script
+  WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
+  WRITE_ASCII 0x268 ~mo_stal~ #8 // Add Default Script
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Ketta                                                          //
@@ -83,6 +87,7 @@ COPY_EXISTING ~hlketta.CRE~ ~override~
 COPY ~tactics-remix/baf/mo_thug.baf~ ~override/mo_thug.bcs~
      ~tactics-remix/baf/mo_kosh.baf~ ~override/mo_kosh.bcs~
      ~tactics-remix/baf/mo_kett.baf~ ~override/mo_kett.bcs~
+     ~tactics-remix/baf/mo_stal.baf~ ~override/mo_stal.bcs~
      ~tactics-remix/baf/hlsion.baf~  ~override/hlsion.bcs~
      ~tactics-remix/baf/hlketta.baf~ ~override/hlketta.bcs~
   COMPILE_BAF_TO_BCS

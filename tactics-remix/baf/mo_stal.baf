@@ -1,0 +1,341 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//            Improved Smarter Guarded Compound Scripts
+/////////////////////////////////////////////////////////////////////
+// 				Version 1
+// Stalman, 16th level Cleric
+//
+// Fixes: No bugfixes. 
+// 
+// Improvements: His spell picks are completely revamped. He used to be
+// all about blade barriers and regeneration. Who came up with that? 
+// Let the three pure fighters hack at people. As a pure cleric, Stalman
+// now takes a supporting role. In particular, he makes liberal use of
+// Chaotic Commands to keep the team coherent and then summons like 
+// there is no tomorrow. When that's done he'll try to charm and hold
+// party members.  He'll cast Zone of Sweet Air if he's taking damage and
+// no one is nearby.
+//
+// We completely ignore in-game memorization (hey, who doesn't?) and
+// use global variables to keep track of spells. 
+// 
+// Memorized Spells By Level: 9 9 8 7 4 3 1 
+// Memorized Spells (number, name, casting time): 
+//	
+//	1 shield of the archons (7)
+//	1 physical mirror (6)
+//	2 animal summoning III (6)
+//	3 chaotic commands (5)		(prep)
+//	1 true seeing (5)
+//	1 pro evil 10' radius (4)	(prep)
+//	1 holy power (4)
+//	5 mental domination (4)
+//  2 zone of sweet air (3)
+//	2 animate dead (3)	(prep)
+//	2 glyph of warding (3)
+//	9 hold person (2)
+//	3 remove fear (1)		(prep)
+//	6 sanctuary (1)
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+// Battle Prep (Summoning)
+// 
+// The GC crew knows you are invading, so they prepare by casting
+// a few long-lived animate dead spells while waiting for the demon
+// to take you out. 
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	Global("Prep","LOCALS",0)
+	NumCreatureLT([0.UNDEAD.0.0.0.0.0],4)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,CLERIC_ANIMATE_DEAD)
+		ReallyForceSpell(Myself,CLERIC_ANIMATE_DEAD)
+		Continue()
+END	
+
+/////////////////////////////////////////////////////////////////////
+// Battle Prep
+// 
+// The GC crew knows you are invading, so they prepare by casting
+// a few long-lived buffing spells right before you come in. 
+/////////////////////////////////////////////////////////////////////
+IF
+  Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    ActionOverride("hlsion",DestroyItem("minhp1"))
+    ActionOverride("hlsion",Enemy())
+    ReallyForceSpell("hlsion",CLERIC_CHAOTIC_COMMANDS)
+    ReallyForceSpell("hlkoshi",CLERIC_CHAOTIC_COMMANDS)
+    ReallyForceSpell(Myself,CLERIC_CHAOTIC_COMMANDS)
+    ReallyForceSpell(Myself,CLERIC_PROTECTION_FROM_EVIL_10_FOOT)
+    ReallyForceSpell(Myself,CLERIC_REMOVE_FEAR)
+    ReallyForceSpell("hlkoshi",CLERIC_REMOVE_FEAR)
+    ReallyForceSpell("hlolaf",CLERIC_REMOVE_FEAR)
+    ReallyForceSpell(Myself,CLERIC_SHIELD_OF_THE_ARCHONS)
+    ReallyForceSpell(Myself,CLERIC_TRUE_SIGHT)
+    ReallyForceSpell(Myself,CLERIC_SANCTUARY)
+    SetGlobal("Prep","LOCALS",1)
+    // Re-memorize
+    SetGlobal("Animal","LOCALS",2)
+    SetGlobal("Command","LOCALS",0) // not memorized
+    SetGlobal("Mirror","LOCALS",1)
+    SetGlobal("Sanct","LOCALS",5)
+    SetGlobal("Mental","LOCALS",5)
+    SetGlobal("Hold","LOCALS",9)
+    SetGlobal("Glyph","LOCALS",2)
+    SetGlobal("SweetAir","LOCALS",2)
+    SetGlobal("Holy","LOCALS",1)
+    GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
+    Shout(100)	// wake everyone up!
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Sanctuary (if nearby enemy)
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  GlobalGT("Sanct","LOCALS",0)
+  Range(NearestEnemyOfType([GOODCUTOFF])),4)
+  CheckStatLT(Myself,1,SANCTUARY)
+  CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Sanct","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,CLERIC_SANCTUARY)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell:Zone of Sweet Air
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalGT("SweetAir","LOCALS",0)
+  OR(12)
+    SpellCast([GOODCUTOFF.0.0.MAGE_ALL],WIZARD_INCENDIARY_CLOUD)  // SPWI810.SPL (Incendiary Cloud)
+    SpellCast([GOODCUTOFF.0.0.MAGE_ALL],WIZARD_STINKING_CLOUD)  // SPWI213.SPL (Stinking Cloud)
+    SpellCast([GOODCUTOFF.0.0.MAGE_ALL],WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SpellCast([GOODCUTOFF.0.0.MAGE_ALL],WIZARD_DEATH_FOG)  // SPWI614.SPL (Death Fog)
+    SpellCast([GOODCUTOFF.0.0.BARD_ALL],WIZARD_INCENDIARY_CLOUD)  // SPWI810.SPL (Incendiary Cloud)
+    SpellCast([GOODCUTOFF.0.0.BARD_ALL],WIZARD_STINKING_CLOUD)  // SPWI213.SPL (Stinking Cloud)
+    SpellCast([GOODCUTOFF.0.0.BARD_ALL],WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+    SpellCast([GOODCUTOFF.0.0.BARD_ALL],WIZARD_DEATH_FOG)  // SPWI614.SPL (Death Fog)
+    SpellCast([GOODCUTOFF.0.0.SHAMAN],CLERIC_WRITHING_FOG)  // SPPR250.SPL (Writhing Fog)
+    SpellCast([GOODCUTOFF],TRAP_STINKING_CLOUD)  // SPWI004.SPL (Stinking Cloud)
+    SpellCast([GOODCUTOFF],SPORE_DEATH)  // SPIN673.SPL (Cloudkill)
+    SpellCast([GOODCUTOFF],TRAP_CLOUDKILL)  // SPWI016.SPL (Cloudkill)
+  CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
+  !StateCheck(Myself,STATE_SILENCED)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("SweetAir","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,CLERIC_ZONE_OF_SWEET_AIR)  // SPPR318.SPL (Zone of Sweet Air)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Physical Mirror (if ranged attacks)
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalGT("Mirror","LOCALS",0)
+  OR(11)
+    HitBy([ANYONE],MISSILE)
+    IsWeaponRanged(NearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(SecondNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(ThirdNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(FourthNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(FifthNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(SixthNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(SeventhNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(EighthNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(NinthNearestEnemyOfType([GOODCUTOFF]))
+    IsWeaponRanged(TenthNearestEnemyOfType([GOODCUTOFF]))
+  CheckStatLT(Myself,1,CLERIC_PHYSICAL_MIRROR)
+  CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Mirror","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,CLERIC_PHYSICAL_MIRROR)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Drink: Potion
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,50)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    UseItem("potn52",Myself)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Animal Summoning III
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Allegiance(Myself,ENEMY)
+  GlobalGT("Animal","LOCALS",0)
+  OR(2)
+    ActuallyInCombat()
+    See(NearestEnemyOfType([GOODCUTOFF]))
+  CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #60
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Animal","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,CLERIC_ANIMAL_SUMMONING_3)
+    SetInterrupt(TRUE)
+  RESPONSE #40
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Greater Command
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_Offensive","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  GlobalGT("Command","LOCALS",0)
+  CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #80
+    SetGlobal("MO_CastCommand","LOCALS",0)
+    Continue()
+  RESPONSE #20
+    SetGlobal("MO_CastCommand","LOCALS",0)
+    Continue()
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Command","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Command","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),CLERIC_GREATER_COMMAND)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Mental Domination
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Mental","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Mental","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),CLERIC_MENTAL_DOMINATION)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Hold Person
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Hold","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Hold","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),CLERIC_HOLD_PERSON)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Glyph 
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Glyph","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Glyph","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(NearestEnemyOfType([PC]),CLERIC_GLYPH_OF_WARDING)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell: Holy Power 
+/////////////////////////////////////////////////////////////////////
+IF
+	Allegiance(Myself,ENEMY)
+	GlobalTimerExpired("Cast","LOCALS")
+	GlobalGT("Holy","LOCALS",0)
+	See(NearestEnemyOfType([PC]))
+THEN
+	RESPONSE #100
+	  IncrementGlobal("Holy","LOCALS",-1)
+          SetGlobalTimer("Cast","LOCALS",6)
+	 SpellNoDec(Myself,CLERIC_HOLY_POWER)
+	  Attack(NearestEnemyOfType([PC]))
+END
+
+/////////////////////////////////////////////////////////////////////
+// Follow the warriors.
+/////////////////////////////////////////////////////////////////////
+IF
+  !Detect(NearestEnemyOf(Myself))
+  Exists(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #34
+    MoveToObject("hlkoshi")
+  RESPONSE #33
+    MoveToObject("hlolaf")
+  RESPONSE #33
+    MoveToObject("hlmafer")
+END
+
+/////////////////////////////////////////////////////////////////////
+// Wait for death. 
+/////////////////////////////////////////////////////////////////////
+IF
+  True()
+THEN
+  RESPONSE #100
+    NoAction()
+END
