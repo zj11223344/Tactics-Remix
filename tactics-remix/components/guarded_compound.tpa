@@ -15,9 +15,11 @@ COPY_EXISTING ~hlmafer.CRE~ ~override~
   WRITE_ASCII 0x268 ~mo_thug~ #8 // Add Default Script
 
   ACTION_IF !scs_ai BEGIN
-    //WRITE_BYTE 0x52 4 // thac0
-    SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
-    SET_BG2_PROFICIENCY ~PROFICIENCYSWORDANDSHIELD~ 2  
+    INNER_ACTION BEGIN
+      WRITE_BYTE 0x52 4 // thac0
+      SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
+      SET_BG2_PROFICIENCY ~PROFICIENCYSWORDANDSHIELD~ 2
+    END
   END
 
 ///////////////////////////////////////////////////////////////////////////
