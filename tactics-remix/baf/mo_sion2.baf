@@ -1478,7 +1478,7 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #80
-    SetGlobal("MO_CastDeathSpell","LOCALS",0)
+    SetGlobal("MO_CastDeathSpell","LOCALS",1)
     Continue()
   RESPONSE #20
     SetGlobal("MO_CastDeathSpell","LOCALS",0)
@@ -1831,7 +1831,7 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #50
-    SetGlobal("MO_CastPowerWordKill","LOCALS",0)
+    SetGlobal("MO_CastPowerWordKill","LOCALS",1)
     Continue()
   RESPONSE #50
     SetGlobal("MO_CastPowerWordKill","LOCALS",0)
