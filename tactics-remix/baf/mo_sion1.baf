@@ -1810,15 +1810,15 @@ END
 // Follow the warriors.
 /////////////////////////////////////////////////////////////////////
 IF
-	!Detect(NearestEnemyOf(Myself))
-	Exists(NearestEnemyOf(Myself))
+  !Detect(NearestEnemyOf(Myself))
+  Exists(NearestEnemyOf(Myself))
 THEN
-	RESPONSE #34
-		MoveToObject("hlkoshi")
-	RESPONSE #33
-		MoveToObject("hlolaf")
-	RESPONSE #33
-		MoveToObject("hlmafer")
+  RESPONSE #34
+    MoveToObject("hlkoshi")
+  RESPONSE #33
+    MoveToObject("hlolaf")
+  RESPONSE #33
+    MoveToObject("hlmafer")
 END
 
 /////////////////////////////////////////////////////////////////////
