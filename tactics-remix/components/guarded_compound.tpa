@@ -14,7 +14,7 @@ COPY_EXISTING ~hlmafer.CRE~ ~override~
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_thug~ #8 // Add Default Script
 
-  ACTION_IF !scs_ai BEGIN
+  PATCH_IF !scs_ai BEGIN
     INNER_ACTION BEGIN
       WRITE_BYTE 0x52 4 // thac0
       SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
@@ -31,7 +31,7 @@ COPY_EXISTING ~hlkoshi.CRE~ ~override~
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_kosh~ #8 // Add Default Script
 
-  ACTION_IF !scs_ai BEGIN
+  PATCH_IF !scs_ai BEGIN
     LPF ADD_CRE_EFFECT INT_VAR opcode = 0 target = 2 parameter1 = 2 parameter2 = 0 timing = 9 resist_dispel = 0 probability1 = 100 END
     LPF ADD_CRE_EFFECT INT_VAR opcode = 73 target = 1 parameter1 = 5 parameter2 = 0 timing = 9 resist_dispel = 0 probability1 = 100 END
     LPF ADD_CRE_EFFECT INT_VAR opcode = 190 target = 1 parameter1 = 4 timing = 9 resist_dispel = 0 probability1 = 100 END
@@ -49,7 +49,7 @@ COPY_EXISTING ~hlolaf.CRE~ ~override~
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_thug~ #8 // Add Default Script
 
-  ACTION_IF !scs_ai BEGIN
+  PATCH_IF !scs_ai BEGIN
     WRITE_BYTE 0x52 4 // thac0
     SET_BG2_PROFICIENCY ~PROFICIENCYTWOHANDEDSWORD~ 5
     SET_BG2_PROFICIENCY ~PROFICIENCY2HANDED~ 2
