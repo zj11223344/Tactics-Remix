@@ -102,7 +102,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Allegiance(Myself,ENEMY)
   GlobalGT("Sanct","LOCALS",0)
-  Range(NearestEnemyOfType([GOODCUTOFF])),4)
+  Range(NearestEnemyOfType([GOODCUTOFF]),4)
   CheckStatLT(Myself,1,SANCTUARY)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
