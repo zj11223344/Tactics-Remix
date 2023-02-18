@@ -78,10 +78,10 @@ END
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-EXTEND_TOP ~AR0326.bcs~ ~tactics-remix/baf/ar0326.baf~
+EXTEND_TOP ~AR0326.bcs~ ~tactics-remix/baf/gnomefi/ar0326.baf~
 
-COPY ~tactics-remix/baf/mofam01.baf~ ~override/mofam01.bcs~
-     ~tactics-remix/baf/mofam02.baf~ ~override/mofam02.bcs~
-     ~tactics-remix/baf/mognome.baf~ ~override/mognome.bcs~
+COPY ~tactics-remix/baf/gnomefi/mofam01.baf~ ~override/mofam01.bcs~
+     ~tactics-remix/baf/gnomefi/mofam02.baf~ ~override/mofam02.bcs~
+     ~tactics-remix/baf/gnomefi/mognome.baf~ ~override/mognome.bcs~
   COMPILE_BAF_TO_BCS
 

@@ -19,5 +19,5 @@ COPY ~tactics-remix/cre/uddeath2.cre~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/uddeath.baf~ ~override/uddeath.bcs~
+COPY ~tactics-remix/baf/demon_knights/uddeath.baf~ ~override/uddeath.bcs~
   COMPILE_BAF_TO_BCS

@@ -101,13 +101,13 @@ END
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 ACTION_IF GAME_IS ~eet~ BEGIN
-  EXTEND_TOP ~baldur.bcs~   ~tactics-remix/baf/solak1mo.baf~
-  EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/solak1mo.baf~
+  EXTEND_TOP ~baldur.bcs~   ~tactics-remix/baf/kuroisan/solak1mo.baf~
+  EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/kuroisan/solak1mo.baf~
 END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
-  EXTEND_TOP ~baldur.bcs~   ~tactics-remix/baf/solak1me.baf~
-  EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/solak1me.baf~
+  EXTEND_TOP ~baldur.bcs~   ~tactics-remix/baf/kuroisan/solak1me.baf~
+  EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/kuroisan/solak1me.baf~
 END
 
-COPY ~tactics-remix/baf/solak1.baf~ ~override/solak1.bcs~
+COPY ~tactics-remix/baf/solak1.baf~ ~override/kuroisan/solak1.bcs~
   COMPILE_BAF_TO_BCS
 

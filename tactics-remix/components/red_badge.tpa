@@ -74,12 +74,12 @@ COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/solasna1.d~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-EXTEND_TOP ~ar3000.bcs~ ~tactics-remix/baf/solasnak.baf~
+EXTEND_TOP ~ar3000.bcs~ ~tactics-remix/baf/red_badge/solasnak.baf~
 
-COPY ~tactics-remix/baf/solasna1.baf~ ~override/solasna1.bcs~
-     ~tactics-remix/baf/solasna2.baf~ ~override/solasna2.bcs~
-     ~tactics-remix/baf/solasna3.baf~ ~override/solasna3.bcs~
-     ~tactics-remix/baf/solasna4.baf~ ~override/solasna4.bcs~
-     ~tactics-remix/baf/sola0002.baf~ ~override/sola0002.bcs~
+COPY ~tactics-remix/baf/red_badge/solasna1.baf~ ~override/solasna1.bcs~
+     ~tactics-remix/baf/red_badge/solasna2.baf~ ~override/solasna2.bcs~
+     ~tactics-remix/baf/red_badge/solasna3.baf~ ~override/solasna3.bcs~
+     ~tactics-remix/baf/red_badge/solasna4.baf~ ~override/solasna4.bcs~
+     ~tactics-remix/baf/red_badge/sola0002.baf~ ~override/sola0002.bcs~
   COMPILE_BAF_TO_BCS
 

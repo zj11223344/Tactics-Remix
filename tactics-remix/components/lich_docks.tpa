@@ -35,9 +35,9 @@ APPEND ~tooltip.2da~ ~moclk05%TAB%7665%TAB%-1%TAB%-1~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/ar0318.baf~   ~override/ar0318.bcs~
-     ~tactics-remix/baf/molich1b.baf~ ~override/molich1b.bcs~
-     ~tactics-remix/baf/molich1c.baf~ ~override/molich1c.bcs~
-     ~tactics-remix/baf/molichob.baf~ ~override/molichob.bcs~
+COPY ~tactics-remix/baf/lich_docks/ar0318.baf~   ~override/ar0318.bcs~
+     ~tactics-remix/baf/lich_docks/molich1b.baf~ ~override/molich1b.bcs~
+     ~tactics-remix/baf/lich_docks/molich1c.baf~ ~override/molich1c.bcs~
+     ~tactics-remix/baf/lich_docks/molichob.baf~ ~override/molichob.bcs~
   COMPILE_BAF_TO_BCS
 

@@ -13,6 +13,6 @@ COPY_EXISTING ~DRIZZT.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/drizzt.baf~ ~override/drizzt.bcs~
+COPY ~tactics-remix/baf/drizzt/drizzt.baf~ ~override/drizzt.bcs~
   COMPILE_BAF_TO_BCS
 

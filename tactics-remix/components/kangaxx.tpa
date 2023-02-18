@@ -19,18 +19,18 @@ END
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 ACTION_IF FILE_EXISTS ~override/ar0330.bcs~ THEN BEGIN
-  EXTEND_TOP ~AR0330.bcs~ ~tactics-remix/baf/ar0330.baf~
+  EXTEND_TOP ~AR0330.bcs~ ~tactics-remix/baf/kangaxx/ar0330.baf~
 END ELSE BEGIN
-  COPY ~tactics-remix/baf/ar0330.baf~ ~override/ar0330.bcs~
+  COPY ~tactics-remix/baf/kangaxx/ar0330.baf~ ~override/ar0330.bcs~
     COMPILE_BAF_TO_BCS
 END
 
-COPY ~tactics-remix/baf/archlich.baf~ ~override/archlich.bcs~
-     ~tactics-remix/baf/krfight.baf~  ~override/krfight.bcs~
-     ~tactics-remix/baf/krlich.baf~   ~override/krlich.bcs~
+COPY ~tactics-remix/baf/kangaxx/archlich.baf~ ~override/archlich.bcs~
+     ~tactics-remix/baf/kangaxx/krfight.baf~  ~override/krfight.bcs~
+     ~tactics-remix/baf/kangaxx/krlich.baf~   ~override/krlich.bcs~
   COMPILE_BAF_TO_BCS
 
 ACTION_IF !scs_smrt_mgs BEGIN
-  COPY ~tactics-remix/baf/demilich.baf~ ~override/demilich.bcs~
+  COPY ~tactics-remix/baf/kangaxx/demilich.baf~ ~override/demilich.bcs~
     COMPILE_BAF_TO_BCS
 END

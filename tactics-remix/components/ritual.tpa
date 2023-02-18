@@ -123,23 +123,23 @@ COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/ritlead.d~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-EXTEND_TOP ~AR3000.bcs~ ~tactics-remix/baf/rit3000.baf~
+EXTEND_TOP ~AR3000.bcs~ ~tactics-remix/baf/ritual/rit3000.baf~
 
-COPY ~tactics-remix/baf/ar0086.baf~   ~override/ar0086.bcs~
-     ~tactics-remix/baf/ritac1.baf~   ~override/ritac1.bcs~
-     ~tactics-remix/baf/ritkt1.baf~   ~override/ritkt1.bcs~
-     ~tactics-remix/baf/ritkm1.baf~   ~override/ritkm1.bcs~
-     ~tactics-remix/baf/ritd1.baf~    ~override/ritd1.bcs~
-     ~tactics-remix/baf/ritend.baf~   ~override/ritend.bcs~
-     ~tactics-remix/baf/ritb1.baf~    ~override/ritb1.bcs~
-     ~tactics-remix/baf/ritw1.baf~    ~override/ritw1.bcs~
-     ~tactics-remix/baf/riti1.baf~    ~override/riti1.bcs~
-     ~tactics-remix/baf/rits1.baf~    ~override/rits1.bcs~
-     ~tactics-remix/baf/ritskul1.baf~ ~override/ritskul1.bcs~
-     ~tactics-remix/baf/ritpont.baf~  ~override/ritpont.bcs~
-     ~tactics-remix/baf/ritdrag.baf~  ~override/ritdrag.bcs~
-     ~tactics-remix/baf/ritual.baf~   ~override/ritual.bcs~
-     ~tactics-remix/baf/ritcount.baf~ ~override/ritcount.bcs~
-     ~tactics-remix/baf/ritguard.baf~ ~override/ritguard.bcs~
+COPY ~tactics-remix/baf/ritual/ar0086.baf~   ~override/ar0086.bcs~
+     ~tactics-remix/baf/ritual/ritac1.baf~   ~override/ritac1.bcs~
+     ~tactics-remix/baf/ritual/ritkt1.baf~   ~override/ritkt1.bcs~
+     ~tactics-remix/baf/ritual/ritkm1.baf~   ~override/ritkm1.bcs~
+     ~tactics-remix/baf/ritual/ritd1.baf~    ~override/ritd1.bcs~
+     ~tactics-remix/baf/ritual/ritend.baf~   ~override/ritend.bcs~
+     ~tactics-remix/baf/ritual/ritb1.baf~    ~override/ritb1.bcs~
+     ~tactics-remix/baf/ritual/ritw1.baf~    ~override/ritw1.bcs~
+     ~tactics-remix/baf/ritual/riti1.baf~    ~override/riti1.bcs~
+     ~tactics-remix/baf/ritual/rits1.baf~    ~override/rits1.bcs~
+     ~tactics-remix/baf/ritual/ritskul1.baf~ ~override/ritskul1.bcs~
+     ~tactics-remix/baf/ritual/ritpont.baf~  ~override/ritpont.bcs~
+     ~tactics-remix/baf/ritual/ritdrag.baf~  ~override/ritdrag.bcs~
+     ~tactics-remix/baf/ritual/ritual.baf~   ~override/ritual.bcs~
+     ~tactics-remix/baf/ritual/ritcount.baf~ ~override/ritcount.bcs~
+     ~tactics-remix/baf/ritual/ritguard.baf~ ~override/ritguard.bcs~
   COMPILE_BAF_TO_BCS
 

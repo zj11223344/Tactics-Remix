@@ -15,6 +15,7 @@ February xx, 2023
 - Remove cheese from Fallowmist.
 - Corrected bug where I accidentally used the same item file name across mods.
 - Added French translation courtesy of JohnBob.
+- Organized baf file structure.
 
 ## Version 0.1-alpha
 
