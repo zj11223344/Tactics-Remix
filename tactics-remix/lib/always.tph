@@ -67,4 +67,11 @@ ACTION_IF !VARIABLE_IS_SET ~initialise~ BEGIN
       OUTER_SET scs_smrt_mgs=0
    END
 
+   // Detect Forgotten Armament
+   ACTION_IF MOD_IS_INSTALLED ~setup-forgotten-armament.tp2~ ~20~ BEGIN
+      OUTER_SET forgot_arm=1
+   END ELSE BEGIN
+      OUTER_SET forgot_arm=0
+   END
+
 END

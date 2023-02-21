@@ -1,14 +1,16 @@
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
-//            Improved Smarter Guarded Compound Scripts
+//            Improved Smarter Twisted Rune Scripts
 /////////////////////////////////////////////////////////////////////
 // 				Version 1
-// Sion, 18th level Conjurer
+// Shangalar, 26th level Lich Conjurer
 // 
-// Fixes: No bugfixes. 
+// Basic strategy is taken from Sion in the Improved Guarded Compound:
 // 
-// Improvements: His spell picks are completely revamped. An 18th level
-// Conjurer has 3 million XP, and in ToB would get to pick a Feat. We're
+// Improvements: His spell picks are completely revamped. A 26th level
+// Conjurer has 6 million XP, and in ToB would get to pick 9 Feats! 
+// We'll take the extra 6, 7, 8th level spells. 
+// We're
 // being generous so we skip that (no Planetars). All of the weird
 // contingencies and sequencers are replaced by a bunch of long-lived
 // spells that are cast at warp speed as soon as you see him (stoneskin,
@@ -21,108 +23,139 @@
 // We completely ignore in-game memorization (hey, who doesn't?) and
 // use global variables to keep track of spells. 
 //
-// Memorized Spells By Level: 6 6 6 6 6 4 4 3 2
+// Memorized Spells By Level: 6 6 6 6 6 6+1 6+1 5+1 4 (total=43)
 // Memorized Spells (number, name, casting time): 
-//	1 shield (1)
-//	5 magic missile (1)
-//	4 strength (2)
-//	2 vocalize (2)
+//	6 magic missile (1)
+//
+//	5 melf acid (2)          
+//	1 vocalize (2)
+//
 //	1 remove magic (3)
-//	1 pro normal missiles
-//      3 pro fire
-//	1 slow (3)
+//	2 slow (3)
+//  3 melf minute meteor (3)
+//
 //	1 greater malison (4)
-//	2 stoneskin (1) 
-//	1 imp invis (4) 
-//	2 spirit armor (3)
-//	2 animate dead (5)
-//	2 chaos (4)
-//      2 pro-elec
-//	1 mislead (1)
+//	4 stoneskin (1) 
+//	1 spirit armor (3)
+//
+//  1 spell immunity (5)
+//	5 chaos (4)
+//
 //	1 pro magic energy (6)
-//	1 pro magic weapons (1)
-//	1 improved haste (3)
-//	2 spell turning (7)
-//	2 mordy (7)
-//	3 wilting (8)
-//	2 time stop (9)
+//	5 pro magic weapons (1)
+//  1 true sight
+//
+//	4 mordy (7) 
+//  4 spell turning
+//
+//	6 wilting (8) 
+//
+//	3 time stop (9)
+//  1 spell trap (9)
+//
+//      Already Cast: Chain Contingency: remove magic, wiltx2
+//              Spell Trigger: immune, pro-mw, pro-me
+//              Contingency: pro-mw
 /////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////
-// Battle Prep (Summoning)
+// DisplayString(Myself,39968) // Spell Trigger - Fired
 // 
-// The GC crew knows you are invading, so they prepare by casting
-// a few long-lived animate dead spells while waiting for the demon
-// to take you out. 
-/////////////////////////////////////////////////////////////////////
-IF
-  Allegiance(Myself,ENEMY)
-  Global("Prep","LOCALS",0)
-  NumCreatureLT([0.UNDEAD.0.0.0.0.0],4)
-THEN
-  RESPONSE #100
-  ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
-  ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
-  Continue()
-END	
 
 /////////////////////////////////////////////////////////////////////
 // Battle Prep
-// 
-// The GC crew knows you are invading, so they prepare by casting
-// a few long-lived buffing spells right before you come in. 
 /////////////////////////////////////////////////////////////////////
 IF
   Allegiance(Myself,ENEMY)
+  Global("ShangalarMove","AR1008",2)
   Global("Prep","LOCALS",0)
 THEN
   RESPONSE #100
+    ApplySpell(Myself,WIZARD_STONE_SKIN)
     SetGlobalTimer("TimeStop","LOCALS",1)
-    ReallyForceSpell("hlkoshi",WIZARD_STRENGTH)
-    ReallyForceSpell("hlkoshi",WIZARD_STRENGTH)
-    ReallyForceSpell("hlketta",WIZARD_STRENGTH)
-    ReallyForceSpell("hlketta",WIZARD_STRENGTH)
-    ReallyForceSpell("hlkoshi",WIZARD_PROTECTION_FROM_FIRE)
-    ReallyForceSpell("hlstal",WIZARD_PROTECTION_FROM_FIRE)
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_FIRE)
-    ReallyForceSpell("hlstal",WIZARD_PROTECTION_FROM_ELECTRICITY)
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_ELECTRICITY)
-    ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
-    ReallyForceSpell(Myself,WIZARD_SHIELD)
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
-    ReallyForceSpell(Myself,WIZARD_SPIRIT_ARMOR)
-    ReallyForceSpell("hlkoshi",WIZARD_SPIRIT_ARMOR)
+    DisplayString(Myself,39968) // Spell Trigger - Fired
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
-    ReallyForceSpell(Myself,WIZARD_SPELL_TURNING)
+    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
+    ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
+    SetGlobalTimer("RecastProMagWeap","LOCALS",24)
+    ReallyForceSpell(Myself,WIZARD_SPIRIT_ARMOR) 
+    ReallyForceSpell(Myself,WIZARD_SPELL_TRAP) 
+    ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)
+    ReallyForceSpell(Myself,WIZARD_MELF_METEOR)
     SetGlobal("Prep","LOCALS",1)
     GiveItemCreate("potn34",Myself,1,0,0)
-    GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
     UseItem("potn34",Myself)
-    // Re-memorize
-    SetGlobal("Time","LOCALS",2)
-    SetGlobal("wilt","LOCALS",3)
-    SetGlobal("Stoneskin","LOCALS",1)
-    SetGlobal("ImpInvis","LOCALS",1)
-    SetGlobal("Turning","LOCALS",1)
-    SetGlobal("Mislead","LOCALS",1)
-    SetGlobal("ImpHaste","LOCALS",1)
-    SetGlobal("Chaos","LOCALS",4)
+    SetGlobal("Time","LOCALS",3)
+    SetGlobal("Wilt","LOCALS",6)
+    SetGlobal("Mordy","LOCALS",4)
+    SetGlobal("Turning","LOCALS",4)
+    SetGlobal("ProMagWeap","LOCALS",4)
+    SetGlobal("Chaos","LOCALS",6)
+    SetGlobal("Stoneskin","LOCALS",3)
     SetGlobal("Malison","LOCALS",1)
-    SetGlobal("Mordy","LOCALS",2)
-    SetGlobal("Slow","LOCALS",1)
     SetGlobal("Remove","LOCALS",1)
-    SetGlobal("Vocalize","LOCALS",2)
-    SetGlobal("MelfAcid","LOCALS",0)
-    SetGlobal("Missile","LOCALS",5)
+    SetGlobal("Slow","LOCALS",2)
+    SetGlobal("MinuteMeteor","LOCALS",2)
+    SetGlobal("Vocalize","LOCALS",1)
+    SetGlobal("Melf","LOCALS",5)
+    SetGlobal("Missile","LOCALS",6)
     Shout(100)	// wake everyone up!
     Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Chain Contingency
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("ShangalarMove","AR1008",2)
+  See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  Global("ChainContingency","LOCALS",0)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,26328) // Chain Contingency
+    SetGlobal("ChainContingency","LOCALS",1)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC) // REMOVE_MAGIC
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Locate the enemy. 
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("ShangalarMove","AR1008",2)
+  !Detect([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !Detect(Player1)
+  !Range(Player1,20)
+THEN
+  RESPONSE #100
+    ForceSpell(Player1,WIZARD_DIMENSION_DOOR)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Contingency
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("ShangalarMove","AR1008",2)
+  See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  TookDamage()
+  Global("Contingency","LOCALS",0)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,40252) // Contingency - Protection ...
+    ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    SetGlobal("Contingency","LOCALS",1)
 END
 
 /////////////////////////////////////////////////////////////////////
 // Spell: Vocalize (if silenced)
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("Vocalize","LOCALS",0)
@@ -142,6 +175,7 @@ END
 // Spell: Stoneskin (if out)
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   CheckStatLT(Myself,1,STONESKINS)
@@ -160,70 +194,10 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
-// Spell: Mislead (if nearby enemy or attacked)
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  Allegiance(Myself,ENEMY)
-  GlobalGT("Mislead","LOCALS",0)
-  Exists(NearestEnemyOf(Myself))
-  OR(2)
-    See(LastAttackerOf(Myself))
-    Range(NearestEnemyOf(Myself),4)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Mislead","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_MISLEAD)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
-// Drink: Potion
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  HasItem("potn52",Myself)
-  HPPercentLT(Myself,50)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetInterrupt(FALSE)
-    UseItem("potn52",Myself)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
-// Spell: Imp Invis (if threatened, as above)
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  Allegiance(Myself,ENEMY)
-  GlobalGT("ImpInvis","LOCALS",0)
-  !StateCheck(Myself,STATE_INVISIBLE)
-  !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
-  Exists(NearestEnemyOf(Myself))
-  OR(2)
-    See(LastAttackerOf(Myself))
-    Range(NearestEnemyOf(Myself),4)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("ImpInvis","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_IMPROVED_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
 // Spell: Spell Turning (if out)
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Allegiance(Myself,ENEMY)
   OR(6)
@@ -249,13 +223,81 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
+// Spell: Pro Mag Weapon (if nearby enemy or attacked)
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("ShangalarMove","AR1008",2)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  Range(LastSeenBy(Myself),4)
+  GlobalGT("ProMagWeap","LOCALS",0)
+  !CheckSpellState(Myself,PROTECTION_FROM_MAGICAL_WEAPONS)
+  !CheckSpellState(Myself,ABSOLUTE_IMMUNITY)
+  !CheckSpellState(Myself,MANTLE)
+  !CheckSpellState(Myself,IMPROVED_MANTLE)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("ProMagWeap","LOCALS",-1)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Meteors
+/////////////////////////////////////////////////////////////////////
+IF
+  !HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  Global("MO_HasMelfMeteors","LOCALS",1)
+  CanEquipRanged()
+THEN
+  RESPONSE #100
+    SetGlobal("MO_HasMelfMeteors","LOCALS",0)
+    EquipRanged()
+    ActionOverride(Myself,ClearActions(Myself))
+END
+
+IF
+  !HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  Global("MO_HasMelfMeteors","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_HasMelfMeteors","LOCALS",0)
+    EquipMostDamagingMelee()
+    ActionOverride(Myself,ClearActions(Myself))
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  !HasItem("melfmet",Myself)  // ~Melf's Minute Meteor~
+  !HasItem("blakblad",Myself)  // ~Black Blade of Disaster~
+  GlobalGT("MinuteMeteor","LOCALS",0)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobal("MO_HasMelfMeteors","LOCALS",1)
+    IncrementGlobal("MinuteMeteor","LOCALS",-1)
+    SetInterrupt(FALSE)
+    Spell(Myself,WIZARD_MELF_METEOR)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
 // Spell: Time Stop
 /////////////////////////////////////////////////////////////////////
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  Global("MO_SpTrig","LOCALS",1)
-  GlobalGT("Time","LOCALS",0)  
+  GlobalGT("Time","LOCALS",0)
   OR(2)
     See(NearestEnemyOfType([GOODCUTOFF]))
     ActuallyInCombat()
@@ -269,7 +311,7 @@ THEN
     SetGlobalTimer("MO_TimeStopTimer","LOCALS",18)
     IncrementGlobal("Time","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TIME_STOP)
+    Spell(Myself,WIZARD_TIME_STOP)  // SPWI909.SPL (Time Stop)
     SetInterrupt(TRUE)
 END
 
@@ -277,7 +319,9 @@ END
 // Spell: Remove Magic
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  NumCreatureLT([GOODCUTOFF],4)
   See(NearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   GlobalGT("Remove","LOCALS",0)
@@ -286,14 +330,8 @@ IF
     CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
     CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
     CheckSpellState(LastSeenBy(Myself),MANTLE)
-  OR(5)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
-    CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-    CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
-    CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
-  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
   !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
   CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -306,12 +344,14 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
     SetInterrupt(TRUE)
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  NumCreatureLT([GOODCUTOFF],4)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   GlobalGT("Remove","LOCALS",0)
@@ -320,14 +360,8 @@ IF
     CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
     CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
     CheckSpellState(LastSeenBy(Myself),MANTLE)
-  OR(5)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
-    CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-    CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
-    CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
-  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
   !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
   CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -340,12 +374,14 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
     SetInterrupt(TRUE)
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  NumCreatureLT([GOODCUTOFF],4)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   GlobalGT("Remove","LOCALS",0)
@@ -354,14 +390,8 @@ IF
     CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
     CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
     CheckSpellState(LastSeenBy(Myself),MANTLE)
-  OR(5)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
-    CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-    CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
-    CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
-  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
   !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
   CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -374,12 +404,14 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
     SetInterrupt(TRUE)
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  NumCreatureLT([GOODCUTOFF],4)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   GlobalGT("Remove","LOCALS",0)
@@ -388,14 +420,8 @@ IF
     CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
     CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
     CheckSpellState(LastSeenBy(Myself),MANTLE)
-  OR(5)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
-    CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-    CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
-    CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
-  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
   !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
   CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -408,12 +434,14 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
     SetInterrupt(TRUE)
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  NumCreatureLT([GOODCUTOFF],4)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   GlobalGT("Remove","LOCALS",0)
@@ -422,14 +450,8 @@ IF
     CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
     CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
     CheckSpellState(LastSeenBy(Myself),MANTLE)
-  OR(5)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
-    CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-    CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
-    CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
-  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
   !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
   CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -442,12 +464,14 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
     SetInterrupt(TRUE)
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  NumCreatureLT([GOODCUTOFF],4)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   GlobalGT("Remove","LOCALS",0)
@@ -456,14 +480,8 @@ IF
     CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
     CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
     CheckSpellState(LastSeenBy(Myself),MANTLE)
-  OR(5)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
-    CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
-    CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-    CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
-    CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
   !CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
-  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
   !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
   CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -476,7 +494,7 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
     SetInterrupt(TRUE)
 END
 
@@ -484,6 +502,7 @@ END
 // Spell: Greater Malison
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("Malison","LOCALS",0)
@@ -501,6 +520,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Malison","LOCALS",0)
   Global("MO_CastMalison","LOCALS",1)
@@ -530,6 +550,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Malison","LOCALS",0)
   Global("MO_CastMalison","LOCALS",1)
@@ -559,6 +580,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Malison","LOCALS",0)
   Global("MO_CastMalison","LOCALS",1)
@@ -588,6 +610,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Malison","LOCALS",0)
   Global("MO_CastMalison","LOCALS",1)
@@ -617,6 +640,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Malison","LOCALS",0)
   Global("MO_CastMalison","LOCALS",1)
@@ -646,6 +670,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Malison","LOCALS",0)
   Global("MO_CastMalison","LOCALS",1)
@@ -678,6 +703,7 @@ END
 // Spell: Wilting
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("Wilt","LOCALS",0)
@@ -695,6 +721,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAbiDalzim","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -725,6 +752,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAbiDalzim","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -755,6 +783,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAbiDalzim","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -785,6 +814,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAbiDalzim","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -815,6 +845,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAbiDalzim","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -845,6 +876,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAbiDalzim","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -875,43 +907,10 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
-// Spell: Improved Haste
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  Allegiance(Myself,ENEMY)
-  GlobalGT("ImpHaste","LOCALS",0)
-  See("hlkoshi")
-  OR(2)
-    See(NearestEnemyOfType([GOODCUTOFF]))
-    ActuallyInCombat()
-  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-  !CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
-  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
-  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
-  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #50
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("ImpHaste","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec("hlkoshi",WIZARD_IMPROVED_HASTE)
-    SetInterrupt(TRUE)
-  RESPONSE #50
-    Continue()
-END
-
-/////////////////////////////////////////////////////////////////////
 // Spell: Chaos
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("Chaos","LOCALS",0)
@@ -929,6 +928,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastChaos","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -969,6 +969,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastChaos","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -1009,6 +1010,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastChaos","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -1049,6 +1051,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastChaos","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -1089,6 +1092,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastChaos","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -1129,6 +1133,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastChaos","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -1172,6 +1177,7 @@ END
 // Spell: Mordy
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   GlobalGT("Mordy","LOCALS",0)
   Allegiance(Myself,ENEMY)
@@ -1197,6 +1203,7 @@ END
 // Spell: Slow
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("Slow","LOCALS",0)
@@ -1214,6 +1221,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastSlow","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -1242,6 +1250,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastSlow","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -1270,6 +1279,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastSlow","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -1298,6 +1308,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastSlow","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -1326,6 +1337,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastSlow","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -1354,6 +1366,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastSlow","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -1385,6 +1398,7 @@ END
 // Spell: Melf Acid
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1402,6 +1416,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAcidArrow","LOCALS",1)
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1435,6 +1450,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAcidArrow","LOCALS",1)
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1468,6 +1484,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAcidArrow","LOCALS",1)
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1501,6 +1518,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAcidArrow","LOCALS",1)
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1534,6 +1552,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAcidArrow","LOCALS",1)
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1567,6 +1586,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastAcidArrow","LOCALS",1)
   GlobalGT("MelfAcid","LOCALS",0)
@@ -1603,6 +1623,7 @@ END
 // Spell: Magic Missile
 /////////////////////////////////////////////////////////////////////
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See([GOODCUTOFF])
   GlobalGT("Missile","LOCALS",0)
@@ -1620,6 +1641,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastMagicMissile","LOCALS",1)
   GlobalGT("Missile","LOCALS",0)
@@ -1651,6 +1673,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastMagicMissile","LOCALS",1)
   GlobalGT("Missile","LOCALS",0)
@@ -1682,6 +1705,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastMagicMissile","LOCALS",1)
   GlobalGT("Missile","LOCALS",0)
@@ -1713,6 +1737,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastMagicMissile","LOCALS",1)
   GlobalGT("Missile","LOCALS",0)
@@ -1744,6 +1769,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastMagicMissile","LOCALS",1)
   GlobalGT("Missile","LOCALS",0)
@@ -1775,6 +1801,7 @@ THEN
 END
 
 IF
+  Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_CastMagicMissile","LOCALS",1)
   GlobalGT("Missile","LOCALS",0)
@@ -1806,26 +1833,209 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
-// Follow the warriors.
+// Better part of valor 
 /////////////////////////////////////////////////////////////////////
 IF
-  !Detect(NearestEnemyOf(Myself))
-  Exists(NearestEnemyOf(Myself))
+  Global("ShangalarMove","AR1008",2)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerExpired("Cast","LOCALS")
+  Range(NearestEnemyOf(Myself),4)
 THEN
-  RESPONSE #34
-    MoveToObject("hlkoshi")
-  RESPONSE #33
-    MoveToObject("hlolaf")
-  RESPONSE #33
-    MoveToObject("hlmafer")
+  RESPONSE #100
+    RunAwayFrom(NearestEnemyOf(Myself),3)
 END
 
 /////////////////////////////////////////////////////////////////////
-// Wait for death. :-) Don't let some other BG script take over. 
+// Attack
 /////////////////////////////////////////////////////////////////////
 IF
-	True()
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
-	RESPONSE #100
-	  NoAction()
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
