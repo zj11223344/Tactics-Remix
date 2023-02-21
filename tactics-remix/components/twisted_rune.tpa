@@ -45,11 +45,11 @@ COPY_EXISTING ~hlrevan.CRE~ ~override~
   WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~hlrevan~ #8 // Add Default Script
-  WRITE_BYTE 0x54   3
-  WRITE_BYTE 0x55   5
-  WRITE_BYTE 0x56   4
-  WRITE_BYTE 0x57   4
-  WRITE_BYTE 0x58   6
+  WRITE_BYTE 0x54   3            // Save vs. Death
+  WRITE_BYTE 0x55   5            // Save vs. Wand
+  WRITE_BYTE 0x56   4            // Save vs. Polymorph
+  WRITE_BYTE 0x57   4            // Save vs. Breath
+  WRITE_BYTE 0x58   6            // Save vs. Spell
 
   PATCH_IF !forgot_arm BEGIN
     SET_BG2_PROFICIENCY ~PROFICIENCYBASTARDSWORD~ 5
@@ -68,16 +68,37 @@ COPY_EXISTING ~hlshang.CRE~ ~override~
   WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~hlshang~ #8 // Add Default Script
-  WRITE_BYTE 0x54   8
-  WRITE_BYTE 0x55   3
-  WRITE_BYTE 0x56   5
-  WRITE_BYTE 0x57   7
-  WRITE_BYTE 0x58   1
+  WRITE_BYTE 0x54   8            // Save vs. Death
+  WRITE_BYTE 0x55   3            // Save vs. Wand
+  WRITE_BYTE 0x56   5            // Save vs. Polymorph
+  WRITE_BYTE 0x57   7            // Save vs. Breath
+  WRITE_BYTE 0x58   1            // Save vs. Spell
   REPLACE_CRE_ITEM ~CLCK17~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP
+
+///////////////////////////////////////////////////////////////////////////
+// Update Layene                                                         //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~hllayen.CRE~ ~override~
+  WRITE_ASCII 0x250 ~~        #8 // Clear Class Script
+  WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
+  WRITE_ASCII 0x268 ~hllayen~ #8 // Add Default Script
+  WRITE_BYTE 0x24   47           // Current HP
+  WRITE_BYTE 0x26   47           // Max HP
+  WRITE_BYTE 0x54   8            // Save vs. Death
+  WRITE_BYTE 0x55   3            // Save vs. Wand
+  WRITE_BYTE 0x56   5            // Save vs. Polymorph
+  WRITE_BYTE 0x57   7            // Save vs. Breath
+  WRITE_BYTE 0x58   4            // Save vs. Spell
+  WRITE_BYTE 0x234  25           // Level
+  PATCH_IF NOT FILE_EXISTS_IN_GAME ~UROBE1A.ITM~ BEGIN
+    REPLACE_CRE_ITEM ~CLCK17~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP
+  END
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 COPY ~tactics-remix/baf/twisted_rune/hlrevan.baf~ ~override/hlrevan.bcs~
      ~tactics-remix/baf/twisted_rune/hlshang.baf~ ~override/hlshang.bcs~
+     ~tactics-remix/baf/twisted_rune/hllayen.baf~ ~override/hllayen.bcs~
   COMPILE_BAF_TO_BCS

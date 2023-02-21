@@ -57,8 +57,26 @@
 //              Spell Trigger: immune, pro-mw, pro-me
 //              Contingency: pro-mw
 /////////////////////////////////////////////////////////////////////
-// DisplayString(Myself,39968) // Spell Trigger - Fired
-// 
+
+/////////////////////////////////////////////////////////////////////
+// True Sight Stuff
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_EnemyTrueSightTimer","GLOBAL")
+  Global("MO_EnemyTrueSight","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_EnemyTrueSight","GLOBAL",0)
+END
+
+IF
+  Global("MO_TrueSightActive","LOCALS",1)
+  CheckStat(Myself,0,TRUE_SIGHT)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_TrueSightActive","LOCALS",0)
+    SetGlobal("MO_EnemyTrueSight","GLOBAL",0)
+END
 
 /////////////////////////////////////////////////////////////////////
 // Battle Prep
@@ -83,6 +101,9 @@ THEN
     SetGlobal("Prep","LOCALS",1)
     GiveItemCreate("potn34",Myself,1,0,0)
     UseItem("potn34",Myself)
+    SetGlobal("MO_TrueSightActive","LOCALS",1)
+    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
+    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
     SetGlobal("Time","LOCALS",3)
     SetGlobal("Wilt","LOCALS",6)
     SetGlobal("Mordy","LOCALS",4)
@@ -209,6 +230,7 @@ IF
     See([GOODCUTOFF.0.0.CLERIC_MAGE])
   GlobalGT("Turning","LOCALS",0)
   CheckStatLT(Myself,1,WIZARD_SPELL_TURNING)
+  !CheckStat(Myself,1,WIZARD_SPELL_TRAP)
   CheckStatLT(Myself,20,SPELLFAILUREMAGE)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
@@ -229,7 +251,9 @@ IF
   Global("ShangalarMove","AR1008",2)
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
-  Range(LastSeenBy(Myself),4)
+  OR(2)
+    See(LastAttackerOf(Myself))
+    Range(LastSeenBy(Myself),4)
   GlobalGT("ProMagWeap","LOCALS",0)
   !CheckSpellState(Myself,PROTECTION_FROM_MAGICAL_WEAPONS)
   !CheckSpellState(Myself,ABSOLUTE_IMMUNITY)
