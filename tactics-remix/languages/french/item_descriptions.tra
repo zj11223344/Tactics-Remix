@@ -395,3 +395,120 @@ Nécessite :
 Inutilisable par :
  Mage~
 
+///////////////////////////////////////////////////////////////////////////
+// Plate Mail                                                            //
+///////////////////////////////////////////////////////////////////////////
+@4804 = ~Armure de plates~
+@4805 = ~L'armure de plates est une combinaison de cottes de mailles et de plaques métalliques recouvrant les zones vitales telles que le torse, l'abdomen et l'aine. De fabrication semblable à l'armure de plates en bronze, la véritable armure de plates est constituée de mailles et de cuir.
+
+PARAMÈTRES :
+
+Classe d'armure : 3 (0 contre les armes tranchantes)
+Nécessite :
+ 12 en Force
+
+Poids : 50~
+
+///////////////////////////////////////////////////////////////////////////
+// Deep Guardian's Plate (NWN2)                                          //
+///////////////////////////////////////////////////////////////////////////
+@4806 = ~Armure du gardien des profondeurs~
+@4807 = ~Pour apporter une meilleure protection aux soldats, les artificiers de l'ancienne Imaskar fabriquèrent une sorte de symbiote vivant, lié à son utilisateur pour le protéger. A partir de spécimens trouvés dans les profondeurs des océans, les lanceurs de sorts imaskaris commencèrent à greffer ces créatures enchantées sur des armures, les sevrant d'eau salée et les forçant à se nourrir de la magie. Cette technique fut un succès : l'utilisateur de cette armure bénéficiait ainsi d'une meilleure résistance aux sorts. Mais certains thaumartisans considérèrent cette création avec une crainte grandissante, persuadés qu'une créature qui se repaissait de magie deviendrait très vite plus exigeante et finirait pas se nourrir directement de son maître. Pour cette raison, seules quelques armures furent conçues et les créatures créées par les Imaskaris furent enfermées et oubliées. A la chute d'Imaskar, ces créatures sont probablement retournées dans le silence des profondeurs... ou peut-être se sont-elles transformées en autre chose...
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+– Résistance à la magie : +10%
+– Immunité contre l'immobilisation et la paralysie
+
+Classe d'armure : 1 (-2 contre les armes tranchantes)
+Nécessite :
+ 12 en Force
+
+Poids : 20~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Bastard Swords                                                        //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Bastard Sword                                                         //
+///////////////////////////////////////////////////////////////////////////
+@4900 = ~Epée bâtarde~
+@4901 = ~Également connue sous le nom d'épée à une main et demie, l'épée bâtarde tire son nom de son aspect intermédiaire entre l'épée à deux mains et l'épée longue. Elle possède une lame à double tranchant et une longue poignée, qui peut éventuellement accueillir les deux mains. La longueur de l'épée bâtarde varie entre 1,20 et 1,50 mètre.
+
+PARAMÈTRES :
+
+Dégâts : 2d4 (tranchant)
+Facteur de vitesse : 8
+Type de compétence : épée bâtarde
+Type : arme à une main
+Nécessite :
+ 11 en Force
+
+Poids : 10~
+
+///////////////////////////////////////////////////////////////////////////
+// Bloodletter +4 (NWN2) Non-Good ONLY                                   //
+///////////////////////////////////////////////////////////////////////////
+@4902 = ~Sanglante~
+@4903 = ~Forgée dans un brasier à base de soufre et refroidie dans le sang de son créateur, la Sanglante est une arme typiquement maléfique. C'est le genre d'épée que les malfaisants aiment agiter devant les yeux d'un chevalier vertueux en laissant entendre un rire inquiétant. Elle possède le pouvoir de voler l'énergie vitale de ses ennemis mais, s'il faut en croire ce qu'il est advenu de ses propriétaires successifs, ceux-ci finissent toujours par avoir le sort qu'ils méritent.
+
+PARAMÈTRES :
+
+Capacités de combat :
+– Inflige 2 points de dégâts d'hémorragie à chaque coup (un point de dégâts par round).
+– Chaque coup réussi draine 1 point de vie à la cible et le transfère au porteur. Cette capacité ne permet pas de dépasser son maximum de points de vie.
+
+TAC0 : +4
+Dégâts : 2d4+4 (tranchant)
+Facteur de vitesse : 5
+Type de compétence : épée bâtarde
+Type : arme à une main
+Nécessite :
+ 11 en Force
+
+Poids : 5~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Medium Shields                                                        //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Medium Shield                                                         //
+///////////////////////////////////////////////////////////////////////////
+@5000 = ~Écu~
+@5001 = ~L'écu, tout simplement connu sous le nom de bouclier, se porte de la même manière qu'une rondache. Cependant, contrairement à cette dernière, son poids et sa taille empêchent d'utiliser le bras qui le porte pour tout autre chose que de le maintenir fermement en place. Les boucliers sont généralement fabriqués en métal ou en bois, ils mesurent entre 90 centimètres et 1,20 mètre de diamètre et peuvent avoir n'importe quelle forme, de ronde à carrée, en passant par des ailes de dragon déployées. Le bouclier médiéval typique, l'écu, ressemble à une sorte de triangle dont l'un des angles pointerait vers le bas, avec une forme ogivale pour sa partie inférieure.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Classe d'armure : +1
+
+Nécessite :
+ 12 en Force
+
+Poids : 7~
+
+///////////////////////////////////////////////////////////////////////////
+// Uthgardt Holy Shield +2 (NWN2)                                        //
+///////////////////////////////////////////////////////////////////////////
+@5002 = ~Bouclier sacré d'Uthgardt~
+@5003 = ~Les Uthgardt mettent la force physique en exergue et ces boucliers semblent faits pour eux. D'autant qu'ils n'aiment guère parler pour ne rien dire, et que ces boucliers ont pour principal effet de transformer leur possesseur en sauvage digne des barbares du Grand Nord.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Classe d'armure : +3
+– Force : +2
+– Charisme : -2
+
+Nécessite :
+ 12 en Force
+
+Poids : 7~
+
