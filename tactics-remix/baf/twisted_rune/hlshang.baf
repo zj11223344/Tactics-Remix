@@ -268,7 +268,7 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("ProMagWeap","LOCALS",-1)
     SetInterrupt(FALSE)
-    Spell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    SpellNoDec(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
     SetInterrupt(TRUE)
 END
 
@@ -311,7 +311,7 @@ THEN
     SetGlobal("MO_HasMelfMeteors","LOCALS",1)
     IncrementGlobal("MinuteMeteor","LOCALS",-1)
     SetInterrupt(FALSE)
-    Spell(Myself,WIZARD_MELF_METEOR)
+    SpellNoDec(Myself,WIZARD_MELF_METEOR)
     SetInterrupt(TRUE)
 END
 
@@ -335,7 +335,7 @@ THEN
     SetGlobalTimer("MO_TimeStopTimer","LOCALS",18)
     IncrementGlobal("Time","LOCALS",-1)
     SetInterrupt(FALSE)
-    Spell(Myself,WIZARD_TIME_STOP)  // SPWI909.SPL (Time Stop)
+    SpellNoDec(Myself,WIZARD_TIME_STOP)  // SPWI909.SPL (Time Stop)
     SetInterrupt(TRUE)
 END
 
