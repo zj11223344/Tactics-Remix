@@ -28,9 +28,12 @@
 @26 = ~Multiplier les points de vie par 2 et ajouter 20 points supplementaires~
 @27 = ~Multiplier les points de vie par 3~
 @28 = ~Multiplier les points de vie par 3 et ajouter 30 points supplementaires~
+@29 = ~Amelioration de Drizzt (BGEE) par Morpheus562's ~
+@30 = ~Utiliser le fichier "tactics-remix.ini" pour définir le nombre de points de vie supplementaires~
 
-@3000 = ~Ce composant necessite BG: EE, BGII: EE, ou EET~
+@3000 = ~Ce composant necessite BG2 : EE ou EET~
 @3001 = ~DLCMerger est necessaire avant d'installer des mods sur les jeux SoD~
+@3002 = ~Ce composant necessite BG : EE ou EET~
 
 ///////////////////////////////////////////////////////////////////////////
 // Groups                                                                //

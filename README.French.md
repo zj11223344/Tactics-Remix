@@ -56,6 +56,10 @@ Les chevaliers démons ( particulièrement ceux de l'autel consacré à Démogor
 
 Grosse refonte du combat contre le Roi de la crypte dans le quartier du Cimetière. J'ai révisé les mécanismes de ce combat afin de le rendre encore plus difficile que la version originelle de Tactics. 
 
+#### Morpheus562's Amélioration de Drizzt (BGEE - In Progress)
+
+Cela rend la version BGEE de Drizzt plus redoutable. S'il devient hostile, il attaquera en priorité le joueur plutôt que de s'attarder sur les gnolls. 
+
 #### Rencontres plus difficile pour Kangaxx et ses gardiens, par Kensai Ryu
 
 ...
