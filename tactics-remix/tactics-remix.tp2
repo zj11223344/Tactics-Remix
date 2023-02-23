@@ -149,7 +149,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/guarded_compound.tpa~
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Improved Twisted Rune                                                 //
 ///////////////////////////////////////////////////////////////////////////
@@ -158,7 +157,6 @@ BEGIN @12 DESIGNATED 12 GROUP @3011 LABEL TacticsRemix-TwistedRune
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/twisted_rune.tpa~
-*/
 
 /*
 ///////////////////////////////////////////////////////////////////////////
