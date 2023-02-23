@@ -4093,7 +4093,9 @@ THEN
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
     ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
-ENDIF
+END
+
+IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastChaos","LOCALS",1)
