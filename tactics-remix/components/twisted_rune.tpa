@@ -98,7 +98,8 @@ COPY_EXISTING ~hllayen.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/twisted_rune/hlrevan.baf~ ~override/hlrevan.bcs~
+COPY ~tactics-remix/baf/twisted_rune/ar1008.baf~  ~override/ar1008.bcs~
+     ~tactics-remix/baf/twisted_rune/hlrevan.baf~ ~override/hlrevan.bcs~
      ~tactics-remix/baf/twisted_rune/hlshang.baf~ ~override/hlshang.bcs~
      ~tactics-remix/baf/twisted_rune/hllayen.baf~ ~override/hllayen.bcs~
   COMPILE_BAF_TO_BCS
