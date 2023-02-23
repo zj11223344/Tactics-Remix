@@ -125,7 +125,7 @@ THEN
     ReallyForceSpell(Myself,WIZARD_SPELL_TRAP)
     ReallyForceSpell("hlrevan",WIZARD_IMPROVED_HASTE)
     SetGlobal("Prep","LOCALS",1)
-    EquipItem("staff11")
+    EquipItem("staf11")
     GiveItemCreate("potn34",Myself,1,0,0)
     UseItem("potn34",Myself)
     // Lvl 9
