@@ -57,7 +57,8 @@ COPY_EXISTING ~hlrevan.CRE~ ~override~
     REPLACE_CRE_ITEM ~MO1H39~ #0 #0 #0 ~UNSTEALABLE~ ~WEAPON1~ EQUIP
     REPLACE_CRE_ITEM ~MOPM02~ #0 #0 #0 ~UNSTEALABLE~ ~ARMOR~ EQUIP
     REPLACE_CRE_ITEM ~MOMSH03~ #0 #0 #0 ~UNSTEALABLE~ ~SHIELD~ EQUIP
-    REPLACE_CRE_ITEM ~HELM06~ #0 #0 #0 ~UNSTEALABLE~ ~HELMET~ EQUIP
+    REPLACE_CRE_ITEM ~HELM06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~ EQUIP
+    REPLACE_CRE_ITEM ~AMUL22~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~ EQUIP // Immunity to poison
   END
 
 ///////////////////////////////////////////////////////////////////////////
@@ -93,6 +94,7 @@ COPY_EXISTING ~hllayen.CRE~ ~override~
   WRITE_BYTE 0x234  25           // Level
   PATCH_IF NOT FILE_EXISTS_IN_GAME ~UROBE1A.ITM~ BEGIN
     REPLACE_CRE_ITEM ~CLCK17~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP
+    REPLACE_CRE_ITEM ~AMUL22~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~ EQUIP // Immunity to poison
   END
 
 ///////////////////////////////////////////////////////////////////////////
