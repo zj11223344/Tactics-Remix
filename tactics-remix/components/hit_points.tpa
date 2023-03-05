@@ -42,7 +42,7 @@ READ_SSHORT (item_slots_offset + 7 * 0x02) belt_slot
 READ_SSHORT (item_slots_offset + 8 * 0x02) boots_slot
 READ_SSHORT (item_slots_offset + 17 * 0x02) cloak_slot
 
-PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND !("%SOURCE_RES%" STRING_COMPARE_CASE "charbase") BEGIN   
+PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND ("%SOURCE_RES%" STRING_COMPARE_CASE "charbase") BEGIN   
   PATCH_IF (lring_slot = ~-1~) BEGIN
     ADD_CRE_ITEM ~MORNG05~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~ EQUIP
   END ELSE PATCH_IF (rring_slot = ~-1~) BEGIN
