@@ -42,7 +42,7 @@
 //
 //  1 greater malison (4)
 //  3 stoneskin (4) 
-//  1 Fireshield Blue (4)
+//  1 Fireshield Red (4)
 //  1 Teleport Field (4)
 //  6 total lvl 4 spells
 //
@@ -116,7 +116,7 @@ THEN
     ReallyForceSpell(Myself,CLERIC_ZONE_OF_SWEET_AIR)
     ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
     ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)
-    ReallyForceSpell(Myself,WIZARD_FIRE_SHIELD_BLUE)
+    ReallyForceSpell(Myself,WIZARD_FIRE_SHIELD_RED)
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)

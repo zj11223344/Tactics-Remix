@@ -60,7 +60,6 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
 
@@ -79,7 +78,6 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
 
@@ -97,7 +95,6 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
 
@@ -115,7 +112,6 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
 
@@ -134,7 +130,6 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(NearestEnemyOf(Myself))
 END
 
@@ -153,7 +148,6 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
@@ -172,7 +166,6 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
@@ -191,7 +184,6 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
@@ -210,7 +202,6 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
@@ -229,7 +220,6 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
@@ -242,7 +232,6 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(NearestEnemyOf(Myself))
 END
 
@@ -255,7 +244,6 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
@@ -268,7 +256,6 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
@@ -281,7 +268,6 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
@@ -294,7 +280,6 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
@@ -307,7 +292,66 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+THEN
+  RESPONSE #100
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
