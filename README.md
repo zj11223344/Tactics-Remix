@@ -75,7 +75,7 @@ This makes the BGEE version of Drizzt more formidable. If he goes hostile, he wi
 
 #### More encounters will be added.
 
-### Enemy Improvements - Install BEFORE SCS
+### Enemy Improvements - Install AFTER SCS
 
 #### Improve All Enemies Hit Points
 
