@@ -47,19 +47,39 @@ A gnome fighter/illusionist is looking for Valygar inside a building in the dock
 
 ### Update Existing Encounters - Install AFTER SCS
 
-#### Gebhard Blucher's Improved Demon Knights (In Progress)
+These components will check if SCS is present and update accordingly to prevent any compatibility issues.
+
+#### Improved Guarded Compound in the Temple District
+
+Improves enemies encountered in the Guarded Compound within the Temple District. 
+
+#### Improved Twisted Rune
+
+This increases the difficulty of the enemies within the Twisted Rune and throws a couple surprises at the players.
+
+#### Gebhard Blucher's Improved Demon Knights
 
 This makes the Demon Knights (notably, those at the Demogorgon altar in the Underdark) better opponents. They have more powerful spells and are more resistant to cheese. 
+
+#### Kensai Ryu's Tougher Kangaxx and Guardians
+
+This will improve the difficulty for Kangaxx and throw a new challenging encounter into the mix prior to the Kangaxx fight. If SCS is installed, Kangaxx will revert to SCS AI; however, the guardians will still remain.
 
 #### Kensai Ryu's Improved Crypt King
 
 Large overhaul for the original Crypt King fight within the Graveyard district. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
 
-#### Morpheus562's Improved Drizzt (BGEE - In Progress)
+#### Morpheus562's Improved Drizzt (BGEE)
 
 This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
 
 #### More encounters will be added.
+
+### Enemy Improvements - Install BEFORE SCS
+
+#### Improve All Enemies Hit Points
+
+There are a couple options for the player to select to increase the HP of all enemies. There is an additional option to adjust enemy HP based on the ini file if the player does not like the pre-defined options. Friendly cast summons will NOT have their HP altered. 
 
 ## Special Thanks
 
