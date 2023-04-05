@@ -110,6 +110,6 @@ END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
   EXTEND_TOP ~baldur25.bcs~ ~tactics-remix/baf/kuroisan/solak1me.baf~
 END
 
-COPY ~tactics-remix/baf/solak1.baf~ ~override/solak1.bcs~
+COPY ~tactics-remix/baf/kuroisan/solak1.baf~ ~override/solak1.bcs~
   COMPILE_BAF_TO_BCS
 

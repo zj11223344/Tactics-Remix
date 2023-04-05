@@ -11,7 +11,7 @@ COPY ~tactics-remix/cre/krfight.cre~  ~override~
 COPY ~tactics-remix/cre/krlich2.cre~  ~override~
 COPY ~tactics-remix/cre/rat01.cre~    ~override~
 
-ACTION_IF !scs_smrt_mgs BEGIN
+ACTION_IF NOT MOD_IS_INSTALLED ~setup-stratagems.tp2~ ~6030~ BEGIN
   COPY ~tactics-remix/cre/hldemi.cre~   ~override~
 END
 
@@ -30,7 +30,7 @@ COPY ~tactics-remix/baf/kangaxx/archlich.baf~ ~override/archlich.bcs~
      ~tactics-remix/baf/kangaxx/krlich.baf~   ~override/krlich.bcs~
   COMPILE_BAF_TO_BCS
 
-ACTION_IF !scs_smrt_mgs BEGIN
+ACTION_IF NOT MOD_IS_INSTALLED ~setup-stratagems.tp2~ ~6030~ BEGIN
   COPY ~tactics-remix/baf/kangaxx/demilich.baf~ ~override/demilich.bcs~
     COMPILE_BAF_TO_BCS
 END
