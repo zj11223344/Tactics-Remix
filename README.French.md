@@ -48,30 +48,46 @@ Un gnome guerrier / illusionniste est à la recherche de Valygar, vous le rencon
 
 ### Mise à jour des rencontres - Installer ces composants APRES Sword Coast Stratagems
 
-#### Amelioration des Chevaliers Demons, par Gebhard Blucher
+Les composants suivants détecteront la présence de SCS et s'adapteront en conséquence afin d'éviter tout problème de compatibilité.
 
-Les chevaliers démons ( particulièrement ceux de l'autel consacré à Démogorgon en Ombre-Terre ) seront de meilleurs adversaires. Ils disposeront de sorts plus puissants et une résistance accrue.
+#### Amélioration de la Cour Gardée dans le District du Temple
 
-#### Amelioration du Roi de la crypte, par Kensai Ryu
+Améliore les ennemis présents dans l'enceinte de la Cour gardée 
 
-Grosse refonte du combat contre le Roi de la crypte dans le quartier du Cimetière. J'ai révisé les mécanismes de ce combat afin de le rendre encore plus difficile que la version originelle de Tactics. 
+#### Amélioration de la Rune Tordue
 
-#### Morpheus562's Amélioration de Drizzt (BGEE - In Progress)
+Ce composant augmente la difficulté de la Rune tordue et réserve quelques surprises aux joueurs.
 
-Cela rend la version BGEE de Drizzt plus redoutable. S'il devient hostile, il attaquera en priorité le joueur plutôt que de s'attarder sur les gnolls. 
+#### Amélioration des Chevaliers Demons, par Gebhard Blucher
+
+Les chevaliers démons ( particulièrement ceux de l'autel consacré à Démogorgon en Ombre-Terre ) seront de meilleurs adversaires. Ils disposeront de sorts plus puissants et une résistance accrue. 
 
 #### Rencontres plus difficile pour Kangaxx et ses gardiens, par Kensai Ryu
 
-...
+Améliore la confrontation avec Kangaxx et ajoute une nouvelle et difficile rencontre au milieu des étapes qui précèdent le combat contre Kangaxx. Si SCS est installé, l'IA utilisée par Kangaxx sera celle de SCS, mais celle des gardiens sera toujours effective.
 
-### Amelioration des ennemis - Installer ces composants APRES Sword Coast Stratagems
+#### Amélioration du Roi de la crypte, par Kensai Ryu
+
+Grosse refonte du combat contre le Roi de la crypte dans le quartier du Cimetière. J'ai révisé les mécanismes de ce combat afin de le rendre encore plus difficile que la version originelle de Tactics. 
+
+#### Morpheus562's Amélioration de Drizzt (BGEE)
+
+Cela rend la version BGEE de Drizzt plus redoutable. S'il devient hostile, il attaquera en priorité le joueur plutôt que de s'attarder sur les gnolls.
+
+#### De nouvelles confrontations seront ajoutées.
+
+### Amélioration des ennemis - Installer ces composants APRES Sword Coast Stratagems
+
+#### Augmenter les points de vie de tous les ennemis
+
+Le joueur dispose de plusieurs choix pour augmenter la puissance de l'ensemble des adversaires. 
+Une option supplémentaire permet d'ajuster les points de vie des ennemis en utilisant le fichier tactics-remix.ini si le joueur n'aime pas les statistiques prédéfinies.
+Les invocations du groupe ne verront pas leurs points de vie modifiés. 
 
 - Multiplier les points de vie des ennemis par 2
 - Multiplier les points de vie des ennemis par 2 et ajouter 20 points points de vie supplémentaires
 - Multiplier les points de vie des ennemis par 3
 - Multiplier les points de vie des ennemis par 3 et ajouter 30 points points de vie supplémentaires
-
-#### De nouvelles confrontations seront ajoutées.
 
 ## Remerciements
 
