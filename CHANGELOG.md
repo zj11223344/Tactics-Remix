@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.2.1-alpha
+
+April 6, 2023
+
+### Changed 
+
+- Corrected file paths for Kuroisan.
+
 ## Version 0.2-alpha
 
 March 31, 2023
