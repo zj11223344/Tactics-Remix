@@ -1,0 +1,59 @@
+// Sword of Greed
+// physical save drain, spawn mordies!
+
+// takes Sanchuudoku!
+
+IF
+  Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobalTimer("Spawn","LOCALS",24)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  !GlobalTimerNotExpired("Spawn","LOCALS")
+  !InMyArea("sword01")
+  Difficulty(HARDEST)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spawn","LOCALS",25)
+    ReallyForceSpell(Myself,WIZARD_MORDENKAINENS_SWORD)
+    Continue()
+END
+
+IF
+  OR(7)
+    See(Player1)
+    See(Player2)
+    See(Player3)
+    See(Player4)
+    See(Player5)
+    See(Player6)
+    See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+  RESPONSE #100
+    ReallyForceSpell(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END

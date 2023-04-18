@@ -1,0 +1,59 @@
+// Wraith of Wrath
+// physical str drain, spawn wraiths!
+
+// takes crom faeyr!
+
+IF
+  Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobalTimer("Spawn","LOCALS",18)
+END
+
+IF
+  !GlobalTimerNotExpired("Spawn","LOCALS")
+  Difficulty(HARDEST)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spawn","LOCALS",25)
+    CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    Continue()
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  OR(7)
+    See(Player1)
+    See(Player2)
+    See(Player3)
+    See(Player4)
+    See(Player5)
+    See(Player6)
+    See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END

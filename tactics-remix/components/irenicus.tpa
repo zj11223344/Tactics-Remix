@@ -1,0 +1,76 @@
+// Tactics Remix, Improved Irenicus
+
+///////////////////////////////////////////////////////////////////////////
+// Import                                                                //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/spl/ii0.spl~      ~override~ // Shatter Magic
+  SAY NAME1 @6000
+  SAY NAME2 @6000
+  SAY 0xfe  @6001
+
+COPY ~tactics-remix/spl/ii1.spl~      ~override~ // Shattered Body
+  SAY NAME1 @6002
+  SAY NAME2 @6002
+
+COPY ~tactics-remix/itm/bracalac.itm~ ~override~
+COPY ~tactics-remix/itm/ii3.itm~      ~override~
+COPY ~tactics-remix/itm/ii4.itm~      ~override~
+COPY ~tactics-remix/cre/ii0.cre~      ~override~ // Irenicus - Round 1
+
+///////////////////////////////////////////////////////////////////////////
+// Elder Orb of Fear                                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~beheld01.CRE~ ~override/ii1.cre~
+  SAY NAME1 @2037
+  SAY NAME2 @2037  
+  WRITE_LONG  0x14  50000    // XP value
+  WRITE_BYTE  0x24  200      // Current HP
+  WRITE_BYTE  0x26  200      // Max HP
+  WRITE_SHORT 0x46  -10      // Natural AC
+  WRITE_SHORT 0x48  -10      // Effective AC
+  WRITE_SHORT 0x4c  -4       // Missile AC Modifier
+  WRITE_BYTE  0x52  3        // thac0
+  WRITE_BYTE  0x54  4        // Save vs. Death
+  WRITE_BYTE  0x55  4        // Save vs. Wand
+  WRITE_BYTE  0x56  3        // Save vs. Polymorph
+  WRITE_BYTE  0x57  3        // Save vs. Breath
+  WRITE_BYTE  0x58  5        // Save vs. Spell
+  WRITE_BYTE  0x59  75       // Fire Resistance
+  WRITE_BYTE  0x5a  75       // Cold Resistance
+  WRITE_BYTE  0x5b  75       // Electricity Resistance
+  WRITE_BYTE  0x5c  75       // Acid Resistance
+  WRITE_BYTE  0x5d  75       // Magic Resistance
+  WRITE_BYTE  0x5e  75       // Magic Fire Resistance
+  WRITE_BYTE  0x5f  75       // Magic Cold Resistance
+  WRITE_BYTE  0x60  50       // Slashing Resistance
+  WRITE_BYTE  0x61  50       // Crushing Resistance
+  WRITE_BYTE  0x62  50       // Piercing Resistance
+  WRITE_BYTE  0x63  50       // Missile Resistance
+  WRITE_BYTE  0x238 20       // Strength
+  WRITE_BYTE  0x23a 20       // Intelligence
+  WRITE_BYTE  0x23b 14       // Wisdom
+  WRITE_BYTE  0x23c 15       // Dexterity
+  WRITE_BYTE  0x23d 18       // Constitution
+  WRITE_BYTE  0x23e 12       // Charisma
+  WRITE_ASCII 0x250 ~ii1~ #8 // Class Script
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+EXTEND_TOP ~ar2900.bcs~ ~tactics-remix/baf/irenicus/ar2900.baf~
+EXTEND_TOP ~sujon.bcs~  ~tactics-remix/baf/irenicus/sujon.baf~
+
+COPY ~tactics-remix/baf/irenicus/cut85a.baf~ ~override/cut85a.bcs~
+     ~tactics-remix/baf/irenicus/cut85b.baf~ ~override/cut85b.bcs~
+     ~tactics-remix/baf/irenicus/cut85c.baf~ ~override/cut85c.bcs~
+     ~tactics-remix/baf/irenicus/cutii0.baf~ ~override/cutii0.bcs~
+     ~tactics-remix/baf/irenicus/cutii1.baf~ ~override/cutii1.bcs~
+     ~tactics-remix/baf/irenicus/cutii2.baf~ ~override/cutii2.bcs~
+     ~tactics-remix/baf/irenicus/ii0.baf~    ~override/ii0.bcs~
+     ~tactics-remix/baf/irenicus/ii1.baf~    ~override/ii1.bcs~
+     ~tactics-remix/baf/irenicus/ii2.baf~    ~override/ii2.bcs~
+     ~tactics-remix/baf/irenicus/ii3.baf~    ~override/ii3.bcs~
+     ~tactics-remix/baf/irenicus/ii4.baf~    ~override/ii4.bcs~
+     ~tactics-remix/baf/irenicus/ii5.baf~    ~override/ii5.bcs~
+     ~tactics-remix/baf/irenicus/ii6.baf~    ~override/ii6.bcs~
+  COMPILE_BAF_TO_BCS

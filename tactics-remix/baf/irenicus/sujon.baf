@@ -1,0 +1,8 @@
+// SixOfSpades wants something here ...
+IF
+  See(NearestEnemyOf(Myself))
+  Delay(6)
+THEN
+  RESPONSE #100
+    ReallyForceSpellRES("ii0",LastSeenBy(Myself))
+END

@@ -1,0 +1,84 @@
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+IF
+  Global("IITookShield","AR2900",1)
+  Dead("ii1")
+THEN
+  RESPONSE #100
+    SetGlobal("IITookShield","AR2900",0)
+    GiveItemCreate("wa2shiel",Player1,1,1,1)
+END
+
+IF
+  Global("IITookAmulet","AR2900",1)
+  Dead("ii2")
+THEN
+  RESPONSE #100
+    SetGlobal("IITookAmulet","AR2900",0)
+    GiveItemCreate("amul21",Player1,1,1,1)
+END
+
+IF
+  Global("IITookCrom","AR2900",1)
+  Dead("ii4")
+THEN
+  RESPONSE #100
+    SetGlobal("IITookCrom","AR2900",0)
+    GiveItemCreate("hamm09",Player1,1,1,1)
+END
+
+IF
+  Global("IITookSanchu","AR2900",1)
+  Dead("ii3")
+THEN
+  RESPONSE #100
+    SetGlobal("IITookSanchu","AR2900",0)
+    GiveItemCreate("solak1",Player1,1,1,1)
+END
+
+IF
+  Global("IITookCloak","AR2900",1)
+  Dead("ii0")
+THEN
+  RESPONSE #100
+    SetGlobal("IITookCloak","AR2900",0)
+    GiveItemCreate("clck26",Player1,1,1,1)
+END
+
+IF
+  Dead("ii0")
+  Dead("ii1")
+  Dead("ii2")
+  Dead("ii3")
+  Dead("ii4")
+  Global("IISlayerStart","AR2900",0)
+  CombatCounter(0)
+THEN
+  RESPONSE #100
+    SetGlobal("IISlayerStart","AR2900",1)
+    StartCutSceneMode()
+    StartCutScene("cutii1")
+END
+
+IF
+  Dead("ii5")
+  Global("IIMageStart","AR2900",0)
+THEN
+  RESPONSE #100
+    SetGlobal("IIMageStart","AR2900",1)
+    StartCutSceneMode()
+    StartCutScene("cutii2")
+END
+
+IF
+  Dead("ii6")
+  Global("DefeatedJon","GLOBAL",0)
+  CombatCounter(0)
+THEN
+  RESPONSE #100
+    SetGlobal("DefeatedJon","GLOBAL",1)
+END
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////

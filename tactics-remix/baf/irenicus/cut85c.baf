@@ -1,0 +1,55 @@
+// weimer: don't destroy hellspy!
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("ii0")
+        ForceSpell(Myself,DO_SOME_EFFECTS)
+        CreateVisualEffectObject("SPFIREPI",Myself)
+        Wait(4)
+      CreateVisualEffectObject("SPCLOUD1",Player1)
+      CreateVisualEffectObject("SPCLOUD1",Player2)
+      CreateVisualEffectObject("SPCLOUD1",Player3)
+      CreateVisualEffectObject("SPCLOUD1",Player4)
+      CreateVisualEffectObject("SPCLOUD1",Player5)
+      CreateVisualEffectObject("SPCLOUD1",Player6)
+      Wait(1)
+      CreateVisualEffectObject("SPFLESHS",Player1)
+      CreateVisualEffectObject("SPFLESHS",Player2)
+      CreateVisualEffectObject("SPFLESHS",Player3)
+      CreateVisualEffectObject("SPFLESHS",Player4)
+      CreateVisualEffectObject("SPFLESHS",Player5)
+      CreateVisualEffectObject("SPFLESHS",Player6)
+        FadeToColor([30.0],0)
+        Wait(4)
+        StartDialogueNoSet(Player1)
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        SmallWait(7)
+        CreateVisualEffect("SPPLANAR",[1916.507])
+        Wait(1)
+        SmallWait(10)
+        CreateCreature("ii1",[1916.507],0) // Glabrezu
+        SmallWait(5)
+        CreateVisualEffect("SPPLANAR",[1827.548])
+        Wait(1)
+        SmallWait(10)
+        CreateCreature("ii4",[1827.548],0) // Balor
+        SmallWait(5)
+        CreateVisualEffect("SPPLANAR",[2136.529])
+        Wait(1)
+        SmallWait(10)
+        CreateCreature("ii3",[2136.529],0) // Glabrezu
+        SmallWait(5)
+        CreateVisualEffect("SPPLANAR",[2212.571])
+        Wait(1)
+        SmallWait(10)
+        CreateCreature("ii2",[2212.571],0) // Balor
+        //EndCutSceneMode()
+END

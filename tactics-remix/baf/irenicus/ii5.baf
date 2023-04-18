@@ -1,0 +1,24 @@
+// Iren alone!
+
+// Move to the PC
+
+IF
+  NumTimesTalkedTo(0)
+THEN
+  RESPONSE #100
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  See(Player1)
+THEN
+  RESPONSE #100
+    Attack(Player1)
+END
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END

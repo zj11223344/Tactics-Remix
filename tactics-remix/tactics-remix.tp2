@@ -25,6 +25,7 @@ LANGUAGE ~English~
          ~tactics-remix/languages/english/item_descriptions.tra~
          ~tactics-remix/languages/english/script_dialog.tra~
          ~tactics-remix/languages/english/setup.tra~
+         ~tactics-remix/languages/english/spell_descriptions.tra~
 		 
 LANGUAGE ~Francais (original translation by Ly Meng, Laurent Duvernet et Cocobard)~
          ~french~
@@ -33,6 +34,7 @@ LANGUAGE ~Francais (original translation by Ly Meng, Laurent Duvernet et Cocobar
          ~tactics-remix/languages/english/item_descriptions.tra~
          ~tactics-remix/languages/english/script_dialog.tra~
          ~tactics-remix/languages/english/setup.tra~
+         ~tactics-remix/languages/english/spell_descriptions.tra~
          ~tactics-remix/languages/french/cre_dialog.tra~
          ~tactics-remix/languages/french/creatures.tra~
          ~tactics-remix/languages/french/item_descriptions.tra~
@@ -129,7 +131,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/bodhi.tpa~
 */
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Improved Irenicus                                                     //
 ///////////////////////////////////////////////////////////////////////////
@@ -138,7 +139,6 @@ BEGIN @10 DESIGNATED 10 GROUP @3011 LABEL TacticsRemix-Irenicus
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/irenicus.tpa~
-*/
 
 ///////////////////////////////////////////////////////////////////////////
 // Improved Guarded Compound in the Temple District                      //

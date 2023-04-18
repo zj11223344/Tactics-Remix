@@ -1,0 +1,60 @@
+IF
+    True()
+THEN
+  RESPONSE #100
+      CutSceneId("ii4")
+      CreateVisualEffectObject("SPPLANAR",Myself)
+      SmallWait(10)
+      CreateCreature("shadow01",[700.700],0)
+      JumpToPoint([700.700]) // wrath
+END
+
+IF
+    True()
+THEN
+  RESPONSE #100
+      CutSceneId("ii3")
+      SmallWait(2)
+      CreateVisualEffectObject("SPPLANAR",Myself)
+      SmallWait(10)
+      CreateCreature("shadow01",[800.1700],0)
+      JumpToPoint([800.1700])  // greed
+END
+
+IF
+    True()
+THEN
+  RESPONSE #100
+
+      CutSceneId("ii0")
+      CreateVisualEffectObject("SPPLANAR",Myself)
+      SmallWait(10)
+      CreateCreature("shadow01",[1900.2100],0)
+      JumpToPoint([1900.2100]) // selfish
+END
+
+IF
+    True()
+THEN
+  RESPONSE #100
+      CutSceneId("ii1")
+
+      CreateVisualEffectObject("SPPLANAR",Myself)
+      SmallWait(10)
+      CreateCreature("shadow01",[3000.1700],0)
+      JumpToPoint([3000.1700]) // fear
+END
+
+IF
+    True()
+THEN
+  RESPONSE #100
+      CutSceneId("ii2")
+      CreateVisualEffectObject("SPPLANAR",Myself)
+      SmallWait(10)
+      CreateCreature("shadow01",[3300.900],0)
+//      JumpToPoint([3300.900]) // pride
+        JumpToPoint([2611.1054]) // pride
+    Wait(2)
+    EndCutSceneMode()
+END
