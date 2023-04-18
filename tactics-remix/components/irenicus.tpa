@@ -26,9 +26,9 @@ COPY_EXISTING ~beheld01.CRE~ ~override/ii1.cre~
   WRITE_LONG  0x14  50000    // XP value
   WRITE_BYTE  0x24  200      // Current HP
   WRITE_BYTE  0x26  200      // Max HP
-  WRITE_SHORT 0x46  -10      // Natural AC
-  //WRITE_SHORT 0x48  -10      // Effective AC
-  WRITE_SHORT 0x4c  -4       // Missile AC Modifier
+  WRITE_SHORT 0x46  ~-10~      // Natural AC
+  WRITE_SHORT 0x48  ~-10~      // Effective AC
+  WRITE_SHORT 0x4c  ~-4~       // Missile AC Modifier
   WRITE_BYTE  0x52  3        // thac0
   WRITE_BYTE  0x54  4        // Save vs. Death
   WRITE_BYTE  0x55  4        // Save vs. Wand
@@ -63,9 +63,9 @@ COPY_EXISTING ~dragblac.CRE~ ~override/ii2.cre~
   WRITE_LONG  0x14  50000    // XP value
   WRITE_BYTE  0x24  200      // Current HP
   WRITE_BYTE  0x26  200      // Max HP
-  WRITE_SHORT 0x46  -10      // Natural AC
-  WRITE_SHORT 0x48  -10      // Effective AC
-  WRITE_BYTE  0x52  -8       // thac0
+  WRITE_SHORT 0x46  ~-10~      // Natural AC
+  WRITE_SHORT 0x48  ~-10~      // Effective AC
+  WRITE_BYTE  0x52  ~-8~       // thac0
   WRITE_BYTE  0x54  0        // Save vs. Death
   WRITE_BYTE  0x55  0        // Save vs. Wand
   WRITE_BYTE  0x56  0        // Save vs. Polymorph
