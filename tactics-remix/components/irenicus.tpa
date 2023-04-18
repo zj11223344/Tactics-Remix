@@ -27,7 +27,7 @@ COPY_EXISTING ~beheld01.CRE~ ~override/ii1.cre~
   WRITE_BYTE  0x24  200      // Current HP
   WRITE_BYTE  0x26  200      // Max HP
   WRITE_SHORT 0x46  -10      // Natural AC
-  WRITE_SHORT 0x48  -10      // Effective AC
+  //WRITE_SHORT 0x48  -10      // Effective AC
   WRITE_SHORT 0x4c  -4       // Missile AC Modifier
   WRITE_BYTE  0x52  3        // thac0
   WRITE_BYTE  0x54  4        // Save vs. Death
