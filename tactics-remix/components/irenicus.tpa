@@ -55,6 +55,54 @@ COPY_EXISTING ~beheld01.CRE~ ~override/ii1.cre~
   WRITE_ASCII 0x250 ~ii1~ #8 // Class Script
 
 ///////////////////////////////////////////////////////////////////////////
+// Dragon of Pride                                                       //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~dragblac.CRE~ ~override/ii2.cre~
+  SAY NAME1 @2038
+  SAY NAME2 @2038
+  WRITE_LONG  0x14  50000    // XP value
+  WRITE_BYTE  0x24  200      // Current HP
+  WRITE_BYTE  0x26  200      // Max HP
+  WRITE_SHORT 0x46  -10      // Natural AC
+  WRITE_SHORT 0x48  -10      // Effective AC
+  WRITE_BYTE  0x52  -8       // thac0
+  WRITE_BYTE  0x54  0        // Save vs. Death
+  WRITE_BYTE  0x55  0        // Save vs. Wand
+  WRITE_BYTE  0x56  0        // Save vs. Polymorph
+  WRITE_BYTE  0x57  0        // Save vs. Breath
+  WRITE_BYTE  0x58  0        // Save vs. Spell
+  WRITE_BYTE  0x5d  80       // Magic Resistance
+  WRITE_BYTE  0x60  30       // Slashing Resistance
+  WRITE_BYTE  0x61  30       // Crushing Resistance
+  WRITE_BYTE  0x62  30       // Piercing Resistance
+  WRITE_BYTE  0x63  30       // Missile Resistance
+  WRITE_BYTE  0x238 25       // Strength
+  WRITE_BYTE  0x23a 14       // Intelligence
+  WRITE_BYTE  0x23b 16       // Wisdom
+  WRITE_BYTE  0x23c 15       // Dexterity
+  WRITE_BYTE  0x23d 15       // Constitution
+  WRITE_BYTE  0x23e 13       // Charisma
+  WRITE_ASCII 0x248 ~ii2~      #8 // Override Script
+  WRITE_ASCII 0x250 ~DRAGBLAC~ #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~~         #8 // Clear Default Script
+  WRITE_ASCII 0x2cc ~~         #8 // Clear Dialogue
+  REMOVE_CRE_ITEM   ~BOLT06~
+  REMOVE_CRE_ITEM   ~BUL03~
+  REMOVE_CRE_ITEM   ~AROW11~
+  REMOVE_CRE_ITEM   ~AROW07~
+  REMOVE_CRE_ITEM   ~MH#COMP6~
+  REMOVE_CRE_ITEM   ~MISC41~
+  REMOVE_CRE_ITEM   ~MISCB2~
+  REMOVE_CRE_ITEM   ~MISC42~
+  REMOVE_CRE_ITEM   ~AMUL11~
+  REMOVE_CRE_ITEM   ~AMUL12~
+  REMOVE_CRE_ITEM   ~AMUL13~
+  REMOVE_CRE_ITEM   ~CHAN16~
+  REMOVE_CRE_ITEM   ~DART04~
+
+///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 EXTEND_TOP ~ar2900.bcs~ ~tactics-remix/baf/irenicus/ar2900.baf~
