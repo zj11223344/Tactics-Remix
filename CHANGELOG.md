@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.3-alpha
+
+April xx, 2023
+
+### Changed 
+
+- Improved Irenicus.
+
 ## Version 0.2.1-alpha
 
 April 6, 2023
