@@ -103,6 +103,7 @@ COPY_EXISTING ~dragblac.CRE~ ~override/ii2.cre~
   WRITE_ASCII 0x260 ~~         #8 // Clear General Script
   WRITE_ASCII 0x268 ~~         #8 // Clear Default Script
   WRITE_ASCII 0x2cc ~~         #8 // Clear Dialogue
+  WRITE_BYTE  0x270 255           // set allegiance to ENEMY
   REMOVE_CRE_ITEM   ~BOLT06~
   REMOVE_CRE_ITEM   ~BULL03~
   REMOVE_CRE_ITEM   ~AROW11~
