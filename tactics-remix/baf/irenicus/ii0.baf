@@ -17,6 +17,15 @@ THEN
     SetGlobal("MO_EnemyTrueSight","GLOBAL",0)
 END
 
+IF
+  !See(NearestEnemyOf(Myself))
+  !HPPercent(Myself,100)
+THEN
+  RESPONSE #100
+    SpellNoDec(Myself,CLERIC_CURE_CRITICAL_WOUNDS)
+    Wait(1)
+END
+
 /////////////////////////////////////////////////////////////////////
 // Prep
 /////////////////////////////////////////////////////////////////////

@@ -15,13 +15,22 @@ COPY ~tactics-remix/spl/ii1.spl~      ~override~ // Shattered Body
 COPY ~tactics-remix/itm/bracalac.itm~ ~override~
 COPY ~tactics-remix/itm/ii3.itm~      ~override~
 COPY ~tactics-remix/itm/ii4.itm~      ~override~
-COPY ~tactics-remix/cre/ii0.cre~      ~override~ // Irenicus - Round 1
+COPY ~tactics-remix/cre/ii0.cre~      ~override~ // Irenicus - Phase 1
 COPY ~tactics-remix/cre/ii3.cre~      ~override~ // Sword of Greed
   SAY NAME1 @2039
   SAY NAME2 @2039 
 COPY ~tactics-remix/cre/ii4.cre~      ~override~ // Wraith of Wrath
   SAY NAME1 @2040
   SAY NAME2 @2040 
+COPY ~tactics-remix/cre/ii5.cre~      ~override~ // Irenicus the Slayer - Phase 2
+  SAY NAME1 @2041
+  SAY NAME2 @2041
+COPY ~tactics-remix/cre/ii6.cre~      ~override~ // Irenicus, the Shattered One - Phase 3
+  SAY NAME1 @2042
+  SAY NAME2 @2042 
+
+COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/helljon.d~
+COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/ii5.d~
 
 ///////////////////////////////////////////////////////////////////////////
 // Elder Orb of Fear                                                     //

@@ -131,7 +131,7 @@ the Skulls. It is a bridge between Life and Undeath that protects the Skull
 until all its living minions are slain.~
 @357    = ~You must find each Skull, slay all nearby defenders, and then crush the Skull itself. When you have crushed all of the skulls, enter the gates and disrupt the Ritual.~
 
-// I STILL NEED TO DO THE BELOW, SO PLEASE DO NOT TRANSLATE YET!!!
+// 
 @358    = ~Tell me more about the mortal defenders of the Ritual.~
 @359    = ~The Ritual Strategos formed the Ritual Army from the ranks of moderately experienced adventurers. Each is about twice or three times as experienced as you were when you were captured by Irenicus (yes, I know about that: everyone important has been following your career with interest). This means that individually each is little more powerful than you were when you were captured.~
 @360    = ~Aside from a few unique leaders, members in the Ritual Army fall into a few distinct castes:~
@@ -216,3 +216,38 @@ until all its living minions are slain.~
 @422    = ~Ah, you have returned. As I mentioned when we first met, I fully intend to betray you. Your failure to handle the Ritual correctly has only increased my wrath. With little to live for, I find that my thoughts turn to rending your flesh from your bones.~
 @423    = ~You may even defeat me. I try to convince myself that I will meet up with her on the other side ... but after what has happened, I know that to be impossible. My plans and machinations were all unwittingly foiled by you, <RACE>.~
 @424    = ~Now it is time for you to pay the price.~
+
+// Improved Irenicus
+@500 = ~Ah, you are awake. It seems that last bit of magic was a bit too strong for you. No matter, the Sundering is complete.~
+@501 = ~Witness the true breadth of my power, <CHARNAME>. Did you think I sat alone behind these doors, unmoving and unthinking while you struggled through your pathetic self-created tests for the Tears of Bhaal?~
+@502 = ~Don't be naive. While you were jumping through those little hoops in your mind, I was using your soul ... soon to be MY soul ... to find some Tears of my own.~
+@503 = ~It is time I lived up to my chosen name: The Shattered One. I have rent my own spirit asunder to take better advantage of the power in this place.~
+@504 = ~This section of the Nine Hells is devoted to the Vices of Fear, Greed, Wrath, Pride and Selfishness. Rather than trying to incorporate them all (or their opposites) into one being, as you have done ...~
+@505 = ~I have split myself into fragments, each one the very essence of evil, the very essence of malice, the very essence of vice.~
+@506 = ~Their forms should be familiar to you from the tests you just underwent. Their powers are the antitheses of the rewards you should have formed for yourself.~
+@507 = ~The Orb of Fear, with its fortitude-sapping gaze ...~
+@508 = ~The Dragon of Pride, with the power to sap your experience ...~
+@509 = ~The Wraith of Wrath, with its strength-draining blows ...~
+@510 = ~The Sword of Greed, Blackrazor meets Mordenkainen ...~
+@511 = ~And, as you may have ascertained, I kept Selfishness for this form. It seemed only fitting.~
+@512 = ~With bodies and minds better suited to this environment I am free from the petty limitations that bind you. I can channel magical energy with but a thought: no delays or limits. Wrath can only be bested by brawn, Greed can only be bested by brain.~ 
+@513 = ~You get the idea ... or perhaps you don't. Really, <CHARNAME>, you disappoint me. You squandered your chance here in Hell. Stronger muscles? A slightly faster brain? Worthless in the end. I have seized the true power of the tests while you wasted your time on petty moralizing.~
+@514 = ~And now it is time to die.~
+@515 = ~Oh, don't be surprised if you find some of your equipment missing.  While you were asleep I took the liberty of appropriating some of your choicer belongings. For some reason I was unable to kill you while you were unconscious ... and believe me, I tried. You'll have to kill us if you want it back. Of course, you were going to try that anyway.~
+@516 = ~But if this is the way it must be, then I am ready. Face me, <CHARNAME>. Fight for your soul!~
+
+@517 = ~Impressive, <CHARNAME>. I hope that you weren't expecting that to be the end of me?~
+  @518 = ~No, somehow I knew it wasn't over.~
+  @519 = ~Jon-bon, why won't you just die!?~
+@520 = ~As you can see, I shattered myself into a few more fragments than the five I told you about earlier. It seems that the coordinated assault on you didn't work. Pity.~
+@521 = ~So this time I think we'll just fight tooth and nail. It is down to you and it is down to me. Your lackies cannot help you: this fight is between the two of us and the stakes are your soul.~
+@522 = ~Before we begin, however, I find it a bit unfair that I stand before you naked as the day Bhaal was born ... and you are carrying enough equipment to make Elminster jealous. Let's see what we can do about that.~
+@523 = ~And now, <CHARNAME>, it's time to dance. I hope you die slowly, cut into a thousand pieces!~
+
+
+@524 = ~Very well, <CHARNAME>. I am beginning the entertain the possibility that I will not defeat you.~
+  @525 = ~What was your first clue?~
+  @526 = ~Give me back my soul, monster!~
+  @527 = ~Just shut up and die already.~
+@528 = ~At any rate, it is time for me to put my last shard forward. No more tricks, <CHARNAME>, this is truly my final incarnation in Hell. I lack even the power over your soul to keep your companions out of the fight.~
+@529 = ~One way or another, this will be our last little chat. Goodbye, <CHARNAME>.~
