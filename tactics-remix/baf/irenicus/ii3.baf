@@ -2,6 +2,14 @@
 // physical save drain, spawn mordies!
 
 IF
+  Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobalTimer("Spawn","LOCALS",24)
+END
+
+IF
   !GlobalTimerNotExpired("Spawn","LOCALS")
   !InMyArea("sword01")
   Difficulty(HARDEST)

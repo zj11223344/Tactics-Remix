@@ -25,6 +25,7 @@ IF
   Global("Prep","LOCALS",0)
 THEN
   RESPONSE #100
+    SetGlobalTimer("Spawn","LOCALS",18)
     ApplySpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
     ApplySpell(Myself,WIZARD_SPELL_SHIELD)  // SPWI519.SPL (Spell Shield)
