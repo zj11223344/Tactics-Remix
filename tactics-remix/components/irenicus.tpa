@@ -16,6 +16,9 @@ COPY ~tactics-remix/itm/bracalac.itm~ ~override~
 COPY ~tactics-remix/itm/ii3.itm~      ~override~
 COPY ~tactics-remix/itm/ii4.itm~      ~override~
 COPY ~tactics-remix/cre/ii0.cre~      ~override~ // Irenicus - Round 1
+COPY ~tactics-remix/cre/ii3.cre~      ~override~ // Sword of Greed
+  SAY NAME1 @2039
+  SAY NAME2 @2039 
 
 ///////////////////////////////////////////////////////////////////////////
 // Elder Orb of Fear                                                     //
