@@ -207,7 +207,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/dragons.tpa~
 */
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Kensai Ryu's Improved Copper Coronet                                  //
 ///////////////////////////////////////////////////////////////////////////
@@ -216,7 +215,6 @@ BEGIN @17 DESIGNATED 17 GROUP @3011 LABEL TacticsRemix-CopperCoronet
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/copper_coronet.tpa~
-*/
 
 /*
 ///////////////////////////////////////////////////////////////////////////
