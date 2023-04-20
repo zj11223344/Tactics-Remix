@@ -73,11 +73,17 @@ If you visit the tomb of Kangaxx you will find a new guardian in the room above,
 
 You remember the Cyrpt King in the Graveyard, don't you? Of course you do, he's very easy to beat and he has some cool loot (good sword). This version fixes his script that was broken in the game and also gives him a couple of skeleton minions. After all, he is a king, right? He also calls for more backup every now and then. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
 
-#### Kensai Ryu's Improved Copper Coronet (Not yet)
+#### Kensai Ryu's Improved Copper Coronet (Not yet released)
 
 This component creates more Guards in the Copper Coronet when the guards go hostile. This will only work on games in which you have not yet started the Copper Coronet quest. 
 
 Includes GB's "Gorf the Squisher" script fix.
+
+#### Mike Barnes' Improved Small Teeth Pass (Not yet released)
+
+This makes the Small Teeth Pass (AR1700, optional in Chapter 6 after Elhan) much tougher by adding three Dragons.
+
+WARNING: Reported to be *incompatible* with TDD. 
 
 #### Morpheus562's Improved Drizzt (BGEE)
 
