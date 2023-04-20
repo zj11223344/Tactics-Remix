@@ -49,13 +49,17 @@ A gnome fighter/illusionist is looking for Valygar inside a building in the dock
 
 These components will check if SCS is present and update accordingly to prevent any compatibility issues.
 
+#### Improved Irenicus
+
+Makes Joneleth "The Shattered One" Irenicus a bit more of a challenge when you finally face him in Hell at the end of SoA. Rather than summoning generic demons and immediately losing to you, he sunders himself into fragments, one for each Tear of Bhaal Test in Hell. Each fragment has different strengths and weaknesses. We also add a paltry amount of dialogue.
+
 #### Improved Guarded Compound in the Temple District
 
-Improves enemies encountered in the Guarded Compound within the Temple District. 
+This component makes the guardians of Celestial Fury more "realistically" difficult. They have appropriate spell picks for their levels (Sion is an 18th level conjurer, for example, so he can cast 9th level spells) and a number of abuses are prevented (you can no longer run to the lower floor). They also throw up a large number of protections early: they do know you are coming, after all. Despite their high levels, they use only SoA abilities (no ToB feats or ToB spells). 
 
 #### Improved Twisted Rune
 
-This increases the difficulty of the enemies within the Twisted Rune and throws a couple surprises at the players.
+This component makes the guardians of the Staff of the Magi actually believable. An 18th level conjurer, an 18th level fighter, a 26th level Lich, plus they've got the Staff, and they're still routinely defeated by solo characters still in Chapter 2. This component fixed some bugs (their saving throws and spell memorization numbers) and makes more intelligent spell choices (e.g., no gating in demons that will kill you). It also prevents some previous cheesy tactics (traps, cloudkill, etc.). Finally, Layene actually uses the Staff of the Magi the way a PC would (invisibility and spell trap). Before she just sat on it. :-) Did you even notice that their fighter, Revanek, appears completely naked? These guys have money to burn and they can't buy him a long sword and some armor? I think not! Despite their high levels, they use only SoA abilities (no ToB feats or ToB spells). 
 
 #### Gebhard Blucher's Improved Demon Knights
 
@@ -63,11 +67,11 @@ This makes the Demon Knights (notably, those at the Demogorgon altar in the Unde
 
 #### Kensai Ryu's Tougher Kangaxx and Guardians
 
-This will improve the difficulty for Kangaxx and throw a new challenging encounter into the mix prior to the Kangaxx fight. If SCS is installed, Kangaxx will revert to SCS AI; however, the guardians will still remain.
+If you visit the tomb of Kangaxx you will find a new guardian in the room above, the Archlich. He's a level 34/21 Cleric/Mage, and he has another lich with him and some guards he's brought. Their purpose is to kill Kangaxx and get his ring. If you already have the ring they do not know this, they think Kangaxx is still alive and has it. They will kill anyone whom they find snooping around his tomb. It's a pretty tough fight so be prepared. If SCS is installed, Kangaxx will revert to SCS AI; however, the guardians will still remain.
 
 #### Kensai Ryu's Improved Crypt King
 
-Large overhaul for the original Crypt King fight within the Graveyard district. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
+You remember the Cyrpt King in the Graveyard, don't you? Of course you do, he's very easy to beat and he has some cool loot (good sword). This version fixes his script that was broken in the game and also gives him a couple of skeleton minions. After all, he is a king, right? He also calls for more backup every now and then. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
 
 #### Morpheus562's Improved Drizzt (BGEE)
 
