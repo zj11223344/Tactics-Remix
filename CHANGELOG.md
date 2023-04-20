@@ -6,7 +6,8 @@ April xx, 2023
 
 ### Changed 
 
-- Improved Irenicus.
+- Added Improved Irenicus.
+- Added Kensai Ryu's Improved Copper Coronet.
 
 ## Version 0.2.1-alpha
 
