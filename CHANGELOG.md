@@ -8,6 +8,7 @@ April xx, 2023
 
 - Added Improved Irenicus.
 - Added Kensai Ryu's Improved Copper Coronet.
+- Added Mike Barnes' Improved Small Teeth Pass.
 
 ## Version 0.2.1-alpha
 

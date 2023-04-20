@@ -1,0 +1,26 @@
+IF
+  OnCreation()
+  Global("RandomEncounters","GLOBAL",3)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("RandomEncounters","GLOBAL",4)
+    CreateCreature("RERAK01",[488.558],10)  // ~Traveler~
+    CreateCreature("RERAK02",[500.454],10)  // ~Traveler~
+    CreateCreature("RERAK03",[552.476],10)  // ~Traveler~
+    CreateCreature("RERAK04",[427.548],10)  // ~Traveler~
+    CreateCreature("RERAK05",[525.591],10)  // ~Traveler~
+    CreateCreature("RERAK06",[585.542],10)  // ~Traveler~
+END
+
+IF
+  OnCreation()
+THEN
+  RESPONSE #100
+    CreateCreature("REBAND01",[488.558],10)  // ~Bandit~
+    CreateCreature("REBAND02",[500.454],10)  // ~Bandit~
+    CreateCreature("REBAND03",[552.476],10)  // ~Bandit~
+    CreateCreature("REBAND04",[427.548],10)  // ~Bandit~
+    CreateCreature("REBAND05",[525.591],10)  // ~Bandit~
+END
+

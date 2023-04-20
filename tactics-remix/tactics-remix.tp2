@@ -198,6 +198,17 @@ INCLUDE ~tactics-remix/components/crypt_king.tpa~
 
 /*
 ///////////////////////////////////////////////////////////////////////////
+// Kensai Ryu's Random Wilderness Encounters                             //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @31 DESIGNATED 31 GROUP @3011 LABEL TacticsRemix-WildernessEncounters
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remix/components/wilderness_encounters.tpa~
+*/
+
+/*
+///////////////////////////////////////////////////////////////////////////
 // Smarter Dragons in SoA                                                //
 ///////////////////////////////////////////////////////////////////////////
 BEGIN @16 DESIGNATED 16 GROUP @3011 LABEL TacticsRemix-Dragons
@@ -227,7 +238,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/oasis.tpa~
 */
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Mike Barnes' Improved Small Teeth Pass                                //
 ///////////////////////////////////////////////////////////////////////////
@@ -236,7 +246,6 @@ BEGIN @19 DESIGNATED 19 GROUP @3011 LABEL TacticsRemix-SmallTeethPass
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/small_teeth_pass.tpa~
-*/
 
 /*
 ///////////////////////////////////////////////////////////////////////////

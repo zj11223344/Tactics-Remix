@@ -1,0 +1,779 @@
+IF
+  RandomNum(4,1)
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("OGREMA01",[488.558],10)  // ~Ogre Mage~
+    CreateCreature("OGRMAG01",[500.454],10)  // ~Ogre Mage~
+    CreateCreature("PLYOGRE",[552.476],10)  // ~Ogre~
+    CreateCreature("OGRE01",[427.548],10)  // ~Ogre~
+    CreateCreature("OGREMA01",[525.591],10)  // ~Ogre Mage~
+    CreateCreature("OGRMAG01",[585.542],10)  // ~Ogre Mage~
+    CreateCreature("PLYOGRE",[589.542],10)  // ~Ogre~
+    CreateCreature("OGRE01",[592.542],10)  // ~Ogre~
+    CreateCreature("OGRE01",[592.562],10)  // ~Ogre~
+    CreateCreature("OGRE01",[592.582],10)  // ~Ogre~
+    CreateCreature("OGRE01",[542.562],10)  // ~Ogre~
+    CreateCreature("OGRE01",[542.582],10)  // ~Ogre~
+END
+
+IF
+  RandomNum(4,2)
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("Troll01",[488.558],10)  // ~Troll~
+    CreateCreature("Troll01",[500.454],10)  // ~Troll~
+    CreateCreature("ORC05",[552.476],10)  // ~Orog~
+    CreateCreature("ORC03",[427.548],10)  // ~Orc Priest~
+    CreateCreature("ORC04",[525.591],10)  // ~Orc Mage~
+    CreateCreature("ORC05",[552.476],10)  // ~Orog~
+    CreateCreature("ORC03",[427.548],10)  // ~Orc Priest~
+    CreateCreature("ORC04",[525.591],10)  // ~Orc Mage~
+END
+
+IF
+  OnCreation()
+  RandomNum(4,3)
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("UMBHUL01",[488.558],10)  // ~Umber Hulk~
+    CreateCreature("UMBHUL01",[500.454],10)  // ~Umber Hulk~
+    CreateCreature("ORC05",[552.476],10)  // ~Orog~
+    CreateCreature("UMBHUL01",[488.558],10)  // ~Umber Hulk~
+    CreateCreature("UMBHUL01",[500.454],10)  // ~Umber Hulk~
+    CreateCreature("ORC05",[427.548],10)  // ~Orog~
+    CreateCreature("ORC05",[592.542],10)  // ~Orog~
+    CreateCreature("ORC05",[427.548],10)  // ~Orog~
+    CreateCreature("ORC04",[592.542],10)  // ~Orc Mage~
+END
+
+IF
+  DifficultyGT(EASY)
+  RandomNum(4,4)
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[488.558],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[488.558],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
+END
+
+IF
+  DifficultyLT(NORMAL)
+  RandomNum(4,4)
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[488.558],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+END
+
+IF
+  GlobalTimerExpired("REINFORCEMENTS","GLOBAL")
+  Difficulty(EASIEST)
+  Global("KR_SPAWNED_ONCE","GLOBAL",0)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC02",[500.454],10)  // ~Orc Archer~
+    CreateCreature("ORC01",[500.454],10)  // ~Orc~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+END
+
+IF
+  GlobalTimerExpired("REINFORCEMENTS","GLOBAL")
+  Difficulty(EASY)
+  Global("KR_SPAWNED_ONCE","GLOBAL",0)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+END
+
+IF
+  GlobalTimerExpired("REINFORCEMENTS","GLOBAL")
+  DifficultyGT(EASY)
+  Global("KR_SPAWNED_ONCE","GLOBAL",0)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC02",[500.454],10)  // ~Orc Archer~
+    CreateCreature("ORC02",[500.454],10)  // ~Orc Archer~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+END
+
+IF
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("SHADOW01",[488.558],10)  // ~Shadow~
+    CreateCreature("SHADOW01",[500.454],10)  // ~Shadow~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("SHADOW01",[589.542],10)  // ~Shadow~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("MAGE14T",[488.558],10)  // MAGE14T
+    CreateCreature("SHADOW01",[500.454],10)  // ~Shadow~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("SHADOW01",[589.542],10)  // ~Shadow~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+END
+
+IF
+  OnCreation()
+  OR(2)
+    ReputationGT(Player1,6)
+    CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,1)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("RandomEncounters","GLOBAL",4)
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("RERAK01",[488.558],10)  // ~Traveler~
+    CreateCreature("RERAK02",[500.454],10)  // ~Traveler~
+    CreateCreature("RERAK03",[552.476],10)  // ~Traveler~
+    CreateCreature("RERAK04",[427.548],10)  // ~Traveler~
+    CreateCreature("RERAK05",[525.591],10)  // ~Traveler~
+    CreateCreature("RERAK06",[585.542],10)  // ~Traveler~
+END
+
+IF
+  OnCreation()
+  OR(2)
+    ReputationGT(Player1,6)
+    CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,2)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",4200,0,0))  // ~Gold Piece~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",3300,0,0))  // ~Gold Piece~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",800,0,0))  // ~Gold Piece~
+    ActionOverride("DRAGRED",CreateItem("CLCK23",1,0,0))  // ~Cloak of Elvenkind~
+    ActionOverride("DRAGRED",CreateItem("CLCK23",1,0,0))  // ~Cloak of Elvenkind~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",1200,0,0))  // ~Gold Piece~
+    ActionOverride("DRAGRED",CreateItem("CLCK23",1,0,0))  // ~Cloak of Elvenkind~
+    ActionOverride("DRAGRED",CreateItem("CHAN13",1,0,0))  // ~Elven Chain +1~
+END
+
+IF
+  OnCreation()
+  OR(2)
+    ReputationGT(Player1,6)
+    CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,3)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("MAGE20A",[488.558],10)  // MAGE20A
+    CreateCreature("GOLSTO01",[500.454],10)  // ~Stone Golem~
+    CreateCreature("GOLIRO01",[552.476],10)  // ~Iron Golem~
+    CreateCreature("MAGE14T",[427.548],10)  // MAGE14T
+    ActionOverride("MAGE14T",CreateItem("MISC07",1700,0,0))  // ~Gold Piece~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[500.454],10)  // ~Stone Golem~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("MAGE20A",[488.558],10)  // MAGE20A
+    CreateCreature("GOLSTO01",[500.454],10)  // ~Stone Golem~
+    CreateCreature("GOLIRO01",[552.476],10)  // ~Iron Golem~
+    CreateCreature("MAGE14T",[427.548],10)  // MAGE14T
+    ActionOverride("MAGE14T",CreateItem("MISC07",1100,0,0))  // ~Gold Piece~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[500.454],10)  // ~Stone Golem~
+END
+
+IF
+  OnCreation()
+  ReputationGT(Player1,6)
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,4)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("BEHOLD01",[488.558],10)  // ~Beholder~
+    CreateCreature("BEHDIR01",[500.454],10)  // ~Director~
+    ActionOverride("BEHDIR01",CreateItem("MISC07",2800,0,0))  // ~Gold Piece~
+    CreateCreature("BEHELD01",[552.476],10)  // ~Elder Orb~
+    CreateCreature("BEHOBS01",[427.548],10)  // ~Observer~
+    CreateCreature("BEHGAU01",[525.591],10)  // ~Gauth~
+    CreateCreature("BEHGAU01",[585.542],10)  // ~Gauth~
+  RESPONSE #100
+    CreateCreature("BEHDIR01",[500.454],10)  // ~Director~
+    ActionOverride("BEHDIR01",CreateItem("MISC07",1800,0,0))  // ~Gold Piece~
+    CreateCreature("BEHELD01",[552.476],10)  // ~Elder Orb~
+    CreateCreature("BEHGAU01",[525.591],10)  // ~Gauth~
+    CreateCreature("BEHGAU01",[585.542],10)  // ~Gauth~
+    CreateCreature("BEHGAU01",[525.591],10)  // ~Gauth~
+    CreateCreature("BEHGAU01",[585.542],10)  // ~Gauth~
+END
+
+IF
+  OnCreation()
+  ReputationGT(Player1,6)
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,5)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("HGFEL01",[488.558],10)  // ~Fell Cat~
+    CreateCreature("HGFEL01",[500.454],10)  // ~Fell Cat~
+    CreateCreature("HGFEL01",[552.476],10)  // ~Fell Cat~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("MAGE18Y",[488.558],10)  // ~Zyntris~
+    ActionOverride("Mage18Y",CreateItem("MISC07",800,0,0))  // ~Gold Piece~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+  RESPONSE #100
+    CreateCreature("MAGE18Y",[488.558],10)  // ~Zyntris~
+    ActionOverride("Mage18Y",CreateItem("MISC07",400,0,0))  // ~Gold Piece~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+  RESPONSE #100
+    CreateCreature("MAGE18Y",[488.558],10)  // ~Zyntris~
+    ActionOverride("Mage18Y",CreateItem("MISC07",600,0,0))  // ~Gold Piece~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+  RESPONSE #100
+    CreateCreature("MAGE18Y",[488.558],10)  // ~Zyntris~
+    ActionOverride("Mage18Y",CreateItem("MISC07",300,0,0))  // ~Gold Piece~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("MAGE18Y",[488.558],10)  // ~Zyntris~
+    ActionOverride("Mage18Y",CreateItem("MISC07",700,0,0))  // ~Gold Piece~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+  RESPONSE #100
+    CreateCreature("MAGE18Y",[488.558],10)  // ~Zyntris~
+    ActionOverride("Mage18Y",CreateItem("MISC07",900,0,0))  // ~Gold Piece~
+    CreateCreature("GIAFIR01",[427.548],10)  // ~Fire Giant~
+    CreateCreature("GIAFIR01",[525.591],10)  // ~Fire Giant~
+    CreateCreature("HGFEL01",[585.542],10)  // ~Fell Cat~
+END
+
+IF
+  OnCreation()
+  ReputationGT(Player1,6)
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,6)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("MAGE20C",[488.558],10)  // ~Mage~
+    ActionOverride("Mage20",CreateItem("MISC07",1700,0,0))  // ~Gold Piece~
+    CreateCreature("PRIES8A",[500.454],10)  // ~Zorl~
+    CreateCreature("GOLKILL2",[427.548],10)  // ~Adamantite Golem~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[585.542],10)  // ~Stone Golem~
+  RESPONSE #100
+    CreateCreature("MAGE20C",[488.558],10)  // ~Mage~
+    ActionOverride("Mage20",CreateItem("MISC07",1800,0,0))  // ~Gold Piece~
+    CreateCreature("PRIES8A",[500.454],10)  // ~Zorl~
+    CreateCreature("GOLIRO01",[552.476],10)  // ~Iron Golem~
+    CreateCreature("GOLKILL2",[427.548],10)  // ~Adamantite Golem~
+    CreateCreature("GOLSTO01",[585.542],10)  // ~Stone Golem~
+  RESPONSE #100
+    CreateCreature("MAGE20C",[488.558],10)  // ~Mage~
+    ActionOverride("Mage20",CreateItem("MISC07",1200,0,0))  // ~Gold Piece~
+    CreateCreature("PRIES8A",[500.454],10)  // ~Zorl~
+    CreateCreature("GOLIRO01",[552.476],10)  // ~Iron Golem~
+    CreateCreature("GOLKILL2",[427.548],10)  // ~Adamantite Golem~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[585.542],10)  // ~Stone Golem~
+  RESPONSE #100
+    CreateCreature("MAGE20C",[488.558],10)  // ~Mage~
+    ActionOverride("Mage20",CreateItem("MISC07",700,0,0))  // ~Gold Piece~
+    CreateCreature("PRIES8A",[500.454],10)  // ~Zorl~
+    CreateCreature("GOLKILL2",[427.548],10)  // ~Adamantite Golem~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[585.542],10)  // ~Stone Golem~
+  RESPONSE #100
+    CreateCreature("MAGE20C",[488.558],10)  // ~Mage~
+    ActionOverride("Mage20",CreateItem("MISC07",200,0,0))  // ~Gold Piece~
+    CreateCreature("PRIES8A",[500.454],10)  // ~Zorl~
+    CreateCreature("GOLKILL2",[427.548],10)  // ~Adamantite Golem~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[525.591],10)  // ~Stone Golem~
+    CreateCreature("GOLSTO01",[585.542],10)  // ~Stone Golem~
+END
+
+IF
+  OnCreation()
+  ReputationGT(Player1,6)
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,7)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    ActionOverride("GreaterWolf",CreateItem("MISC07",750,0,0))  // ~Gold Piece~
+    CreateCreature("WOLFGR01",[488.558],10)  // ~Greater Wolfwere~
+    CreateCreature("WOLFWI01",[500.454],10)  // ~Winter Wolf~
+    CreateCreature("WOLFWI01",[552.476],10)  // ~Winter Wolf~
+    CreateCreature("WOLFWI01",[427.548],10)  // ~Winter Wolf~
+    CreateCreature("WOLFGR01",[525.591],10)  // ~Greater Wolfwere~
+    CreateCreature("WOLFGR01",[585.542],10)  // ~Greater Wolfwere~
+    CreateCreature("WOLFWI01",[522.496],10)  // ~Winter Wolf~
+    CreateCreature("WOLFWI01",[420.588],10)  // ~Winter Wolf~
+END
+
+IF
+  OnCreation()
+  ReputationGT(Player1,6)
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,8)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("MAGE10D",[488.558],10)  // ~Zyntris~
+    ActionOverride("MAGE10D",CreateItem("MISC07",1850,0,0))  // ~Gold Piece~
+    CreateCreature("VAMPM01",[488.558],10)  // ~Ulvaryl~
+    CreateCreature("VAMANC01",[427.548],10)  // ~Vampire~
+    CreateCreature("WOLFVA01",[525.591],10)  // ~Vampiric Wolf~
+    CreateCreature("VAMPIF01",[585.542],10)  // ~Vampire~
+    CreateCreature("VAMPM01",[522.496],10)  // ~Ulvaryl~
+    CreateCreature("VAMVER01",[420.588],10)  // ~Vampire~
+  RESPONSE #100
+    CreateCreature("MAGE14M",[488.558],10)  // ~Zyntris~
+    ActionOverride("MAGE14F",CreateItem("MISC07",850,0,0))  // ~Gold Piece~
+    CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
+    CreateCreature("WOLFVA01",[525.591],10)  // ~Vampiric Wolf~
+    CreateCreature("VAMANC01",[427.548],10)  // ~Vampire~
+    CreateCreature("WOLFVA01",[525.591],10)  // ~Vampiric Wolf~
+    CreateCreature("WOLFVA01",[525.591],10)  // ~Vampiric Wolf~
+END
+
+IF
+  OnCreation()
+  ReputationGT(Player1,6)
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,9)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("LICH01",[488.558],10)  // ~Lich~
+    ActionOverride("LICH01",CreateItem("MISC07",1500,0,0))  // ~Gold Piece~
+    CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
+    CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
+    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+  RESPONSE #100
+    CreateCreature("LICH01",[488.558],10)  // ~Lich~
+    ActionOverride("LICH01",CreateItem("MISC07",2500,0,0))  // ~Gold Piece~
+    CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
+    CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
+    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+  RESPONSE #100
+    CreateCreature("LICH01",[488.558],10)  // ~Lich~
+    ActionOverride("LICH01",CreateItem("MISC07",3500,0,0))  // ~Gold Piece~
+    CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
+    CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
+    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+  RESPONSE #100
+    CreateCreature("LICH01",[488.558],10)  // ~Lich~
+    ActionOverride("LICH01",CreateItem("MISC07",1900,0,0))  // ~Gold Piece~
+    CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
+    CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
+    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+  RESPONSE #100
+    CreateCreature("LICH01",[488.558],10)  // ~Lich~
+    ActionOverride("LICH01",CreateItem("MISC07",2900,0,0))  // ~Gold Piece~
+    CreateCreature("VAMANC01",[427.548],10)  // ~Vampire~
+    CreateCreature("VAMPM01",[522.496],10)  // ~Ulvaryl~
+    CreateCreature("VAMVER01",[420.588],10)  // ~Vampire~
+END
+
+IF
+  OnCreation()
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,10)
+  GlobalGT("Chapter","GLOBAL",4)
+  !ReputationLT(Player1,7)
+THEN
+  RESPONSE #100
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",8000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+  RESPONSE #100
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",8000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    ActionOverride("ORC05",CreateItem("MISC07",200,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+  RESPONSE #100
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",7000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+  RESPONSE #100
+    CreateCreature("DRAGRED",[488.558],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",14000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+    CreateCreature("ORC05",[320.140],10)  // ~Orog~
+END
+
+IF
+  OnCreation()
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(11,10)
+  GlobalGT("Chapter","GLOBAL",4)
+  ReputationLT(Player1,7)
+THEN
+  RESPONSE #100
+    CreateCreature("DRAGSILV",[488.558],10)  // ~Silver Dragon~
+    ActionOverride("DRAGSILV",CreateItem("MISC07",6000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+  RESPONSE #100
+    CreateCreature("DRAGSILV",[488.558],10)  // ~Silver Dragon~
+    ActionOverride("DRAGSILV",CreateItem("MISC07",12000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+  RESPONSE #100
+    CreateCreature("DRAGSILV",[488.558],10)  // ~Silver Dragon~
+    ActionOverride("DRAGSILV",CreateItem("MISC07",9000,0,0))  // ~Gold Piece~
+    CreateCreature("ORC05",[520.240],10)  // ~Orog~
+    CreateCreature("ORC05",[550.200],10)  // ~Orog~
+END
+
+IF
+  OnCreation()
+  Global("RandomEncounters","GLOBAL",3)
+  GlobalGT("Chapter","GLOBAL",4)
+  RandomNum(11,11)
+  !ReputationLT(Player1,7)
+THEN
+  RESPONSE #100
+    CreateCreature("DRAGRED",[438.488],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",18000,0,0))  // ~Gold Piece~
+  RESPONSE #100
+    CreateCreature("DRAGRED",[438.488],10)  // ~Red Dragon~
+    ActionOverride("DRAGRED",CreateItem("MISC07",11000,0,0))  // ~Gold Piece~
+END
+
+IF
+  OnCreation()
+  Global("RandomEncounters","GLOBAL",3)
+  GlobalGT("Chapter","GLOBAL",4)
+  RandomNum(11,11)
+  ReputationLT(Player1,7)
+THEN
+  RESPONSE #100
+    CreateCreature("DRAGSILV",[488.558],10)  // ~Silver Dragon~
+    ActionOverride("DRAGSILV",CreateItem("MISC07",4000,0,0))  // ~Gold Piece~
+  RESPONSE #100
+    CreateCreature("DRAGSILV",[488.558],10)  // ~Silver Dragon~
+    ActionOverride("DRAGSILV",CreateItem("MISC07",10000,0,0))  // ~Gold Piece~
+END
+
+IF
+  OnCreation()
+  CheckStatGT(Player1,400000,XP)
+  Global("RandomEncounters","GLOBAL",3)
+  RandomNum(4,1)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    CreateCreature("DRAGRED",[438.488],10)  // ~Red Dragon~
+    CreateCreatureObject("AMNLEG1",Myself,0,0,0)  // ~Amnish Legionary~
+    CreateCreatureObject("AMNLEG1",Myself,0,0,0)  // ~Amnish Legionary~
+    CreateCreatureObject("AMNLEG1",Myself,0,0,0)  // ~Amnish Legionary~
+    CreateCreatureObject("AMNLEG1",Myself,0,0,0)  // ~Amnish Legionary~
+    ActionOverride("AMNLEG1",CreateItem("MISC07",600,0,0))  // ~Gold Piece~
+END
+
+IF
+  GlobalTimerExpired("REINFORCEMENTS","GLOBAL")
+  Difficulty(EASIEST)
+  Global("KR_SPAWNED_ONCE","GLOBAL",0)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC02",[500.454],10)  // ~Orc Archer~
+    CreateCreature("ORC01",[500.454],10)  // ~Orc~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+END
+
+IF
+  GlobalTimerExpired("REINFORCEMENTS","GLOBAL")
+  Difficulty(EASY)
+  Global("KR_SPAWNED_ONCE","GLOBAL",0)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC02",[500.454],10)  // ~Orc Archer~
+    CreateCreature("ORC01",[500.454],10)  // ~Orc~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+END
+
+IF
+  GlobalTimerExpired("REINFORCEMENTS","GLOBAL")
+  DifficultyGT(EASY)
+  Global("KR_SPAWNED_ONCE","GLOBAL",0)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+  RESPONSE #100
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",1)
+    CreateCreature("ORC02",[500.454],10)  // ~Orc Archer~
+    CreateCreature("ORC01",[500.454],10)  // ~Orc~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC04",[500.454],10)  // ~Orc Mage~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC03",[500.454],10)  // ~Orc Priest~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+END
+
+IF
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[488.558],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+END
+
+IF
+  OnCreation()
+  GlobalGT("RandomEncounters","GLOBAL",3)
+  GlobalGT("Chapter","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
+    SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("ORC05",[488.558],10)  // ~Orog~
+    CreateCreature("ORC05",[500.454],10)  // ~Orog~
+    CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
+    CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
+    CreateCreature("ORC05",[589.542],10)  // ~Orog~
+    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+END
+

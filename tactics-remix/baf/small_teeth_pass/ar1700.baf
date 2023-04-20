@@ -1,0 +1,9 @@
+IF
+  Global("mospwn01","AR1700",0)  // Small Teeth Pass
+THEN
+  RESPONSE #100
+    SetGlobal("mospwn01","AR1700",1)  // Small Teeth Pass
+    CreateCreature("dragpurp",[3097.397],S)  // Purple Dragon
+    CreateCreature("dragred",[627.2974],N)  // Red Dragon
+    CreateCreature("dragbrow",[2201.1464],S)  // Brown Dragon
+END
