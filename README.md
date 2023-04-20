@@ -49,7 +49,7 @@ A gnome fighter/illusionist is looking for Valygar inside a building in the dock
 
 These components will check if SCS is present and update accordingly to prevent any compatibility issues.
 
-#### Improved Irenicus
+#### Improved Irenicus (Not yet released)
 
 Makes Joneleth "The Shattered One" Irenicus a bit more of a challenge when you finally face him in Hell at the end of SoA. Rather than summoning generic demons and immediately losing to you, he sunders himself into fragments, one for each Tear of Bhaal Test in Hell. Each fragment has different strengths and weaknesses. We also add a paltry amount of dialogue.
 
@@ -76,6 +76,12 @@ You remember the Cyrpt King in the Graveyard, don't you? Of course you do, he's 
 #### Morpheus562's Improved Drizzt (BGEE)
 
 This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
+
+#### Kensai Ryu's Improved Copper Coronet
+
+This component creates more Guards in the Copper Coronet when the guards go hostile. This will only work on games in which you have not yet started the Copper Coronet quest. 
+
+Includes GB's "Gorf the Squisher" script fix.
 
 #### More encounters will be added.
 
