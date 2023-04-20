@@ -77,7 +77,7 @@ You remember the Cyrpt King in the Graveyard, don't you? Of course you do, he's 
 
 This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
 
-#### Kensai Ryu's Improved Copper Coronet
+#### Kensai Ryu's Improved Copper Coronet (Not yet released)
 
 This component creates more Guards in the Copper Coronet when the guards go hostile. This will only work on games in which you have not yet started the Copper Coronet quest. 
 
