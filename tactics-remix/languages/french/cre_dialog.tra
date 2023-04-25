@@ -207,3 +207,38 @@
 @423    = ~Il est même possible que vous soyer victorieux. J'essaye de me convaincre que je la rencontrerai de l'autre côté... mais après ce qui est arrivé, je sais bien que c'est impossible. Bien que ce soit involontaire, <RACE>, vous avez fait échouer tous mes plans et mes machinations.~
 @424    = ~A présent il est temps pour vous d'en payer le prix.~
 
+// Improved Irenicus
+@500 = ~Ah, tu es éveillé. Il semble que cette dernière parcelle de magie était trop puissante pour toi. Aucune importance, la Séparation est achevée.~ ~Ah, tu es éveillée. Il semble que cette dernière parcelle de magie était trop puissante pour toi. Aucune importance, la Séparation est achevée.~
+@501 = ~Contemple la véritable ampleur de mon pouvoir, <CHARNAME>. Pensais-tu vraiment que je resterais assis derrière ces portes, sans bouger ni réfléchir, alors que tu te démenais pour obtenir les Larmes de Bhaal au cours de ces tests pathétiques que tu as toi-même créés ?~
+@502 = ~Ne sois pas naïf. Pendant que tu bondissais à travers les petits cerceaux de ton esprit, j'étais en train d'utiliser ton âme... bientôt MON âme... afin de trouver des Larmes qui soient miennes.~ ~Ne sois pas naïve. Pendant que tu bondissais à travers les petits cerceaux de ton esprit, j'étais en train d'utiliser ton âme... bientôt MON âme... afin de trouver des Larmes qui soient miennes.~
+@503 = ~Il est temps que je fasse honneur au nom que j'ai choisi : Le Brisé. J'ai fragmenté mon propre esprit pour faire meilleur usage du pouvoir en ces lieux.~
+@504 = ~Cette partie des Neuf Enfers est vouée aux Vices de la Peur, de l'Avarice, de la Colère, de l'Orgueil et de l'Egoïsme. Plutôt que de les unir tous (eux ou leurs contraires) dans un seul être comme tu l'as fait...~
+@505 = ~Je me suis séparé en fragments, pour chacun la plus pure essence du mal, la plus pure essence de malveillance, la plus pure essence du vice.~
+@506 = ~Leurs formes devraient t'être familières après les épreuves que tu as subies. Leurs pouvoirs sont à l'opposé des récompenses que tu t'es sans doute accordées.~
+@507 = ~L'Orbe de la Peur, et son regard qui anéanti le courage...~
+@508 = ~Le Dragon de l'Orgueil, et son pouvoir de consumer ton expérience...~
+@509 = ~Le Spectre de la Colère, et ses coups qui drainent la force...~
+@510 = ~L'Epée de l'Avarice, Rasoirnoir rencontre Mordenkainen...~
+@511 = ~Et comme tu peux le constater, j'ai conservé l'Egoïsme pour cette forme. Cela me semblait approprié.~
+@512 = ~Avec des corps et des esprits mieux adaptés à cet environnement, je suis libre des limitations insignifiantes qui t'entravent. Je peux modeler l'énergie magique d'une seule pensée : ni délais ni limites. Seul le muscle l'emporte sur la Colère, seul l'esprit l'emporte sur l'Avarice.~
+@513 = ~Tu vois ce dont il s'agit... ou peut-être que non. Vraiment, <CHARNAME>, tu me déçois. Tu as gâché ta chance ici en Enfer. Des muscles plus robustes ? Un cerveau légèrement plus rapide ? C'est sans valeur en fin de compte. Je me suis emparé du véritable pouvoir des épreuves alors que tu gaspillais ton temps avec cette morale ridicule.~
+@514 = ~Et maintenant il est temps de mourir.~
+@515 = ~Oh, ne t'étonne pas si tu t'aperçois qu'il manque une partie de ton équipement. Pendant que tu étais endormi j'ai pris la liberté de m'approprier des morceaux choisis de tes possessions. Pour quelque raison j'ai été incapable de te tuer alors que tu étais inconscient... et crois-moi, j'ai essayé. Il te faudra nous vaincre pour les récupérer. Évidemment, tu en avais déjà l'intention.~ ~Oh, ne t'étonne pas si tu t'aperçois qu'il manque une partie de ton équipement. Pendant que tu étais endormie j'ai pris la liberté de m'approprier des morceaux choisis de tes possessions. Pour quelque raison j'ai été incapable de te tuer alors que tu étais inconsciente... et crois-moi, j'ai essayé. Il te faudra nous vaincre pour les récupérer. Évidemment, tu en avais déjà l'intention.~
+@516 = ~Mais s'il doit en être ainsi, alors je suis prêt. Fais-moi face, <CHARNAME>. Bats-toi pour ton âme !~
+
+@517 = ~Impressionnant, <CHARNAME>. J'espère que tu ne t'attendais pas à ce que c'en soit fini de moi ?~
+  @518 = ~Non, d'une manière ou d'une autre, je savais que ça n'était pas la fin.~
+  @519 = ~Jonichou, pourquoi ne veux-tu pas simplement mourir !?~
+@520 = ~Comme tu peux le voir, je me suis séparé en un peu plus de fragments que les cinq dont je t'ai parlé tout à l'heure. Il semble que l'assaut coordonné n'ait pas fonctionné. Dommage.~
+@521 = ~Donc cette fois, je pense que nous combattrons à mains nues. Ce sera un duel. Tes laquais ne peuvent pas t'aider : ce combat est entre nous deux et l'enjeu en est ton âme.~
+@522 = ~Avant que nous commencions, cependant, je trouve un peu injuste que je me tienne devant toi aussi nu que le jour où naquit Bhaal... et tu portes assez d'équipement pour rendre jaloux Elminster. Voyons ce que nous pouvons faire à ce sujet.~
+@523 = ~Et maintenant, <CHARNAME>, il est temps de danser. J'espère que tu mourras lentement, découpé en mille morceaux !~ ~Et maintenant, <CHARNAME>, il est temps de danser. J'espère que tu mourras lentement, découpé en mille morceaux !~
+
+@524 = ~Très bien, <CHARNAME>. Je commence à considérer l'éventualité selon laquelle je ne te vaincrai pas.~
+  @525 = ~Qu'est-ce qui t'as mis sur la voie ?~
+  @526 = ~Rends-moi mon âme, monstre !~
+  @527 = ~Ferme-la et meurs, qu'on en finisse.~
+@528 = ~Dans tous les cas, le moment est venu pour moi d'utiliser mes dernières ressources. Plus de ruses, <CHARNAME>, c'est vraiment ma dernière incarnation en Enfer. Je n'ai même plus assez d'emprise sur ton âme pour maintenir tes compagnons hors du combat.~
+@529 = ~Quoi qu'il advienne, ceci sera notre dernière conversation. Adieu, <CHARNAME>.~
+
+

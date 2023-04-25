@@ -9,7 +9,7 @@
 @7 = ~Amelioration de TorGal et du donjon De'Arnise~
 @8 = ~Amelioration de la Cite Sahuagin~
 @9 = ~Amelioration de Bodhi~
-@10 = ~Amelioration de Irenicus~
+@10 = ~Amelioration d'Irenicus~
 @11 = ~Amelioration de la Cour gardee dans le Quartier du Temple~
 @12 = ~Amelioration de la Rune Tordue~
 @13 = ~Amelioration de Mae'Var, par Gebhard Blucher~
@@ -30,6 +30,7 @@
 @28 = ~Multiplier les points de vie par 3 et ajouter 30 points supplementaires~
 @29 = ~Amelioration de Drizzt (BGEE) par Morpheus562's ~
 @30 = ~Utiliser le fichier "tactics-remix.ini" pour définir le nombre de points de vie supplementaires~
+@31 = ~Amelioration des Rencontres Aleatoires dans les zones de nature, par Kensai Ryu~ // dans la Campagne, dans les zones sauvages.
 
 @3000 = ~Ce composant necessite BG2 : EE ou EET~
 @3001 = ~DLCMerger est necessaire avant d'installer des mods sur les jeux SoD~
