@@ -3,6 +3,10 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import                                                                //
 ///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/eff/mowsl01.eff~ ~override~
+COPY ~tactics-remix/eff/mowsl02.eff~ ~override~
+COPY ~tactics-remix/spl/mowsl01.SPL~ ~override~
+
 ACTION_IF !forgot_arm BEGIN
   ACTION_IF NOT FILE_EXISTS_IN_GAME ~BDSW1H21.SPL~ BEGIN
       COPY ~tactics-remix/spl/BDSW1H21.SPL~ ~override/BDSW1H21.SPL~
@@ -50,6 +54,8 @@ COPY_EXISTING ~hlrevan.CRE~ ~override~
   WRITE_BYTE 0x56   4            // Save vs. Polymorph
   WRITE_BYTE 0x57   4            // Save vs. Breath
   WRITE_BYTE 0x58   6            // Save vs. Spell
+
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 166 parameter1 = 19 parameter2 = 0 timing = 9 END // Magic Resistance
 
   PATCH_IF !forgot_arm BEGIN
     SET_BG2_PROFICIENCY ~PROFICIENCYBASTARDSWORD~ 5

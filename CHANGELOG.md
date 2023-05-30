@@ -9,6 +9,7 @@ April xx, 2023
 - Added Improved Irenicus.
 - Added Kensai Ryu's Improved Copper Coronet.
 - Added Mike Barnes' Improved Small Teeth Pass.
+- Updated Revanek to have Wizard Slayer abilities.
 
 ## Version 0.2.1-alpha
 
