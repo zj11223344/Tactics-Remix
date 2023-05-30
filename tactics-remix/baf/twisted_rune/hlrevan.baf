@@ -48,7 +48,6 @@ END
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
-  CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
   CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
@@ -66,7 +65,6 @@ END
 IF
   ActionListEmpty()
   See(WorstAC([PC]))
-  CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
   CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
