@@ -56,7 +56,7 @@ COPY_EXISTING ~hlrevan.CRE~ ~override~
   WRITE_BYTE 0x58   6            // Save vs. Spell
 
   LPF ADD_CRE_EFFECT INT_VAR opcode = 166 parameter1 = 19 parameter2 = 0 timing = 9 END // Magic Resistance
-  ACTION_FOR_EACH wiz_slay IN
+  PATCH_FOR_EACH wiz_slay IN
       mowsl01  // dispel magic
       mowsl02  // miscast magic
       spcl132s // miscast magic portrait icon
