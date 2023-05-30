@@ -61,8 +61,8 @@ COPY_EXISTING ~hlrevan.CRE~ ~override~
       mowsl02  // miscast magic
       spcl132s // miscast magic portrait icon
     BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 2 parameter2 = 0 timing = 9 special = 1 STR_VAR resource = "%wiz_slay%" END
-      LPF ADD_SPELL_EFFECT INT_VAR opcode = 249 target = 2 parameter2 = 0 timing = 9 special = 1 STR_VAR resource = "%wiz_slay%" END
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 248 target = 2 parameter2 = 0 timing = 9 special = 1 STR_VAR resource = "%wiz_slay%" END
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 249 target = 2 parameter2 = 0 timing = 9 special = 1 STR_VAR resource = "%wiz_slay%" END
     END
 
   PATCH_IF !forgot_arm BEGIN
