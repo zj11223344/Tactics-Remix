@@ -84,19 +84,22 @@ COPY_EXISTING ~hlketta.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/guarded_compound/mo_thug.baf~ ~override/mo_thug.bcs~
-     ~tactics-remix/baf/guarded_compound/mo_kosh.baf~ ~override/mo_kosh.bcs~
-     ~tactics-remix/baf/guarded_compound/mo_kett.baf~ ~override/mo_kett.bcs~
-     ~tactics-remix/baf/guarded_compound/mo_stal.baf~ ~override/mo_stal.bcs~
-     ~tactics-remix/baf/guarded_compound/hlsion.baf~  ~override/hlsion.bcs~
-     ~tactics-remix/baf/guarded_compound/hlketta.baf~ ~override/hlketta.bcs~
+COPY ~tactics-remix/baf/guarded_compound/mo_thug.baf~  ~override/mo_thug.bcs~
+     ~tactics-remix/baf/guarded_compound/mo_kosh.baf~  ~override/mo_kosh.bcs~
+     ~tactics-remix/baf/guarded_compound/mo_kett.baf~  ~override/mo_kett.bcs~
+     ~tactics-remix/baf/guarded_compound/mo_sion1.baf~ ~override/mo_sion.bcs~
+     ~tactics-remix/baf/guarded_compound/mo_stal.baf~  ~override/mo_stal.bcs~
+     ~tactics-remix/baf/guarded_compound/hlsion.baf~   ~override/hlsion.bcs~
+     ~tactics-remix/baf/guarded_compound/hlketta.baf~  ~override/hlketta.bcs~
   COMPILE_BAF_TO_BCS
 
 ACTION_IF !scs_ai BEGIN // No SCS
   COPY ~tactics-remix/baf/guarded_compound/ar0907.baf~   ~override/ar0907.bcs~
-       ~tactics-remix/baf/guarded_compound/mo_sion1.baf~ ~override/mo_sion.bcs~
+       //~tactics-remix/baf/guarded_compound/mo_sion1.baf~ ~override/mo_sion.bcs~
     COMPILE_BAF_TO_BCS
+/*
 END ELSE BEGIN // SCS
   COPY ~tactics-remix/baf/guarded_compound/mo_sion2.baf~ ~override/mo_sion.bcs~
     COMPILE_BAF_TO_BCS
+*/
 END
