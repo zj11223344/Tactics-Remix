@@ -49,7 +49,7 @@ A gnome fighter/illusionist is looking for Valygar inside a building in the dock
 
 These components will check if SCS is present and update accordingly to prevent any compatibility issues.
 
-#### Improved Irenicus (Not yet released)
+#### Improved Irenicus
 
 Makes Joneleth "The Shattered One" Irenicus a bit more of a challenge when you finally face him in Hell at the end of SoA. Rather than summoning generic demons and immediately losing to you, he sunders himself into fragments, one for each Tear of Bhaal Test in Hell. Each fragment has different strengths and weaknesses. We also add a paltry amount of dialogue.
 
@@ -75,13 +75,13 @@ If you visit the tomb of Kangaxx you will find a new guardian in the room above,
 
 You remember the Cyrpt King in the Graveyard, don't you? Of course you do, he's very easy to beat and he has some cool loot (good sword). This version fixes his script that was broken in the game and also gives him a couple of skeleton minions. After all, he is a king, right? He also calls for more backup every now and then. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
 
-#### Kensai Ryu's Improved Copper Coronet (Not yet released)
+#### Kensai Ryu's Improved Copper Coronet
 
 This component creates more Guards in the Copper Coronet when the guards go hostile. This will only work on games in which you have not yet started the Copper Coronet quest. 
 
 Includes GB's "Gorf the Squisher" script fix.
 
-#### Mike Barnes' Improved Small Teeth Pass (Not yet released)
+#### Mike Barnes' Improved Small Teeth Pass
 
 This makes the Small Teeth Pass (AR1700, optional in Chapter 6 after Elhan) much tougher by adding three Dragons.
 
