@@ -2,7 +2,7 @@
 
 ## Version 0.3-alpha
 
-June xx, 2023
+June 5, 2023
 
 ### Changed 
 
