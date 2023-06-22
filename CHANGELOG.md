@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.4-alpha
+
+July xx, 2023
+
+### Changed
+
+- Corrected a typo where the Yellow Dragon Armor had the wrong name in the description.
+
 ## Version 0.3-alpha
 
 June 5, 2023
