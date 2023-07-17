@@ -1,7 +1,7 @@
 IF
   See([EVILCUTOFF])
-  HasItem("ring28",LastSeenBy(Myself))  // ~Ring of Air Control~
-  !HasItem("lich",LastSeenBy(Myself))  // <Invalid Strref -1>
+  HasItem("moclk05",LastSeenBy(Myself))  // Shroud of Elder Doom
+  !HasItem("lich",LastSeenBy(Myself))  // Ring
   !Specifics(LastSeenBy(Myself),2001)
 THEN
   RESPONSE #100
@@ -11,8 +11,8 @@ END
 
 IF
   See(SecondNearest([EVILCUTOFF]))
-  HasItem("ring28",LastSeenBy(Myself))  // ~Ring of Air Control~
-  !HasItem("lich",LastSeenBy(Myself))  // <Invalid Strref -1>
+  HasItem("moclk05",LastSeenBy(Myself))  // Shroud of Elder Doom
+  !HasItem("lich",LastSeenBy(Myself))  // Ring
   !Specifics(LastSeenBy(Myself),2001)
 THEN
   RESPONSE #100
@@ -22,8 +22,8 @@ END
 
 IF
   See(ThirdNearest([EVILCUTOFF]))
-  HasItem("ring28",LastSeenBy(Myself))  // ~Ring of Air Control~
-  !HasItem("lich",LastSeenBy(Myself))  // <Invalid Strref -1>
+  HasItem("moclk05",LastSeenBy(Myself))  // Shroud of Elder Doom
+  !HasItem("lich",LastSeenBy(Myself))  // Ring
   !Specifics(LastSeenBy(Myself),2001)
 THEN
   RESPONSE #100
@@ -33,8 +33,8 @@ END
 
 IF
   See(FourthNearest([EVILCUTOFF]))
-  HasItem("ring28",LastSeenBy(Myself))  // ~Ring of Air Control~
-  !HasItem("lich",LastSeenBy(Myself))  // <Invalid Strref -1>
+  HasItem("moclk05",LastSeenBy(Myself))  // Shroud of Elder Doom
+  !HasItem("lich",LastSeenBy(Myself))  // Ring
   !Specifics(LastSeenBy(Myself),2001)
 THEN
   RESPONSE #100
@@ -44,8 +44,8 @@ END
 
 IF
   See(FifthNearest([EVILCUTOFF]))
-  HasItem("ring28",LastSeenBy(Myself))  // ~Ring of Air Control~
-  !HasItem("lich",LastSeenBy(Myself))  // <Invalid Strref -1>
+  HasItem("moclk05",LastSeenBy(Myself))  // Shroud of Elder Doom
+  !HasItem("lich",LastSeenBy(Myself))  // Ring
   !Specifics(LastSeenBy(Myself),2001)
 THEN
   RESPONSE #100
@@ -55,8 +55,8 @@ END
 
 IF
   See(SixthNearest([EVILCUTOFF]))
-  HasItem("ring28",LastSeenBy(Myself))  // ~Ring of Air Control~
-  !HasItem("lich",LastSeenBy(Myself))  // <Invalid Strref -1>
+  HasItem("moclk05",LastSeenBy(Myself))  // Shroud of Elder Doom
+  !HasItem("lich",LastSeenBy(Myself))  // Ring
   !Specifics(LastSeenBy(Myself),2001)
 THEN
   RESPONSE #100
