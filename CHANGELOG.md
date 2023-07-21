@@ -7,6 +7,7 @@ July xx, 2023
 ### Changed
 
 - Corrected a typo where the Yellow Dragon Armor had the wrong name in the description.
+- Updated Kuroisan compatibility with Tweaks Anthology 2H Katanas component.
 
 ## Version 0.3-alpha
 
