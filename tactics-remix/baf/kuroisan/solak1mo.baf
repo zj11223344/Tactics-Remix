@@ -71,8 +71,8 @@ IF
     HasItemEquiped("sw1h51",Player5)
     HasItemEquiped("sw1h51",Player6)
   OR(2)
-    GlobalLT("Chapter","GLOBAL",4)
-    GlobalGT("Chapter","GLOBAL",5)
+    GlobalLT("Chapter","GLOBAL",16)
+    GlobalGT("Chapter","GLOBAL",17)
 THEN
   RESPONSE #100
     IncrementGlobal("KuroiSpawn","GLOBAL",1)
