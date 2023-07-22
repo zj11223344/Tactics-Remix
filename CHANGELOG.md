@@ -6,6 +6,7 @@ July xx, 2023
 
 ### Changed
 
+- Removed exploit against the Lich in the Docks.
 - Corrected a typo where the Yellow Dragon Armor had the wrong name in the description.
 - Updated Kuroisan compatibility with Tweaks Anthology 2H Katanas component.
 - Updated Resilient Trodders to be available to all classes.
