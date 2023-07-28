@@ -50,17 +50,19 @@ Un gnome guerrier / illusionniste est à la recherche de Valygar, vous le rencon
 
 Les composants suivants détecteront la présence de SCS et s'adapteront en conséquence afin d'éviter tout problème de compatibilité.
 
-#### Amélioration de Irenicus (Not yet released)
+#### Amélioration de Irenicus
 
 Ce composant rend Joneleth "Le Brisé" Irenicus un peu plus coriace lors de votre affrontement en Enfer à la fin de SoA. Plutôt que d'invoquer des démons génériques et de perdre aussitôt face à vous, il se sépare en fragments, correspondant à chacun des tests pour obtenir des larmes de Bhaal. Chaque fragment a des forces et des faiblesses différentes. Nous avons également ajouté un petit nombre de dialogues.
 
 #### Amélioration de la Cour Gardée dans le District du Temple
 
-Ce composant rend les gardiens du Furie Céleste plus "réalistes". Ils disposent d'une sélection de sorts correspondant à leur niveau (Sion est un conjurateur de niveau 18, il peut donc lancer des sorts de niveau 9) et un certain nombre d'abus sont bloqués (vous ne pouvez plus vous réfugier à l'étage inférieur). Ils auront également déjà lancés leurs sorts de protections : Après tout ils savent que vous arrivez. Malgré leur haut niveau, ils n'utiliseront que des capacités existantes dans SoA (pas celle de ToB pareil pour les sorts).
+Ce composant rend les gardiens du Furie Céleste plus "réalistes". Ils disposent d'une sélection de sorts correspondant à leur niveau (Sion est un conjurateur de niveau 18, il peut donc lancer des sorts de niveau 9) et un certain nombre d'abus sont bloqués (vous ne pouvez plus vous réfugier à l'étage inférieur). Ils auront également déjà lancés leurs sorts de protections : Après tout ils savent que vous arrivez. Malgré leur haut niveau, ils n'utiliseront que des capacités existantes dans SoA (pas celle de ToB, pareil pour les sorts).
 
 #### Amélioration de la Rune Tordue
 
-Ce composant confère aux gardiens du Bâton du magicien une véritable crédibilité. Un conjurateur de niveau 18, un guerrier de niveau 18, une liche de niveau 26, il utilisent aussi le bâton, et malgré tout, ils sont régulièrement battus par des personnages en solo dès le chapitre 2. Ce composant corrige quelques bugs (jets de sauvegarde et nombre de sorts mémorisés) et permet une utilisation plus intelligente de leurs sorts (comme ne pas faire appel à des démons susceptibles de les tuer). Il permet également d'éviter certaines tactiques douteuses (pièges, nuage mortel, etc.). Enfin, Layene utilise le Bâton du magicien comme le ferait votre personnage (en utilisant invisibilité et piège à sorts). Avant, elle se contentait de s'asseoir dessus :-) Avez-vous remarqué que leur combattant, Revanek, apparaît entièrement nu ? Ces types ont de l'argent à revendre et ils ne peuvent pas lui acheter une épée longue et une armure ? Je ne crois pas ! Malgré leur haut niveau, ils n'utiliseront que des capacités existantes dans SoA (pas celle de ToB pareil pour les sorts).
+Ce composant confère aux gardiens du Bâton du magicien une véritable crédibilité. Un conjurateur de niveau 18, un guerrier de niveau 18, une liche de niveau 26, il utilisent aussi le bâton, et malgré tout, ils sont régulièrement battus par des personnages en solo dès le chapitre 2. Ce composant corrige quelques bugs (jets de sauvegarde et nombre de sorts mémorisés) et permet une utilisation plus intelligente de leurs sorts (comme ne pas faire appel à des démons susceptibles de les tuer). Il permet également d'éviter certaines tactiques douteuses (pièges, nuage mortel, etc.). Enfin, Layene utilise le Bâton du magicien comme le ferait votre personnage (en utilisant invisibilité et piège à sorts). Avant, elle se contentait de s'asseoir dessus :-) Avez-vous remarqué que leur combattant, Revanek, apparaît entièrement nu ? Ces types ont de l'argent à revendre et ils ne peuvent pas lui acheter une épée longue et une armure ? Je ne crois pas ! Malgré leur haut niveau, ils n'utiliseront que des capacités existantes dans SoA (pas celle de ToB, pareil pour les sorts).
+
+Note: Revanek will become Wizard Slayer with this update. To spice things up, I am assuming the upgrades from the Skills and Abilities Wizard Slayer are or will be installed. This means, if EEex is present, Revanek's hits will have a 10% chance of bypassing PfMW and the like and dispelling the target.
 
 #### Amélioration des Chevaliers Démons, par Gebhard Blucher
 
@@ -74,13 +76,13 @@ Si vous visitez le tombeau de Kangaxx, vous trouverez un nouveau gardien dans la
 
 Grosse refonte du combat contre le Roi de la crypte dans le quartier du Cimetière. J'ai révisé les mécanismes de ce combat afin de le rendre encore plus difficile que la version originelle de Tactics. 
 
-#### Amélioration de la Couronne de Cuivre, par Kensai Ryu (Not yet released)
+#### Amélioration de la Couronne de Cuivre, par Kensai Ryu
 
 Ce composant ajoute des gardes supplémentaire à la Couronne de Cuivre lorsque ceux-ci deviennent hostiles. Il ne fonctionnera que dans les parties où vous n'avez pas encore commencé la quête d'Hendak et des esclavagistes. 
 
 Inclut la correction du script de "Gorf l'Écrabouilleur" par Gebhard Blucher.
 
-#### Amélioration de la Passe du Petit Croc, par Mike Barnes (Not yet released)
+#### Amélioration de la Passe du Petit Croc, par Mike Barnes
 
 Ce composant augmente la difficulté de la Passe du Petit Croc en ajoutant trois dragons. (AR1700, optionnel au chapitre 6 après avoir rencontré Elhan à la sortie d'Ombre-Terre) 
 
