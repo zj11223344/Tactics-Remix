@@ -508,8 +508,8 @@ Weight: 5~
 ///////////////////////////////////////////////////////////////////////////
 // Medium Shield                                                         //
 ///////////////////////////////////////////////////////////////////////////
-@5000 = ~Medium Shield~
-@5001 = ~A medium shield is carried in the same manner as a small shield. Unlike the small shield, however, its weight prevents the character from using <PRO_HISHER> shield hand for anything other than carrying the medium shield. Medium shields are usually made of metal, range from three to four feet in diameter, and can be of any shape, from round to square to a dragon's spread wings. A typical medieval shield resembles a triangle with one point facing downward.
+@50000 = ~Medium Shield~
+@50001 = ~A medium shield is carried in the same manner as a small shield. Unlike the small shield, however, its weight prevents the character from using <PRO_HISHER> shield hand for anything other than carrying the medium shield. Medium shields are usually made of metal, range from three to four feet in diameter, and can be of any shape, from round to square to a dragon's spread wings. A typical medieval shield resembles a triangle with one point facing downward.
 
 STATISTICS:
 
@@ -524,8 +524,8 @@ Weight: 7~
 ///////////////////////////////////////////////////////////////////////////
 // Uthgardt Holy Shield +2 (NWN2)                                        //
 ///////////////////////////////////////////////////////////////////////////
-@5002 = ~Uthgardt Holy Shield +2~
-@5003 = ~The Uthgardt value strength above all, and these shields provide strength to spare. They also disdain fancy talk and fine words, and the shields do their best to make the wearer as barbaric as the wild men of the north.
+@50002 = ~Uthgardt Holy Shield +2~
+@50003 = ~The Uthgardt value strength above all, and these shields provide strength to spare. They also disdain fancy talk and fine words, and the shields do their best to make the wearer as barbaric as the wild men of the north.
 
 STATISTICS:
 

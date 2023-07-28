@@ -1138,13 +1138,16 @@ THEN
     SetInterrupt(TRUE)
 END
 
+/////////////////////////////////////////////////////////////////////
+// Spell: Comet
+/////////////////////////////////////////////////////////////////////
 IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
-  HaveSpell(WIZARD_COMET)  // SPWI922.SPL (Dragon's Breath)
+  HaveSpell(WIZARD_COMET)  // SPWI925.SPL (Comet)
   CheckStatLT(Myself,20,SPELLFAILUREMAGE)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
@@ -1158,9 +1161,6 @@ THEN
     Continue()
 END
 
-/////////////////////////////////////////////////////////////////////
-// Spell: Comet
-/////////////////////////////////////////////////////////////////////
 IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
@@ -1362,7 +1362,6 @@ END
 /////////////////////////////////////////////////////////////////////
 // Spell: Abi-Dalzim's Horrid Wilting
 /////////////////////////////////////////////////////////////////////
-
 IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")

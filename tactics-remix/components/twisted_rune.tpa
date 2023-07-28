@@ -32,10 +32,10 @@ ACTION_IF !forgot_arm BEGIN
 
   // Uthgardt Holy Shield
   COPY ~tactics-remix/itm/MOMSH03.ITM~ ~override/MOMSH03.ITM~
-        SAY NAME1 @5000
-        SAY NAME2 @5002
-        SAY UNIDENTIFIED_DESC @5001
-        SAY DESC @5003
+        SAY NAME1 @50000
+        SAY NAME2 @50002
+        SAY UNIDENTIFIED_DESC @50001
+        SAY DESC @50003
         WRITE_ASCII 0x58 cnpshld
         WRITE_LONG 0x34 4000
 END
