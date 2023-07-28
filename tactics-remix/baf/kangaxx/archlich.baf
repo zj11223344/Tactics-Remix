@@ -275,7 +275,9 @@ END
 // Defensive
 /////////////////////////////////////////////////////////////////////
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
   !CheckSpellState(Myself,PROTECTION_FROM_MAGICAL_WEAPONS)
@@ -295,7 +297,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   See([GOODCUTOFF])
   HPPercentLT(Myself,60)
   HaveSpell(WIZARD_OTILUKES_RESILIENT_SPHERE)  // SPWI413.SPL (Otiluke's Resilient Sphere)
@@ -316,7 +320,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_VOCALIZE)  // SPWI219.SPL (Vocalize)
   StateCheck(Myself,STATE_SILENCED)
@@ -334,7 +340,9 @@ END
 // Initial Summons
 /////////////////////////////////////////////////////////////////////
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   See(NearestEnemyOf(Myself))
   !Specifics(Myself,2001)
   HaveSpell(WIZARD_SIMULACRUM)  // SPWI804.SPL (Simulacrum)
@@ -352,7 +360,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Animate Dead)
   NumCreatureLT([EVILCUTOFF.0.0.0.0.SUMMONED],9)
   Global("KR_NEED_A_RAT_OR_SOMETHING","LOCALS",0)
@@ -368,7 +378,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   See("rat01")
   HaveSpell(CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Animate Dead)
   NumCreatureLT([EVILCUTOFF.0.0.0.0.SUMMONED],7)
@@ -399,7 +411,9 @@ END
 // Heal/Cure
 /////////////////////////////////////////////////////////////////////
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HPPercentLT(Myself,50)
   HaveSpell(CLERIC_HEAL)  // SPPR607.SPL (Heal)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -415,7 +429,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(SecondNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -432,7 +448,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(ThirdNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -449,7 +467,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(FourthNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -466,7 +486,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(FifthNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -483,7 +505,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(SixthNearest([EVILCUTOFF]),60)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -500,7 +524,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(SeventhNearest([EVILCUTOFF]),60)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -517,7 +543,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(EighthNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -534,7 +562,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(NinthNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -551,7 +581,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
   HPPercentLT(TenthNearest([EVILCUTOFF]),80)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
@@ -568,7 +600,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   HaveSpell(CLERIC_ZONE_OF_SWEET_AIR)  // SPPR318.SPL (Zone of Sweet Air)
   OR(12)
     SpellCast([GOODCUTOFF.0.0.MAGE_ALL],WIZARD_INCENDIARY_CLOUD)  // SPWI810.SPL (Incendiary Cloud)
@@ -597,7 +631,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(Nearest([EVILCUTOFF]))
@@ -625,7 +661,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(SecondNearest([EVILCUTOFF]))
@@ -653,7 +691,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(ThirdNearest([EVILCUTOFF]))
@@ -681,7 +721,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(FourthNearest([EVILCUTOFF]))
@@ -709,7 +751,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(FifthNearest([EVILCUTOFF]))
@@ -737,7 +781,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(SixthNearest([EVILCUTOFF]))
@@ -765,7 +811,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(SeventhNearest([EVILCUTOFF]))
@@ -793,7 +841,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(EighthNearest([EVILCUTOFF]))
@@ -821,7 +871,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(NinthNearest([EVILCUTOFF]))
@@ -849,7 +901,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
   See(TenthNearest([EVILCUTOFF]))
@@ -877,7 +931,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(Nearest([EVILCUTOFF]))
@@ -907,7 +963,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(SecondNearest([EVILCUTOFF]))
@@ -937,7 +995,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(ThirdNearest([EVILCUTOFF]))
@@ -967,7 +1027,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(FourthNearest([EVILCUTOFF]))
@@ -997,7 +1059,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(FifthNearest([EVILCUTOFF]))
@@ -1027,7 +1091,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(SixthNearest([EVILCUTOFF]))
@@ -1057,7 +1123,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(SeventhNearest([EVILCUTOFF]))
@@ -1087,7 +1155,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(EighthNearest([EVILCUTOFF]))
@@ -1117,7 +1187,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(NinthNearest([EVILCUTOFF]))
@@ -1147,7 +1219,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   HaveSpell(CLERIC_FREE_ACTION)  // SPPR403.SPL (Free Action)
   See(TenthNearest([EVILCUTOFF]))
@@ -1201,7 +1275,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   !HasItem("melfmet",Myself)  // ~Melf's Minute Meteor~
   !HasItem("blakblad",Myself)  // ~Black Blade of Disaster~
   HaveSpell(WIZARD_MELF_METEOR)
@@ -1241,7 +1317,9 @@ END
 // Offensive/Summon Spells
 /////////////////////////////////////////////////////////////////////
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_SUMMON_FIEND)  // SPWI807.SPL (Summon Fiend)
@@ -1259,8 +1337,10 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  Global("MO_Offensive","LOCALS",0)
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  Global("MO_Offensive","LOCALS",1)
   Global("MO_CastFiend","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_SUMMON_FIEND)  // SPWI807.SPL (Summon Fiend)
@@ -1278,7 +1358,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
@@ -1296,7 +1378,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastHakeashar","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -1324,7 +1408,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastHakeashar","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -1352,7 +1438,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastHakeashar","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -1380,7 +1468,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastHakeashar","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -1408,7 +1498,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastHakeashar","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -1436,7 +1528,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastHakeashar","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -1464,7 +1558,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_INVISIBLE_STALKER)  // SPWI601.SPL (Invisible Stalker)
@@ -1482,7 +1578,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastInvisibleStalker","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -1503,7 +1601,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastInvisibleStalker","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -1524,7 +1624,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastInvisibleStalker","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -1545,7 +1647,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastInvisibleStalker","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -1566,7 +1670,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastInvisibleStalker","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -1587,7 +1693,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastInvisibleStalker","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -1608,7 +1716,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_SUMMON_EFREET)  // SPWI717.SPL (Summon Efreeti)
@@ -1626,7 +1736,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastEfreeti","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -1644,7 +1756,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_ICE_STORM)  // SPWI404.SPL (Ice Storm)
@@ -1662,7 +1776,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastIceStorm","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -1682,7 +1798,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastIceStorm","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -1702,7 +1820,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastIceStorm","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -1722,7 +1842,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastIceStorm","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -1742,7 +1864,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastIceStorm","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -1762,7 +1886,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastIceStorm","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -1782,7 +1908,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -1804,7 +1932,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_SLOW)
@@ -1822,7 +1952,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSlow","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -1851,7 +1983,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSlow","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -1880,7 +2014,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSlow","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -1909,7 +2045,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSlow","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -1938,7 +2076,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSlow","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -1967,7 +2107,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSlow","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -1996,7 +2138,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   See([GOODCUTOFF])
   HaveSpell(CLERIC_UNHOLY_WORD)  // SPPR715.SPL (Unholy Word)
@@ -2014,7 +2158,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastUnholyWord","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -2040,7 +2186,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastUnholyWord","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -2066,7 +2214,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastUnholyWord","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -2092,7 +2242,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastUnholyWord","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -2118,7 +2270,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastUnholyWord","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -2144,7 +2298,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastUnholyWord","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -2173,7 +2329,9 @@ END
 // Defensive Spells
 /////////////////////////////////////////////////////////////////////
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   See([GOODCUTOFF])
   HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
@@ -2191,7 +2349,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSpellImmunity","LOCALS",1)
   HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
@@ -2211,7 +2371,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSpellImmunity","LOCALS",1)
   HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
@@ -2231,7 +2393,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSpellImmunity","LOCALS",1)
   HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
@@ -2250,7 +2414,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSpellImmunity","LOCALS",1)
   HaveSpell(WIZARD_SPELL_IMMUNITY)  // SPWI510.SPL (Spell Immunity)
@@ -2269,7 +2435,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2289,7 +2457,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_FIRE_SHIELD_BLUE)  // SPWI403.SPL (Fire Shield (Blue))
@@ -2310,7 +2480,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   HaveSpell(WIZARD_PROTECTION_FROM_THE_ELEMENTS)  // SPWI702.SPL (Protection From The Elements)
@@ -2331,7 +2503,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   GlobalGT("MO_WondrousRecallCounter","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -2351,7 +2525,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   Range(LastSeenBy(Myself),4)
@@ -2373,7 +2549,9 @@ THEN
 END
 
 IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",0)
   See(NearestEnemyOfType([GOODCUTOFF]))
   Range(LastSeenBy(Myself),4)

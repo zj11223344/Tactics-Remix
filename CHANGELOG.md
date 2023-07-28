@@ -11,7 +11,7 @@ July xx, 2023
 - Updated Kuroisan compatibility with Tweaks Anthology 2H Katanas component.
 - Updated Resilient Trodders to be available to all classes.
 - Updated text in Greater Robe of Eyes.
-- Corrected bug with wrong name for Uthgart Holy Shield would display.
+- Corrected bug with wrong name for Uthgardt Holy Shield would display.
 
 ## Version 0.3-alpha
 
