@@ -12,6 +12,7 @@ July xx, 2023
 - Updated Resilient Trodders to be available to all classes.
 - Updated text in Greater Robe of Eyes.
 - Corrected bug with wrong name for Uthgardt Holy Shield would display.
+- Corrected Lich in the Docks to only have 2 uses of Timestop.
 
 ## Version 0.3-alpha
 

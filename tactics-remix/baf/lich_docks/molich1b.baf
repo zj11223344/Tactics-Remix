@@ -199,7 +199,7 @@ IF
   !StateCheck(Myself,STATE_SILENCED)
 THEN
   RESPONSE #100
-    IncrementGlobal("MO_TimeStop","GLOBAL",1)
+    IncrementGlobal("MO_TimeStop","LOCALS",1)
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetGlobalTimer("MO_TimeStopTimer","LOCALS",18)
     DisplayStringHead(Myself,46153)  // ~uses a scroll~
