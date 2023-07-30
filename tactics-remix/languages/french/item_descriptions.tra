@@ -140,8 +140,6 @@ Poids : 3~
 @4202 = ~Robe aux grands yeux~
 @4203 = ~La robe aux grands yeux offre à son porteur une vision accrue et la capacité de détecter de nombreuses choses dissimulées. L'invisibilité et les effets éthérés ne sont plus un problème pour le porteur.
 
-Lorsqu'ils ne sont pas en armure, les clercs de Helm les plus puissants portent souvent de telles robes afin de garder leur vigilance, alors même qu'ils ne gardent pas leurs équipements.
-
 PARAMÈTRES :
 
 Capacités d'équipement :
@@ -481,8 +479,8 @@ Poids : 5~
 ///////////////////////////////////////////////////////////////////////////
 // Medium Shield                                                         //
 ///////////////////////////////////////////////////////////////////////////
-@5000 = ~Écu~
-@5001 = ~L'écu, tout simplement connu sous le nom de bouclier, se porte de la même manière qu'une rondache. Cependant, contrairement à cette dernière, son poids et sa taille empêchent d'utiliser le bras qui le porte pour tout autre chose que de le maintenir fermement en place. Les boucliers sont généralement fabriqués en métal ou en bois, ils mesurent entre 90 centimètres et 1,20 mètre de diamètre et peuvent avoir n'importe quelle forme, de ronde à carrée, en passant par des ailes de dragon déployées. Le bouclier médiéval typique, l'écu, ressemble à une sorte de triangle dont l'un des angles pointerait vers le bas, avec une forme ogivale pour sa partie inférieure.
+@50000 = ~Écu~
+@50001 = ~L'écu, tout simplement connu sous le nom de bouclier, se porte de la même manière qu'une rondache. Cependant, contrairement à cette dernière, son poids et sa taille empêchent d'utiliser le bras qui le porte pour tout autre chose que de le maintenir fermement en place. Les boucliers sont généralement fabriqués en métal ou en bois, ils mesurent entre 90 centimètres et 1,20 mètre de diamètre et peuvent avoir n'importe quelle forme, de ronde à carrée, en passant par des ailes de dragon déployées. Le bouclier médiéval typique, l'écu, ressemble à une sorte de triangle dont l'un des angles pointerait vers le bas, avec une forme ogivale pour sa partie inférieure.
 
 PARAMÈTRES :
 
@@ -497,8 +495,8 @@ Poids : 7~
 ///////////////////////////////////////////////////////////////////////////
 // Uthgardt Holy Shield +2 (NWN2)                                        //
 ///////////////////////////////////////////////////////////////////////////
-@5002 = ~Bouclier sacré d'Uthgardt~
-@5003 = ~Les Uthgardt mettent la force physique en exergue et ces boucliers semblent faits pour eux. D'autant qu'ils n'aiment guère parler pour ne rien dire, et que ces boucliers ont pour principal effet de transformer leur possesseur en sauvage digne des barbares du Grand Nord.
+@50002 = ~Bouclier sacré d'Uthgardt~
+@50003 = ~Les Uthgardt mettent la force physique en exergue et ces boucliers semblent faits pour eux. D'autant qu'ils n'aiment guère parler pour ne rien dire, et que ces boucliers ont pour principal effet de transformer leur possesseur en sauvage digne des barbares du Grand Nord.
 
 PARAMÈTRES :
 
