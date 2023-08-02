@@ -143,6 +143,7 @@ IF
   Global("R_SPELL_TRIGGER_FIRED","LOCALS",0)
 THEN
   RESPONSE #100
+    SetInterrupt(FALSE)
     DisplayString(Myself,39968)  // Spell Trigger—Fired
     SetGlobal("R_SPELL_TRIGGER_FIRED","LOCALS",1)
     CreateCreatureObject("rat01",LastSeenBy(Myself),0,0,0)
@@ -150,6 +151,7 @@ THEN
     ReallyForceSpell("rat01",WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
     ReallyForceSpell("rat01",WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
     ReallyForceSpell("rat01",WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+    SetInterrupt(TRUE)
 END
 
 IF
@@ -161,6 +163,7 @@ IF
   Global("R_SPELL_TRIGGER_FIRED","LOCALS",0)
 THEN
   RESPONSE #100
+    SetInterrupt(FALSE)
     DisplayString(Myself,39968)  // Spell Trigger—Fired
     SetGlobal("R_SPELL_TRIGGER_FIRED","LOCALS",1)
     CreateCreatureObject("rat01",LastSeenBy(Myself),0,0,0)
@@ -168,6 +171,7 @@ THEN
     ReallyForceSpell("rat01",WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
     ReallyForceSpell("rat01",WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
     ReallyForceSpell("rat01",WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+    SetInterrupt(TRUE)
 END
 
 IF
@@ -178,6 +182,7 @@ IF
   Global("R_SPELL_TRIGGER_FIRED","LOCALS",0)
 THEN
   RESPONSE #100
+    SetInterrupt(FALSE)
     DisplayString(Myself,39968)  // Spell Trigger—Fired
     SetGlobal("R_SPELL_TRIGGER_FIRED","LOCALS",1)
     CreateCreatureObject("rat01",LastSeenBy(Myself),0,0,0)
@@ -185,6 +190,7 @@ THEN
     ReallyForceSpell(LastSeenBy(Myself),WIZARD_PIERCE_SHIELD)  // SPWI805.SPL (Pierce Shield)
     ReallyForceSpell(LastSeenBy(Myself),WIZARD_PIERCE_SHIELD)  // SPWI805.SPL (Pierce Shield)
     ReallyForceSpell(LastSeenBy(Myself),WIZARD_PIERCE_SHIELD)  // SPWI805.SPL (Pierce Shield)
+    SetInterrupt(TRUE)
 END
 
 IF

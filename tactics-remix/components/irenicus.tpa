@@ -68,6 +68,7 @@ COPY_EXISTING ~beheld01.CRE~ ~override/ii1.cre~
   WRITE_BYTE  0x23d 18       // Constitution
   WRITE_BYTE  0x23e 12       // Charisma
   WRITE_ASCII 0x250 ~ii1~ #8 // Class Script
+  WRITE_ASCII 0x280 ~ii1~ #8 // Script Name
 
 ///////////////////////////////////////////////////////////////////////////
 // Dragon of Pride                                                       //
@@ -103,6 +104,7 @@ COPY_EXISTING ~dragblac.CRE~ ~override/ii2.cre~
   WRITE_ASCII 0x260 ~~         #8 // Clear General Script
   WRITE_ASCII 0x268 ~~         #8 // Clear Default Script
   WRITE_ASCII 0x2cc ~~         #8 // Clear Dialogue
+  WRITE_ASCII 0x280 ~ii2~      #8 // Script Name
   WRITE_BYTE  0x270 255           // set allegiance to ENEMY
   REMOVE_CRE_ITEM   ~BOLT06~
   REMOVE_CRE_ITEM   ~BULL03~

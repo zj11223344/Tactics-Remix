@@ -49,8 +49,10 @@ IF
   !HPPercent(Myself,100)
 THEN
   RESPONSE #100
+    SetInterrupt(FALSE)
     SpellNoDec(Myself,CLERIC_CURE_CRITICAL_WOUNDS)
     Wait(1)
+    SetInterrupt(TRUE)
 END
 
 IF

@@ -135,11 +135,13 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   !Global("MO_DamagedTarget","LOCALS",1)
+  GlobalLT("MO_AcidScroll","LOCALS",3)
   HasItemEquiped("SCRL7R",Myself)
   See(NearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
 THEN
   RESPONSE #50
+    IncrementGlobal("MO_AcidScroll","LOCALS",1)
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     UseItem("SCRL7R",LastSeenBy(Myself))  // ~Death Fog~
   RESPONSE #50

@@ -13,6 +13,7 @@ July xx, 2023
 - Updated text in Greater Robe of Eyes.
 - Corrected bug with wrong name for Uthgardt Holy Shield would display.
 - Corrected Lich in the Docks to only have 2 uses of Timestop.
+- Corrected bug in Improved Irenicus preventing the fight to progress to phase 2.
 
 ## Version 0.3-alpha
 

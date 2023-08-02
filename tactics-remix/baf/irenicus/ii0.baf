@@ -128,9 +128,11 @@ IF
   !Allegiance(LastSeenBy(Myself),ENEMY)
 THEN
   RESPONSE #100
+    SetInterrupt(FALSE)
     SetGlobalTimer("MySpell","LOCALS",18)
     ReallyForceSpellRES("ii0",LastSeenBy(Myself))
     Wait(2)
+    SetInterrupt(TRUE)
 END
 
 IF
