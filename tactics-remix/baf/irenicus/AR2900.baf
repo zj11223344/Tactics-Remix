@@ -70,6 +70,7 @@ THEN
     StartCutScene("cutii2")
 END
 
+/*
 IF
   Dead("ii6")
   Global("DefeatedJon","GLOBAL",0)
@@ -78,7 +79,7 @@ THEN
   RESPONSE #100
     SetGlobal("DefeatedJon","GLOBAL",1)
 END
-
+*/
 
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
