@@ -9,6 +9,7 @@ IF ~NumTimesTalkedTo(0)~ THEN BEGIN s0
   IF ~~ THEN REPLY @519 GOTO s1
 END
 
+/*
 IF ~~ THEN BEGIN s1
   SAY @520 = @521 = @522
   IF ~~ THEN DO ~ActionOverride(Player1,DropInventory())~ GOTO s2
@@ -17,6 +18,15 @@ END
 IF ~~ THEN BEGIN s2
   SAY @523
   IF ~~ THEN DO 
+          ~CreateVisualEffectObject("SPPLANAR",Player1)
+           ActionOverride(Player1,JumpToPoint([1900.2100])) 
+           Enemy()~ EXIT
+END
+*/
+
+IF ~~ THEN BEGIN s1
+  SAY @520 = @521 = @523
+  IF ~~ THEN DO
           ~CreateVisualEffectObject("SPPLANAR",Player1)
            ActionOverride(Player1,JumpToPoint([1900.2100])) 
            Enemy()~ EXIT
