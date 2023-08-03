@@ -6,7 +6,7 @@ call "%~dp0..\ModPackaging\utilities\ie_games.bat"
 
 REM /* MODIFY: set the values of the 3 variables below to reflect the current mod version */
 set "mod_name=Tactics Remix"
-set "mod_version=v0.4-alpha"
+set "mod_version=v0.4.1-alpha"
 set mod_folder=tactics-remix
 
 REM /* MODIFY: list here which IE games the mod is compatible with, from this list of possibilities: */
