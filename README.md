@@ -41,6 +41,8 @@ This challenge is triggered if you are standing outside the Watcher's Keep. You 
 
 A new lich can be found in the Docks district: enter the door to the north of the main Shadow Thief guildhouse entrance. 
 
+WARNING: Reported to be *incompatible* with Back to Brynnlaw. 
+
 #### Kensai Ryu's Gnome Fighter/Illusionist in the Docks
 
 A gnome fighter/illusionist is looking for Valygar inside a building in the docks and he will kill anyone in his way. 
