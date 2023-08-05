@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.5-alpha
+
+August xx, 2023
+
+### Changed
+
+- Nerfed Shatter Magic to have chance of dispel instead of always dispel.
+
 ## Version 0.4.1-alpha
 
 August 3, 2023
