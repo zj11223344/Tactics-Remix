@@ -7,6 +7,7 @@ August xx, 2023
 ### Changed
 
 - Nerfed Shatter Magic to have chance of dispel instead of always dispel.
+- Cam provided updates to MOFAM01.cre and MOFAM02.cre.
 
 ## Version 0.4.1-alpha
 
