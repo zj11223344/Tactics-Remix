@@ -13,7 +13,7 @@
 
 ## Disclaimer
 
-I was just made aware that the Baldur's Gate Fandom Wiki has a page for this mod that was created without my awareness nor permission. The page itself is monetized via ad revenue which is abhorrent to me as many have put countless time and effort into this mod for someone else to be able to generate revenue from it. I attempted to remove the page, and it was re-instated and I received a block/ban/suspension (whatever wiki calls it) for my efforts. Plain and simple, this is wrong. I do not know what boards their moderators Lich Diet, Jesto95, Hazif, and CompleCCity frequent, but their behavior needs to end. 
+I was just made aware that the Baldur's Gate Fandom Wiki has a page for this mod that was created without my awareness nor permission. The page itself is monetized via ad revenue which is abhorrent to me as many have put countless time and effort into this mod for someone else to be able to generate revenue from it. I attempted to remove the page, and it was re-instated and I received a block/ban/suspension (whatever wiki calls it) for my efforts. Plain and simple, this is wrong. I do not know what boards their moderators Ineth, Lich Diet, Jesto95, Hazif, and CompleCCity frequent, but their behavior needs to end. 
 
 ## Introduction
 
