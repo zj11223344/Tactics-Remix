@@ -1,6 +1,13 @@
 // Selfish Joneleth - Round 1
 
 IF
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    Enemy()
+END
+
+IF
   !GlobalTimerNotExpired("MO_EnemyTrueSightTimer","GLOBAL")
   Global("MO_EnemyTrueSight","GLOBAL",1)
 THEN

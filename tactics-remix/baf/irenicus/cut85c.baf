@@ -35,21 +35,21 @@ THEN
         CreateVisualEffect("SPPLANAR",[1916.507])
         Wait(1)
         SmallWait(10)
-        CreateCreature("ii1",[1916.507],0) // Glabrezu
+        CreateCreature("ii1",[1916.507],0) // Orb of Fear
         SmallWait(5)
         CreateVisualEffect("SPPLANAR",[1827.548])
         Wait(1)
         SmallWait(10)
-        CreateCreature("ii4",[1827.548],0) // Balor
+        CreateCreature("ii4",[1827.548],0) // Wraith of Wrath
         SmallWait(5)
         CreateVisualEffect("SPPLANAR",[2136.529])
         Wait(1)
         SmallWait(10)
-        CreateCreature("ii3",[2136.529],0) // Glabrezu
+        CreateCreature("ii3",[2136.529],0) // Sword of Greed
         SmallWait(5)
         CreateVisualEffect("SPPLANAR",[2212.571])
         Wait(1)
         SmallWait(10)
-        CreateCreature("ii2",[2212.571],0) // Balor
+        CreateCreature("ii2",[2212.571],0) // Dragon of Pride
         //EndCutSceneMode()
 END
