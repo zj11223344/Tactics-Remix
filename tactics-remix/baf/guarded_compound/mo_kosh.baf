@@ -34,6 +34,18 @@ THEN
     DestroyItem("helm01")	// can't wear this!
 END
 
+IF 
+  Global("MO_DifficultyCheck","LOCALS",0)
+  DifficultyLT(HARDEST)
+THEN
+  RESPONSE #100
+    DestroyItem("BELT08")
+    DestroyItem("BOOT04")
+    DestroyItem("CLCK26")
+    DestroyItem("RING07")
+    SetGlobal("MO_DifficultyCheck","LOCALS",1)
+END
+
 /////////////////////////////////////////////////////////////////////
 // Battle Prep
 // 
