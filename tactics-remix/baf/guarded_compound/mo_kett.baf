@@ -31,6 +31,16 @@ THEN
     Hide()
 END
 
+IF 
+  Global("MO_DifficultyCheck","LOCALS",0)
+  DifficultyLT(HARDEST)
+THEN
+  RESPONSE #100
+    DestroyItem("BELT06")
+    DestroyItem("RING07")
+    SetGlobal("MO_DifficultyCheck","LOCALS",1)
+END
+
 IF
   Detect(NearestEnemyOf(Myself))
   HasItem("potn06",Myself)

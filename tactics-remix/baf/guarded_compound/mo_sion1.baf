@@ -55,6 +55,7 @@
 // a few long-lived animate dead spells while waiting for the demon
 // to take you out. 
 /////////////////////////////////////////////////////////////////////
+/*
 IF
   Allegiance(Myself,ENEMY)
   Global("Prep","LOCALS",0)
@@ -65,6 +66,31 @@ THEN
   ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
   Continue()
 END	
+*/
+
+IF
+  Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+  DifficultyGT(NORMAL)
+THEN
+  RESPONSE #100
+    CreateCreature("golcla01",[863.702],NE)  // Clay Golem
+    CreateCreature("golcla01",[1127.659],NE)  // Clay Golem
+    CreateCreature("golcla01",[799.890],NE)  // Clay Golem
+    Continue()
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+  DifficultyLT(HARD)
+THEN
+  RESPONSE #100
+    CreateCreature("golsto01",[863.702],NE)  // Stone Golem
+    CreateCreature("golsto01",[1127.659],NE)  // Stone Golem
+    CreateCreature("golsto01",[799.890],NE)  // Stone Golem
+    Continue()
+END
 
 /////////////////////////////////////////////////////////////////////
 // Battle Prep

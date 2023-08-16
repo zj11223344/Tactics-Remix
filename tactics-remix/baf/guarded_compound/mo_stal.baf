@@ -56,6 +56,17 @@ THEN
 		Continue()
 END	
 
+IF 
+  Global("MO_DifficultyCheck","LOCALS",0)
+  DifficultyLT(HARDEST)
+THEN
+  RESPONSE #100
+    DestroyItem("BELT10")
+    DestroyItem("HELM04")
+    DestroyItem("RING07")
+    SetGlobal("MO_DifficultyCheck","LOCALS",1)
+END
+
 /////////////////////////////////////////////////////////////////////
 // Battle Prep
 // 

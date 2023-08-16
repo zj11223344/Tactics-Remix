@@ -13,11 +13,15 @@ COPY_EXISTING ~hlmafer.CRE~ ~override~
   WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_thug~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~BRAC10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~ EQUIP
+  REPLACE_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~ EQUIP
 
   PATCH_IF !scs_ai BEGIN
     WRITE_BYTE 0x52 4 // thac0
     SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
     SET_BG2_PROFICIENCY ~PROFICIENCYSWORDANDSHIELD~ 2
+  END ELSE scs_ai BEGIN
+    REPLACE_CRE_ITEM ~OHCHAN50~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP
   END
 
 ///////////////////////////////////////////////////////////////////////////
@@ -32,6 +36,7 @@ COPY_EXISTING ~hlkoshi.CRE~ ~override~
   REPLACE_CRE_ITEM ~CLCK26~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~CLOAK~ EQUIP
   REPLACE_CRE_ITEM ~BOOT01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BOOTS~ EQUIP
   REPLACE_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~ EQUIP
+  REPLACE_CRE_ITEM ~HELM20~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~ EQUIP
 
   PATCH_IF !scs_ai BEGIN
     LPF ADD_CRE_EFFECT INT_VAR opcode = 0 target = 2 parameter1 = 2 parameter2 = 0 timing = 9 resist_dispel = 0 probability1 = 100 END
@@ -77,6 +82,9 @@ COPY_EXISTING ~hlstal.CRE~ ~override~
   WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_stal~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~HELM04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~ EQUIP
+  REPLACE_CRE_ITEM ~BELT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP
+  REPLACE_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~ EQUIP
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Ketta                                                          //
@@ -87,6 +95,8 @@ COPY_EXISTING ~hlketta.CRE~ ~override~
   WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_kett~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~BELT06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP
+  REPLACE_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~ EQUIP
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
