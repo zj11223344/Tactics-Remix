@@ -25,6 +25,26 @@ END
 IF
   Global("Prep","LOCALS",0)
   See(NearestEnemyOf(Myself))
+  DifficultyGT(HARD)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,56010)  // ~I intend to destroy you.~
+    SetGlobal("Prep","LOCALS",1)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_SPELL_SHIELD)
+    ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
+    ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    ApplySpell(Myself,WIZARD_BLUR)
+    ApplySpell(Myself,WIZARD_RESIST_FEAR)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_BLUE)
+    ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
+END
+
+IF
+  Global("Prep","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  DifficultyLT(HARDEST)
 THEN
   RESPONSE #100
     DisplayString(Myself,56010)  // ~I intend to destroy you.~
