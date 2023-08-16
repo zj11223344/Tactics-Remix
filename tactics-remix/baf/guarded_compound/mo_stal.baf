@@ -78,7 +78,7 @@ THEN
     ReallyForceSpell("hlolaf",CLERIC_REMOVE_FEAR)
     ReallyForceSpell(Myself,CLERIC_SHIELD_OF_THE_ARCHONS)
     ReallyForceSpell(Myself,CLERIC_TRUE_SIGHT)
-    ReallyForceSpell(Myself,CLERIC_SANCTUARY)
+    //ReallyForceSpell(Myself,CLERIC_SANCTUARY)
     ReallyForceSpell(Myself,CLERIC_HOLY_POWER)
     SetGlobal("Prep","LOCALS",1)
     // Re-memorize
@@ -104,6 +104,7 @@ IF
   GlobalGT("Sanct","LOCALS",0)
   Range(NearestEnemyOfType([GOODCUTOFF]),4)
   CheckStatLT(Myself,1,SANCTUARY)
+  HPPercentLT(Myself,50)
   CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
