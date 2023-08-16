@@ -128,7 +128,7 @@ THEN
     SetInterrupt(FALSE)
     SpellNoDec(Myself,KENSAI_KIA)
     SetInterrupt(TRUE)
-    Continue()
+    //Continue()
 END
 
 IF
@@ -154,7 +154,7 @@ THEN
     SetInterrupt(FALSE)
     SpellNoDec(Myself,KENSAI_KIA)
     SetInterrupt(TRUE)
-    Continue()
+    //Continue()
 END
 
 IF
@@ -180,7 +180,7 @@ THEN
     SetInterrupt(FALSE)
     SpellNoDec(Myself,KENSAI_KIA)
     SetInterrupt(TRUE)
-    Continue()
+    //Continue()
 END
 
 IF
@@ -206,7 +206,7 @@ THEN
     SetInterrupt(FALSE)
     SpellNoDec(Myself,KENSAI_KIA)
     SetInterrupt(TRUE)
-    Continue()
+    //Continue()
 END
 
 IF
@@ -232,7 +232,7 @@ THEN
     SetInterrupt(FALSE)
     SpellNoDec(Myself,KENSAI_KIA)
     SetInterrupt(TRUE)
-    Continue()
+    //Continue()
 END
 
 IF
@@ -258,12 +258,13 @@ THEN
     SetInterrupt(FALSE)
     SpellNoDec(Myself,KENSAI_KIA)
     SetInterrupt(TRUE)
-    Continue()
+    //Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
 // Attack
 /////////////////////////////////////////////////////////////////////
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -297,6 +298,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
@@ -406,6 +408,7 @@ THEN
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -427,6 +430,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
