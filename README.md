@@ -24,6 +24,8 @@ If you are upgrading from an earlier version of this mod, I recommend uninstalli
 
 Tactics Remix adds quite a few new components, and all of the components are individually optional: you may install some but not others, your choice. I have also broken up the mods into two groups: 1) Add New Encounters and 2) Update Existing Encounters. New encounters should be installed prior to SCS while updates to existing encounters should be installed after SCS (if you, the player, chooses to use SCS).
 
+All of the enemy scripts have been rewritten from scratch and many of the fight mechanics are improved from the old Tactics days. These fights are aimed at being more challenging than the original encounters while removing much of the cheese that players of old remember. These are meant to be BRUTAL. The difficulty slider will alter the overall challenge (e.g. removing undroppable items from enemies to make them easier, less or different enemy spawns, altered enemy prebuffs, etc.). I aim to have a bit of randomness added to the encounters and the scripts are not optimized to always cast the "best" spell. Prebuffs and contingencies/sequencers will vary. Additionally, casters will randomly choose if they will be casting an offensive or a defensive/disabling spell. From there, the enemy scripts will cycle through available spells in the specific category with yet more randomness. Best spells will pop up first, but it is random if the script will choose to cast or pass. This should add a bit of variance to the encounters from reload to reload and hopefully the player enjoys the spontaneity. 
+
 ### Add New Encounters - Install BEFORE SCS
 
 #### "Kuroisan", the Acid Kensai
@@ -42,13 +44,13 @@ This challenge is triggered if you have more than 3 million XP, have either kill
 
 #### Gebhard Blucher's Lich in the Docks
 
-A new lich can be found in the Docks district: enter the door to the north of the main Shadow Thief guildhouse entrance. 
+A new lich can be found in the Docks district with an endless supply of undead minions to call upon. You may find her by entering the door to the north of the main Shadow Thief guildhouse entrance. 
 
 WARNING: Reported to be *incompatible* with Back to Brynnlaw. 
 
 #### Kensai Ryu's Gnome Fighter/Illusionist in the Docks
 
-A gnome fighter/illusionist is looking for Valygar inside a building in the docks and he will kill anyone in his way. 
+A gnome fighter/illusionist full of tricks is looking to collect upon the bounty on Valygar's head. Beware on your search as the gnome will kill anyone in his way. 
 
 ### Update Existing Encounters - Install AFTER SCS
 
@@ -56,29 +58,29 @@ These components will check if SCS is present and update accordingly to prevent 
 
 #### Improved Irenicus
 
-Makes Joneleth "The Shattered One" Irenicus a bit more of a challenge when you finally face him in Hell at the end of SoA. Rather than summoning generic demons and immediately losing to you, he sunders himself into fragments, one for each Tear of Bhaal Test in Hell. Each fragment has different strengths and weaknesses. We also add a paltry amount of dialogue.
+I take the original Tactics fight, with some slight alterations, to give Joneleth "The Shattered One" Irenicus the fight he and the player truly deserve. This is a multi-phase fight that should provide a suitable challenge. To start, instead of summoning generic demons, Jon will shatter himself into multiple fragments and brings forth enemies for each Tear of Bhaal Test in Hell. These enemies will provide their own unique challenges, and will bring forth more minions to aid themselves, depending on the difficulty. 
 
 #### Improved Guarded Compound in the Temple District
 
-This component makes the guardians of Celestial Fury more "realistically" difficult. They have appropriate spell picks for their levels (Sion is an 18th level conjurer, for example, so he can cast 9th level spells) and a number of abuses are prevented (you can no longer run to the lower floor). They also throw up a large number of protections early: they do know you are coming, after all. Despite their high levels, they use only SoA abilities (no ToB feats or ToB spells). 
+This component provides a drastic increase in difficulty for the guardians of Celestial Fury. Enemies will have appropriate gear and spell picks for their levels. Enemies will prepare for your arrival and prebuff, and once you arrive there is no escape to the lower floor until you are victorious.
+
+PLEASE NOTE: This component pairs well with the Forgotten Armament component to add net new items into the game for yet an additional difficulty increase. 
 
 #### Improved Twisted Rune
 
-This component makes the guardians of the Staff of the Magi actually believable. An 18th level conjurer, an 18th level fighter, a 26th level Lich, plus they've got the Staff, and they're still routinely defeated by solo characters still in Chapter 2. This component fixed some bugs (their saving throws and spell memorization numbers) and makes more intelligent spell choices (e.g., no gating in demons that will kill you). It also prevents some previous cheesy tactics (traps, cloudkill, etc.). Finally, Layene actually uses the Staff of the Magi the way a PC would (invisibility and spell trap). Before she just sat on it. :-) Did you even notice that their fighter, Revanek, appears completely naked? These guys have money to burn and they can't buy him a long sword and some armor? I think not! Despite their high levels, they use only SoA abilities (no ToB feats or ToB spells).
-
-Note: Revanek will become Wizard Slayer with this update. To spice things up, I am assuming the upgrades from the Skills and Abilities Wizard Slayer are or will be installed. This means, if EEex is present, Revanek's hits will have a 10% chance of bypassing PfMW and the like and dispelling the target.
+Enemies in this encounter will behave as characters of their level should with better decision making and gear. Original Tactics controls to reduce player cheese remain in place. Revanek, instead of being naked, will become Wizard Slayer decked out in new gear with this update. To spice things up, I am assuming the upgrades from the Skills and Abilities Wizard Slayer are or will be installed. This means, if EEex is present, Revanek's hits will have a 10% chance of bypassing PfMW and the like and dispelling the target.
 
 #### Gebhard Blucher's Improved Demon Knights
 
-This makes the Demon Knights (notably, those at the Demogorgon altar in the Underdark) better opponents. They have more powerful spells and are more resistant to cheese. 
+This component makes the Demon Knights at the Demogorgon altar in the Underdark overall better opponents and more of a challenge to the player. 
 
 #### Kensai Ryu's Tougher Kangaxx and Guardians
 
-If you visit the tomb of Kangaxx you will find a new guardian in the room above, the Archlich. He's a level 34/21 Cleric/Mage, and he has another lich with him and some guards he's brought. Their purpose is to kill Kangaxx and get his ring. If you already have the ring they do not know this, they think Kangaxx is still alive and has it. They will kill anyone whom they find snooping around his tomb. It's a pretty tough fight so be prepared. If SCS is installed, Kangaxx will revert to SCS AI; however, the guardians will still remain.
+The tomb of Kangaxx is protected by a new set of guardians above. They are looking to acquire his ring and will kill any they perceive as getting in the way. If SCS is installed, Kangaxx will revert to SCS AI; however, the guardians will still remain.
 
 #### Kensai Ryu's Improved Crypt King
 
-You remember the Cyrpt King in the Graveyard, don't you? Of course you do, he's very easy to beat and he has some cool loot (good sword). This version fixes his script that was broken in the game and also gives him a couple of skeleton minions. After all, he is a king, right? He also calls for more backup every now and then. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version. 
+The Crypt King is now more worthy of that name and will summon more undead minions every now and then. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version.
 
 #### Kensai Ryu's Improved Copper Coronet
 
