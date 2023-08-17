@@ -26,7 +26,28 @@ COPY ~tactics-remix/spl/solak1.spl~  ~override~
             LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 timing = 10 resist_dispel = 0 duration = 2 probability1 = 100 STR_VAR resource = ~%fireshield%~ END
           END
         END
-        
+   
+COPY ~tactics-remix/itm/mosol11.itm~ ~override~
+COPY ~tactics-remix/cre/mosol00.cre~ ~override/mosol01.cre~
+  SAY NAME1 @2004
+  SAY NAME2 @2004
+  WRITE_ASCII 0x268 ~mosol1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~MOSOL11~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+
+COPY ~tactics-remix/itm/mosol12.itm~ ~override~
+COPY ~tactics-remix/cre/mosol00.cre~ ~override/mosol02.cre~
+  SAY NAME1 @2005
+  SAY NAME2 @2005
+  WRITE_ASCII 0x268 ~mosol1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~MOSOL12~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+
+COPY ~tactics-remix/itm/mosol13.itm~ ~override~
+COPY ~tactics-remix/cre/mosol00.cre~ ~override/mosol03.cre~
+  SAY NAME1 @2006
+  SAY NAME2 @2006
+  WRITE_ASCII 0x268 ~mosol1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~MOSOL13~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+
 COPY ~tactics-remix/itm/solak1b.itm~ ~override~
 COPY ~tactics-remix/itm/solak1.itm~  ~override~
         SAY NAME1 @4100
@@ -111,5 +132,6 @@ END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
 END
 
 COPY ~tactics-remix/baf/kuroisan/solak1.baf~ ~override/solak1.bcs~
+COPY ~tactics-remix/baf/kuroisan/mosol1.baf~ ~override/mosol1.bcs~
   COMPILE_BAF_TO_BCS
 

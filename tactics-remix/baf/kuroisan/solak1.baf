@@ -39,12 +39,46 @@ THEN
     ApplySpell(Myself,WIZARD_RESIST_FEAR)
     ApplySpell(Myself,WIZARD_FIRE_SHIELD_BLUE)
     ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
+    CreateCreature("mosol01",[-1.-1],10)
+    CreateCreature("mosol02",[-1.-1],10)
+    CreateCreature("mosol03",[-1.-1],10)
 END
 
 IF
   Global("Prep","LOCALS",0)
   See(NearestEnemyOf(Myself))
-  DifficultyLT(HARDEST)
+  Difficulty(HARD)
+THEN
+  RESPONSE #40
+    DisplayString(Myself,56010)  // ~I intend to destroy you.~
+    SetGlobal("Prep","LOCALS",1)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_SPELL_SHIELD)
+    ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
+    CreateCreature("mosol01",[-1.-1],10)
+  RESPONSE #30
+    DisplayString(Myself,56010)  // ~I intend to destroy you.~
+    SetGlobal("Prep","LOCALS",1)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_SPELL_SHIELD)
+    ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
+    CreateCreature("mosol02",[-1.-1],10)
+  RESPONSE #30
+    DisplayString(Myself,56010)  // ~I intend to destroy you.~
+    SetGlobal("Prep","LOCALS",1)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_SPELL_SHIELD)
+    ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
+    CreateCreature("mosol03",[-1.-1],10)
+END
+
+IF
+  Global("Prep","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  DifficultyLT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,56010)  // ~I intend to destroy you.~

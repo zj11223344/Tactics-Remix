@@ -32,11 +32,13 @@ Kuroisan, a Kensai / Wu Jen from Kara-Tur will approach you if you are carrying 
 
 #### The Ritual
 
-The Ritual component adds a new tactical quest. You can start the quest by speaking to a yellow-robed fellow outside the Watcher's Keep and involves some outdoor combat and obscure symbolism against a very pretty backdrop. Original recommendation for party level is wait until everyone has around 2,000,000 XP. 
+The Ritual component adds a new tactical quest started by speaking with the yellow-robed individual outside of Watcher's Keep. This quest takes the player through some outdoor combat and obscure symbolism against a very pretty backdrop. 
+
+PLEASE NOTE: Original recommendation for party level is around 2 million XP. 
 
 #### "Red Badge" Poison-Based Encounter
 
-This challenge is triggered if you are standing outside the Watcher's Keep. You must have more than 3 million XP, and you must either have killed Gromnir or be in SoA. 
+This challenge is triggered if you have more than 3 million XP, have either killed Gromnir or be in SoA, and are standing outside of Watcher's Keep. The "Red Badge" will wisk you away with promises to come. Once you have over 3.5 million XP with the same conditions as above, they will bring you back for your confrontation.
 
 #### Gebhard Blucher's Lich in the Docks
 
