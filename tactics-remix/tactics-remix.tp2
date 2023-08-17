@@ -291,6 +291,15 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/fire_giants.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
+// Tougher Githyanki                                                     //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @33 DESIGNATED 33 GROUP @3011 LABEL TacticsRemix-Githyanki
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remix/components/githyanki.tpa~
+
+///////////////////////////////////////////////////////////////////////////
 // Morpheus562's Improved Drizzt (BGEE)                                  //
 ///////////////////////////////////////////////////////////////////////////
 BEGIN @29 DESIGNATED 29 GROUP @3011 LABEL TacticsRemix-DrizztBGEE
