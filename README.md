@@ -28,7 +28,7 @@ Tactics Remix adds quite a few new components, and all of the components are ind
 
 #### "Kuroisan", the Acid Kensai
 
-Kuroisan, a Kensai / Wu Jen from Kara-Tur will eventually approach you if you are carrying (and wielding) Celestial Fury or Malakar. He is obsessed with Katanas and will try to take yours. 
+Kuroisan, a Kensai / Wu Jen from Kara-Tur will approach you if you are carrying Celestial Fury or Malakar, regardless if equipped or not. Once you acquire either of these weapons, he will begin the hunt to find you (1 day) and attempt to take yours. Depending on the difficulty level, he may bring additional sword allies to join the fight. 
 
 #### The Ritual
 
