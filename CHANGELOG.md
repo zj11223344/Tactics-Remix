@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.5.1-alpha
+
+August 17, 2023
+
+### Changed
+
+- Corrected bug with Kuroison script on creation.
+- Added Tougher Fire Giants component.
+
 ## Version 0.5-alpha
 
 August 16, 2023

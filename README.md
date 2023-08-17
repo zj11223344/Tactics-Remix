@@ -92,6 +92,10 @@ Adds three dragons to Small Teeth Pass (AR1700).
 
 WARNING: Reported to be *incompatible* with TDD. 
 
+#### Tougher Fire Giants
+
+Damage output and difficulty for fire giants is greatly increased.
+
 #### Morpheus562's Improved Drizzt (BGEE)
 
 This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
