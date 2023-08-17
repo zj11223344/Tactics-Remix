@@ -84,13 +84,11 @@ The Crypt King is now more worthy of that name and will summon more undead minio
 
 #### Kensai Ryu's Improved Copper Coronet
 
-This component creates more Guards in the Copper Coronet when the guards go hostile. This will only work on games in which you have not yet started the Copper Coronet quest. 
-
-Includes GB's "Gorf the Squisher" script fix.
+Simply adds more guards in the Copper Coronet when they go hostile. 
 
 #### Mike Barnes' Improved Small Teeth Pass
 
-This makes the Small Teeth Pass (AR1700, optional in Chapter 6 after Elhan) much tougher by adding three Dragons.
+Adds three dragons to Small Teeth Pass (AR1700).
 
 WARNING: Reported to be *incompatible* with TDD. 
 

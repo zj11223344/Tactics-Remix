@@ -8,6 +8,7 @@ August xx, 2023
 
 - Nerfed Shatter Magic to have chance of dispel instead of always dispel.
 - Cam provided updates to MOFAM01.cre and MOFAM02.cre.
+- Vastly increased the difficulty for Kuroisan and Guarded Compound encounters.
 
 ## Version 0.4.1-alpha
 
