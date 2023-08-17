@@ -132,6 +132,6 @@ END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
 END
 
 COPY ~tactics-remix/baf/kuroisan/solak1.baf~ ~override/solak1.bcs~
-COPY ~tactics-remix/baf/kuroisan/mosol1.baf~ ~override/mosol1.bcs~
+     ~tactics-remix/baf/kuroisan/mosol1.baf~ ~override/mosol1.bcs~
   COMPILE_BAF_TO_BCS
 

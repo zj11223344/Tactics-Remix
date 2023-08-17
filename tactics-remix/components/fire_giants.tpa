@@ -1,0 +1,29 @@
+// Tactics Remix, Tougher Fire Giants
+
+///////////////////////////////////////////////////////////////////////////
+// Update Fire Giant Weapons                                             //
+///////////////////////////////////////////////////////////////////////////
+ACTION_FOR_EACH gntwp IN
+      giafir2
+      giafir
+      yagawh
+      mh#hamm2
+    BEGIN
+      ACTION_IF FILE_EXISTS_IN_GAME ~%gntwp%.ITM~ BEGIN
+        
+        COPY_EXISTING ~%gntwp%.ITM~ ~override~ 
+          LPF DELETE_EFFECT INT_VAR header_type = 1 match_opcode = 12 END
+          PATCH_IF scs_ai BEGIN
+            LPF DELETE_EFFECT INT_VAR header_type = 1 match_opcode = 177 END
+          END
+          LPF ADD_ITEM_EFFECT INT_VAR opcode = 146 type = 1 target = 2 parameter1 = 10 parameter2 = 1 timing = 1 resist_dispel = 2 duration = 0 probability1 = 100 STR_VAR resource = ~SPIN682~ END // Lower fire resistance on hit
+          LPF ADD_ITEM_EFFECT INT_VAR opcode = 146 type = 1 target = 2 parameter1 = 10 parameter2 = 1 timing = 1 resist_dispel = 2 duration = 0 probability1 = 25 STR_VAR resource = ~SPWI304~ END // Chance of fireball on hit
+          LPF ADD_ITEM_EFFECT INT_VAR opcode = 146 type = 1 target = 2 parameter1 = 10 parameter2 = 1 timing = 1 resist_dispel = 2 duration = 0 probability1 = 35 probability2 = 26 STR_VAR resource = ~SPPR705~ END // Chance of fire storm on hit
+          LPF ADD_ITEM_EFFECT INT_VAR opcode = 174 type = 1 target = 1 timing = 1 resist_dispel = 2 duration = 0 probability1 = 25 STR_VAR resource = ~MISC_17B~ END // Play Audio
+          LPF ADD_ITEM_EFFECT INT_VAR opcode = 177 type = 1 target = 1 parameter1 = 0 parameter2 = 2 timing = 1 resist_dispel = 0 duration = 0 probability1 = 45 probability2 = 36 STR_VAR resource = ~SUTELFIR~ END // Chance to summon Greater Fire Elemental on hit
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 317 target = 1 parameter2 = 1 timing = 2 resist_dispel = 0 probability1 = 100 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 232 target = 1 parameter1 = 1 parameter2 = 0 timing = 2 resist_dispel = 0 duration = 0 probability1 = 100 STR_VAR resource = ~SPWI418D~ END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 232 target = 1 parameter1 = 1 parameter2 = 0 timing = 2 resist_dispel = 0 duration = 0 probability1 = 100 STR_VAR resource = ~SPIN682~ END
+      END
+    END
+  
