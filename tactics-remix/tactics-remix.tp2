@@ -7,7 +7,7 @@
 BACKUP ~tactics-remix/backup~
 AUTHOR ~morpheus562~
 
-VERSION ~v0.5.1-alpha~
+VERSION ~v0.6-alpha~
 README ~tactics-remix/readme.%LANGUAGE%.html~ ~tactics-remix/readme.html~
 AUTO_EVAL_STRINGS
 
@@ -291,7 +291,7 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/fire_giants.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
-// Tougher Githyanki                                                     //
+// Morpheus562's Tougher Githyanki                                       //
 ///////////////////////////////////////////////////////////////////////////
 BEGIN @33 DESIGNATED 33 GROUP @3011 LABEL TacticsRemix-Githyanki
 

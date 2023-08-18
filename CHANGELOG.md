@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.6-alpha
+
+September xx, 2023
+
+### Changed
+
+- Added Morpheus562 Tougher Githyanki component.
+- Kuroisan rewards tied to the difficulty slider.
+
 ## Version 0.5.1-alpha
 
 August 17, 2023

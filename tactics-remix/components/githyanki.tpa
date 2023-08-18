@@ -79,23 +79,58 @@ COPY_EXISTING ~OHGITH03.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Simyaz Encounter                                                      //
 ///////////////////////////////////////////////////////////////////////////
-/*
-UDSIMYAZ
-UDGITH02
-*/
+// Simyaz
+COPY_EXISTING ~UDSIMYAZ.CRE~ ~override~ 
+  WRITE_BYTE 0x234 13 // Fighter Level
+  WRITE_BYTE 0x235 13 // Wizard Level
+  WRITE_BYTE 0x24  91 // Current HP
+  WRITE_BYTE 0x26  91 // Maximum HP
+  WRITE_BYTE 0x52   8 // thac0
+  PATCH_IF !forgot_arm BEGIN
+    REPLACE_CRE_ITEM ~SW1H38~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Jhor the Bleeder +2
+  END
+  REPLACE_CRE_ITEM ~CHAN13~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Elven Chain +1
+  REPLACE_CRE_ITEM ~BRAC09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+  REPLACE_CRE_ITEM ~BELT06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Hill Giant
+
+// Generic Underdark Githyanki
+COPY_EXISTING ~UDGITH02.CRE~ ~override~
+  REPLACE_CRE_ITEM ~SW1H42~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Bastard Sword +2
+  REPLACE_CRE_ITEM ~OHPLAT50~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail +2
+  REPLACE_CRE_ITEM ~BRAC09~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
 
 ///////////////////////////////////////////////////////////////////////////
 // Kruin Encounter                                                       //
 ///////////////////////////////////////////////////////////////////////////
-/*
-KRUIN
-GITH05
-*/
+// Kruin
+COPY_EXISTING ~KRUIN.CRE~ ~override~
+  REPLACE_CRE_ITEM ~SW2H15~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Silver Sword
+  REPLACE_CRE_ITEM ~BELT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Intertial Barrier
+  REPLACE_CRE_ITEM ~BRAC10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Expertise
+
+COPY_EXISTING ~GITH05.CRE~ ~override~
+  REPLACE_CRE_ITEM ~DART03~ #40 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Dart of Stunning
+  REPLACE_CRE_ITEM ~CLCK17~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Robe of the Evil Archmagi
+  REPLACE_CRE_ITEM ~BELT04~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Elves' Bane
+  REPLACE_CRE_ITEM ~BRAC14~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Bracers of Defence AC 4
+  REPLACE_CRE_ITEM ~AMUL20~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~  EQUIP // Add Kaligun's Amulet of Magic Resistance
 
 ///////////////////////////////////////////////////////////////////////////
 // Jan's Quest                                                           //
 ///////////////////////////////////////////////////////////////////////////
-/*
-JANGIT01
-JANGIT02
-*/
+// Jan Githyanki 1
+COPY_EXISTING ~JANGIT01.CRE~ ~override~
+  REPLACE_CRE_ITEM ~CHAN12~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Elven Chain
+  REPLACE_CRE_ITEM ~SW1H42~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Bastard Sword +2
+  REPLACE_CRE_ITEM ~BRAC09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+
+// Jan Githyanki 2
+COPY_EXISTING ~JANGIT01.CRE~ ~override~
+  WRITE_BYTE 0x234 12  // Level
+  WRITE_BYTE 0x24 120  // Current HP
+  WRITE_BYTE 0x26 120  // Maximum HP
+  WRITE_BYTE 0x52   9  // thac0
+  REPLACE_CRE_ITEM ~SPER05~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Spear +2
+  REPLACE_CRE_ITEM ~PLAT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail +1
+  REPLACE_CRE_ITEM ~BRAC06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Hands of Takkok
+  REPLACE_CRE_ITEM ~BELT02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Golden Girlde of Urnst
