@@ -1,0 +1,36 @@
+// Tactics Remix, Improved Sahuagin City
+
+///////////////////////////////////////////////////////////////////////////
+// Improve Sahuagin                                                      //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+SPRINT source ~%SOURCE_FILE%~
+READ_LONG 0x8   name
+READ_BYTE 0x234 level
+READ_BYTE 0x24  current_hp
+READ_BYTE 0x272 race
+READ_BYTE 0x52  thaco
+
+// Patch if Race == Sahuagin 
+PATCH_IF (race = 131) BEGIN
+  
+  // Do calculations
+  level = level + 2
+  current_hp = current_hp + 20
+  PATCH_IF (thaco < 2) BEGIN
+    thaco = 0
+  END ELSE BEGIN
+    thaco = thaco - 2
+  END
+
+  // Update .cre file
+  WRITE_BYTE 0x234 level      // Level
+  WRITE_BYTE 0x24  current_hp // Current HP
+  WRITE_BYTE 0x26  current_hp // Maximum HP
+  WRITE_BYTE 0x52  thaco      // thac0
+  REPLACE_CRE_ITEM ~OHCHAN50~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP // Splint Mail +2
+
+  // Print out results
+  PATCH_PRINT ~%name% (%source%) updated stats: Level(%level%) HP (%current_hp%) thac0 (%thaco%).~
+END
+

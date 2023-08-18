@@ -110,7 +110,6 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 INCLUDE ~tactics-remix/components/torgal.tpa~
 */
 
-/*
 ///////////////////////////////////////////////////////////////////////////
 // Improved Sahuagin City                                                //
 ///////////////////////////////////////////////////////////////////////////
@@ -119,7 +118,6 @@ BEGIN @8 DESIGNATED 8 GROUP @3011 LABEL TacticsRemix-Sahuagin
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/sahuagin.tpa~
-*/
 
 /*
 ///////////////////////////////////////////////////////////////////////////
