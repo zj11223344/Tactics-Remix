@@ -12,7 +12,7 @@
 // Gith Warrior
 COPY_EXISTING ~GITH01.CRE~ ~override~
   WRITE_BYTE 0x234 15  // Level
-  WRITE_BYTE 0x14 2000 // XP Value
+  WRITE_LONG 0x14 2000 // XP Value
   WRITE_BYTE 0x24 150  // Current HP
   WRITE_BYTE 0x26 150  // Maximum HP
   WRITE_BYTE 0x52   5  // thac0
@@ -24,7 +24,7 @@ COPY_EXISTING ~GITH01.CRE~ ~override~
 // Gith Knight
 COPY_EXISTING ~GITH02.CRE~ ~override~
   WRITE_BYTE 0x234 20  // Level
-  WRITE_BYTE 0x14 5000 // XP Value
+  WRITE_LONG 0x14 5000 // XP Value
   WRITE_BYTE 0x24 200  // Current HP
   WRITE_BYTE 0x26 200  // Maximum HP
   WRITE_BYTE 0x52   1  // thac0
