@@ -5,11 +5,11 @@
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 SPRINT source ~%SOURCE_FILE%~
-READ_LONG 0x8   name
-READ_BYTE 0x234 level
-READ_BYTE 0x24  current_hp
-READ_BYTE 0x272 race
-READ_BYTE 0x52  thaco
+READ_STRREF 0x8   name
+READ_BYTE   0x234 level
+READ_BYTE   0x24  current_hp
+READ_BYTE   0x272 race
+READ_BYTE   0x52  thaco
 
 // Patch if Race == Sahuagin 
 PATCH_IF (race = 131) BEGIN
