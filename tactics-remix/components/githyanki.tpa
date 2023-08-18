@@ -9,15 +9,72 @@
 ///////////////////////////////////////////////////////////////////////////
 // Watcher's Keep and Generic Githyanki                                  //
 ///////////////////////////////////////////////////////////////////////////
-/*
-GITH01
-GITH02
-GITH03
-GITH04
-GORGIT
-GORGITH2
-OHGITH03
-*/
+// Gith Warrior
+COPY_EXISTING ~GITH01.CRE~ ~override~
+  WRITE_BYTE 0x234 15  // Level
+  WRITE_BYTE 0x14 2000 // XP Value
+  WRITE_BYTE 0x24 150  // Current HP
+  WRITE_BYTE 0x26 150  // Maximum HP
+  WRITE_BYTE 0x52   5  // thac0
+  REPLACE_CRE_ITEM ~OHPLAT50~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail +2
+  REPLACE_CRE_ITEM ~BRAC09~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+  REPLACE_CRE_ITEM ~SW2H11~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Greatsword +2
+  REPLACE_CRE_ITEM ~BELT06~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Hill Giant
+
+// Gith Knight
+COPY_EXISTING ~GITH02.CRE~ ~override~
+  WRITE_BYTE 0x234 20  // Level
+  WRITE_BYTE 0x14 5000 // XP Value
+  WRITE_BYTE 0x24 200  // Current HP
+  WRITE_BYTE 0x26 200  // Maximum HP
+  WRITE_BYTE 0x52   1  // thac0
+  REPLACE_CRE_ITEM ~PLAT19~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Full Plate +2
+  REPLACE_CRE_ITEM ~BRAC10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Expertise
+  REPLACE_CRE_ITEM ~SW2H15~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Silver Sword
+  REPLACE_CRE_ITEM ~BELT07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Stone Giant
+
+// Gith Anti-Paladin
+COPY_EXISTING ~GITH03.CRE~ ~override~
+  WRITE_BYTE 0x234 16 // Level
+  WRITE_BYTE 0x24 150 // Current HP
+  WRITE_BYTE 0x26 150 // Maximum HP
+  WRITE_BYTE 0x52   5 // thac0
+  REPLACE_CRE_ITEM ~OHPLAT50~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP // Plate Mail +2
+  REPLACE_CRE_ITEM ~BELT06~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~  EQUIP // Belt of Hill Giant
+
+// Gish
+COPY_EXISTING ~GITH04.CRE~ ~override~ 
+  WRITE_BYTE 0x234 13 // Fighter Level
+  WRITE_BYTE 0x235 13 // Wizard Level
+  WRITE_BYTE 0x24  91 // Current HP
+  WRITE_BYTE 0x26  91 // Maximum HP
+  WRITE_BYTE 0x52   8 // thac0
+  REPLACE_CRE_ITEM ~CHAN13~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Elven Chain +1
+  REPLACE_CRE_ITEM ~BRAC09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+  REPLACE_CRE_ITEM ~BELT06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Hill Giant
+  REPLACE_CRE_ITEM ~SW2H11~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Greatsword +2
+
+// Gith Captain
+COPY_EXISTING ~GORGIT.CRE~ ~override~
+  REPLACE_CRE_ITEM ~PLAT13~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Gorgon Plate
+  REPLACE_CRE_ITEM ~BRAC09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+  REPLACE_CRE_ITEM ~BELT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Intertial Barrier
+
+// Gith Sleep Interruptor
+COPY_EXISTING ~GORGITH2.CRE~ ~override~
+  REPLACE_CRE_ITEM ~PLAT19~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Full Plate +2
+  REPLACE_CRE_ITEM ~BRAC10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Expertise
+  REPLACE_CRE_ITEM ~BELT07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Stone Giant
+
+// Gith Anti-Paladin Leader
+COPY_EXISTING ~OHGITH03.CRE~ ~override~
+  WRITE_BYTE 0x234 20 // Level
+  WRITE_BYTE 0x24 200 // Current HP
+  WRITE_BYTE 0x26 200 // Maximum HP
+  WRITE_BYTE 0x52   0 // thac0
+  REPLACE_CRE_ITEM ~PLAT13~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Gorgon Plate
+  REPLACE_CRE_ITEM ~BRAC09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+  REPLACE_CRE_ITEM ~BELT07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Stone Giant
 
 ///////////////////////////////////////////////////////////////////////////
 // Simyaz Encounter                                                      //
