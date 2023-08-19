@@ -1,45 +1,238 @@
+// Minor Avatar of Sekolah!
+
+/////////////////////////////////////////////////////////////////////
+// On Death, Bring Back Imprisoned Party
+/////////////////////////////////////////////////////////////////////
 IF
-  OR(2)
-    See(SecondNearestEnemyOf(Myself))
-    See(NearestEnemyOf(Myself))
-  Global("MO_SPAWN_ENEMIES","LOCALS",0)
-  DifficultyGT(HARD)
+  Die()
 THEN
   RESPONSE #100
-    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",12)
-    DisplayStringHead(Myself,@5013)  // Sekolah, come to our aid!
-    CreateCreatureObjectEffect("IMPSAHA","SPMONSUM",LastSeenBy(Myself))
-    SetGlobal("MO_SPAWN_ENEMIES","LOCALS",1)
+    ReallyForceSpellDead(Myself,WIZARD_FREEDOM)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Polymorph Self
+/////////////////////////////////////////////////////////////////////
+IF
+    !GlobalTimerNotExpired("Change","LOCALS")
+THEN
+    RESPONSE #10
+        Polymorph(SAHAUGIN)
+        SetGlobalTimer("Change","LOCALS",2)
+        Continue()
+    RESPONSE #10
+        Polymorph(SAHAUGIN_LARGE)
+        SetGlobalTimer("Change","LOCALS",2)
+        Continue()
+    RESPONSE #10
+        Polymorph(IC_SALAMANDER)
+        SetGlobalTimer("Change","LOCALS",2)
+        Continue()
+    RESPONSE #10
+        Polymorph(IC_SALAMANDER2)
+        SetGlobalTimer("Change","LOCALS",2)
+        Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attack
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
-  OR(2)
-    See(SecondNearestEnemyOf(Myself))
-    See(NearestEnemyOf(Myself))
-  Global("MO_SPAWN_ENEMIES","LOCALS",0)
-  DifficultyLT(HARDEST)
-  DifficultyGT(EASY)
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",12)
-    DisplayStringHead(Myself,4413) // Call forth the Alguiliians! We are overun!
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    SetGlobal("MO_SPAWN_ENEMIES","LOCALS",1)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
-  OR(2)
-    See(SecondNearestEnemyOf(Myself))
-    See(NearestEnemyOf(Myself))
-  GlobalTimerExpired("MO_SPAWN_MORE","GLOBAL")
-  DifficultyGT(EASY)
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    DisplayStringHead(Myself,4413) // Call forth the Alguiliians! We are overun!
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    SetGlobalTimer("MO_SPAWN_MORE","LOCALS",12)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+/////////////////////////////////////////////////////////////////////
+// Dimension Door Enemy
+/////////////////////////////////////////////////////////////////////
+IF
+  !See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    SpellNoDec(Player1,WIZARD_DIMENSION_DOOR)
+  RESPONSE #100
+    SpellNoDec(Player2,WIZARD_DIMENSION_DOOR)
+  RESPONSE #100
+    SpellNoDec(Player3,WIZARD_DIMENSION_DOOR)
+  RESPONSE #100
+    SpellNoDec(Player4,WIZARD_DIMENSION_DOOR)
+  RESPONSE #100
+    SpellNoDec(Player5,WIZARD_DIMENSION_DOOR)
+  RESPONSE #100
+    SpellNoDec(Player6,WIZARD_DIMENSION_DOOR)
 END
