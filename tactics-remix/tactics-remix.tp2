@@ -282,7 +282,7 @@ INCLUDE ~tactics-remix/components/druid_grove.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // Tougher Fire Giants                                                   //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @32 DESIGNATED 32 GROUP @3011 LABEL TacticsRemix-FireGiants
+BEGIN @23 DESIGNATED 23 GROUP @3011 LABEL TacticsRemix-FireGiants
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
@@ -291,7 +291,7 @@ INCLUDE ~tactics-remix/components/fire_giants.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // Morpheus562's Tougher Githyanki                                       //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @33 DESIGNATED 33 GROUP @3011 LABEL TacticsRemix-Githyanki
+BEGIN @32 DESIGNATED 32 GROUP @3011 LABEL TacticsRemix-Githyanki
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
