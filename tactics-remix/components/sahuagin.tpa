@@ -34,3 +34,13 @@ PATCH_IF (race = 131) BEGIN
   PATCH_PRINT ~%name% (%source%) updated stats: Level(%level%) HP (%current_hp%) thac0 (%thaco%).~
 END
 
+///////////////////////////////////////////////////////////////////////////
+// Update Priestess Encounter                                            //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~SAHRAMB3.CRE~ ~override~
+
+  // Rearrange scripts if SCS is NOT present
+  PATCH_IF !scs_ai BEGIN
+    WRITE_ASCII 0x250 ~~         #8 // Clear Class Script
+    WRITE_ASCII 0x260 ~PRIES14T~ #8 // Clear General Script
+  END
