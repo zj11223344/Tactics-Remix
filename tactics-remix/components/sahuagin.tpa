@@ -1,6 +1,13 @@
 // Tactics Remix, Improved Sahuagin City
 
 ///////////////////////////////////////////////////////////////////////////
+// Create Items                                                          //
+///////////////////////////////////////////////////////////////////////////
+// Spear +2, +1d4 Cold
+COPY_EXISTING ~sper05.itm~ ~override/mosah01.itm~
+  LPF ADD_ITEM_EFFECT INT_VAR opcode = 12 type = 1 target = 2 parameter1 = 0 parameter2 = 131072 timing = 1 resist_dispel = 0 probability1 = 100 dicenumber = 1 dicesize = 4 special = 1 END
+
+///////////////////////////////////////////////////////////////////////////
 // Improve Sahuagin                                                      //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
@@ -45,6 +52,9 @@ COPY_EXISTING ~SAHRAMB3.CRE~ ~override~
     WRITE_ASCII 0x260 ~PRIES14T~ #8 // Clear General Script
   END
   WRITE_ASCII 0x258 ~MOSAH01~    #8 // Add Race Script
+
+COPY_EXISTING ~SAHANGU.CRE~ ~override~
+  REPLACE_CRE_ITEM ~mosah01~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
