@@ -9,6 +9,10 @@ COPY_EXISTING ~sper05.itm~ ~override/mosah01.itm~
 
 // Spear +3, Imprisonment on Hit
 COPY_EXISTING ~sper06.itm~ ~override/mosah02.itm~
+  LPF ADD_ITEM_EFFECT INT_VAR opcode = 139 type = 1 target = 2 parameter1 = RESOLVE_STR_REF (@4604) timing = 1 resist_dispel = 0 duration = 0 probability1 = 25 savingthrow = 4 savebonus = ~-8~ END 
+  LPF ADD_ITEM_EFFECT INT_VAR opcode = 211 type = 1 target = 2 timing = 1 resist_dispel = 0 duration = 0 probability1 = 25 savingthrow = 4 savebonus = ~-8~ END
+  LPF ADD_ITEM_EFFECT INT_VAR opcode = 142 type = 1 target = 2 parameter2 = 137 timing = 0 resist_dispel = 2 duration = 30 probability1 = 100 END
+  LPF ADD_ITEM_EFFECT INT_VAR opcode = 25 type = 1 target = 2 parameter1 = 3 parameter2 = 3 timing = 0 resist_dispel = 2 duration = 30 probability1 = 100 END
 
 ///////////////////////////////////////////////////////////////////////////
 // Improve Sahuagin                                                      //
@@ -96,7 +100,9 @@ COPY_EXISTING ~SAHAMB05.CRE~ ~override/mosaha.cre~
   WRITE_BYTE 0x271 255 // General (Monster)
   WRITE_BYTE 0x272 121 // Race (Demonic)
   WRITE_BYTE 0x273 160 // Class (Tanari)
+  WRITE_ASCII 0x248 ~~        #8 // Clear Override Script
   WRITE_ASCII 0x268 ~mosah02~ #8 // Add Default Script
+  WRITE_ASCII 0x280 ~mosah02~ #8 // Script Name
   WRITE_BYTE 0x27b 51 // Alignment (Chaotic Evil)
   REPLACE_CRE_ITEM ~IMMUNE3~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~   EQUIP
   REPLACE_CRE_ITEM ~RINGDEMN~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~   EQUIP
