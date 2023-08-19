@@ -119,7 +119,7 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/sahuagin.tpa~
 
-/*
+/* WILL NOT DO SINCE SCS ALREADY DOES THIS
 ///////////////////////////////////////////////////////////////////////////
 // Improved Bodhi                                                        //
 ///////////////////////////////////////////////////////////////////////////
