@@ -12,7 +12,7 @@ READ_BYTE   0x272 race
 READ_BYTE   0x52  thaco
 
 // Patch if Race == Sahuagin 
-PATCH_IF (race = 131) BEGIN
+PATCH_IF (race = 131) AND !("%source%" STRING_EQUAL_CASE "WILDZONE.CRE") BEGIN
   
   // Do calculations
   level = level + 2
@@ -44,3 +44,10 @@ COPY_EXISTING ~SAHRAMB3.CRE~ ~override~
     WRITE_ASCII 0x250 ~~         #8 // Clear Class Script
     WRITE_ASCII 0x260 ~PRIES14T~ #8 // Clear General Script
   END
+  WRITE_ASCII 0x258 ~MOSAH01~    #8 // Add Race Script
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/baf/sahuagin/mosah01.baf~ ~override/mosah01.bcs~
+  COMPILE_BAF_TO_BCS
