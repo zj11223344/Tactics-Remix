@@ -24,11 +24,13 @@ Si vous effectuez une mise à jour à partir d'une version antérieure de ce mod
 
 Tactics Remix ajoute un certain nombre de composants optionnels : vous pouvez les installer à votre guise. Les mods sont également divisé en deux groupes : 1) Ajouter de nouvelles rencontres qui devront être installées avant SCS ; 2) Mise à jour des rencontres existantes dont l'installation s'effectuera après SCS. (si vous utilisez Sword Coast Stratagems).
 
+All of the enemy scripts have been rewritten from scratch and many of the fight mechanics are improved from the old Tactics days. These fights are aimed at being more challenging than the original encounters while removing much of the cheese that players of old remember. These are meant to be BRUTAL. The difficulty slider will alter the overall challenge (e.g. removing undroppable items from enemies to make them easier, less or different enemy spawns, altered enemy prebuffs, etc.). I aim to have a bit of randomness added to the encounters and the scripts are not optimized to always cast the "best" spell. Prebuffs and contingencies/sequencers will vary. Additionally, casters will randomly choose if they will be casting an offensive or a defensive/disabling spell. From there, the enemy scripts will cycle through available spells in the specific category with yet more randomness. Best spells will pop up first, but it is random if the script will choose to cast or pass. This should add a bit of variance to the encounters from reload to reload and hopefully the player enjoys the spontaneity. 
+
 ### Ajouter de nouvelles rencontres - Installer ces composants AVANT Sword Coast Stratagems
 
 #### "Kuroisan", le kensai acide
 
-Une fois Furie céleste ou Malakar en votre possession, Kuroisan, un Kensai / Wu Jen de Kara-Tur, finira par vous aborder. Il est obsédé par les katanas et essaiera de s'emparer du vôtre. 
+Une fois Furie céleste ou Malakar en votre possession, Kuroisan, un Kensai / Wu Jen de Kara-Tur, finira par vous aborder. Il est obsédé par les katanas et essaiera de s'emparer du vôtre qu'il soit équipé ou non, Kuroisan mettra une journée pour vous retrouver et en fonction de votre niveau de difficulté sera accompagné par des alliés qui participeront au combat.  
 
 #### Le Rituel
 
@@ -36,15 +38,15 @@ Ce composant ajoute une nouvelle aventure tactique. Vous pouvez commencer la qu�
 
 #### "L'insigne rouge", une Rencontre Basée sur le Poison
 
-Ce défi se déclenchera dans la zone extérieur de la Tour de Garde. Si vous disposez d'une expérience supérieure à 3 millions de points, vous devez aussi avoir réglé son compte à Gromnir ou être dans toujours dans SoA.
+Ce défi se déclenchera dans la zone extérieur de la Tour de Garde. Si vous disposez d'une expérience supérieure à 3 millions de points, vous devez aussi avoir réglé son compte à Gromnir ou être dans toujours dans SoA. Il vous faudra atteindre alors les 3,5 millions de points d’expérience  et réunir les même conditions que précédemment afin que la confrontation commence.
 
 #### La Liche sur les Quais, de Gebhard Blucher
 
-Une nouvelle liche peut être observée sur les quais : franchissez la porte située au nord de l'entrée principale de la guilde des voleurs de l'Ombre.
+Une nouvelle liche peut être observée sur les quais, elle dispose d'une quantité infinie de larbin morts-vivants : franchissez la porte située au nord de l'entrée principale de la guilde des voleurs de l'Ombre.
 
 #### Le Gnome Guerrier / Illusionniste des Quais, de Kensai Ryu
 
-Un gnome guerrier / illusionniste est à la recherche de Valygar, vous le rencontrerais à l'intérieur d'un bâtiment sur les quais, il tuera tous ceux qui se mettent en travers de sa route..
+Un gnome guerrier / illusionniste plein de surprise est à la recherche de Valygar, vous le rencontrerais à l'intérieur d'un bâtiment sur les quais, il tuera tous ceux qui se mettent en travers de sa route.
 
 ### Mise à jour des rencontres - Installer ces composants APRES Sword Coast Stratagems
 
@@ -52,11 +54,13 @@ Les composants suivants détecteront la présence de SCS et s'adapteront en cons
 
 #### Amélioration de Irenicus
 
-Ce composant rend Joneleth "Le Brisé" Irenicus un peu plus coriace lors de votre affrontement en Enfer à la fin de SoA. Plutôt que d'invoquer des démons génériques et de perdre aussitôt face à vous, il se sépare en fragments, correspondant à chacun des tests pour obtenir des larmes de Bhaal. Chaque fragment a des forces et des faiblesses différentes. Nous avons également ajouté un petit nombre de dialogues.
+Ce composant rend Joneleth "Le Brisé" Irenicus un peu plus coriace lors de votre affrontement en Enfer à la fin de SoA. Plutôt que d'invoquer des démons génériques et de perdre aussitôt face à vous, il se sépare en fragments, correspondant à chacun des tests pour obtenir des larmes de Bhaal. Chaque fragment a des forces et des faiblesses différentes et disposeront eux-même d'alliés en fonction de votre niveau de difficulté. Nous avons également ajouté un petit nombre de dialogues.
 
 #### Amélioration de la Cour Gardée dans le District du Temple
 
 Ce composant rend les gardiens du Furie Céleste plus "réalistes". Ils disposent d'une sélection de sorts correspondant à leur niveau (Sion est un conjurateur de niveau 18, il peut donc lancer des sorts de niveau 9) et un certain nombre d'abus sont bloqués (vous ne pouvez plus vous réfugier à l'étage inférieur). Ils auront également déjà lancés leurs sorts de protections : Après tout ils savent que vous arrivez. Malgré leur haut niveau, ils n'utiliseront que des capacités existantes dans SoA (pas celle de ToB, pareil pour les sorts).
+
+REMARQUE : Ce composant est remarquablement complété par le mod Forgotten-Armament qui ajoute de nouveaux items et ainsi un plus grand challenge.
 
 #### Amélioration de la Rune Tordue
 
@@ -70,7 +74,7 @@ Les chevaliers démons ( particulièrement ceux de l'autel consacré à Démogor
 
 #### Rencontres plus difficile pour Kangaxx et ses gardiens, par Kensai Ryu
 
-Si vous visitez le tombeau de Kangaxx, vous trouverez un nouveau gardien dans la pièce du dessus, l'Archlich. Un Clerc / Mage de niveau 34 / 21, accompagné d'une autre liche et quelques gardes. Leur intention est de détruire Kangaxx et de s'emparer de son anneau. Si vous avez déjà l'anneau, ils ne le remarquent pas, ils supposent que Kangaxx est toujours en vie et qu'il est en sa possession. Ils élimineront tous ceux qu'ils trouveront en train de fouiner autour de sa tombe. C'est un combat plutôt difficile, alors préparez-vous. Si SCS est installé, l'IA utilisée par Kangaxx sera celle de SCS, mais celle des gardiens sera toujours effective.
+Si vous visitez le tombeau de Kangaxx, vous trouverez un nouveau gardien dans la pièce du dessus, l'Archlich. Un Clerc / Mage de niveau 34 / 21, accompagné d'une autre liche et quelques gardes. Leur intention est de détruire Kangaxx et de s'emparer de son anneau. Si vous avez déjà l'anneau, ils ne le remarquent pas, ils supposent que Kangaxx est toujours en vie et qu'il est en sa possession. Ils élimineront tous ceux qu'ils trouveront en train de fouiner autour de sa tombe. C'est un combat plutôt difficile, alors préparez-vous. Si SCS est installé, l'IA utilisée par Kangaxx sera celle de SCS, mais les gardiens seront toujours présents.
 
 #### Amélioration du Roi de la crypte, par Kensai Ryu
 
@@ -87,6 +91,10 @@ Inclut la correction du script de "Gorf l'Écrabouilleur" par Gebhard Blucher.
 Ce composant augmente la difficulté de la Passe du Petit Croc en ajoutant trois dragons. (AR1700, optionnel au chapitre 6 après avoir rencontré Elhan à la sortie d'Ombre-Terre) 
 
 ATTENTION : Signalé comme étant *incompatible* avec TDD (mod The Darkest Day). 
+
+#### Amélioration des Géants du feu
+
+Les dégâts infligés et la résistance des géants de feu ont été considérablement augmentés.
 
 #### Morpheus562's Amélioration de Drizzt (BGEE)
 
