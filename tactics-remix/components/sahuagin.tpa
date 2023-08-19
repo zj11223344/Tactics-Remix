@@ -56,6 +56,44 @@ COPY_EXISTING ~SAHRAMB3.CRE~ ~override~
 COPY_EXISTING ~SAHANGU.CRE~ ~override~
   REPLACE_CRE_ITEM ~mosah01~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
 
+COPY_EXISTING ~SAHAMB05.CRE~ ~override/mosaha.cre~
+  WRITE_BYTE 0x234 20  // Level
+  WRITE_LONG 0x14 26000 // XP Value
+  WRITE_BYTE 0x24 155  // Current HP
+  WRITE_BYTE 0x26 155  // Maximum HP
+  WRITE_LONG 0x28 IDS_OF_SYMBOL (animate SALAMANDER_FIRE)
+  WRITE_SHORT 0x46 ~-6~ // Natural AC
+  WRITE_SHORT 0x48 ~-6~ // Effective AC
+  WRITE_BYTE 0x52   5  // thac0
+  WRITE_BYTE 0x53   4  // APR
+  WRITE_BYTE 0x54 5 // Save vs. death
+  WRITE_BYTE 0x55 7 // Save vs. wand
+  WRITE_BYTE 0x56 6 // Save vs. polymorph
+  WRITE_BYTE 0x57 5 // Save vs. breath
+  WRITE_BYTE 0x58 8 // Save vs. spell
+  WRITE_BYTE 0x59 100 // Fire resistance
+  WRITE_BYTE 0x5a 10 // Cold resistance
+  WRITE_BYTE 0x5b 10 // Electricity resistance
+  WRITE_BYTE 0x5c 10 // Acid resistance
+  WRITE_BYTE 0x5d 90 // Magic resistance
+  WRITE_BYTE 0x5e 10 // Magic fire resistance
+  WRITE_BYTE 0x5f 10 // Magic cold resistance
+  WRITE_BYTE 0x60 40 // Slashing resistance
+  WRITE_BYTE 0x61 40 // Crushing resistance
+  WRITE_BYTE 0x62 40 // Piercing resistance
+  WRITE_BYTE 0x63 40 // Missile resistance
+  WRITE_BYTE 0x238 25 // Strength
+  WRITE_BYTE 0x23a 20 // Intelligence
+  WRITE_BYTE 0x23b 16 // Wisdom
+  WRITE_BYTE 0x23c 25 // Strength
+  WRITE_BYTE 0x23d 25 // Strength
+  WRITE_BYTE 0x23e 25 // Strength
+  WRITE_BYTE 0x23f 25 // Strength
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
