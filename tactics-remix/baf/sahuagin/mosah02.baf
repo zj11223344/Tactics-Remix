@@ -17,19 +17,11 @@ IF
     !GlobalTimerNotExpired("Change","LOCALS")
 THEN
     RESPONSE #10
-        Polymorph(SAHAUGIN)
+        Polymorph(SAHUAGIN)
         SetGlobalTimer("Change","LOCALS",2)
         Continue()
     RESPONSE #10
-        Polymorph(SAHAUGIN_LARGE)
-        SetGlobalTimer("Change","LOCALS",2)
-        Continue()
-    RESPONSE #10
-        Polymorph(IC_SALAMANDER)
-        SetGlobalTimer("Change","LOCALS",2)
-        Continue()
-    RESPONSE #10
-        Polymorph(IC_SALAMANDER2)
+        Polymorph(SAHUAGIN_LARGE)
         SetGlobalTimer("Change","LOCALS",2)
         Continue()
 END
