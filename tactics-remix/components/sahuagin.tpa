@@ -7,7 +7,7 @@
 COPY_EXISTING ~sper05.itm~ ~override/mosah01.itm~
   LPF ADD_ITEM_EFFECT INT_VAR opcode = 12 type = 1 target = 2 parameter1 = 0 parameter2 = 131072 timing = 1 resist_dispel = 0 probability1 = 100 dicenumber = 1 dicesize = 4 special = 1 END
 
-// Spear +3, Imprisonment on Hit
+// Spear +3, Imprisonment on Hit (25% chance and save vs. death at -8)
 COPY_EXISTING ~sper06.itm~ ~override/mosah02.itm~
   LPF ADD_ITEM_EFFECT INT_VAR opcode = 25 type = 1 target = 2 parameter1 = 3 parameter2 = 3 timing = 0 resist_dispel = 2 duration = 30 probability1 = 100 END
   LPF ADD_ITEM_EFFECT INT_VAR opcode = 142 type = 1 target = 2 parameter2 = 137 timing = 0 resist_dispel = 2 duration = 30 probability1 = 100 END
@@ -68,7 +68,7 @@ COPY_EXISTING ~SAHAMB05.CRE~ ~override/mosaha.cre~
   WRITE_LONG 0x14 26000 // XP Value
   WRITE_BYTE 0x24 155  // Current HP
   WRITE_BYTE 0x26 155  // Maximum HP
-  WRITE_LONG 0x28 IDS_OF_SYMBOL (animate SALAMANDER_FIRE)
+  WRITE_LONG 0x28 IDS_OF_SYMBOL (animate SALAMANDER_FIRE) // Animation
   WRITE_SHORT 0x46 ~-6~ // Natural AC
   WRITE_SHORT 0x48 ~-6~ // Effective AC
   WRITE_BYTE 0x52   5  // thac0
@@ -104,15 +104,17 @@ COPY_EXISTING ~SAHAMB05.CRE~ ~override/mosaha.cre~
   WRITE_ASCII 0x268 ~mosah02~ #8 // Add Default Script
   WRITE_ASCII 0x280 ~mosah02~ #8 // Script Name
   WRITE_BYTE 0x27b 51 // Alignment (Chaotic Evil)
-  REPLACE_CRE_ITEM ~IMMUNE3~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~   EQUIP
-  REPLACE_CRE_ITEM ~RINGDEMN~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~   EQUIP
-  REPLACE_CRE_ITEM ~mosah02~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
-  REPLACE_CRE_ITEM ~SCRL9Z~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~INV1~    EQUIP
+  REPLACE_CRE_ITEM ~IMMUNE3~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~   EQUIP // Demon immunities
+  REPLACE_CRE_ITEM ~RINGDEMN~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~   EQUIP // More demon immunities
+  REPLACE_CRE_ITEM ~mosah02~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // New spear
+  REPLACE_CRE_ITEM ~SCRL9Z~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~INV1~    EQUIP // Scroll of freedom
   LPF ADD_CRE_EFFECT INT_VAR opcode = 193 target = 0 parameter2 = 1 timing = 1 duration = 0 probability1 = 100 END
   LPF ADD_CRE_EFFECT INT_VAR opcode = 51 target = 0 timing = 9 probability1 = 100 END
   LPF ADD_CRE_EFFECT INT_VAR opcode = 189 target = 0 parameter1 = 4 parameter2 = 0 timing = 1 probability1 = 100 END
   LPF ADD_CRE_EFFECT INT_VAR opcode = 190 target = 0 parameter1 = 4 timing = 1 probability1 = 100 END
   LPF ADD_CRE_EFFECT INT_VAR opcode = 126 target = 0 parameter1 = 8 parameter2 = 0 timing = 1 probability1 = 100 END
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 111 timing = 9 END // 2 handed weapon prof
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 98 timing = 9 END  // GM in Spears
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
