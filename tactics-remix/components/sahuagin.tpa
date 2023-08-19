@@ -7,6 +7,9 @@
 COPY_EXISTING ~sper05.itm~ ~override/mosah01.itm~
   LPF ADD_ITEM_EFFECT INT_VAR opcode = 12 type = 1 target = 2 parameter1 = 0 parameter2 = 131072 timing = 1 resist_dispel = 0 probability1 = 100 dicenumber = 1 dicesize = 4 special = 1 END
 
+// Spear +3, Imprisonment on Hit
+COPY_EXISTING ~sper06.itm~ ~override/mosah02.itm~
+
 ///////////////////////////////////////////////////////////////////////////
 // Improve Sahuagin                                                      //
 ///////////////////////////////////////////////////////////////////////////
@@ -85,17 +88,29 @@ COPY_EXISTING ~SAHAMB05.CRE~ ~override/mosaha.cre~
   WRITE_BYTE 0x238 25 // Strength
   WRITE_BYTE 0x23a 20 // Intelligence
   WRITE_BYTE 0x23b 16 // Wisdom
-  WRITE_BYTE 0x23c 25 // Strength
-  WRITE_BYTE 0x23d 25 // Strength
-  WRITE_BYTE 0x23e 25 // Strength
-  WRITE_BYTE 0x23f 25 // Strength
-
-
-
-
+  WRITE_BYTE 0x23c 19 // Dexterity
+  WRITE_BYTE 0x23d  9 // Constitution
+  WRITE_BYTE 0x23e 25 // Charisma
+  WRITE_BYTE 0x23f 12 // Morale
+  WRITE_BYTE 0x241 1 // Racial enemy (Human)
+  WRITE_BYTE 0x271 255 // General (Monster)
+  WRITE_BYTE 0x272 121 // Race (Demonic)
+  WRITE_BYTE 0x273 160 // Class (Tanari)
+  WRITE_ASCII 0x268 ~mosah02~ #8 // Add Default Script
+  WRITE_BYTE 0x27b 51 // Alignment (Chaotic Evil)
+  REPLACE_CRE_ITEM ~IMMUNE3~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~   EQUIP
+  REPLACE_CRE_ITEM ~RINGDEMN~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~   EQUIP
+  REPLACE_CRE_ITEM ~mosah02~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+  REPLACE_CRE_ITEM ~SCRL9Z~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~INV1~    EQUIP
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 193 target = 0 parameter2 = 1 timing = 1 duration = 0 probability1 = 100 END
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 51 target = 0 timing = 9 probability1 = 100 END
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 189 target = 0 parameter1 = 4 parameter2 = 0 timing = 1 probability1 = 100 END
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 190 target = 0 parameter1 = 4 timing = 1 probability1 = 100 END
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 126 target = 0 parameter1 = 8 parameter2 = 0 timing = 1 probability1 = 100 END
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 COPY ~tactics-remix/baf/sahuagin/mosah01.baf~ ~override/mosah01.bcs~
+     ~tactics-remix/baf/sahuagin/mosah02.baf~ ~override/mosah02.bcs~
   COMPILE_BAF_TO_BCS
