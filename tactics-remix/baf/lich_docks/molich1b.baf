@@ -29,6 +29,7 @@ THEN
     ApplySpell(Myself,WIZARD_PROTECTION_FROM_THE_ELEMENTS)  // SPWI702.SPL (Protection From The Elements)
     SetGlobal("MO_Once","LOCALS",1)
     SetGlobal("MO_TimeStop","LOCALS",0)
+    SetGlobal("MO_CastSim","LOCALS",0)
     DisplayString(Myself,62975)  // I've heard enough! Show yourself, whatever you are, so I might destroy you!
     Enemy()
 END
@@ -74,6 +75,7 @@ THEN
     Wait(2)
     DisplayStringHead(Myself,46153)  // ~uses a scroll~
     ForceSpell(Myself,WIZARD_TIME_STOP)
+    IncrementGlobal("MO_TimeStop","LOCALS",1)
     Wait(2)
     ForceSpell(Myself,WIZARD_IMPROVED_HASTE)
     Wait(2)
@@ -201,7 +203,7 @@ THEN
   RESPONSE #100
     IncrementGlobal("MO_TimeStop","LOCALS",1)
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_TimeStopTimer","LOCALS",18)
+    SetGlobalTimer("MO_TimeStopTimer","LOCALS",30)
     DisplayStringHead(Myself,46153)  // ~uses a scroll~
     SetInterrupt(FALSE)
     ForceSpell(Myself,WIZARD_TIME_STOP)
@@ -211,6 +213,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_SIMULACRUM)
+  GlobalLT("MO_CastSim","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
   CheckStatLT(Myself,20,SPELLFAILUREMAGE)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
@@ -220,6 +223,7 @@ THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     SetGlobalTimer("MO_ProjectImageDelay","LOCALS",30)
+    IncrementGlobal("MO_CastSim","LOCALS",1)
     SetInterrupt(FALSE)
     Spell(Myself,WIZARD_SIMULACRUM)
     SetInterrupt(TRUE)
