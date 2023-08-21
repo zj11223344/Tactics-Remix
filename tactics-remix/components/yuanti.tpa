@@ -33,7 +33,7 @@ PATCH_IF (race = 154) AND
   REPLACE_CRE_ITEM ~MORNG06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING LRING~ EQUIP
     
     PATCH_IF (class = 2) BEGIN
-      PATCH_IF ("%name%" STRING_EQUAL_CASE "Yuan-ti") BEGIN
+      PATCH_IF ("%name%" STRING_EQUAL_CASE "Yuan-ti ") BEGIN
         WRITE_BYTE 0x234  9 // Level
         WRITE_BYTE 0x24  90 // Current HP
         WRITE_BYTE 0x26  90 // Maximum HP
