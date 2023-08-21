@@ -1,0 +1,85 @@
+// Tactics Remix, Tougher Yuan-Ti
+
+///////////////////////////////////////////////////////////////////////////
+// Add Item                                                              //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/itm/MORNG06.ITM~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Improve Yuan-Ti                                                       //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+SPRINT source ~%SOURCE_FILE%~
+READ_STRREF 0x8   name
+READ_BYTE   0x234 level
+READ_BYTE   0x24  current_hp
+READ_BYTE   0x272 race
+READ_BYTE   0x52  thaco
+READ_BYTE   0x273 class 
+
+// Patch if Race == Yuan-Ti
+PATCH_IF (race = 154) AND
+         !("%source%" STRING_EQUAL_CASE "BAZLIZ03.CRE") AND
+         !("%source%" STRING_EQUAL_CASE "BAZLIZ04.CRE") AND
+         !("%source%" STRING_EQUAL_CASE "ICLIZ01.CRE")  AND
+         !("%source%" STRING_EQUAL_CASE "ICLIZ02.CRE")  AND
+         !("%source%" STRING_EQUAL_CASE "OHBLIZ01.CRE") AND
+         !("%source%" STRING_EQUAL_CASE "OHBLIZ02.CRE") AND
+         !("%source%" STRING_EQUAL_CASE "OHHBOROK.CRE") AND
+         !("%source%" STRING_EQUAL_CASE "SOLASNA2.CRE") AND
+         !("%source%" STRING_EQUAL_CASE "MH#CYLIZ.CRE") BEGIN
+  
+
+  REPLACE_CRE_ITEM ~MORNG06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING LRING~ EQUIP
+    
+    PATCH_IF (class = 2) BEGIN
+      PATCH_IF ("%name%" STRING_EQUAL_CASE "Yuan-ti") BEGIN
+        WRITE_BYTE 0x234  9 // Level
+        WRITE_BYTE 0x24  90 // Current HP
+        WRITE_BYTE 0x26  90 // Maximum HP
+        WRITE_BYTE 0x52  12 // thac0
+        WRITE_BYTE 0x238 17 // Strength
+        REPLACE_CRE_ITEM ~LEAT02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Leather Armor +1
+        REPLACE_CRE_ITEM ~SW1H22~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Scimitar +1
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 113 timing = 9 END // Single Weapon Style
+        PATCH_IF sa_prof BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 101 timing = 9 END // GM in Exotic
+        END ELSE BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 95 timing = 9 END // GM in Scimitar
+        END
+      END ELSE PATCH_IF ("%name%" STRING_EQUAL_CASE "Greater Yuan-ti") BEGIN
+        WRITE_BYTE 0x234  12 // Level
+        WRITE_BYTE 0x24  120 // Current HP
+        WRITE_BYTE 0x26  120 // Maximum HP
+        WRITE_BYTE 0x52    9 // thac0
+        WRITE_BYTE 0x238  19 // Strength
+        REPLACE_CRE_ITEM ~LEAT11~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Leather Armor +2
+        REPLACE_CRE_ITEM ~SW1H76~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Scimitar +3
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 113 timing = 9 END // Single Weapon Style
+        PATCH_IF sa_prof BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 101 timing = 9 END // GM in Exotic
+        END ELSE BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 95 timing = 9 END // GM in Scimitar
+        END
+      END ELSE PATCH_IF ("%name%" STRING_EQUAL_CASE "Yuan-ti Elite") BEGIN
+        WRITE_BYTE 0x234  18 // Level
+        WRITE_BYTE 0x24  150 // Current HP
+        WRITE_BYTE 0x26  150 // Maximum HP
+        WRITE_BYTE 0x52    3 // thac0
+        WRITE_BYTE 0x238  21 // Strength
+        REPLACE_CRE_ITEM ~LEAT12~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Leather Armor +3
+        REPLACE_CRE_ITEM ~SW1H52~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Water's Edge +3
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 113 timing = 9 END // Single Weapon Style
+        PATCH_IF sa_prof BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 101 timing = 9 END // GM in Exotic
+        END ELSE BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 95 timing = 9 END // GM in Scimitar
+        END
+      END
+    END
+
+  // Print out results
+  //PATCH_PRINT ~%name% (%source%) updated stats: Level(%level%) HP (%current_hp%) thac0 (%thaco%).~
+  PATCH_PRINT ~Patching for: %source%~
+END
+

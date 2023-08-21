@@ -8,6 +8,7 @@ September xx, 2023
 
 - Added Improved Sahuagin City component.
 - Added Morpheus562 Tougher Githyanki component.
+- Added Morpheus562 Tougher Yuan-ti component.
 - Kuroisan rewards tied to the difficulty slider.
 
 ## Version 0.5.1-alpha

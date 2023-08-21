@@ -56,6 +56,10 @@ A gnome fighter/illusionist full of tricks is looking to collect upon the bounty
 
 These components will check if SCS is present and update accordingly to prevent any compatibility issues.
 
+#### Improved Sahuagin City (COMING SOON)
+
+This component makes all Sahuagin more fierce opponents. It also updates the fight against the Priestess at the heart of the City of Caverns who will now summon allies to come to her aid. Beware, on Insane Difficulty she will summon the Minor Avatar of Sekolah.
+
 #### Improved Irenicus
 
 I take the original Tactics fight, with some slight alterations, to give Joneleth "The Shattered One" Irenicus the fight he and the player truly deserve. This is a multi-phase fight that should provide a suitable challenge. To start, instead of summoning generic demons, Jon will shatter himself into multiple fragments and brings forth enemies for each Tear of Bhaal Test in Hell. These enemies will provide their own unique challenges, and will bring forth more minions to aid themselves, depending on the difficulty. 
@@ -95,6 +99,16 @@ WARNING: Reported to be *incompatible* with TDD.
 #### Tougher Fire Giants
 
 Damage output and difficulty for fire giants is greatly increased.
+
+#### Morpheus 562's Tougher Githyanki (COMING SOON)
+
+Githyanki will now be better equipped, better leveled, and overall pose more of a challenge to the player. 
+
+#### Morpheus 562's Tougher Yuan-ti (COMING SOON)
+
+Yuan-ti will receive a number of immunities, to include some magic resistance (40%) and complete resistance to poison. Additionally, they receive some snake like enhancements to include infravision, faster casting speed, faster weapon speed, and an extra 0.5 apr. Yuan-ti fighters will now be wielding magical scimitars and leather armors.
+
+PLEASE NOTE: With my Skills and Abilities Proficiency overhaul and Forgotten Armament's NWN Style Weapons and Updates to Existing Weapons will greatly increase the deadliness of Yuan-ti fighters. The average Yuan-ti fighter and Greater Yuan-ti will have a crit range of 16-20, and Yuan-ti Elites will have a crit range of 15-20. 
 
 #### Morpheus562's Improved Drizzt (BGEE)
 
