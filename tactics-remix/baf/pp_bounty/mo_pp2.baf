@@ -16,7 +16,7 @@ THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
     GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
-    SmallWait(2)
+    SmallWait(5)
     Enemy()
 END
 
