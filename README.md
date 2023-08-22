@@ -58,7 +58,7 @@ These components will check if SCS is present and update accordingly to prevent 
 
 #### Improved Sahuagin City (COMING SOON)
 
-This component makes all Sahuagin more fierce opponents. It also updates the fight against the Priestess at the heart of the City of Caverns who will now summon allies to come to her aid. Beware, on Insane Difficulty she will summon the Minor Avatar of Sekolah.
+This component makes all Sahuagin fiercer opponents. It also updates the fight against the Priestess at the heart of the City of Caverns who will now summon allies to come to her aid. Beware, on Insane Difficulty she will summon the Minor Avatar of Sekolah.
 
 #### Morpheus562's Improved Planar Prison Bounty Hunters (COMING SOON)
 
