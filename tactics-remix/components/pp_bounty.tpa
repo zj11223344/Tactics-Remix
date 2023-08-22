@@ -11,7 +11,7 @@ COPY_EXISTING ~PBHUNT01.CRE~ ~override~
   REPLACE_CRE_ITEM ~BDBELT02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP // Belt of the Skillful Blade
 
 ///////////////////////////////////////////////////////////////////////////
-// Update Bounty Hunter (Fighter) x2                                     //
+// Update Bounty Hunter (Fighter - Ranged) x2                            //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~PBHUNT02.CRE~ ~override~
   WRITE_BYTE 0x24 100  // Current HP
@@ -21,9 +21,22 @@ COPY_EXISTING ~PBHUNT02.CRE~ ~override~
   END
   WRITE_ASCII 0x268 ~mo_arc1~ #8 // Add Default Script
   REPLACE_CRE_ITEM ~BOW17~  #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Longbow +2
-  REPLACE_CRE_ITEM ~AROW07~ #40 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~QUIVER1~ EQUIP // Arrows of Dispel
+  REPLACE_CRE_ITEM ~AROW10~ #40 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~QUIVER1~ EQUIP // Arrows of Piercing
   REPLACE_CRE_ITEM ~SW1H41~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~       // Long Sword +2
   REPLACE_CRE_ITEM ~BRAC04~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // The Dale's Protector
+
+///////////////////////////////////////////////////////////////////////////
+// Create New Bounty Hunter (Fighter - Melee)                            //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~PBHUNT02.CRE~ ~override/MOHUNT01.CRE~
+    WRITE_ASCII 0x268   ~mo_pp2~ #8 // Add Default Script
+    SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
+    SET_BG2_PROFICIENCY ~PROFICIENCYSWORDANDSHIELD~ 2
+    REPLACE_CRE_ITEM ~BRAC09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Gauntlet of Weapon Skill
+    REPLACE_CRE_ITEM ~AX1H11~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Axe +2
+    REPLACE_CRE_ITEM ~HELM01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~  EQUIP // Helmet
+    REPLACE_CRE_ITEM ~PLAT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail +1
+    REPLACE_CRE_ITEM ~SHLD04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~SHIELD~  EQUIP // Medium Shield +1
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Bounty Hunter (Thief)                                          //
@@ -35,7 +48,7 @@ COPY_EXISTING ~PBHUNT05.CRE~ ~override~
   PATCH_IF !scs_ai BEGIN
     WRITE_ASCII 0x250 ~~ #8 // Clear Class Script
   END
-  WRITE_ASCII 0x268 ~mo_ppb~ #8 // Add Default Script
+  WRITE_ASCII 0x268 ~mo_pp1~ #8 // Add Default Script
   REPLACE_CRE_ITEM ~LEAT07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Studded Leather +2
   REMOVE_CRE_ITEM  ~SHLD02~ // Small Shield +1
   LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 113 timing = 9 END // Single Weapon Style
@@ -43,7 +56,10 @@ COPY_EXISTING ~PBHUNT05.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
+EXTEND_TOP ~AR0516.bcs~ ~tactics-remix/baf/pp_bounty/0516.baf~
+
 COPY ~tactics-remix/baf/pp_bounty/mo_aaw1.baf~  ~override/mo_aaw1.bcs~
      ~tactics-remix/baf/pp_bounty/mo_arc1.baf~  ~override/mo_arc1.bcs~
-     ~tactics-remix/baf/pp_bounty/mo_ppb.baf~   ~override/mo_ppb.bcs~
+     ~tactics-remix/baf/pp_bounty/mo_pp1.baf~   ~override/mo_pp1.bcs~
+     ~tactics-remix/baf/pp_bounty/mo_pp2.baf~   ~override/mo_pp2.bcs~
   COMPILE_BAF_TO_BCS
