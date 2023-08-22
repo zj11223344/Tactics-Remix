@@ -1,0 +1,48 @@
+// Tactics Remix, Morpheus562's Improved Planar Prison Bounty Hunters
+
+///////////////////////////////////////////////////////////////////////////
+// Update Aawill (Blade)                                                 //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~PBHUNT01.CRE~ ~override~
+  WRITE_SHORT 0x246 0x400D       // Assign Kit Blade
+  WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
+  WRITE_ASCII 0x268 ~mo_aaw1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~BDBELT02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~ EQUIP // Belt of the Skillful Blade
+
+///////////////////////////////////////////////////////////////////////////
+// Update Bounty Hunter (Fighter) x2                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~PBHUNT02.CRE~ ~override~
+  WRITE_BYTE 0x24 100  // Current HP
+  WRITE_BYTE 0x26 100  // Maximum HP
+  PATCH_IF !scs_ai BEGIN
+    WRITE_ASCII 0x250 ~~ #8 // Clear Class Script
+  END
+  WRITE_ASCII 0x268 ~mo_arc1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~BOW17~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Longbow +2
+  REPLACE_CRE_ITEM ~SW1H41~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~       // Long Sword +2
+  REPLACE_CRE_ITEM ~BRAC04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // The Dale's Protector
+
+///////////////////////////////////////////////////////////////////////////
+// Update Bounty Hunter (Thief)                                          //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~PBHUNT05.CRE~ ~override~
+  WRITE_SHORT 0x246 0x4021 // Assign Shadowdancer kit
+  WRITE_BYTE 0x24 60       // Current HP
+  WRITE_BYTE 0x26 60       // Maximum HP
+  PATCH_IF !scs_ai BEGIN
+    WRITE_ASCII 0x250 ~~ #8 // Clear Class Script
+  END
+  WRITE_ASCII 0x268 ~mo_ppb~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~LEAT07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Studded Leather +2
+  REMOVE_CRE_ITEM  ~SHLD02~ // Small Shield +1
+  LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 113 timing = 9 END // Single Weapon Style
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/baf/samia/mo_aaw1.baf~  ~override/mo_aaw1.bcs~
+     ~tactics-remix/baf/samia/mo_arc1.baf~  ~override/mo_arc1.bcs~
+     ~tactics-remix/baf/samia/mo_ppb.baf~   ~override/mo_ppb.bcs~
+  COMPILE_BAF_TO_BCS

@@ -1,0 +1,73 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//            Improved Retrograde Scripts
+/////////////////////////////////////////////////////////////////////
+// 				Version 1
+// If Samia's party is damaged and the player is out of sight,
+// these scripts will cause Samia's party to move to one of two
+// pre-designated locations to get to safety.
+//
+/////////////////////////////////////////////////////////////////////
+IF 
+  See(NearestEnemyOf(Myself))
+  GlobalGT("MO_Retrograde","GLOBAL",0)
+  Global("MO_IsMoveComplete","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_IsMoveComplete","GLOBAL",1)
+    ActionOverride(Myself,ClearActions(Myself))
+    Shout(ASSIST)
+END
+
+IF 
+  Heard([ANYONE],ASSIST)
+  !Detect([GOODCUTOFF])
+  GlobalGT("MO_Retrograde","GLOBAL",0)
+  Global("MO_IsMoveComplete","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_IsMoveComplete","GLOBAL",1)
+    ActionOverride(Myself,ClearActions(Myself))
+    MoveToObject(LastHeardBy(Myself))
+END
+
+IF 
+  OR(2)
+    NearLocation(Myself,x,y,5) // Point A
+    NearLocation(Myself,x,y,5) // Point B
+  Global("MO_IsMoveComplete","GLOBAL",0)
+THEN 
+  RESPONSE #100
+    SetGlobal("MO_IsMoveComplete","GLOBAL",1)
+END 
+
+IF 
+  !Detect([GOODCUTOFF])
+  Global("MO_Retrograde","GLOBAL",1)
+  Global("MO_IsMoveComplete","GLOBAL",0)
+THEN 
+  RESPONSE #100
+    // Continue moving to point a
+END
+
+IF 
+  !Detect([GOODCUTOFF])
+  Global("MO_Retrograde","GLOBAL",2)
+  Global("MO_IsMoveComplete","GLOBAL",0)
+THEN 
+  RESPONSE #100
+    // Continue moving to point b
+END
+
+IF 
+  !Detect([GOODCUTOFF])
+  TookDamage()
+  Global("MO_Retrograde","GLOBAL",0)
+THEN 
+  RESPONSE #50
+    SetGlobal("MO_Retrograde","GLOBAL",1)
+    //MoveToPoint([xx.yy]) // Point a
+  RESPONSE #50
+    SetGlobal("MO_Retrograde","GLOBAL",2)
+    //MoveToPoint([xx.yy]) // Point b
+END 

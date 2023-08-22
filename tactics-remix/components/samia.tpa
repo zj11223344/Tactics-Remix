@@ -1,0 +1,80 @@
+// Tactics Remix, Morpheus562's Improved Samia and Party in Windspear Hills Dungeon
+
+///////////////////////////////////////////////////////////////////////////
+// Import                                                                //
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Update Samia (Fighter)                                                //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~samia.CRE~ ~override~
+  WRITE_BYTE  0x24 102          // Current HP
+  WRITE_BYTE  0x26 102          // Maximum HP
+  WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
+  WRITE_ASCII 0x268 ~mo_sam~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~HELM04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~ EQUIP // Gift of Peace
+  PATCH_IF !forgot_arm BEGIN
+    REPLACE_CRE_ITEM ~SW1H76~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Scimitar +3
+  END
+
+///////////////////////////////////////////////////////////////////////////
+// Update Akae (Kensai)                                                  //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~akae.CRE~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Update Kaol (Mage)                                                    //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~kaol.CRE~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Update Chak (Ogre)                                                    //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~chak.CRE~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Update Legdor (Cleric)                                                //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~legdor.CRE~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Update Ferric Ironblade (Fighter/Thief)                               //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~deshar.CRE~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~AR1202.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        // Cloudkill on where party is expected to be located
+        REPLACE_TEXTUALLY ~CreateCreature("Akae",[3481.433],NE)  // Akae~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+        ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
+        ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
+        CreateCreature("Akae",[3481.433],NE)  // Akae~
+
+        // Create enemy rats where Samia's party is being created to trigger any traps set by the player.
+        // Kill rats after 2 seconds.
+        REPLACE_TEXTUALLY ~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze~ ~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze
+        CreateCreature("rat2",[3437.418],NE)
+        CreateCreature("rat2",[3481.433],NE)
+        CreateCreature("rat2",[3359.438],NEE)
+        CreateCreature("rat2",[3405.485],NE)
+        CreateCreature("rat2",[3360.543],SEE)
+        CreateCreature("rat2",[3305.492],NNE)
+        CreateCreature("rat2",[3187.596],NNE)
+        CreateCreature("rat2",[3036.692],NNE)
+        CreateCreature("rat2",[2986.728],NNE)
+        CreateCreature("rat2",[2911.773],NNE)
+        CreateCreature("rat2",[3294.694],NNE)
+        CreateCreature("rat2",[3379.748],NNE)
+        CreateCreature("rat2",[3458.793],NNE)
+        CreateCreature("rat2",[3565.860],NNE)
+        Wait(2)
+        Kill("rat2")~
+    END
+BUT_ONLY
+
+COPY ~tactics-remix/baf/samia/mo_run.baf~  ~override/mo_run.bcs~
+     ~tactics-remix/baf/samia/mo_sam.baf~  ~override/mo_sam.bcs~
+  COMPILE_BAF_TO_BCS

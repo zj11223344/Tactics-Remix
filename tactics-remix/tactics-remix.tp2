@@ -246,6 +246,24 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/small_teeth_pass.tpa~
 
+///////////////////////////////////////////////////////////////////////////
+// Morpheus562's Improved Samia and Party in Windspear Hills Dungeon     //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @34 DESIGNATED 34 GROUP @3011 LABEL TacticsRemix-Samia
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remix/components/samia.tpa~
+
+///////////////////////////////////////////////////////////////////////////
+// Morpheus562's Improved Planar Prison Bounty Hunters                   //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @35 DESIGNATED 35 GROUP @3011 LABEL TacticsRemix-PPBounty
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
+
+INCLUDE ~tactics-remix/components/pp_bounty.tpa~
+
 /*
 ///////////////////////////////////////////////////////////////////////////
 // Mike Barnes' Improved North Forest                                    //
