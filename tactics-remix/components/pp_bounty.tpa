@@ -14,11 +14,10 @@ COPY_EXISTING ~PBHUNT01.CRE~ ~override~
 // Update Bounty Hunter (Fighter - Ranged) x2                            //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~PBHUNT02.CRE~ ~override~
-  WRITE_BYTE 0x24 100  // Current HP
-  WRITE_BYTE 0x26 100  // Maximum HP
-  PATCH_IF !scs_ai BEGIN
-    WRITE_ASCII 0x250 ~~ #8 // Clear Class Script
-  END
+  WRITE_BYTE 0x24 100            // Current HP
+  WRITE_BYTE 0x26 100            // Maximum HP
+  WRITE_ASCII 0x250 ~~        #8 // Clear Class Script
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_arc1~ #8 // Add Default Script
   REPLACE_CRE_ITEM ~BOW17~  #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Longbow +2
   REPLACE_CRE_ITEM ~AROW10~ #40 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~QUIVER1~ EQUIP // Arrows of Piercing
@@ -29,6 +28,8 @@ COPY_EXISTING ~PBHUNT02.CRE~ ~override~
 // Create New Bounty Hunter (Fighter - Melee)                            //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~PBHUNT02.CRE~ ~override/MOHUNT01.CRE~
+    WRITE_ASCII 0x250   ~~       #8 // Clear Class Script
+    WRITE_ASCII 0x260   ~~       #8 // Clear General Script
     WRITE_ASCII 0x268   ~mo_pp2~ #8 // Add Default Script
     SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
     SET_BG2_PROFICIENCY ~PROFICIENCYSWORDANDSHIELD~ 2

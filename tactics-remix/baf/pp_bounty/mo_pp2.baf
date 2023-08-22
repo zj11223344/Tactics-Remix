@@ -15,9 +15,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
-    SetGlobal("MO_Shadowstep","LOCALS",0)
-    SetGlobal("MO_Sandthief","LOCALS",0)
     GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
+    SmallWait(2)
     Enemy()
 END
 

@@ -23,6 +23,7 @@ THEN
     SetGlobal("Prep","LOCALS",1)
     SetGlobal("MO_BladeOffensive","LOCALS",0)
     SetGlobal("MO_BladeDefensive","LOCALS",0)
+    SetGlobal("MO_PfMW","LOCALS",0)
     ApplySpell(Myself,WIZARD_HASTE)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
     ApplySpell(Myself,WIZARD_BLUR)
@@ -42,6 +43,7 @@ THEN
     SetGlobal("Prep","LOCALS",1)
     SetGlobal("MO_BladeOffensive","LOCALS",0)
     SetGlobal("MO_BladeDefensive","LOCALS",0)
+    SetGlobal("MO_PfMW","LOCALS",0)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
     ApplySpell(Myself,WIZARD_BLUR)
     ApplySpell(Myself,WIZARD_RESIST_FEAR)
@@ -173,6 +175,25 @@ THEN
     ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
     ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_GREATER_MALISON)
     SetGlobal("MO_SpellTrigger","LOCALS",1)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Use Protection from Magical Weapons Scroll
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOf(Myself))
+  HPPercentLT(Myself,91)
+  GlobalLT("MO_PfMW","LOCALS",1)
+  DifficultyGT(HARD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_PfMW","LOCALS",1)
+    SetInterrupt(FALSE)
+    DisplayStringHead(Myself,46153)  // ~uses a scroll~
+    ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
