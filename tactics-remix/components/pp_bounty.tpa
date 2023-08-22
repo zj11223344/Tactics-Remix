@@ -56,7 +56,7 @@ COPY_EXISTING ~PBHUNT05.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-EXTEND_TOP ~AR0516.bcs~ ~tactics-remix/baf/pp_bounty/0516.baf~
+EXTEND_TOP ~AR0516.bcs~ ~tactics-remix/baf/pp_bounty/ar0516.baf~
 
 COPY ~tactics-remix/baf/pp_bounty/mo_aaw1.baf~  ~override/mo_aaw1.bcs~
      ~tactics-remix/baf/pp_bounty/mo_arc1.baf~  ~override/mo_arc1.bcs~
