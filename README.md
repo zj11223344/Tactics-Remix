@@ -60,7 +60,7 @@ These components will check if SCS is present and update accordingly to prevent 
 
 This component makes all Sahuagin more fierce opponents. It also updates the fight against the Priestess at the heart of the City of Caverns who will now summon allies to come to her aid. Beware, on Insane Difficulty she will summon the Minor Avatar of Sekolah.
 
-#### Improved Planar Prison Bounty Hunters (COMING SOON)
+#### Morpheus562's Improved Planar Prison Bounty Hunters (COMING SOON)
 
 This component makes the fight against the Planar Prison bounty hunters a bit more difficult. Aawill the Bard is now a Blade and will use spells commensurate with his level. His companions will also be better equipped, and an additional companion may join the fight at higher difficulties.
 
