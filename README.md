@@ -60,6 +60,10 @@ These components will check if SCS is present and update accordingly to prevent 
 
 This component makes all Sahuagin more fierce opponents. It also updates the fight against the Priestess at the heart of the City of Caverns who will now summon allies to come to her aid. Beware, on Insane Difficulty she will summon the Minor Avatar of Sekolah.
 
+#### Improved Planar Prison Bounty Hunters (COMING SOON)
+
+This component makes the fight against the Planar Prison bounty hunters a bit more difficult. Aawill the Bard is now a Blade and will use spells commensurate with his level. His companions will also be better equipped, and an additional companion may join the fight at higher difficulties.
+
 #### Improved Irenicus
 
 I take the original Tactics fight, with some slight alterations, to give Joneleth "The Shattered One" Irenicus the fight he and the player truly deserve. This is a multi-phase fight that should provide a suitable challenge. To start, instead of summoning generic demons, Jon will shatter himself into multiple fragments and brings forth enemies for each Tear of Bhaal Test in Hell. These enemies will provide their own unique challenges, and will bring forth more minions to aid themselves, depending on the difficulty. 
