@@ -7,6 +7,7 @@ September xx, 2023
 ### Changed
 
 - Added Improved Sahuagin City component.
+- Added Morpheus562 Improved Planar Prison Bounty Hunters component.
 - Added Morpheus562 Tougher Githyanki component.
 - Added Morpheus562 Tougher Yuan-ti component.
 - Kuroisan rewards tied to the difficulty slider.

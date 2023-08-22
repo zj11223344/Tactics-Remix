@@ -20,6 +20,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
+    SetGlobal("MO_CalledShot","LOCALS",0)
     SetGlobalTimer("Cast","LOCALS",0)
     GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
     Continue()
@@ -63,6 +64,117 @@ THEN
     Continue()
 END
 */
+
+/////////////////////////////////////////////////////////////////////
+// Called Shot
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalLT("MO_CalledShot","LOCALS",3)
+  !CheckSpellState(Myself,ARCHER_CALL_SHOT)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_CalledShot","LOCALS",1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,ARCHER_CALL_SHOT)  // SPCL121.SPL (Called Shot)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalLT("MO_CalledShot","LOCALS",3)
+  !CheckSpellState(Myself,ARCHER_CALL_SHOT)
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_CalledShot","LOCALS",1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,ARCHER_CALL_SHOT)  // SPCL121.SPL (Called Shot)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalLT("MO_CalledShot","LOCALS",3)
+  !CheckSpellState(Myself,ARCHER_CALL_SHOT)
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_CalledShot","LOCALS",1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,ARCHER_CALL_SHOT)  // SPCL121.SPL (Called Shot)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalLT("MO_CalledShot","LOCALS",3)
+  !CheckSpellState(Myself,ARCHER_CALL_SHOT)
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_CalledShot","LOCALS",1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,ARCHER_CALL_SHOT)  // SPCL121.SPL (Called Shot)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalLT("MO_CalledShot","LOCALS",3)
+  !CheckSpellState(Myself,ARCHER_CALL_SHOT)
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_CalledShot","LOCALS",1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,ARCHER_CALL_SHOT)  // SPCL121.SPL (Called Shot)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  GlobalLT("MO_CalledShot","LOCALS",3)
+  !CheckSpellState(Myself,ARCHER_CALL_SHOT)
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_CalledShot","LOCALS",1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,ARCHER_CALL_SHOT)  // SPCL121.SPL (Called Shot)
+    SetInterrupt(TRUE)
+END
 
 /////////////////////////////////////////////////////////////////////
 // Attack

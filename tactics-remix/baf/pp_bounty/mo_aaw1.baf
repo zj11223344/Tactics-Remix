@@ -15,13 +15,36 @@
 // to take you out. 
 /////////////////////////////////////////////////////////////////////
 IF
-  Detect(NearestEnemyOf(Myself))
   Global("Prep","LOCALS",0)
+  Detect(NearestEnemyOf(Myself))
+  DifficultyGT(NORMAL)
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
     SetGlobal("MO_BladeOffensive","LOCALS",0)
     SetGlobal("MO_BladeDefensive","LOCALS",0)
+    ApplySpell(Myself,WIZARD_HASTE)
+    ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_BLUR)
+    ApplySpell(Myself,WIZARD_RESIST_FEAR)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)
+    SetGlobalTimer("Cast","LOCALS",0)
+    GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
+    Continue()
+END
+
+IF
+  Global("Prep","LOCALS",0)
+  Detect(NearestEnemyOf(Myself))
+  DifficultyLT(HARD)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    SetGlobal("MO_BladeOffensive","LOCALS",0)
+    SetGlobal("MO_BladeDefensive","LOCALS",0)
+    ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_BLUR)
+    ApplySpell(Myself,WIZARD_RESIST_FEAR)
     SetGlobalTimer("Cast","LOCALS",0)
     GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
     Continue()
@@ -40,6 +63,116 @@ THEN
     SetInterrupt(FALSE)
     UseItem("potn52",Myself)
     SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spell Trigger
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_SpellTrigger","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
+  RandomNum(6,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_EMOTION_HOPELESSNESS)
+    SetGlobal("MO_SpellTrigger","LOCALS",1)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_SpellTrigger","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
+  RandomNum(6,2)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SKULL_TRAP)
+    SetGlobal("MO_SpellTrigger","LOCALS",1)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_SpellTrigger","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
+  RandomNum(6,3)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_FIREBALL)
+    SetGlobal("MO_SpellTrigger","LOCALS",1)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_SpellTrigger","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
+  RandomNum(6,4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_ICE_STORM)
+    SetGlobal("MO_SpellTrigger","LOCALS",1)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_SpellTrigger","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
+  RandomNum(6,5)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_CONTAGION)
+    SetGlobal("MO_SpellTrigger","LOCALS",1)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  Global("MO_SpellTrigger","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    DisplayString(Myself,39968)  // ~Spell Trigger - Fired~
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SLOW)
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_GREATER_MALISON)
+    SetGlobal("MO_SpellTrigger","LOCALS",1)
 END
 
 /////////////////////////////////////////////////////////////////////

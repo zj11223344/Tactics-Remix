@@ -20,9 +20,10 @@ COPY_EXISTING ~PBHUNT02.CRE~ ~override~
     WRITE_ASCII 0x250 ~~ #8 // Clear Class Script
   END
   WRITE_ASCII 0x268 ~mo_arc1~ #8 // Add Default Script
-  REPLACE_CRE_ITEM ~BOW17~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Longbow +2
-  REPLACE_CRE_ITEM ~SW1H41~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~       // Long Sword +2
-  REPLACE_CRE_ITEM ~BRAC04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // The Dale's Protector
+  REPLACE_CRE_ITEM ~BOW17~  #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Longbow +2
+  REPLACE_CRE_ITEM ~AROW07~ #40 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~QUIVER1~ EQUIP // Arrows of Dispel
+  REPLACE_CRE_ITEM ~SW1H41~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~       // Long Sword +2
+  REPLACE_CRE_ITEM ~BRAC04~ #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // The Dale's Protector
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Bounty Hunter (Thief)                                          //
