@@ -42,7 +42,7 @@ COPY_EXISTING ~PBHUNT05.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/samia/mo_aaw1.baf~  ~override/mo_aaw1.bcs~
-     ~tactics-remix/baf/samia/mo_arc1.baf~  ~override/mo_arc1.bcs~
-     ~tactics-remix/baf/samia/mo_ppb.baf~   ~override/mo_ppb.bcs~
+COPY ~tactics-remix/baf/pp_bounty/mo_aaw1.baf~  ~override/mo_aaw1.bcs~
+     ~tactics-remix/baf/pp_bounty/mo_arc1.baf~  ~override/mo_arc1.bcs~
+     ~tactics-remix/baf/pp_bounty/mo_ppb.baf~   ~override/mo_ppb.bcs~
   COMPILE_BAF_TO_BCS
