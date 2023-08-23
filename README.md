@@ -20,6 +20,8 @@ Many of these components have been drawn from different mod authors; I did not w
 ## Compatibility
 If you are upgrading from an earlier version of this mod, I recommend uninstalling all mod components and replacing all files with the new ones before doing a fresh install. If you choose to use SCS, parts of this mod should be installed before it while other parts should be installed after. These will be clearly outlined during the install process.
 
+These scripts are currently written for a vanilla/SCS understanding of the spells/abilities. Tactics Remix does not take into account other mods that alter existing spells. Some mods do lighter edits that shouldn't impact the scripts, but others, such as Spell Revisions, do a complete overhaul and will cause issues, inconsistencies, and undesired results. As such, I would not recommend install of Tactics Remix if you are playing with Spell Revisions. This may change in the future, but for now I would list these as incompatible.
+
 ## Content
 
 Tactics Remix adds quite a few new components, and all of the components are individually optional: you may install some but not others, your choice. I have also broken up the mods into two groups: 1) Add New Encounters and 2) Update Existing Encounters. New encounters should be installed prior to SCS while updates to existing encounters should be installed after SCS (if you, the player, chooses to use SCS).
