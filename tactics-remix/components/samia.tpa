@@ -81,7 +81,7 @@ COPY_EXISTING ~deshar.CRE~ ~override~
 COPY_EXISTING ~AR1202.BCS~ ~override~
     DECOMPILE_AND_PATCH BEGIN
         // Cloudkill on where party is expected to be located
-        REPLACE_TEXTUALLY ~CreateCreature("Akae",[3481.433],NE)  // Akae~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+        REPLACE_TEXTUALLY ~CreateCreature("Akae",\[3481\.433\],NE)  // Akae~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
         CreateCreature("Akae",[3481.433],NE)  // Akae~

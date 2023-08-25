@@ -20,8 +20,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
+    UseItem("potn14",Myself)
     GiveItemCreate("potn52",Myself,5,0,0)   // extra healing
-    Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
