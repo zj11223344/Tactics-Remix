@@ -76,6 +76,12 @@ COPY_EXISTING ~deshar.CRE~ ~override~
   REPLACE_CRE_ITEM ~SW1H41~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Long Sword +2
 
 ///////////////////////////////////////////////////////////////////////////
+// Update Rat2 so it can be killed via script                            //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~rat2.CRE~ ~override~
+  WRITE_ASCII 0x280 ~rat2~ #8 // Script Name
+
+///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~AR1202.BCS~ ~override~
@@ -120,7 +126,7 @@ COPY_EXISTING ~AR1202.BCS~ ~override~
       END
       */
 
-        REPLACE_TEXTUALLY ~CreateCreature("Akae",[3481.433],NE)~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+        REPLACE_TEXTUALLY ~CreateCreature("Akae",\[3481\.433\],NE)~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
         CreateCreature("Akae",[3481.433],NE)~
