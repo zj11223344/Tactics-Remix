@@ -33,8 +33,8 @@ END
 
 IF 
   OR(2)
-    NearLocation(Myself,x,y,5) // Point A
-    NearLocation(Myself,x,y,5) // Point B
+    NearLocation(Myself,3438,781,6) // Point A
+    NearLocation(Myself,2982,731,6) // Point B
   Global("MO_IsMoveComplete","GLOBAL",0)
 THEN 
   RESPONSE #100
@@ -47,7 +47,7 @@ IF
   Global("MO_IsMoveComplete","GLOBAL",0)
 THEN 
   RESPONSE #100
-    // Continue moving to point a
+    MoveToPoint([3438.781])
 END
 
 IF 
@@ -56,7 +56,7 @@ IF
   Global("MO_IsMoveComplete","GLOBAL",0)
 THEN 
   RESPONSE #100
-    // Continue moving to point b
+    MoveToPoint([2982.731])
 END
 
 IF 
@@ -66,8 +66,8 @@ IF
 THEN 
   RESPONSE #50
     SetGlobal("MO_Retrograde","GLOBAL",1)
-    //MoveToPoint([xx.yy]) // Point a
+    MoveToPoint([3438.781])
   RESPONSE #50
     SetGlobal("MO_Retrograde","GLOBAL",2)
-    //MoveToPoint([xx.yy]) // Point b
+    MoveToPoint([2982.731])
 END 

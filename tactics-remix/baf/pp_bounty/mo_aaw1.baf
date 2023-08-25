@@ -53,21 +53,6 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
-// Heal!
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  HasItem("potn52",Myself)
-  HPPercentLT(Myself,50)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetInterrupt(FALSE)
-    UseItem("potn52",Myself)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
 // Spell Trigger
 /////////////////////////////////////////////////////////////////////
 IF
@@ -193,6 +178,21 @@ THEN
     SetInterrupt(FALSE)
     DisplayStringHead(Myself,46153)  // ~uses a scroll~
     ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal!
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  HasItem("potn52",Myself)
+  HPPercentLT(Myself,50)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    UseItem("potn52",Myself)
     SetInterrupt(TRUE)
 END
 

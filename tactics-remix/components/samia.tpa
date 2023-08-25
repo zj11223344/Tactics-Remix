@@ -8,8 +8,8 @@
 // Update Samia (Fighter)                                                //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~samia.CRE~ ~override~
-  WRITE_BYTE  0x24 102          // Current HP
-  WRITE_BYTE  0x26 102          // Maximum HP
+  WRITE_BYTE  0x24 130          // Current HP
+  WRITE_BYTE  0x26 130          // Maximum HP
   WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
   WRITE_ASCII 0x268 ~mo_sam~ #8 // Add Default Script
   REPLACE_CRE_ITEM ~HELM04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~ EQUIP // Gift of Peace
@@ -21,26 +21,59 @@ COPY_EXISTING ~samia.CRE~ ~override~
 // Update Akae (Kensai)                                                  //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~akae.CRE~ ~override~
+  WRITE_BYTE  0x24  120         // Current HP
+  WRITE_BYTE  0x26  120         // Maximum HP
+  WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
+  WRITE_ASCII 0x260 ~~       #8 // Clear General Script
+  WRITE_ASCII 0x268 ~mo_aka~ #8 // Add Default Script
+  WRITE_BYTE  0x238 17          // Strength
+  WRITE_BYTE  0x23d 14          // Constitution
+  PATCH_IF !forgot_arm BEGIN
+    REPLACE_CRE_ITEM ~SW1H55~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Katana +2
+    REPLACE_CRE_ITEM ~SW1H55~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~SHIELD~  EQUIP // Katana +2
+  END
+  REPLACE_CRE_ITEM ~BELT06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Hill Giant
+  SET_BG2_PROFICIENCY ~PROFICIENCYKATANA~ 5
+  SET_BG2_PROFICIENCY ~PROFICIENCY2WEAPON~ 3
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Kaol (Mage)                                                    //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~kaol.CRE~ ~override~
+  WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Chak (Ogre)                                                    //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~chak.CRE~ ~override~
+  WRITE_BYTE  0x24  130         // Current HP
+  WRITE_BYTE  0x26  130         // Maximum HP
+  WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
+  WRITE_ASCII 0x268 ~mo_sam~ #8 // Add Default Script
+  WRITE_BYTE  0x23d 18          // Constitution
+  REPLACE_CRE_ITEM ~PLAT19~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Full Plate +2
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Legdor (Cleric)                                                //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~legdor.CRE~ ~override~
+  WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
+  REPLACE_CRE_ITEM ~BLUN21~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Mace +2
+  REPLACE_CRE_ITEM ~SHLD28~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~SHIELD~  EQUIP // Small Shield +2
+  REPLACE_CRE_ITEM ~HELM01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~  EQUIP // Helmet
+  PATCH_IF !forgot_arm BEGIN
+    REPLACE_CRE_ITEM ~OHPLAT50~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail +2
+  END
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Ferric Ironblade (Fighter/Thief)                               //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~deshar.CRE~ ~override~
+  WRITE_BYTE  0x24  130         // Current HP
+  WRITE_BYTE  0x26  130         // Maximum HP
+  WRITE_ASCII 0x258 ~mo_run~ #8 // Add Race Script
+  WRITE_ASCII 0x268 ~mo_des~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~SW1H41~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Long Sword +2
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
@@ -77,4 +110,6 @@ BUT_ONLY
 
 COPY ~tactics-remix/baf/samia/mo_run.baf~  ~override/mo_run.bcs~
      ~tactics-remix/baf/samia/mo_sam.baf~  ~override/mo_sam.bcs~
+     ~tactics-remix/baf/samia/mo_aka.baf~  ~override/mo_aka.bcs~
+     ~tactics-remix/baf/samia/mo_des.baf~  ~override/mo_des.bcs~
   COMPILE_BAF_TO_BCS
