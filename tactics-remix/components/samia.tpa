@@ -80,15 +80,53 @@ COPY_EXISTING ~deshar.CRE~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~AR1202.BCS~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-        // Cloudkill on where party is expected to be located
-        REPLACE_TEXTUALLY ~CreateCreature\("Akae",\[3481\.433\],NE\)  // Akae~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+      // Cloudkill on where party is expected to be located
+      LPF REPLACE_MULTILINE
+        INT_VAR
+        strict = 1
+        verbose = 0
+        STR_VAR
+        pattern = ~~~~~CreateCreature("Akae",[3481.433],NE)  // Akae~~~~~
+        string = ~~~~~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+        ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
+        ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
+        CreateCreature("Akae",[3481.433],NE)  // Akae~~~~~ //"
+      END
+
+      LPF REPLACE_MULTILINE
+        INT_VAR
+        strict = 1
+        verbose = 0
+        STR_VAR
+        pattern = ~~~~~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze~~~~~
+        string = ~~~~~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze
+        CreateCreature("rat2",[3437.418],NE)
+        CreateCreature("rat2",[3481.433],NE)
+        CreateCreature("rat2",[3359.438],NEE)
+        CreateCreature("rat2",[3405.485],NE)
+        CreateCreature("rat2",[3360.543],SEE)
+        CreateCreature("rat2",[3305.492],NNE)
+        CreateCreature("rat2",[3187.596],NNE)
+        CreateCreature("rat2",[3036.692],NNE)
+        CreateCreature("rat2",[2986.728],NNE)
+        CreateCreature("rat2",[2911.773],NNE)
+        CreateCreature("rat2",[3294.694],NNE)
+        CreateCreature("rat2",[3379.748],NNE)
+        CreateCreature("rat2",[3458.793],NNE)
+        CreateCreature("rat2",[3565.860],NNE)
+        Wait(2)
+        Kill("rat2")~~~~~ //"
+      END
+
+        /*
+        REPLACE_TEXTUALLY ~CreateCreature("Akae",[3481.433],NE)  // Akae~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
         CreateCreature("Akae",[3481.433],NE)  // Akae~
 
         // Create enemy rats where Samia's party is being created to trigger any traps set by the player.
         // Kill rats after 2 seconds.
-        REPLACE_TEXTUALLY ~SetGlobal\("SpawnSamia","AR1202",1\)  // Firkraag's Maze~ ~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze
+        REPLACE_TEXTUALLY ~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze~ ~SetGlobal("SpawnSamia","AR1202",1)  // Firkraag's Maze
         CreateCreature("rat2",[3437.418],NE)
         CreateCreature("rat2",[3481.433],NE)
         CreateCreature("rat2",[3359.438],NEE)
@@ -105,6 +143,7 @@ COPY_EXISTING ~AR1202.BCS~ ~override~
         CreateCreature("rat2",[3565.860],NNE)
         Wait(2)
         Kill("rat2")~
+        */
     END
 BUT_ONLY
 
