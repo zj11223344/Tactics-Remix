@@ -126,28 +126,32 @@ COPY_EXISTING ~AR1202.BCS~ ~override~
       END
       */
 
-        REPLACE_TEXTUALLY ~CreateCreature("Akae",\[3481\.433\],NE)~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+       /* REPLACE_TEXTUALLY ~CreateCreature("Akae",\[3481\.433\],NE)~ ~ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
         ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
         CreateCreature("Akae",[3481.433],NE)~
-
+*/
         // Create enemy rats where Samia's party is being created to trigger any traps set by the player.
         // Kill rats after 2 seconds.
         REPLACE_TEXTUALLY ~SetGlobal("SpawnSamia","AR1202",1)~ ~SetGlobal("SpawnSamia","AR1202",1)
-        CreateCreature("rat2",[3437.418],NE)
-        CreateCreature("rat2",[3481.433],NE)
-        CreateCreature("rat2",[3359.438],NEE)
-        CreateCreature("rat2",[3405.485],NE)
-        CreateCreature("rat2",[3360.543],SEE)
-        CreateCreature("rat2",[3305.492],NNE)
-        CreateCreature("rat2",[3187.596],NNE)
-        CreateCreature("rat2",[3036.692],NNE)
-        CreateCreature("rat2",[2986.728],NNE)
-        CreateCreature("rat2",[2911.773],NNE)
-        CreateCreature("rat2",[3294.694],NNE)
-        CreateCreature("rat2",[3379.748],NNE)
-        CreateCreature("rat2",[3458.793],NNE)
-        CreateCreature("rat2",[3565.860],NNE)
+        ReallyForceSpellPoint([3385.138],WIZARD_CLOUDKILL)
+        ReallyForceSpellPoint([3570.265],WIZARD_CLOUDKILL)
+        ReallyForceSpellPoint([3471.203],WIZARD_CLOUDKILL)
+        CreateCreature("rat2",[3406.424],NE)
+        //CreateCreature("rat2",[3437.418],NE)
+        //CreateCreature("rat2",[3481.433],NE)
+        //CreateCreature("rat2",[3359.438],NEE)
+        //CreateCreature("rat2",[3405.485],NE)
+        //CreateCreature("rat2",[3360.543],SEE)
+        //CreateCreature("rat2",[3305.492],NNE)
+        //CreateCreature("rat2",[3187.596],NNE)
+        //CreateCreature("rat2",[3036.692],NNE)
+        //CreateCreature("rat2",[2986.728],NNE)
+        //CreateCreature("rat2",[2911.773],NNE)
+        //CreateCreature("rat2",[3294.694],NNE)
+        //CreateCreature("rat2",[3379.748],NNE)
+        //CreateCreature("rat2",[3458.793],NNE)
+        //CreateCreature("rat2",[3565.860],NNE)
         Wait(2)
         Kill("rat2")~
     END

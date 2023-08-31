@@ -12,6 +12,7 @@ IF
   See(NearestEnemyOf(Myself))
   GlobalGT("MO_Retrograde","GLOBAL",0)
   Global("MO_IsMoveComplete","GLOBAL",0)
+  False()
 THEN
   RESPONSE #100
     SetGlobal("MO_IsMoveComplete","GLOBAL",1)
@@ -24,6 +25,7 @@ IF
   !Detect([GOODCUTOFF])
   GlobalGT("MO_Retrograde","GLOBAL",0)
   Global("MO_IsMoveComplete","GLOBAL",0)
+  False()
 THEN
   RESPONSE #100
     SetGlobal("MO_IsMoveComplete","GLOBAL",1)
@@ -36,6 +38,7 @@ IF
     NearLocation(Myself,3438,781,6) // Point A
     NearLocation(Myself,2982,731,6) // Point B
   Global("MO_IsMoveComplete","GLOBAL",0)
+  False()
 THEN 
   RESPONSE #100
     SetGlobal("MO_IsMoveComplete","GLOBAL",1)
@@ -45,6 +48,7 @@ IF
   !Detect([GOODCUTOFF])
   Global("MO_Retrograde","GLOBAL",1)
   Global("MO_IsMoveComplete","GLOBAL",0)
+  False()
 THEN 
   RESPONSE #100
     MoveToPoint([3438.781])
@@ -54,6 +58,7 @@ IF
   !Detect([GOODCUTOFF])
   Global("MO_Retrograde","GLOBAL",2)
   Global("MO_IsMoveComplete","GLOBAL",0)
+  False()
 THEN 
   RESPONSE #100
     MoveToPoint([2982.731])
@@ -63,6 +68,7 @@ IF
   !Detect([GOODCUTOFF])
   TookDamage()
   Global("MO_Retrograde","GLOBAL",0)
+  False()
 THEN 
   RESPONSE #50
     SetGlobal("MO_Retrograde","GLOBAL",1)
