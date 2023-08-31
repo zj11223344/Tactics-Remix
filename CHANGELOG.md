@@ -8,7 +8,6 @@ September xx, 2023
 
 - Added Improved Sahuagin City component.
 - Added Morpheus562's Improved Planar Prison Bounty Hunters component.
-- Added Morpheus562's Improved Samia and Party in Windspear Hills Dungeon component.
 - Added Morpheus562's Tougher Githyanki component.
 - Added Morpheus562's Tougher Yuan-ti component.
 - Kuroisan rewards tied to the difficulty slider.
