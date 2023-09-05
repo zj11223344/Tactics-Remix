@@ -5,11 +5,11 @@ IF
   Global("MO_SPAWN_ENEMIES","LOCALS",0)
   DifficultyGT(HARD)
 THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",12)
-    DisplayStringHead(Myself,@5013)  // Sekolah, come to our aid!
-    CreateCreatureObjectEffect("IMPSAHA","SPMONSUM",LastSeenBy(Myself))
+  RESPONSE #100 
     SetGlobal("MO_SPAWN_ENEMIES","LOCALS",1)
+    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",3)
+    DisplayStringHead(Myself,@5013)  // Sekolah, come to our aid!
+    CreateCreatureObjectEffect("mosaha","SPMONSUM",LastSeenBy(Myself))
 END
 
 IF
@@ -21,12 +21,12 @@ IF
   DifficultyGT(EASY)
 THEN
   RESPONSE #100
+    SetGlobal("MO_SPAWN_ENEMIES","LOCALS",1)
     SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",12)
     DisplayStringHead(Myself,4413) // Call forth the Alguiliians! We are overun!
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    SetGlobal("MO_SPAWN_ENEMIES","LOCALS",1)
+    CreateCreatureObjectEffect("mosaha01","SPMONSUM",LastSeenBy(Myself))
+    CreateCreatureObjectEffect("mosaha01","SPMONSUM",LastSeenBy(Myself))
+    CreateCreatureObjectEffect("mosaha01","SPMONSUM",LastSeenBy(Myself))   
 END
 
 IF
@@ -37,9 +37,9 @@ IF
   DifficultyGT(EASY)
 THEN
   RESPONSE #100
+    SetGlobalTimer("MO_SPAWN_MORE","GLOBAL",12)
     DisplayStringHead(Myself,4413) // Call forth the Alguiliians! We are overun!
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    CreateCreatureObjectEffect("SAHANGU","SPMONSUM",LastSeenBy(Myself))
-    SetGlobalTimer("MO_SPAWN_MORE","LOCALS",12)
+    CreateCreatureObjectEffect("mosaha01","SPMONSUM",LastSeenBy(Myself))
+    CreateCreatureObjectEffect("mosaha01","SPMONSUM",LastSeenBy(Myself))
+    CreateCreatureObjectEffect("mosaha01","SPMONSUM",LastSeenBy(Myself))
 END
