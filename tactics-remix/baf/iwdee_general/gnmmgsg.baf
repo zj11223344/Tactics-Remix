@@ -37,6 +37,31 @@ THEN
 END
 
 /////////////////////////////////////////////////////////////////////
+// Calls for Help
+/////////////////////////////////////////////////////////////////////
+IF 
+  !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See([GOODCUTOFF])
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_IsShouting","LOCALS",18)
+    Shout(57)
+    Continue()
+END  
+
+IF
+  !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  !Detect([GOODCUTOFF])
+  Heard([ANYTHING],57)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_IsShouting","LOCALS",18)
+    MoveToObject(LastHeardBy(Myself))
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
 // Heal!
 /////////////////////////////////////////////////////////////////////
 IF
@@ -261,13 +286,6 @@ END
 /////////////////////////////////////////////////////////////////////
 // Find them!
 /////////////////////////////////////////////////////////////////////
-IF
-  Help([ENEMY])
-THEN
-  RESPONSE #100
-    MoveToObject(NearestEnemyOf(LastHelp(Myself)))
-END
-
 IF
   Heard([ENEMY],125)
   !Detect([GOODCUTOFF])

@@ -1,23 +1,12 @@
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
-//            Improved Goblin Ranged Fighters
+//            Improved Goblin Melee Fighters
 /////////////////////////////////////////////////////////////////////
 // 				Version 1
-// Goblin - bow (gobobow), 1st level Fighter
-// Goblin Elite (gobehq1), 1st level Fighter
+// Goblin - Axe (goboaxe), 1st level Fighter
 //
 // Improvements: Better use of shouts. Better target prioritization.
 /////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////
-// Panic
-/////////////////////////////////////////////////////////////////////
-IF
-  StateCheck(Myself,STATE_PANIC)
-THEN
-  RESPONSE #100
-    RandomWalkContinuous()
-END
 
 /////////////////////////////////////////////////////////////////////
 // Change Allegiance
@@ -60,69 +49,6 @@ THEN
     SetGlobalTimer("MO_IsShouting","LOCALS",18)
     MoveToObject(LastHeardBy(Myself))
     Continue()
-END
-
-/////////////////////////////////////////////////////////////////////
-// Heal!
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  HasItem("potn52",Myself)
-  HPPercentLT(Myself,50)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetInterrupt(FALSE)
-    UseItem("potn52",Myself)
-    SetInterrupt(TRUE)
-END
-
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  HasItem("EXTHEAL",Myself)  // Potion of Extra Healing
-  HPPercentLT(Myself,50)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetInterrupt(FALSE)
-    UseItem("EXTHEAL",Myself)  // Potion of Extra Healing
-    SetInterrupt(TRUE)
-END
-
-IF
-  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-  HasItem("potn08",Myself)  // Potion of Healing
-  HPPercentLT(Myself,50)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetInterrupt(FALSE)
-    UseItem("potn08",Myself)  // Potion of Healing
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
-// Range Check
-/////////////////////////////////////////////////////////////////////
-IF
-  See(NearestEnemyOf(Myself))
-  Range(LastSeenBy(Myself),4)
-  !Allegiance(LastSeenBy(Myself),ENEMY)
-THEN
-  RESPONSE #100
-    EquipMostDamagingMelee()
-    AttackOneRound(NearestEnemyOf(Myself))
-END
-
-IF
-  See(NearestEnemyOf(Myself))
-  !Range(LastSeenBy(Myself),4)
-  !Allegiance(LastSeenBy(Myself),ENEMY)
-  CanEquipRanged()
-THEN
-  RESPONSE #100
-    EquipRanged()
-    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -317,4 +243,24 @@ IF
 THEN
   RESPONSE #100
     MoveToObject(LastHeardBy(Myself))
+END
+
+/////////////////////////////////////////////////////////////////////
+// Random Walk
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  NearSavedLocation(Myself,"#savedloc",0)
+THEN
+  RESPONSE #100
+    MoveToSavedLocationn("#savedloc","LOCALS")
+END
+
+IF
+  ActionListEmpty()
+  !NearSavedLocation(Myself,"#savedloc",0)
+THEN
+  RESPONSE #100
+    RandomWalk()
+    Wait(5)
 END
