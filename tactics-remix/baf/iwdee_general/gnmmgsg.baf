@@ -1,9 +1,14 @@
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
-//            Improved Goblin Melee Fighters
+//            Improved Melee Fighters
 /////////////////////////////////////////////////////////////////////
 // 				Version 1
 // Goblin - Axe (goboaxe), 1st level Fighter
+// Wolf , 3rd level wolf
+// Ogre (ecogre), 1st level Ogre
+// Ogre (ogre), 1st level Ogre
+// Orc (orcwaxe), 1st level Orc
+// Orc Elite (orcewaxe), 2nd level Orc
 //
 // Improvements: Better use of shouts. Better target prioritization.
 /////////////////////////////////////////////////////////////////////
@@ -52,6 +57,7 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Allegiance(Myself,ENEMY)
   !Detect([GOODCUTOFF])
   Heard([ANYTHING],57)
 THEN 

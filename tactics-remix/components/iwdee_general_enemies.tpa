@@ -70,9 +70,111 @@ COPY_EXISTING ~EHBEETLE.CRE~ ~override~
   WRITE_BYTE 0x23e  1 // Charisma
 
 ///////////////////////////////////////////////////////////////////////////
+// AR1201 - Easthaven (prologue) Cave of Orcs                            //
+///////////////////////////////////////////////////////////////////////////
+// Ogre
+COPY_EXISTING ~ECOGRE.CRE~ ~override~
+  WRITE_BYTE 0x52  20 // thac0
+  WRITE_BYTE 0x53   1 // APR
+  WRITE_BYTE 0x273  2 // Fighter Class
+  SET_BG2_PROFICIENCY ~PROFICIENCYFLAILMORNINGSTAR~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+
+// Ogre
+COPY_EXISTING ~OGRE.CRE~ ~override~
+  WRITE_BYTE 0x24  30 // Current HP
+  WRITE_BYTE 0x26  30 // Maximum HP
+  WRITE_BYTE 0x52  20 // thac0
+  WRITE_BYTE 0x273  2 // Fighter Class
+  SET_BG2_PROFICIENCY ~PROFICIENCYFLAILMORNINGSTAR~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+
+// Orc
+COPY_EXISTING ~ORCWAXE.CRE~ ~override~
+  WRITE_BYTE 0x52  20 // thac0
+  WRITE_BYTE 0x273  2 // Fighter Class
+  WRITE_BYTE 0x238 18 // Strength
+  WRITE_BYTE 0x239 51 // Exceptional Strength
+  WRITE_BYTE 0x23a  8 // Intelligence
+  WRITE_BYTE 0x23b  9 // Wisdom
+  WRITE_BYTE 0x23c 16 // Dexterity
+  WRITE_BYTE 0x23d 17 // Constitution
+  WRITE_BYTE 0x23e  8 // Charisma
+  SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+
+// Orc Archer
+COPY_EXISTING ~ORCWBOW.CRE~ ~override~
+  WRITE_BYTE 0x52  20 // thac0
+  WRITE_BYTE 0x273  2 // Fighter Class
+  WRITE_BYTE 0x238 18 // Strength
+  WRITE_BYTE 0x239 10 // Exceptional Strength
+  WRITE_BYTE 0x23a  8 // Intelligence
+  WRITE_BYTE 0x23b  8 // Wisdom
+  WRITE_BYTE 0x23c 17 // Dexterity
+  WRITE_BYTE 0x23d 12 // Constitution
+  WRITE_BYTE 0x23e  8 // Charisma
+  SET_BG2_PROFICIENCY ~PROFICIENCYSHORTBOW~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSHORTSWORD~ 2
+
+// Orc Elite
+COPY_EXISTING ~ORCEWAXE.CRE~ ~override~
+  WRITE_BYTE 0x24  20 // Current HP
+  WRITE_BYTE 0x26  20 // Maximum HP
+  WRITE_BYTE 0x273  2 // Fighter Class
+  WRITE_BYTE 0x238 18 // Strength
+  WRITE_BYTE 0x239 51 // Exceptional Strength
+  WRITE_BYTE 0x23a  8 // Intelligence
+  WRITE_BYTE 0x23b  9 // Wisdom
+  WRITE_BYTE 0x23c 16 // Dexterity
+  WRITE_BYTE 0x23d 17 // Constitution
+  WRITE_BYTE 0x23e  8 // Charisma
+  SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+
+// Orc Elite
+COPY_EXISTING ~ORCEWBOW.CRE~ ~override~
+  WRITE_BYTE 0x24  20 // Current HP
+  WRITE_BYTE 0x26  20 // Maximum HP
+  WRITE_BYTE 0x273  2 // Fighter Class
+  WRITE_BYTE 0x238 18 // Strength
+  WRITE_BYTE 0x239 10 // Exceptional Strength
+  WRITE_BYTE 0x23a  8 // Intelligence
+  WRITE_BYTE 0x23b  8 // Wisdom
+  WRITE_BYTE 0x23c 17 // Dexterity
+  WRITE_BYTE 0x23d 12 // Constitution
+  WRITE_BYTE 0x23e  8 // Charisma
+  SET_BG2_PROFICIENCY ~PROFICIENCYSHORTBOW~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYLONGSWORD~ 2
+
+// Orc Shaman
+COPY_EXISTING ~ORCSHAM.CRE~ ~override~
+  WRITE_BYTE 0x24   8 // Current HP
+  WRITE_BYTE 0x26   8 // Maximum HP
+  WRITE_BYTE 0x238 15 // Strength
+  WRITE_BYTE 0x23a 11 // Intelligence
+  WRITE_BYTE 0x23b 16 // Wisdom
+  WRITE_BYTE 0x23c 16 // Dexterity
+  WRITE_BYTE 0x23d 16 // Constitution
+  WRITE_BYTE 0x23e 13 // Charisma
+  SET_BG2_PROFICIENCY ~PROFICIENCYQUARTERSTAFF~ 1
+  SET_BG2_PROFICIENCY ~PROFICIENCY2HANDED~ 1
+
+///////////////////////////////////////////////////////////////////////////
+// AR1100 - Easthaven (finale)                                           //
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
-COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~ ~override/gnmmgsg.bcs~
-     ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~ ~override/gnmbgsg.bcs~
+COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsgh.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/efatkmel.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsg.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkbth.bcs~
+     ~tactics-remix/baf/iwdee_general/ehbeetle.baf~ ~override/ehbeetle.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
+     ~tactics-remix/baf/iwdee_general/cvorcel.baf~  ~override/cvorcel.bcs~
+     ~tactics-remix/baf/iwdee_general/cvorcsha.baf~ ~override/cvorcsha.bcs~
   COMPILE_BAF_TO_BCS
 

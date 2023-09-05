@@ -42,6 +42,7 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Allegiance(Myself,ENEMY)
   !Detect([GOODCUTOFF])
   Heard([ANYTHING],57)
 THEN 

@@ -1,10 +1,12 @@
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
-//            Improved Goblin Ranged Fighters
+//            Improved Ranged Fighters
 /////////////////////////////////////////////////////////////////////
 // 				Version 1
 // Goblin - bow (gobobow), 1st level Fighter
 // Goblin Elite (gobehq1), 1st level Fighter
+// Orc Archer (orcwbow), 1st level Fighter
+// Orc Elite (orcewbow), 2nd level Fighter
 //
 // Improvements: Better use of shouts. Better target prioritization.
 /////////////////////////////////////////////////////////////////////
@@ -53,6 +55,7 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Allegiance(Myself,ENEMY)
   !Detect([GOODCUTOFF])
   Heard([ANYTHING],57)
 THEN 
