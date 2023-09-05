@@ -1,5 +1,7 @@
 IF
   Global("MO_LichSpawn","Ar0318",0)
+  !Global("O#BrynnQuest","GLOBAL",2)
+  !Global("O#BrynnQuest","GLOBAL",3)
 THEN
   RESPONSE #100
     TriggerActivation("Tran0300",FALSE)
@@ -16,9 +18,8 @@ END
 
 IF
   GlobalTimerExpired("MO_SPAWN_MORE","GLOBAL")
-  OR(2)
-    Difficulty(Hard)
-    Difficulty(Hardest)
+  DifficultyGT(NORMAL)
+  Global("MO_LichSpawn","Ar0318",1)
   Global("MO_LichIsDead","Ar0318",0)
 THEN
   RESPONSE #60
@@ -43,6 +44,7 @@ END
 
 IF
   Dead("molich01")  // molich01
+  Global("MO_LichSpawn","Ar0318",1)
   Global("MO_LichIsDead","Ar0318",0)
 THEN
   RESPONSE #100
