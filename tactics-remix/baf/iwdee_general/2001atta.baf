@@ -1,56 +1,32 @@
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
-//            Improved Melee Fighters
+//            Improved Melee Fighters (AR2001)
 /////////////////////////////////////////////////////////////////////
 // 				Version 1
-// Goblin - Axe (goboaxe), 1st level Fighter
-// Wolf , 3rd level wolf
-// Ogre (ecogre), 1st level Ogre
-// Ogre (ogre), 1st level Ogre
-// Orc (orcwaxe), 1st level Orc
-// Orc Elite (orcewaxe), 2nd level Orc
-// Crazy Goblin Marshal (goblinsp), 1st level Fighter
 // Goblin (goblin), 1st level Fighter
-// Goblin Marshal (gobline), 2nd level Fighter
 //
 // Improvements: Better use of shouts. Better target prioritization.
 /////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////
-// Panic
+// Calls for Help
 /////////////////////////////////////////////////////////////////////
-/*
-IF
-  StateCheck(Myself,STATE_PANIC)
-THEN
-  RESPONSE #100
-    RandomWalkContinuous()
-END
-*/
-
-/////////////////////////////////////////////////////////////////////
-// Change Allegiance
-/////////////////////////////////////////////////////////////////////
-IF
-  !Allegiance(Myself,ENEMY)
-  OR(5)
+IF 
+  Global("AR2001_Attack","AR2001",0)  // Kuldahar Pass - goblin area
+  OR(4)
    AttackedBy([ANYTHING],DEFAULT)
    SpellCast([GOODCUTOFF],0)    // triggers on any spell
    SpellCastPriest([GOODCUTOFF],0)  // triggers on any spell
    SpellCastInnate([GOODCUTOFF],0)  // triggers on any ability
-   Heard([ANYTHING],99)
 THEN
   RESPONSE #100
-    Enemy()
-    Shout(99)
+    SetGlobal("AR2001_Attack","AR2001",1)
     Continue()
 END
 
-/////////////////////////////////////////////////////////////////////
-// Calls for Help
-/////////////////////////////////////////////////////////////////////
 IF 
   !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Global("AR2001_Attack","AR2001",1)
   Allegiance(Myself,ENEMY)
   See([GOODCUTOFF])
 THEN 
@@ -62,6 +38,7 @@ END
 
 IF
   !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Global("AR2001_Attack","AR2001",1)
   Allegiance(Myself,ENEMY)
   !Detect([GOODCUTOFF])
   Heard([ANYTHING],57)
@@ -71,7 +48,6 @@ THEN
     MoveToObject(LastHeardBy(Myself))
     Continue()
 END
-
 /////////////////////////////////////////////////////////////////////
 // Heal!
 /////////////////////////////////////////////////////////////////////
@@ -116,6 +92,7 @@ END
 /////////////////////////////////////////////////////////////////////
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(NearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
@@ -134,6 +111,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(SecondNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
@@ -152,6 +130,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(ThirdNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
@@ -170,6 +149,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(FourthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
@@ -188,6 +168,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(FifthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
@@ -206,6 +187,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(SixthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
@@ -224,6 +206,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(NearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -248,6 +231,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(ThirdNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -260,6 +244,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(FourthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -272,6 +257,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(FifthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -284,6 +270,7 @@ END
 
 IF
   ActionListEmpty()
+  Global("AR2001_Attack","AR2001",1)  // Kuldahar Pass - goblin area
   See(SixthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
@@ -298,9 +285,17 @@ END
 // Find them!
 /////////////////////////////////////////////////////////////////////
 IF
-  Heard([ENEMY],125)
-  !Detect([GOODCUTOFF])
+  Global("AR2001_Attack","AR2001",0)  // Kuldahar Pass - goblin area
+  Allegiance(Myself,ENEMY)
+  Detect([PC])
 THEN
   RESPONSE #100
-    MoveToObject(LastHeardBy(Myself))
+    DisplayStringHead(Myself,1708)  // *burp*
+    Wait(17)
+  RESPONSE #100
+    DisplayStringHead(Myself,1758)  // *chomp*
+    Wait(17)
+  RESPONSE #100
+    DisplayStringHead(Myself,1759)  // *crunch*
+    Wait(17)
 END
