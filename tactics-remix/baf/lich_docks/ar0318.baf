@@ -1,7 +1,8 @@
 IF
   Global("MO_LichSpawn","Ar0318",0)
-  !Global("O#BrynnQuest","GLOBAL",2)
-  !Global("O#BrynnQuest","GLOBAL",3)
+  !GlobalGT("O#BrynnQuest","GLOBAL",0)
+  //!Global("O#BrynnQuest","GLOBAL",2)
+  //!Global("O#BrynnQuest","GLOBAL",3)
 THEN
   RESPONSE #100
     TriggerActivation("Tran0300",FALSE)
