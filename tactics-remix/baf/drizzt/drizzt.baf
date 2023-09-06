@@ -191,6 +191,7 @@ IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
   Allegiance(Myself,ENEMY)
+  HPPercentLT(LastSeenBy(Myself),51)
   !StateCheck(LastSeenBy(Myself),STATE_HASTED)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -206,6 +207,7 @@ THEN
     AttackOneRound(LastSeenBy(Myself))
 END
 
+/*
 IF
   ActionListEmpty()
   See(WorstAC([PC]))
@@ -224,6 +226,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
@@ -349,6 +352,7 @@ IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
   Allegiance(Myself,ENEMY)
+  HPPercentLT(LastSeenBy(Myself),51)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)

@@ -2037,7 +2037,7 @@ END
 
 IF
   ActionListEmpty()
-  See(NearestEnemyOfType([GOODCUTOFF]))
+  See(NearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2050,12 +2050,12 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(NearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  See(SecondNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2068,12 +2068,12 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SecondNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  See(ThirdNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2086,12 +2086,12 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(ThirdNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  See(FourthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2104,12 +2104,12 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FourthNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  See(FifthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2122,12 +2122,12 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FifthNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  See(SixthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2140,7 +2140,7 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SixthNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
 /*
@@ -2169,74 +2169,74 @@ END
 
 IF
   ActionListEmpty()
-  See(NearestEnemyOfType([GOODCUTOFF]))
+  See(NearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(NearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(NearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  See(SecondNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SecondNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  See(ThirdNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(ThirdNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  See(FourthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FourthNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  See(FifthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FifthNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
 IF
   ActionListEmpty()
-  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  See(SixthNearestEnemyOf(Myself))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SixthNearestEnemyOfType([GOODCUTOFF]))
+    AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
 /////////////////////////////////////////////////////////////////////

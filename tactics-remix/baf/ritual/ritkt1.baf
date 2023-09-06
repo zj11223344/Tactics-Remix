@@ -365,6 +365,7 @@ END
 //    AttackOneRound(LastSeenBy(Myself))
 //END
 ////////////////////////////////////////////////////////////////////
+/*
 IF
   ActionListEmpty()
   !StateCheck(Myself,STATE_INVISIBLE)
@@ -400,6 +401,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
@@ -515,6 +517,7 @@ THEN
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
+/*
 IF
   ActionListEmpty()
   !StateCheck(Myself,STATE_INVISIBLE)
@@ -538,6 +541,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()

@@ -812,6 +812,7 @@ END
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
+  HPPercentLT(LastSeenBy(Myself),71)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
   CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
@@ -826,7 +827,7 @@ THEN
     ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
-
+/*
 IF
   ActionListEmpty()
   See(WorstAC([PC]))
@@ -844,7 +845,7 @@ THEN
     ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
-
+*/
 IF
   ActionListEmpty()
   See(NearestEnemyOf(Myself))

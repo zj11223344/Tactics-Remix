@@ -786,6 +786,7 @@ THEN
     Continue()
 END
 
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -859,6 +860,7 @@ THEN
     ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()

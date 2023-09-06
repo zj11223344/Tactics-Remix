@@ -1435,6 +1435,7 @@ END
 /////////////////////////////////////////////////////////////////////
 // Wail on them!
 /////////////////////////////////////////////////////////////////////
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -1468,6 +1469,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
@@ -1577,6 +1579,7 @@ THEN
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -1598,6 +1601,7 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
