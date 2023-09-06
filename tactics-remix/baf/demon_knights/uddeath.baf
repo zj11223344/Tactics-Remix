@@ -53,7 +53,7 @@ END
 
 IF
   Global("Prep","LOCALS",0)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   RandomNum(3,1)
   Global("MO_WildMagicArea","LOCALS",0)
 THEN
@@ -61,12 +61,14 @@ THEN
     SetGlobal("Prep","LOCALS",1)
     ApplySpell(Myself,WIZARD_STONE_SKIN)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
-    ApplySpell(Myself,WIZARD_SPELL_TURNING)
+    ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)
+    ApplySpell(Myself,WIZARD_TRUE_SIGHT)
+    SetGlobal("MO_DeathKnightFireballCast","LOCALS",0)
 END
 
 IF
   Global("Prep","LOCALS",0)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   RandomNum(3,2)
   Global("MO_WildMagicArea","LOCALS",0)
 THEN
@@ -75,18 +77,33 @@ THEN
     ApplySpell(Myself,WIZARD_STONE_SKIN)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
     ApplySpell(Myself,WIZARD_GLOBE_OF_INVULNERABILITY)
+    ApplySpell(Myself,WIZARD_TRUE_SIGHT)
+    SetGlobal("MO_DeathKnightFireballCast","LOCALS",0)
 END
 
 IF
   Global("Prep","LOCALS",0)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   Global("MO_WildMagicArea","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
     ApplySpell(Myself,WIZARD_STONE_SKIN)
     ApplySpell(Myself,WIZARD_MIRROR_IMAGE)
+    ApplySpell(Myself,WIZARD_SPELL_SHIELD)
     ApplySpell(Myself,WIZARD_TRUE_SIGHT)
+    SetGlobal("MO_DeathKnightFireballCast","LOCALS",0)
+END
+
+IF 
+  Global("Prep","LOCALS",1)
+  DifficultyGT(HARD)
+THEN 
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",2)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ApplySpell(Myself,WIZARD_IMPROVED_MANTLE)
+    ApplySpell(Myself,CLERIC_RIGHTEOUS_MAGIC)
 END
 
 IF
@@ -144,6 +161,7 @@ THEN
     SetInterrupt(TRUE)
 END
 
+/*
 IF
   !GlobalTimerNotExpired("MO_EnemyTrueSightTimer","GLOBAL")
   Global("MO_EnemyTrueSight","GLOBAL",1)
@@ -219,7 +237,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   OR(4)
     StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
     StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
@@ -246,7 +264,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   OR(4)
     StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
     StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
@@ -273,7 +291,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   OR(4)
     StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
     StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
@@ -300,7 +318,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   OR(4)
     StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
     StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
@@ -327,7 +345,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   OR(4)
     StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
     StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
@@ -354,7 +372,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   OR(4)
     StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
     StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
@@ -377,11 +395,13 @@ THEN
     Spell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
     SetInterrupt(TRUE)
 END
+*/
 
 /////////////////////////////////////////////////////////////////////
 // Spell Type Determination
 /////////////////////////////////////////////////////////////////////
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   RandomNum(2,1)
 THEN
   RESPONSE #100
@@ -390,6 +410,7 @@ THEN
 END
 
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   RandomNum(2,2)
 THEN
   RESPONSE #100
@@ -403,7 +424,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Race(LastSeenBy(Myself),SWORD)
   HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
@@ -423,7 +444,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Race(LastSeenBy(Myself),SWORD)
   HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
@@ -443,7 +464,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Race(LastSeenBy(Myself),SWORD)
   HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
@@ -463,7 +484,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Race(LastSeenBy(Myself),SWORD)
   HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
@@ -483,7 +504,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Race(LastSeenBy(Myself),SWORD)
   HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
@@ -503,7 +524,7 @@ END
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   Race(LastSeenBy(Myself),SWORD)
   HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
@@ -544,7 +565,7 @@ IF
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastDeathKnightFireball","LOCALS",1)
   Global("MO_DeathKnightFireballCast","LOCALS",0)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
@@ -573,7 +594,7 @@ IF
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastDeathKnightFireball","LOCALS",1)
   Global("MO_DeathKnightFireballCast","LOCALS",0)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
@@ -602,7 +623,7 @@ IF
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastDeathKnightFireball","LOCALS",1)
   Global("MO_DeathKnightFireballCast","LOCALS",0)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
@@ -631,7 +652,7 @@ IF
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastDeathKnightFireball","LOCALS",1)
   Global("MO_DeathKnightFireballCast","LOCALS",0)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
@@ -660,7 +681,7 @@ IF
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastDeathKnightFireball","LOCALS",1)
   Global("MO_DeathKnightFireballCast","LOCALS",0)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
@@ -689,7 +710,7 @@ IF
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastDeathKnightFireball","LOCALS",1)
   Global("MO_DeathKnightFireballCast","LOCALS",0)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !HasItem("clck26",LastSeenBy(Myself))
   !CheckSpellState(LastSeenBy(Myself),SI_EVOCATION)
@@ -736,7 +757,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordKill","LOCALS",1)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_KILL)
   HPLT(LastSeenBy(Myself),61)
@@ -766,7 +787,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordKill","LOCALS",1)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_KILL)
   HPLT(LastSeenBy(Myself),61)
@@ -796,7 +817,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordKill","LOCALS",1)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_KILL)
   HPLT(LastSeenBy(Myself),61)
@@ -826,7 +847,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordKill","LOCALS",1)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_KILL)
   HPLT(LastSeenBy(Myself),61)
@@ -856,7 +877,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordKill","LOCALS",1)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_KILL)
   HPLT(LastSeenBy(Myself),61)
@@ -886,7 +907,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordKill","LOCALS",1)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_KILL)
   HPLT(LastSeenBy(Myself),61)
@@ -935,7 +956,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastChaos","LOCALS",1)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_CHAOS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -976,7 +997,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastChaos","LOCALS",1)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_CHAOS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -1017,7 +1038,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastChaos","LOCALS",1)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_CHAOS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -1058,7 +1079,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastChaos","LOCALS",1)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_CHAOS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -1099,7 +1120,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastChaos","LOCALS",1)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_CHAOS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -1140,7 +1161,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastChaos","LOCALS",1)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_CHAOS)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
@@ -1200,7 +1221,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordStun","LOCALS",1)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_STUN)
   !CheckSpellState(LastSeenBy(Myself),SI_CONJURATION)
@@ -1235,7 +1256,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordStun","LOCALS",1)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_STUN)
   !CheckSpellState(LastSeenBy(Myself),SI_CONJURATION)
@@ -1270,7 +1291,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordStun","LOCALS",1)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_STUN)
   !CheckSpellState(LastSeenBy(Myself),SI_CONJURATION)
@@ -1305,7 +1326,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordStun","LOCALS",1)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_STUN)
   !CheckSpellState(LastSeenBy(Myself),SI_CONJURATION)
@@ -1340,7 +1361,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordStun","LOCALS",1)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_STUN)
   !CheckSpellState(LastSeenBy(Myself),SI_CONJURATION)
@@ -1375,7 +1396,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordStun","LOCALS",1)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_STUN)
   !CheckSpellState(LastSeenBy(Myself),SI_CONJURATION)
@@ -1429,7 +1450,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordBlind","LOCALS",1)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_BLIND)
   !HasItemEquiped("NPMISC1",LastSeenBy(Myself))
@@ -1461,7 +1482,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordBlind","LOCALS",1)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_BLIND)
   !HasItemEquiped("NPMISC1",LastSeenBy(Myself))
@@ -1493,7 +1514,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordBlind","LOCALS",1)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_BLIND)
   !HasItemEquiped("NPMISC1",LastSeenBy(Myself))
@@ -1525,7 +1546,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordBlind","LOCALS",1)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_BLIND)
   !HasItemEquiped("NPMISC1",LastSeenBy(Myself))
@@ -1557,7 +1578,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordBlind","LOCALS",1)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_BLIND)
   !HasItemEquiped("NPMISC1",LastSeenBy(Myself))
@@ -1589,7 +1610,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastPowerWordBlind","LOCALS",1)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_POWER_WORD_BLIND)
   !HasItemEquiped("NPMISC1",LastSeenBy(Myself))
@@ -1640,7 +1661,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSymbolFear","LOCALS",1)
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SYMBOL_FEAR)
   !Kit(LastSeenBy(Myself),CAVALIER)
@@ -1677,7 +1698,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSymbolFear","LOCALS",1)
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SYMBOL_FEAR)
   !Kit(LastSeenBy(Myself),CAVALIER)
@@ -1714,7 +1735,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSymbolFear","LOCALS",1)
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SYMBOL_FEAR)
   !Kit(LastSeenBy(Myself),CAVALIER)
@@ -1751,7 +1772,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSymbolFear","LOCALS",1)
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SYMBOL_FEAR)
   !Kit(LastSeenBy(Myself),CAVALIER)
@@ -1788,7 +1809,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSymbolFear","LOCALS",1)
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SYMBOL_FEAR)
   !Kit(LastSeenBy(Myself),CAVALIER)
@@ -1825,7 +1846,7 @@ IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastSymbolFear","LOCALS",1)
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   HaveSpell(WIZARD_SYMBOL_FEAR)
   !Kit(LastSeenBy(Myself),CAVALIER)
@@ -1978,6 +1999,7 @@ END
 /////////////////////////////////////////////////////////////////////
 // Attack
 /////////////////////////////////////////////////////////////////////
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -2011,10 +2033,11 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2027,12 +2050,12 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2045,12 +2068,12 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2063,12 +2086,12 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2081,12 +2104,12 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2099,12 +2122,12 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
@@ -2117,9 +2140,10 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOfType([GOODCUTOFF]))
 END
 
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
@@ -2141,77 +2165,78 @@ THEN
   RESPONSE #100
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
-  See(NearestEnemyOf(Myself))
+  See(NearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(NearestEnemyOf(Myself))
+    AttackOneRound(NearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(SecondNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SecondNearestEnemyOf(Myself))
+    AttackOneRound(SecondNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(ThirdNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(ThirdNearestEnemyOf(Myself))
+    AttackOneRound(ThirdNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(FourthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FourthNearestEnemyOf(Myself))
+    AttackOneRound(FourthNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(FifthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(FifthNearestEnemyOf(Myself))
+    AttackOneRound(FifthNearestEnemyOfType([GOODCUTOFF]))
 END
 
 IF
   ActionListEmpty()
-  See(SixthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
   !Allegiance(LastSeenBy(Myself),ENEMY)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    AttackOneRound(SixthNearestEnemyOf(Myself))
+    AttackOneRound(SixthNearestEnemyOfType([GOODCUTOFF]))
 END
 
 /////////////////////////////////////////////////////////////////////

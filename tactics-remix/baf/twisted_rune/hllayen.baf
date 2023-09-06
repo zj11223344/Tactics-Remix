@@ -1661,6 +1661,7 @@ END
 // Spell Type Determination
 /////////////////////////////////////////////////////////////////////
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   RandomNum(2,1)
 THEN
   RESPONSE #100
@@ -1669,6 +1670,7 @@ THEN
 END
 
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   RandomNum(2,2)
 THEN
   RESPONSE #100
