@@ -336,6 +336,7 @@ COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkrng.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/2001atar.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/2005atta.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/2006atta.bcs~
      ~tactics-remix/baf/iwdee_general/ehbeetle.baf~ ~override/ehbeetle.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/cvorcel.baf~  ~override/cvorcel.bcs~
