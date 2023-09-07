@@ -335,10 +335,12 @@ COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkbth.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkrng.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/2001atar.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/2005atta.bcs~
      ~tactics-remix/baf/iwdee_general/ehbeetle.baf~ ~override/ehbeetle.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/cvorcel.baf~  ~override/cvorcel.bcs~
      ~tactics-remix/baf/iwdee_general/cvorcsha.baf~ ~override/cvorcsha.bcs~
      ~tactics-remix/baf/iwdee_general/2001atta.baf~ ~override/2001atta.bcs~
+     ~tactics-remix/baf/iwdee_general/2005fatt.baf~ ~override/2005fatt.bcs~
   COMPILE_BAF_TO_BCS
 
