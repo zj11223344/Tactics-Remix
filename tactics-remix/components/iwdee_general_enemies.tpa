@@ -279,6 +279,48 @@ COPY_EXISTING ~GOBLINE.CRE~ ~override~
   ADD_CRE_ITEM ~POTN08~ #1 #0 #0 ~UNSTEALABLE~ ~QITEM1~ // Potion of Healing
 
 ///////////////////////////////////////////////////////////////////////////
+// AR2004 - Kuldahar Pass Mill Entrance                                  //
+///////////////////////////////////////////////////////////////////////////
+// Orc
+COPY_EXISTING ~ORC2004.CRE~ ~override~
+  WRITE_SHORT 0x46 10 // Natural AC
+  WRITE_SHORT 0x48 10 // Effective AC
+  WRITE_BYTE 0x52  20 // thac0
+  WRITE_BYTE 0x273  2 // Fighter Class
+  WRITE_BYTE 0x238 18 // Strength
+  WRITE_BYTE 0x239 51 // Exceptional Strength
+  WRITE_BYTE 0x23a  8 // Intelligence
+  WRITE_BYTE 0x23b  9 // Wisdom
+  WRITE_BYTE 0x23c 16 // Dexterity
+  WRITE_BYTE 0x23d 17 // Constitution
+  WRITE_BYTE 0x23e  8 // Charisma
+  SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+  REPLACE_CRE_ITEM ~LEAT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP // Hide Armor
+
+// Uligar
+COPY_EXISTING ~ULIGAR.CRE~ ~override~
+  WRITE_BYTE 0x24  20 // Current HP
+  WRITE_BYTE 0x26  20 // Maximum HP
+  WRITE_SHORT 0x46 10 // Natural AC
+  WRITE_SHORT 0x48 10 // Effective AC
+  WRITE_BYTE 0x52  19 // thac0
+  WRITE_BYTE 0x273  2 // Fighter Class
+  WRITE_BYTE 0x238 18 // Strength
+  WRITE_BYTE 0x239 51 // Exceptional Strength
+  WRITE_BYTE 0x23a  8 // Intelligence
+  WRITE_BYTE 0x23b  9 // Wisdom
+  WRITE_BYTE 0x23c 16 // Dexterity
+  WRITE_BYTE 0x23d 17 // Constitution
+  WRITE_BYTE 0x23e  8 // Charisma
+  WRITE_BYTE 0x53   1 // APR
+  SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+  REPLACE_CRE_ITEM ~LEAT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~ EQUIP // Hide Armor
+  REPLACE_CRE_ITEM ~HELM01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~  EQUIP // Helmet
+  ADD_CRE_ITEM ~POTN08~ #1 #0 #0 ~UNSTEALABLE~ ~QITEM1~ // Potion of Healing
+
+///////////////////////////////////////////////////////////////////////////
 // AR1100 - Easthaven (finale)                                           //
 ///////////////////////////////////////////////////////////////////////////
 
