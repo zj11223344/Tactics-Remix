@@ -330,6 +330,7 @@ COPY_EXISTING ~ULIGAR.CRE~ ~override~
 COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsgh.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/efatkmel.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/2100yeti.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsgh.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkbth.bcs~

@@ -47,6 +47,7 @@ PATCH_IF (race = 131) AND !("%source%" STRING_EQUAL_CASE "WILDZONE.CRE") BEGIN
   // Print out results
   PATCH_PRINT ~%name% (%source%) updated stats: Level(%level%) HP (%current_hp%) thac0 (%thaco%).~
 END
+BUT_ONLY
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Priestess Encounter                                            //
