@@ -55,6 +55,7 @@ ACTION_FOR_EACH yeti IN
         */
           
         COPY_EXISTING ~%yeti%.CRE~ ~override~ 
+          /*
           SET hit_points = 0 // Hit Points
           SET exc_str = 0    // Exceptional Strength
           PATCH_IF ("%yeti%" STRING_EQUAL_CASE "dlyeti") BEGIN // Level 10 Yeti
@@ -88,6 +89,7 @@ ACTION_FOR_EACH yeti IN
           WRITE_BYTE  0x5a 100            // Cold resistance  
           WRITE_BYTE  0x5e ~-50~          // Magic fire resistance
           WRITE_BYTE  0x5f 100            // Magic cold resistance
+          */
           REPLACE_CRE_ITEM ~moyet01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // 1d6 yeti weapon
 
           // Berg Yeti already has the script

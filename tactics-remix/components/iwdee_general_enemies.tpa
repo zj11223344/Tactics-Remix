@@ -2,7 +2,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-// Make Improved IWDEE Enemies                                           //
+// Improve IWDEE Enemies                                                 //
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
@@ -321,6 +321,61 @@ COPY_EXISTING ~ULIGAR.CRE~ ~override~
   ADD_CRE_ITEM ~POTN08~ #1 #0 #0 ~UNSTEALABLE~ ~QITEM1~ // Potion of Healing
 
 ///////////////////////////////////////////////////////////////////////////
+// AR2100 - Kuldahar                                                     //
+///////////////////////////////////////////////////////////////////////////
+// Tundra Yeti
+COPY_EXISTING ~KUYETI.CRE~ ~override~
+  WRITE_BYTE  0x24   50  // Current HP
+  WRITE_BYTE  0x26   50  // Maximum HP
+  WRITE_SHORT 0x46    4  // Natural AC
+  WRITE_SHORT 0x48    4  // Effective AC
+  WRITE_BYTE  0x238  18  // Strength
+  WRITE_BYTE  0x239  50  // Exceptional Strength
+  WRITE_BYTE  0x23a   8  // Intelligence
+  WRITE_BYTE  0x23b  12  // Wisdom
+  WRITE_BYTE  0x23c  13  // Dexterity
+  WRITE_BYTE  0x23d  16  // Constitution
+  WRITE_BYTE  0x23e   7  // Charisma
+  WRITE_BYTE  0x59 ~-50~ // Fire resistance
+  WRITE_BYTE  0x5a  100  // Cold resistance  
+  WRITE_BYTE  0x5e ~-50~ // Magic fire resistance
+  WRITE_BYTE  0x5f  100  // Magic cold resistance
+
+// Neo-Orog Avenger
+COPY_EXISTING ~KAOROG.CRE~ ~override~
+  WRITE_BYTE  0x24  50 // Current HP
+  WRITE_BYTE  0x26  50 // Maximum HP
+  WRITE_SHORT 0x46  10 // Natural AC
+  WRITE_SHORT 0x48  10 // Effective AC
+  WRITE_BYTE  0x52  16 // thac0
+  WRITE_BYTE  0x234  5 // Level
+  WRITE_BYTE  0x273  2 // Fighter Class
+  WRITE_BYTE  0x238 18 // Strength
+  WRITE_BYTE  0x239 26 // Exceptional Strength
+  SET_BG2_PROFICIENCY ~PROFICIENCYTWOHANDEDSWORD~ 3
+  SET_BG2_PROFICIENCY ~PROFICIENCY2HANDED~ 2
+  REPLACE_CRE_ITEM ~PLAT01~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail
+  REPLACE_CRE_ITEM ~SWS2H02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Greatsword +1
+  ADD_CRE_ITEM     ~POTN08~  #1 #0 #0 ~UNSTEALABLE~             ~QITEM1~        // Potion of Healing
+
+// Neo-Orog Marauder
+COPY_EXISTING ~KAOROGE.CRE~ ~override~
+  WRITE_BYTE  0x24  70 // Current HP
+  WRITE_BYTE  0x26  70 // Maximum HP
+  WRITE_SHORT 0x46  10 // Natural AC
+  WRITE_SHORT 0x48  10 // Effective AC
+  WRITE_BYTE  0x52  14 // thac0
+  WRITE_BYTE  0x234  7 // Level
+  WRITE_BYTE  0x273  2 // Fighter Class
+  WRITE_BYTE  0x238 18 // Strength
+  WRITE_BYTE  0x239 26 // Exceptional Strength
+  SET_BG2_PROFICIENCY ~PROFICIENCYTWOHANDEDSWORD~ 4
+  SET_BG2_PROFICIENCY ~PROFICIENCY2HANDED~ 2
+  REPLACE_CRE_ITEM ~PLAT02~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Plate Mail +1
+  REPLACE_CRE_ITEM ~SWS2H02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Greatsword +1
+  ADD_CRE_ITEM     ~EXTHEAL~ #1 #0 #0 ~UNSTEALABLE~             ~QITEM1~        // Potion of Extra Healing
+
+///////////////////////////////////////////////////////////////////////////
 // AR1100 - Easthaven (finale)                                           //
 ///////////////////////////////////////////////////////////////////////////
 
@@ -331,6 +386,7 @@ COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsgh.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/efatkmel.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/2100yeti.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/kuatkoro.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsgh.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkbth.bcs~
