@@ -60,13 +60,13 @@ ACTION_FOR_EACH yeti IN
           PATCH_IF ("%yeti%" STRING_EQUAL_CASE "dlyeti") BEGIN // Level 10 Yeti
             hit_points = 100
             exc_str = 100
-          END ELSE ACTION_IF ("%yeti%" STRING_EQUAL_CASE "vscyeti") BEGIN // Level 7 Yeti Chieftain
+          END ELSE PATCH_IF ("%yeti%" STRING_EQUAL_CASE "vscyeti") BEGIN // Level 7 Yeti Chieftain
             hit_points = 70
             exc_str = 90
-          END ELSE ACTION_IF ("%yeti%" STRING_EQUAL_CASE "wtcyeti") BEGIN // Level 11 Yeti Chieftain
+          END ELSE PATCH_IF ("%yeti%" STRING_EQUAL_CASE "wtcyeti") BEGIN // Level 11 Yeti Chieftain
             hit_points = 110
             exc_str = 100
-          END ELSE ACTION_IF ("%yeti%" STRING_EQUAL_CASE "wtyeti") BEGIN // Level 8 Glacier Yeti
+          END ELSE PATCH_IF ("%yeti%" STRING_EQUAL_CASE "wtyeti") BEGIN // Level 8 Glacier Yeti
             hit_points = 80
             exc_str = 90
           END ELSE BEGIN // All other Yetis
