@@ -34,8 +34,8 @@ ACTION_FOR_EACH yeti IN
       wtcyeti  // Yeti Chieftain
       wtyeti   // Glacier Yeti
     BEGIN
-      SET hit_points = 0 // Hit Points
-      SET exc_str = 0    // Exceptional Strength
+      OUTER_SET hit_points = 0 // Hit Points
+      OUTER_SET exc_str = 0    // Exceptional Strength
       ACTION_IF FILE_EXISTS_IN_GAME ~%yeti%.CRE~ BEGIN
         ACTION_IF ("%yeti%" STRING_EQUAL_CASE "dlyeti") BEGIN // Level 10 Yeti
           hit_points = 100
