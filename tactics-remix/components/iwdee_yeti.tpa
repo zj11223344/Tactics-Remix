@@ -22,8 +22,8 @@ COPY_EXISTING ~SPIN169.SPL~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Tougher Yetis                                                         //
 ///////////////////////////////////////////////////////////////////////////
-SET hit_points = 0 // Hit Points
-SET exc_str = 0    // Exceptional Strength
+OUTER_SET hit_points = 0 // Hit Points
+OUTER_SET exc_str = 0    // Exceptional Strength
 
 ACTION_FOR_EACH yeti IN
       dlyeti   // Berg Yeti
