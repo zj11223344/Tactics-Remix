@@ -376,6 +376,45 @@ COPY_EXISTING ~KAOROGE.CRE~ ~override~
   ADD_CRE_ITEM     ~EXTHEAL~ #1 #0 #0 ~UNSTEALABLE~             ~QITEM1~        // Potion of Extra Healing
 
 ///////////////////////////////////////////////////////////////////////////
+// AR3000 - Vale of Shadows (Exterior)                                   //
+///////////////////////////////////////////////////////////////////////////
+// Yeti
+COPY_EXISTING ~VSYETI.CRE~ ~override~
+  WRITE_BYTE  0x24   50  // Current HP
+  WRITE_BYTE  0x26   50  // Maximum HP
+  WRITE_SHORT 0x46    4  // Natural AC
+  WRITE_SHORT 0x48    4  // Effective AC
+  WRITE_BYTE  0x238  18  // Strength
+  WRITE_BYTE  0x239  50  // Exceptional Strength
+  WRITE_BYTE  0x23a   8  // Intelligence
+  WRITE_BYTE  0x23b  12  // Wisdom
+  WRITE_BYTE  0x23c  13  // Dexterity
+  WRITE_BYTE  0x23d  16  // Constitution
+  WRITE_BYTE  0x23e   7  // Charisma
+  WRITE_BYTE  0x59 ~-50~ // Fire resistance
+  WRITE_BYTE  0x5a  100  // Cold resistance  
+  WRITE_BYTE  0x5e ~-50~ // Magic fire resistance
+  WRITE_BYTE  0x5f  100  // Magic cold resistance
+
+// Yeti Chieftain
+COPY_EXISTING ~VSCYETI.CRE~ ~override~
+  WRITE_BYTE  0x24   70  // Current HP
+  WRITE_BYTE  0x26   70  // Maximum HP
+  WRITE_SHORT 0x46    4  // Natural AC
+  WRITE_SHORT 0x48    4  // Effective AC
+  WRITE_BYTE  0x238  18  // Strength
+  WRITE_BYTE  0x239  90  // Exceptional Strength
+  WRITE_BYTE  0x23a   8  // Intelligence
+  WRITE_BYTE  0x23b  12  // Wisdom
+  WRITE_BYTE  0x23c  13  // Dexterity
+  WRITE_BYTE  0x23d  16  // Constitution
+  WRITE_BYTE  0x23e   7  // Charisma
+  WRITE_BYTE  0x59 ~-50~ // Fire resistance
+  WRITE_BYTE  0x5a  100  // Cold resistance  
+  WRITE_BYTE  0x5e ~-50~ // Magic fire resistance
+  WRITE_BYTE  0x5f  100  // Magic cold resistance
+
+///////////////////////////////////////////////////////////////////////////
 // AR1100 - Easthaven (finale)                                           //
 ///////////////////////////////////////////////////////////////////////////
 
@@ -387,6 +426,8 @@ COPY ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/efatkmel.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/2100yeti.bcs~
      ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/kuatkoro.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmg3g.bcs~
+     ~tactics-remix/baf/iwdee_general/gnmmgsg.baf~  ~override/gnmmg9g.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsg.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/gnmbgsgh.bcs~
      ~tactics-remix/baf/iwdee_general/gnmbgsg.baf~  ~override/efatkbth.bcs~

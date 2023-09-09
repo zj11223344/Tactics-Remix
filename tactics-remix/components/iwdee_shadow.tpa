@@ -1,0 +1,65 @@
+// Tactics Remix, Morpheus562's IWDEE Tougher Shadows
+
+///////////////////////////////////////////////////////////////////////////
+// Import Items                                                          //
+///////////////////////////////////////////////////////////////////////////
+// Lesser Shadow Weapon: 2d4+1 slashing, -1 STR for 5 Rounds
+COPY ~tactics-remix/itm/mosha01.itm~ ~override~
+
+// Shadow Weapon: 2d6+2 slashing, -1 STR for 1 Turn
+COPY ~tactics-remix/itm/mosha02.itm~ ~override~
+
+///////////////////////////////////////////////////////////////////////////
+// Tougher Lesser Shadows                                                //
+///////////////////////////////////////////////////////////////////////////
+ACTION_FOR_EACH lesser_shadow IN
+      vsshad1  // Lesser Shadow
+      vsshadoh // Lesser Shadow
+      vsshadow // Lesser Shadow
+    BEGIN
+      ACTION_IF FILE_EXISTS_IN_GAME ~%lesser_shadow%.CRE~ BEGIN  
+        COPY_EXISTING ~%lesser_shadow%.CRE~ ~override~
+          WRITE_BYTE 0x59 20  // Fire resistance
+          WRITE_BYTE 0x5a 100 // Cold resistance
+          WRITE_BYTE 0x5b 20  // Electricity resistance
+          WRITE_BYTE 0x5c 20  // Acid resistance
+          WRITE_BYTE 0x5e 20  // Magic fire resistance
+          WRITE_BYTE 0x5f 100 // Magic cold resistance
+          WRITE_BYTE 0x60 10  // Slashing resistance
+          WRITE_BYTE 0x61 10  // Crushing resistance
+          WRITE_BYTE 0x62 10  // Piercing resistance
+          WRITE_BYTE 0x63 10  // Missile resistance
+          REPLACE_CRE_ITEM ~mosha01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+      END
+    END
+
+///////////////////////////////////////////////////////////////////////////
+// Tougher Shadows                                                       //
+///////////////////////////////////////////////////////////////////////////
+ACTION_FOR_EACH shadow IN
+      shadow  // Shadow
+      sumshad // Shadow
+    BEGIN
+      ACTION_IF FILE_EXISTS_IN_GAME ~%shadow%.CRE~ BEGIN  
+        COPY_EXISTING ~%shadow%.CRE~ ~override~
+          WRITE_BYTE 0x59 40  // Fire resistance
+          WRITE_BYTE 0x5a 100 // Cold resistance
+          WRITE_BYTE 0x5b 40  // Electricity resistance
+          WRITE_BYTE 0x5c 40  // Acid resistance
+          WRITE_BYTE 0x5e 40  // Magic fire resistance
+          WRITE_BYTE 0x5f 100 // Magic cold resistance
+          WRITE_BYTE 0x60 20  // Slashing resistance
+          WRITE_BYTE 0x61 20  // Crushing resistance
+          WRITE_BYTE 0x62 20  // Piercing resistance
+          WRITE_BYTE 0x63 20  // Missile resistance
+          REPLACE_CRE_ITEM ~mosha02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+      END
+    END
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+/*
+COPY ~tactics-remix/baf/iwdee_general/efwinwlf.baf~ ~override/efwinwlf.bcs~
+  COMPILE_BAF_TO_BCS
+*/
