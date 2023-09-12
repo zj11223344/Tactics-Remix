@@ -1,0 +1,469 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//            Improved Lysan
+/////////////////////////////////////////////////////////////////////
+//        Version 1
+// Lysan, 8th level Cleric
+//
+// Bless
+// Cure Light Wounds
+// Entangle (Use Sanctuary instead)
+// Protection from Evil
+// Charm Person or Mammal
+// Hold Person
+// Silence
+// Call Lightning
+// Prayer
+// Cure Serious Wounds
+// Improvements: Better use of shouts. Better target prioritization.
+/////////////////////////////////////////////////////////////////////
+
+IF
+  !Global("SPRITE_IS_DEADLYSAN","GLOBAL",0)
+  !StateCheck(Myself,STATE_REALLY_DEAD)
+THEN
+  RESPONSE #100
+    DestroySelf()
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+THEN
+  RESPONSE #100
+    Enemy()
+    Continue()
+END
+
+IF
+  !Global("VSLYSAN_init","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("VSLYSAN_init","LOCALS",1)
+    Unlock("BOX1")
+    Unlock("BOX2")
+    Unlock("BOX3")
+    Unlock("BOX4")
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Calls for Help
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    SetGlobal("MAP_GROUP_HOSTILE1","MYAREA",1)
+    Continue()
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+THEN
+  RESPONSE #100
+    Enemy()
+    SetGlobal("MAP_GROUP_HOSTILE1","MYAREA",1)
+    Continue()
+END
+
+IF 
+  !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Allegiance(Myself,ENEMY)
+  See([GOODCUTOFF])
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_IsShouting","LOCALS",18)
+    Shout(57)
+    Continue()
+END  
+
+IF
+  !GlobalTimerNotExpired("MO_IsShouting","LOCALS")
+  Allegiance(Myself,ENEMY)
+  !Detect([GOODCUTOFF])
+  Heard([ANYTHING],57)
+THEN 
+  RESPONSE #100
+    SetGlobalTimer("MO_IsShouting","LOCALS",18)
+    MoveToObject(LastHeardBy(Myself))
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Prep
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+  RESPONSE #100
+    SetGlobal("MAP_GROUP_HOSTILE1","MYAREA",1)
+    Enemy()
+    SetGlobal("MAP_GROUP_HOSTILE1","MYAREA",1)
+    Continue()
+END
+
+IF 
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    ApplySpell(Myself,CLERIC_BLESS)  // SPPR101.SPL (Bless)
+    ApplySpell(Myself,CLERIC_PROTECTION_FROM_EVIL)  // SPPR107.SPL (Protection from Evil)
+    ApplySpell(Myself,CLERIC_PRAYER)  // SPPR316.SPL (Prayer)
+    SetGlobal("Prep","LOCALS",1)
+    GiveItemCreate("EXTHEAL",Myself,5,0,0)   // extra healing
+    SetGlobal("Sanctuary","LOCALS",1)
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Heal!
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOf(Myself))
+  GlobalGT("Sanctuary","LOCALS",0)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !CheckStat(Myself,1,SANCTUARY)
+  HPPercentLT(Myself,50)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  CheckStatLT(Myself,20,SPELLFAILUREPRIEST)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("Sanctuary","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,CLERIC_SANCTUARY)  // SPPR109.SPL (Sanctuary)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  HasItem("EXTHEAL",Myself)  // Potion of Extra Healing
+  HPPercentLT(Myself,70)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    UseItem("EXTHEAL",Myself)  // Potion of Extra Healing
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Spells
+/////////////////////////////////////////////////////////////////////
+IF
+  HaveSpell(CLERIC_SILENCE_15_FOOT)  // SPPR211.SPL (Silence, 15' Radius)
+  OR(9)
+    See([PC.0.0.CLERIC_MAGE])
+    See([PC.0.0.CLERIC_THIEF])
+    See([PC.0.0.FIGHTER_CLERIC])
+    See([PC.0.0.FIGHTER_MAGE])
+    See([PC.0.0.FIGHTER_MAGE_CLERIC])
+    See([PC.0.0.FIGHTER_MAGE_THIEF])
+    See([PC.0.0.CLERIC_RANGER])
+    See([PC.0.0.MAGE])
+    See([PC.0.0.CLERIC])
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),CLERIC_SILENCE_15_FOOT)  // SPPR211.SPL (Silence, 15' Radius)
+    Wait(2)
+END
+
+IF
+  HaveSpell(CLERIC_CHARM_PERSON)  // SPPR204.SPL (Charm Person or Mammal)
+  OR(2)
+    See(NearestEnemyOf(Myself))
+    See([PC.0.0.FIGHTER])
+  !StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),CLERIC_CHARM_PERSON)  // SPPR204.SPL (Charm Person or Mammal)
+    Wait(2)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attack
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+  OR(2)
+    !CheckStat(Myself,1,SANCTUARY)
+    HPPercentGT(Myself,70)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+/////////////////////////////////////////////////////////////////////
+// Find them!
+/////////////////////////////////////////////////////////////////////
+IF
+  !Global("MAP_GROUP_HOSTILE1","MYAREA",0)
+  AttackedBy(NearestEnemyOf(Myself),DEFAULT)
+THEN
+  RESPONSE #100
+    FaceObject(LastAttackerOf(Myself))
+    Continue()
+END
+
+IF
+  NumberOfTimesTalkedTo(0)
+  See([PC])
+  !Allegiance(Myself,ENEMY)
+  !StateCheck(Myself,STATE_REALLY_DEAD)
+THEN
+  RESPONSE #100
+    StartCutSceneMode()
+    ClearAllActions()
+    MultiPlayerSync()
+    EndCutSceneMode()
+    StartDialogueNoSet(PartySlot1)
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+  ActionListEmpty()
+  !NearSavedLocation(Myself,"#savedloc",0)
+THEN
+  RESPONSE #100
+    MoveToSavedLocationn("#savedloc","LOCALS")
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  ActionListEmpty()
+  !See([PC])
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
