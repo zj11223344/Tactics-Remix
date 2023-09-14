@@ -1,25 +1,14 @@
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
-//            Improved Smarter Twisted Rune Scripts
+//            Improved Drizzt BG2EE Scripts
 /////////////////////////////////////////////////////////////////////
-// 				Version 1
-// Layenne, 18th level Conjurer
+//        Version 1
+// Malchor, 18th level Conjurer
 // 
 // Fixes: No bugfixes. 
-//
-// Important: Layenne will now actually use the Staff of the Magi!
-// Basic strategy is taken from Sion in the Improved Guarded Compound:
 // 
 // Improvements: His spell picks are completely revamped. An 18th level
-// Conjurer has 3 million XP, and in ToB would get to pick a Feat. We're
-// being generous so we skip that (no Planetars). All of the weird
-// contingencies and sequencers are replaced by a bunch of long-lived
-// spells that are cast at warp speed as soon as you see him (stoneskin,
-// etc). Just as the PCs tend to buff up with Strength and Chaotic Commands 
-// before starting the day, Sion preps well. His basic combat strategy is
-// to remove your buffs, cast malison, and then beat on you with Horrid
-// Wiltin and Chaos until you submit. He won't go downstairs. He will
-// rest and regain all of his spells if you leave him alone for an hour. 
+// Conjurer has 3 million XP, and in ToB would get to pick a Feat. 
 //
 // We completely ignore in-game memorization (hey, who doesn't?) and
 // use global variables to keep track of spells. 
@@ -73,33 +62,10 @@
 //  Cast Spell Trigger (3x lvl 6 spells or lower)
 //  6 total lvl 8 spells
 //
-//  2 Time Stop (9)
-//  1 Summon Dark Planetar (9)
-//  1 Spell Trap (9)
-//  1 Improved Alacrity (9)
-//  1 Spellstrike
-//  6 total lvl 9 spells
+//  1 Time Stop (9)
+//  1 Planetar or Improved Alacrity (9)
+//  2 total lvl 9 spells
 /////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////
-// True Sight Stuff
-/////////////////////////////////////////////////////////////////////
-IF
-  !GlobalTimerNotExpired("MO_EnemyTrueSightTimer","GLOBAL")
-  Global("MO_EnemyTrueSight","GLOBAL",1)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",0)
-END
-
-IF
-  Global("MO_TrueSightActive","LOCALS",1)
-  CheckStat(Myself,0,TRUE_SIGHT)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",0)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",0)
-END
 
 /////////////////////////////////////////////////////////////////////
 // Battle Prep
@@ -113,7 +79,6 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("TimeStop","LOCALS",1)
-    ReallyForceSpell(Myself,CLERIC_ZONE_OF_SWEET_AIR)
     ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
     ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)
     ReallyForceSpell(Myself,WIZARD_FIRE_SHIELD_RED)
@@ -123,16 +88,12 @@ THEN
     ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_DIVINATION)
     ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
     ReallyForceSpell(Myself,WIZARD_SPELL_TRAP)
-    ReallyForceSpell("hlrevan",WIZARD_IMPROVED_HASTE)
+    //ReallyForceSpell(Myself,WIZARD_MELF_METEOR)
+    //ReallyForceSpell(Myself,WIZARD_IMPROVED_HASTE)
     SetGlobal("Prep","LOCALS",1)
-    EquipItem("staf11")
-    GiveItemCreate("potn34",Myself,1,0,0)
-    UseItem("potn34",Myself)
     // Lvl 9
-    SetGlobal("Time","LOCALS",2)
-    SetGlobal("ImprovedAlacrity","LOCALS",1)
-    SetGlobal("DarkPlanetar","LOCALS",1)
-    SetGlobal("Spellstrike","LOCALS",1)
+    SetGlobal("Time","LOCALS",1)
+    SetGlobal("OtherNine","LOCALS",1)
     // Lvl 8
     SetGlobal("wilt","LOCALS",3)
     SetGlobal("Maze","LOCALS",2)
@@ -156,8 +117,9 @@ THEN
     SetGlobal("Malison","LOCALS",1)
     SetGlobal("Teleport","LOCALS",1)
     // Lvl 3
-    SetGlobal("Thrust","LOCALS",1)
-    SetGlobal("Slow","LOCALS",3)
+    SetGlobal("Thrust","LOCALS",2)
+    SetGlobal("Slow","LOCALS",2)
+    //SetGlobal("MinuteMeteor","LOCALS",2)
     SetGlobal("Remove","LOCALS",1)
     // Lvl 2
     SetGlobal("Vocalize","LOCALS",2)
@@ -165,7 +127,6 @@ THEN
     SetGlobal("Mirror","LOCALS",1)
     // Lvl 1
     SetGlobal("Missile","LOCALS",6)
-    Shout(100)	// wake everyone up!
     Continue()
 END
 
@@ -181,14 +142,7 @@ IF
 THEN
   RESPONSE #100
     ForceSpell(Player1,WIZARD_DIMENSION_DOOR)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
 END
-
-// Going to exclude Sequencer and Trigger for now since already brutal. Can add later.
-
-// Spell Trigger Options (3x level 6- spells)
-
-// Spell Sequencer Options (3x level 4- spells)
 
 /////////////////////////////////////////////////////////////////////
 // Spell: Vocalize (if silenced)
@@ -208,7 +162,6 @@ THEN
     IncrementGlobal("Vocalize","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_VOCALIZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -232,7 +185,6 @@ THEN
     IncrementGlobal("Stoneskin","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_STONE_SKIN)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -265,7 +217,6 @@ THEN
     IncrementGlobal("Mirror","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
   RESPONSE #50
     Continue()
@@ -300,7 +251,6 @@ THEN
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
     IncrementGlobal("ShadowDoor","LOCALS",-1)
     Spell(Myself,WIZARD_SHADOW_DOOR)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
   RESPONSE #50
     Continue()
 END
@@ -333,7 +283,6 @@ THEN
     IncrementGlobal("Turning","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_SPELL_TURNING)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -363,9 +312,55 @@ THEN
     IncrementGlobal("ProMagWeap","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
+
+/////////////////////////////////////////////////////////////////////
+// Meteors
+/////////////////////////////////////////////////////////////////////
+/*
+IF
+  !HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  Global("MO_HasMelfMeteors","LOCALS",1)
+  CanEquipRanged()
+THEN
+  RESPONSE #100
+    SetGlobal("MO_HasMelfMeteors","LOCALS",0)
+    EquipRanged()
+    ActionOverride(Myself,ClearActions(Myself))
+END
+
+IF
+  !HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  Global("MO_HasMelfMeteors","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_HasMelfMeteors","LOCALS",0)
+    EquipMostDamagingMelee()
+    ActionOverride(Myself,ClearActions(Myself))
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  !HasItem("melfmet",Myself)  // ~Melf's Minute Meteor~
+  !HasItem("blakblad",Myself)  // ~Black Blade of Disaster~
+  GlobalGT("MinuteMeteor","LOCALS",0)
+  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobal("MO_HasMelfMeteors","LOCALS",1)
+    IncrementGlobal("MinuteMeteor","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,WIZARD_MELF_METEOR)
+    SetInterrupt(TRUE)
+END
+*/
 
 /////////////////////////////////////////////////////////////////////
 // Spell: Time Stop
@@ -390,12 +385,11 @@ THEN
     IncrementGlobal("Time","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_TIME_STOP)  // SPWI909.SPL (Time Stop)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
-// Spell: Improved Alacrity
+// Spell: Improved Alacrity OR Planetar
 /////////////////////////////////////////////////////////////////////
 IF
   OR(2)
@@ -403,286 +397,23 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   See([GOODCUTOFF])
   Allegiance(Myself,ENEMY)
-  GlobalGT("ImprovedAlacrity","LOCALS",0)
+  GlobalGT("OtherNine","LOCALS",0)
   CheckStatLT(Myself,20,SPELLFAILUREMAGE)
   !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #100
+  RESPONSE #50
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("ImprovedAlacrity","LOCALS",-1)
+    IncrementGlobal("OtherNine","LOCALS",-1)
+    SetInterrupt(FALSE)
+    SpellNoDec(Myself,WIZARD_SUMMON_PLANATAR_GOOD)
+    SetInterrupt(TRUE)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("OtherNine","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_IMPROVED_ALACRITY)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
-// Spell: Dark Planetar
-/////////////////////////////////////////////////////////////////////
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  See([GOODCUTOFF])
-  Allegiance(Myself,ENEMY)
-  GlobalGT("DarkPlanetar","LOCALS",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("DarkPlanetar","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_SUMMON_PLANATAR_EVIL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
-// True Sight
-/////////////////////////////////////////////////////////////////////
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  OR(6)
-    SpellCast([GOODCUTOFF],WIZARD_PROJECT_IMAGE)  // SPWI703.SPL (Project Image)
-    SpellCast([GOODCUTOFF],WIZARD_SIMULACRUM)  // SPWI804.SPL (Simulacrum)
-    SpellCast([GOODCUTOFF],WIZARD_MISLEAD)  // SPWI607.SPL (Mislead)
-    SpellCast([GOODCUTOFF],WIZARD_SHADOW_DOOR)  // SPWI505.SPL (Shadow Door)
-    SpellCast([GOODCUTOFF],WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Improved Invisibility)
-    SpellCast([GOODCUTOFF],WIZARD_INVISIBILITY)  // SPWI206.SPL (Invisibility)
-  !CheckSpellState([GOODCUTOFF],SI_DIVINATION)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  Detect([GOODCUTOFF])
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckSpellState([GOODCUTOFF],SI_DIVINATION)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckStat(LastSeenBy(Myself),3,WIZARD_SPELL_IMMUNITY)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  See(SecondNearestEnemyOfType([GOODCUTOFF]))
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckStat(LastSeenBy(Myself),3,WIZARD_SPELL_IMMUNITY)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckStat(LastSeenBy(Myself),3,WIZARD_SPELL_IMMUNITY)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  See(FourthNearestEnemyOfType([GOODCUTOFF]))
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckStat(LastSeenBy(Myself),3,WIZARD_SPELL_IMMUNITY)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  See(FifthNearestEnemyOfType([GOODCUTOFF]))
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckStat(LastSeenBy(Myself),3,WIZARD_SPELL_IMMUNITY)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  GlobalGT("TrueSight","LOCALS",0)
-  See(SixthNearestEnemyOfType([GOODCUTOFF]))
-  OR(4)
-    StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
-    StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
-    CheckStatGT(LastSeenBy(Myself),0,SANCTUARY)
-    Gender(LastSeenBy(Myself),ILLUSIONARY)
-  !CheckStat(LastSeenBy(Myself),3,WIZARD_SPELL_IMMUNITY)
-  Global("MO_EnemyTrueSight","GLOBAL",0)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !StateCheck(Myself,STATE_SILENCED)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-THEN
-  RESPONSE #100
-    SetGlobal("MO_TrueSightActive","LOCALS",1)
-    SetGlobal("MO_EnemyTrueSight","GLOBAL",1)
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    SetGlobalTimer("MO_EnemyTrueSightTimer","GLOBAL",60)
-    IncrementGlobal("TrueSight","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -717,7 +448,6 @@ THEN
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -749,7 +479,6 @@ THEN
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -781,7 +510,6 @@ THEN
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -813,7 +541,6 @@ THEN
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -845,7 +572,6 @@ THEN
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -877,7 +603,6 @@ THEN
     IncrementGlobal("Remove","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -915,7 +640,6 @@ THEN
     IncrementGlobal("Breach","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)  // SPWI513.SPL (Breach)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -950,7 +674,6 @@ THEN
     IncrementGlobal("Breach","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)  // SPWI513.SPL (Breach)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -985,7 +708,6 @@ THEN
     IncrementGlobal("Breach","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)  // SPWI513.SPL (Breach)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1020,7 +742,6 @@ THEN
     IncrementGlobal("Breach","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)  // SPWI513.SPL (Breach)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1055,7 +776,6 @@ THEN
     IncrementGlobal("Breach","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)  // SPWI513.SPL (Breach)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1090,7 +810,6 @@ THEN
     IncrementGlobal("Breach","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)  // SPWI513.SPL (Breach)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1132,7 +851,6 @@ THEN
     IncrementGlobal("Thrust","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1171,7 +889,6 @@ THEN
     IncrementGlobal("Thrust","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1210,7 +927,6 @@ THEN
     IncrementGlobal("Thrust","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1249,7 +965,6 @@ THEN
     IncrementGlobal("Thrust","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1288,7 +1003,6 @@ THEN
     IncrementGlobal("Thrust","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1327,7 +1041,6 @@ THEN
     IncrementGlobal("Thrust","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1368,7 +1081,6 @@ THEN
     IncrementGlobal("RubyRay","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_RUBY_RAY_OF_REVERSAL)  // SPWI704.SPL (Ruby Ray of Reversal)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1406,7 +1118,6 @@ THEN
     IncrementGlobal("RubyRay","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_RUBY_RAY_OF_REVERSAL)  // SPWI704.SPL (Ruby Ray of Reversal)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1444,7 +1155,6 @@ THEN
     IncrementGlobal("RubyRay","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_RUBY_RAY_OF_REVERSAL)  // SPWI704.SPL (Ruby Ray of Reversal)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1482,7 +1192,6 @@ THEN
     IncrementGlobal("RubyRay","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_RUBY_RAY_OF_REVERSAL)  // SPWI704.SPL (Ruby Ray of Reversal)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1520,7 +1229,6 @@ THEN
     IncrementGlobal("RubyRay","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_RUBY_RAY_OF_REVERSAL)  // SPWI704.SPL (Ruby Ray of Reversal)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1558,196 +1266,6 @@ THEN
     IncrementGlobal("RubyRay","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_RUBY_RAY_OF_REVERSAL)  // SPWI704.SPL (Ruby Ray of Reversal)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-/////////////////////////////////////////////////////////////////////
-// Spell: Spellstrike
-/////////////////////////////////////////////////////////////////////
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  NumCreatureLT([GOODCUTOFF],4)
-  See(NearestEnemyOfType([GOODCUTOFF]))
-  GlobalGT("Spellstrike","LOCALS",0)
-  OR(4)
-    CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
-    CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
-    CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
-    CheckSpellState(LastSeenBy(Myself),MANTLE)
-  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-  !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
-  CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Spellstrike","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_STRIKE)  // SPWI903.SPL (Spellstrike)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  NumCreatureLT([GOODCUTOFF],4)
-  See(SecondNearestEnemyOfType([GOODCUTOFF]))
-  GlobalGT("Spellstrike","LOCALS",0)
-  OR(4)
-    CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
-    CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
-    CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
-    CheckSpellState(LastSeenBy(Myself),MANTLE)
-  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-  !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
-  CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Spellstrike","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_STRIKE)  // SPWI903.SPL (Spellstrike)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  NumCreatureLT([GOODCUTOFF],4)
-  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
-  GlobalGT("Spellstrike","LOCALS",0)
-  OR(4)
-    CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
-    CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
-    CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
-    CheckSpellState(LastSeenBy(Myself),MANTLE)
-  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-  !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
-  CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Spellstrike","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_STRIKE)  // SPWI903.SPL (Spellstrike)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  NumCreatureLT([GOODCUTOFF],4)
-  See(FourthNearestEnemyOfType([GOODCUTOFF]))
-  GlobalGT("Spellstrike","LOCALS",0)
-  OR(4)
-    CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
-    CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
-    CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
-    CheckSpellState(LastSeenBy(Myself),MANTLE)
-  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-  !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
-  CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Spellstrike","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_STRIKE)  // SPWI903.SPL (Spellstrike)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  NumCreatureLT([GOODCUTOFF],4)
-  See(FifthNearestEnemyOfType([GOODCUTOFF]))
-  GlobalGT("Spellstrike","LOCALS",0)
-  OR(4)
-    CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
-    CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
-    CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
-    CheckSpellState(LastSeenBy(Myself),MANTLE)
-  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-  !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
-  CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Spellstrike","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_STRIKE)  // SPWI903.SPL (Spellstrike)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
-    SetInterrupt(TRUE)
-END
-
-IF
-  OR(2)
-    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
-    CheckStatGT(Myself,0,AURACLEANSING)
-  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
-  NumCreatureLT([GOODCUTOFF],4)
-  See(SixthNearestEnemyOfType([GOODCUTOFF]))
-  GlobalGT("Spellstrike","LOCALS",0)
-  OR(4)
-    CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
-    CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
-    CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
-    CheckSpellState(LastSeenBy(Myself),MANTLE)
-  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
-  !CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
-  CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
-  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
-  CheckStatLT(Myself,20,SPELLFAILUREMAGE)
-  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
-  !StateCheck(Myself,STATE_POISONED)
-  !StateCheck(Myself,STATE_SILENCED)
-THEN
-  RESPONSE #100
-    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
-    IncrementGlobal("Spellstrike","LOCALS",-1)
-    SetInterrupt(FALSE)
-    SpellNoDec(LastSeenBy(Myself),WIZARD_SPELL_STRIKE)  // SPWI903.SPL (Spellstrike)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1825,7 +1343,6 @@ THEN
     IncrementGlobal("DeathSpell","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1851,7 +1368,6 @@ THEN
     IncrementGlobal("DeathSpell","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1877,7 +1393,6 @@ THEN
     IncrementGlobal("DeathSpell","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1903,7 +1418,6 @@ THEN
     IncrementGlobal("DeathSpell","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1929,7 +1443,6 @@ THEN
     IncrementGlobal("DeathSpell","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1955,7 +1468,6 @@ THEN
     IncrementGlobal("DeathSpell","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -1974,10 +1486,10 @@ IF
   !StateCheck(Myself,STATE_POISONED)
   !StateCheck(Myself,STATE_SILENCED)
 THEN
-  RESPONSE #60
+  RESPONSE #50
     SetGlobal("MO_CastAbiDalzim","LOCALS",1)
     Continue()
-  RESPONSE #40
+  RESPONSE #50
     SetGlobal("MO_CastAbiDalzim","LOCALS",0)
     Continue()
 END
@@ -1988,6 +1500,7 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastAbiDalzim","LOCALS",1)
+  !GlobalTimerNotExpired("MO_WiltingTimer","LOCALS")
   See(NearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2009,10 +1522,10 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_WiltingTimer","LOCALS",18)
     IncrementGlobal("Wilt","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2022,6 +1535,7 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastAbiDalzim","LOCALS",1)
+  !GlobalTimerNotExpired("MO_WiltingTimer","LOCALS")
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2043,10 +1557,10 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_WiltingTimer","LOCALS",18)
     IncrementGlobal("Wilt","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2056,6 +1570,7 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastAbiDalzim","LOCALS",1)
+  !GlobalTimerNotExpired("MO_WiltingTimer","LOCALS")
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2077,10 +1592,10 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_WiltingTimer","LOCALS",18)
     IncrementGlobal("Wilt","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2090,6 +1605,7 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastAbiDalzim","LOCALS",1)
+  !GlobalTimerNotExpired("MO_WiltingTimer","LOCALS")
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2111,10 +1627,10 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_WiltingTimer","LOCALS",18)
     IncrementGlobal("Wilt","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2124,6 +1640,7 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastAbiDalzim","LOCALS",1)
+  !GlobalTimerNotExpired("MO_WiltingTimer","LOCALS")
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2145,10 +1662,10 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_WiltingTimer","LOCALS",18)
     IncrementGlobal("Wilt","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2158,6 +1675,7 @@ IF
     CheckStatGT(Myself,0,AURACLEANSING)
   Global("MO_Offensive","LOCALS",1)
   Global("MO_CastAbiDalzim","LOCALS",1)
+  !GlobalTimerNotExpired("MO_WiltingTimer","LOCALS")
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
   !Allegiance(LastSeenBy(Myself),ENEMY)
@@ -2179,10 +1697,10 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_WiltingTimer","LOCALS",18)
     IncrementGlobal("Wilt","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2240,7 +1758,6 @@ THEN
     IncrementGlobal("FingerDeath","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2275,7 +1792,6 @@ THEN
     IncrementGlobal("FingerDeath","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2310,7 +1826,6 @@ THEN
     IncrementGlobal("FingerDeath","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2345,7 +1860,6 @@ THEN
     IncrementGlobal("FingerDeath","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2380,7 +1894,6 @@ THEN
     IncrementGlobal("FingerDeath","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2415,7 +1928,6 @@ THEN
     IncrementGlobal("FingerDeath","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2470,7 +1982,6 @@ THEN
     IncrementGlobal("Hakeashar","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2502,7 +2013,6 @@ THEN
     IncrementGlobal("Hakeashar","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2534,7 +2044,6 @@ THEN
     IncrementGlobal("Hakeashar","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2566,7 +2075,6 @@ THEN
     IncrementGlobal("Hakeashar","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2598,7 +2106,6 @@ THEN
     IncrementGlobal("Hakeashar","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2630,7 +2137,6 @@ THEN
     IncrementGlobal("Hakeashar","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SUMMON_HAKEASHAR)  // SPWI719.SPL (Summon Hakeashar)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2655,10 +2161,9 @@ THEN
     IncrementGlobal("Efreeti","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_SUMMON_EFREET)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
   RESPONSE #50
-  	Continue()
+    Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -2717,7 +2222,6 @@ THEN
     IncrementGlobal("MelfAcid","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2754,7 +2258,6 @@ THEN
     IncrementGlobal("MelfAcid","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2791,7 +2294,6 @@ THEN
     IncrementGlobal("MelfAcid","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2828,7 +2330,6 @@ THEN
     IncrementGlobal("MelfAcid","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2865,7 +2366,6 @@ THEN
     IncrementGlobal("MelfAcid","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2902,7 +2402,6 @@ THEN
     IncrementGlobal("MelfAcid","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2960,7 +2459,6 @@ THEN
     IncrementGlobal("Missile","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -2995,7 +2493,6 @@ THEN
     IncrementGlobal("Missile","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3030,7 +2527,6 @@ THEN
     IncrementGlobal("Missile","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3065,7 +2561,6 @@ THEN
     IncrementGlobal("Missile","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3100,7 +2595,6 @@ THEN
     IncrementGlobal("Missile","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3135,7 +2629,6 @@ THEN
     IncrementGlobal("Missile","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3163,7 +2656,6 @@ THEN
     IncrementGlobal("Teleport","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(Myself,WIZARD_TELEPORT_FIELD)  // SPWI421.SPL (Teleport Field)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
   RESPONSE #50
     Continue()
@@ -3229,7 +2721,6 @@ THEN
     IncrementGlobal("Maze","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3270,7 +2761,6 @@ THEN
     IncrementGlobal("Maze","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3311,7 +2801,6 @@ THEN
     IncrementGlobal("Maze","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3352,7 +2841,6 @@ THEN
     IncrementGlobal("Maze","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3393,7 +2881,6 @@ THEN
     IncrementGlobal("Maze","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3434,7 +2921,6 @@ THEN
     IncrementGlobal("Maze","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_MAZE)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3490,7 +2976,6 @@ THEN
     IncrementGlobal("Malison","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3523,7 +3008,6 @@ THEN
     IncrementGlobal("Malison","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3556,7 +3040,6 @@ THEN
     IncrementGlobal("Malison","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3589,7 +3072,6 @@ THEN
     IncrementGlobal("Malison","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3622,7 +3104,6 @@ THEN
     IncrementGlobal("Malison","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3655,7 +3136,6 @@ THEN
     IncrementGlobal("Malison","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_GREATER_MALISON)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3710,7 +3190,6 @@ THEN
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3742,7 +3221,6 @@ THEN
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3774,7 +3252,6 @@ THEN
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3806,7 +3283,6 @@ THEN
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3838,7 +3314,6 @@ THEN
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3870,7 +3345,6 @@ THEN
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3931,7 +3405,6 @@ THEN
     IncrementGlobal("PWBlind","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_BLIND)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -3968,7 +3441,6 @@ THEN
     IncrementGlobal("PWBlind","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_BLIND)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4005,7 +3477,6 @@ THEN
     IncrementGlobal("PWBlind","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_BLIND)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4042,7 +3513,6 @@ THEN
     IncrementGlobal("PWBlind","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_BLIND)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4079,7 +3549,6 @@ THEN
     IncrementGlobal("PWBlind","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_BLIND)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4116,7 +3585,6 @@ THEN
     IncrementGlobal("PWBlind","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_BLIND)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4183,7 +3651,6 @@ THEN
     IncrementGlobal("Chaos","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4227,7 +3694,6 @@ THEN
     IncrementGlobal("Chaos","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4271,7 +3737,6 @@ THEN
     IncrementGlobal("Chaos","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4315,7 +3780,6 @@ THEN
     IncrementGlobal("Chaos","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4359,7 +3823,6 @@ THEN
     IncrementGlobal("Chaos","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
@@ -4403,22 +3866,205 @@ THEN
     IncrementGlobal("Chaos","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_CHAOS)
-    ApplySpell(Myself,WIZARD_INVISIBILITY)
     SetInterrupt(TRUE)
 END
 
 /////////////////////////////////////////////////////////////////////
-// Better part of valor 
+// Attack
 /////////////////////////////////////////////////////////////////////
+/*
 IF
-  Global("ShangalarMove","AR1008",2)
-  Allegiance(Myself,ENEMY)
-  !GlobalTimerExpired("Cast","LOCALS")
-  Range(NearestEnemyOf(Myself),4)
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    RunAwayFrom(NearestEnemyOf(Myself),3)
+    AttackOneRound(NearestEnemyOf(Myself))
 END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTMISSILE)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  HasItem("melfmet",Myself)  // Melf's Minute Meteor
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+*/
 
 /////////////////////////////////////////////////////////////////////
 // Wait for death. :-) Don't let some other BG script take over. 
