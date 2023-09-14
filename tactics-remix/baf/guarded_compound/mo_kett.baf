@@ -267,6 +267,7 @@ END
 // Drink!
 /////////////////////////////////////////////////////////////////////
 IF
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
   Allegiance(Myself,ENEMY)
   !StateCheck(Myself,STATE_INVISIBLE)
   !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
