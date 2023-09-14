@@ -1,0 +1,104 @@
+// Tactics Remix, Morpheus562's Improved Drizzt BG2EE
+
+///////////////////////////////////////////////////////////////////////////
+// Import Files                                                          //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~catjag.ITM~ ~override/mocatj.itm~
+  LPF ALTER_ITEM_HEADER INT_VAR header_type = 1 dicesize = 6 dicenumber = 2 thac0_bonus = 3 damage_bonus = 3 damage_type = 3 END
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 86 target = 1 parameter1 = 20 parameter2 = 0 timing = 2 resist_dispel = 2 probability1 = 100 END
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 87 target = 1 parameter1 = 20 parameter2 = 0 timing = 2 resist_dispel = 2 probability1 = 100 END
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 88 target = 1 parameter1 = 20 parameter2 = 0 timing = 2 resist_dispel = 2 probability1 = 100 END
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 89 target = 1 parameter1 = 20 parameter2 = 0 timing = 2 resist_dispel = 2 probability1 = 100 END
+
+///////////////////////////////////////////////////////////////////////////
+// Update Drizzt (Ranger/Barbarian)                                      //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~c6drizz.CRE~ ~override~
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
+  WRITE_ASCII 0x268 ~mo_dri1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~SW1H15~   #0 #0 #0 ~UNSTEALABLE~             ~SHIELD~  EQUIP // Icingdeath +3
+  REPLACE_CRE_ITEM ~SW1H16~   #0 #0 #0 ~UNSTEALABLE~             ~WEAPON1~ EQUIP // Twinkle +3
+  REPLACE_CRE_ITEM ~BOOT01~   #0 #0 #0 ~UNSTEALABLE~             ~BOOTS~   EQUIP // Paws of the Cheetah
+  REPLACE_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~  EQUIP // Crit Immune Helm
+  REPLACE_CRE_ITEM ~BRAC16~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Bracers of Blinding Strike
+  REPLACE_CRE_ITEM ~RING27~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~   EQUIP // Ring of Fire Control
+  REPLACE_CRE_ITEM ~BDBELT02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of the Skillful Blade
+  REPLACE_CRE_ITEM ~CLCK32~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~CLOAK~   EQUIP // Montolio's Cloak
+  SET_BG2_PROFICIENCY ~PROFICIENCY2WEAPON~ 3
+  
+  PATCH_IF !scs_ai BEGIN
+    SET_BG2_PROFICIENCY ~PROFICIENCYSCIMITARWAKISASHININJATO~ 2
+  END
+
+///////////////////////////////////////////////////////////////////////////
+// Update Bruenor (Fighter)                                              //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~c6bruen.CRE~ ~override~
+  WRITE_ASCII 0x250 ~~        #8 // Clear Class Script
+  WRITE_ASCII 0x258 ~~        #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
+  WRITE_ASCII 0x268 ~mo_bru1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~BRAC06~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Hands of Takkok
+  REPLACE_CRE_ITEM ~BELT10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~    EQUIP // Belt of Intertial Barrier
+  REPLACE_CRE_ITEM ~HELM04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~HELMET~  EQUIP // Gift of Peace
+  REPLACE_CRE_ITEM ~SHLD25~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~SHIELD~  EQUIP // Shield of Harmony
+  REPLACE_CRE_ITEM ~AX1H12~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Stonefire +3
+  REPLACE_CRE_ITEM ~BOOT03~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BOOTS~   EQUIP // Frosts Embrace
+
+  PATCH_IF !scs_ai BEGIN
+    SET_BG2_PROFICIENCY ~PROFICIENCYAXE~ 5
+    SET_BG2_PROFICIENCY ~PROFICIENCYSWORDANDSHIELD~ 2
+  END
+
+///////////////////////////////////////////////////////////////////////////
+// Update Catti-Brie (Fighter)                                           //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~c6catti.CRE~ ~override~
+  WRITE_ASCII 0x260 ~~        #8 // Clear General Script
+  WRITE_ASCII 0x268 ~mo_cat1~ #8 // Add Default Script
+  REPLACE_CRE_ITEM ~BRAC04~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~ EQUIP // Dale's Protectors
+  REPLACE_CRE_ITEM ~OHRBELT2~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~   EQUIP // Belt of Minor Invulnerability
+  REPLACE_CRE_ITEM ~BDAMUL02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~ EQUIP // Archer's Eyes
+
+  PATCH_IF !scs_ai BEGIN
+    SET_BG2_PROFICIENCY ~PROFICIENCYLONGBOW~ 5
+  END
+
+///////////////////////////////////////////////////////////////////////////
+// Update Wulfgar (Barbarian)                                            //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~c6wulf.CRE~ ~override~
+  WRITE_ASCII 0x268 ~mo_wul1~  #8 // Add Default Script
+  REPLACE_CRE_ITEM ~LEAT20~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~  EQUIP // Aeger's Hide +3
+  REPLACE_CRE_ITEM ~BRAC10~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~ EQUIP // Gauntlet of Weapon Expertise
+  REPLACE_CRE_ITEM ~BELT02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BELT~   EQUIP // Golden Girdle of Urnst
+  REPLACE_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~  EQUIP // The Guard's Ring +2
+  REPLACE_CRE_ITEM ~BOOT04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~BOOTS~  EQUIP // Senses of the Cat
+
+///////////////////////////////////////////////////////////////////////////
+// Update Regis (Thief)                                                  //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~c6regis.CRE~ ~override~
+  WRITE_ASCII 0x268 ~mo_reg1~  #8 // Add Default Script
+  REPLACE_CRE_ITEM ~LEAT08~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~  EQUIP // Shadow Armor +3
+
+///////////////////////////////////////////////////////////////////////////
+// Update Guenhwyvar                                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~c6guen.CRE~ ~override~
+  WRITE_ASCII 0x248 ~drizzsht~ #8 // Override Script
+  WRITE_ASCII 0x268 ~mo_gue1~  #8 // Add Default Script
+  REPLACE_CRE_ITEM ~mocatj~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Claws
+  REPLACE_CRE_ITEM ~AMUL22~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~  EQUIP // Periapt of Proof Against Poison
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+COPY ~tactics-remix/baf/drizzt/mo_dri1.baf~ ~override/mo_dri1.bcs~
+     ~tactics-remix/baf/drizzt/mo_bru1.baf~ ~override/mo_bru1.bcs~
+     ~tactics-remix/baf/drizzt/mo_cat1.baf~ ~override/mo_cat1.bcs~
+     ~tactics-remix/baf/drizzt/mo_gue1.baf~ ~override/mo_gue1.bcs~
+     ~tactics-remix/baf/drizzt/mo_wul1.baf~ ~override/mo_wul1.bcs~
+     ~tactics-remix/baf/drizzt/mo_reg1.baf~ ~override/mo_reg1.bcs~
+  COMPILE_BAF_TO_BCS
+

@@ -300,6 +300,24 @@ INCLUDE ~tactics-remix/components/druid_grove.tpa~
 */
 
 ///////////////////////////////////////////////////////////////////////////
+// Morpheus562's Improved Drizzt (BGEE)                                  //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @29 DESIGNATED 29 GROUP @3011 LABEL TacticsRemix-DrizztBGEE
+
+REQUIRE_PREDICATE GAME_IS ~bgee eet~ @3002
+
+INCLUDE ~tactics-remix/components/drizzt_bgee.tpa~
+
+///////////////////////////////////////////////////////////////////////////
+// Morpheus562's Improved Drizzt (BGEE)                                  //
+///////////////////////////////////////////////////////////////////////////
+BEGIN @39 DESIGNATED 39 GROUP @3011 LABEL TacticsRemix-DrizztBG2EE
+
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3002
+
+INCLUDE ~tactics-remix/components/drizzt_bg2ee.tpa~
+
+///////////////////////////////////////////////////////////////////////////
 // Tougher Fire Giants                                                   //
 ///////////////////////////////////////////////////////////////////////////
 BEGIN @23 DESIGNATED 23 GROUP @3011 LABEL TacticsRemix-FireGiants
@@ -325,15 +343,6 @@ BEGIN @33 DESIGNATED 33 GROUP @3011 LABEL TacticsRemix-Yuanti
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/yuanti.tpa~
-
-///////////////////////////////////////////////////////////////////////////
-// Morpheus562's Improved Drizzt (BGEE)                                  //
-///////////////////////////////////////////////////////////////////////////
-BEGIN @29 DESIGNATED 29 GROUP @3011 LABEL TacticsRemix-DrizztBGEE
-
-REQUIRE_PREDICATE GAME_IS ~bgee eet~ @3002
-
-INCLUDE ~tactics-remix/components/drizzt_bgee.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
 // Morpheus562's Improved General Enemies for IWDEE                      //
@@ -384,7 +393,7 @@ BEGIN @26 DESIGNATED 26 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoint
 REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
 
 OUTER_SET dmg_multiplier = 2 // x2 multiplier
-OUTER_SET dmg_bonus = 20     // Damage bonus +0
+OUTER_SET dmg_bonus = 20     // Damage bonus +20
 INCLUDE ~tactics-remix/components/hit_points.tpa~
 
 ////////////////////////////////////////////////////
@@ -392,7 +401,7 @@ INCLUDE ~tactics-remix/components/hit_points.tpa~
 BEGIN @27 DESIGNATED 27 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints3 
 REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
 
-OUTER_SET dmg_multiplier = 3 // x2 multiplier
+OUTER_SET dmg_multiplier = 3 // x3 multiplier
 OUTER_SET dmg_bonus = 0      // Damage bonus +0
 INCLUDE ~tactics-remix/components/hit_points.tpa~
 
@@ -401,8 +410,8 @@ INCLUDE ~tactics-remix/components/hit_points.tpa~
 BEGIN @28 DESIGNATED 28 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints4 
 REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
 
-OUTER_SET dmg_multiplier = 3 // x2 multiplier
-OUTER_SET dmg_bonus = 30     // Damage bonus +0
+OUTER_SET dmg_multiplier = 3 // x3 multiplier
+OUTER_SET dmg_bonus = 30     // Damage bonus +30
 INCLUDE ~tactics-remix/components/hit_points.tpa~
 
 ////////////////////////////////////////////////////
