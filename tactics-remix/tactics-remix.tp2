@@ -69,7 +69,7 @@ INCLUDE ~tactics-remix/components/ritual.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // "Red Badge" Poison-Based Encounter                                    //
 ///////////////////////////////////////////////////////////////////////////
-BEGIN @3 DESIGNATED 3 LABEL TacticsRemix-RedBadge
+BEGIN @3 DESIGNATED 3 GROUP @3010 LABEL TacticsRemix-RedBadge
 
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
