@@ -10,6 +10,7 @@ September xx, 2023
 - Added Morpheus562's Improved Planar Prison Bounty Hunters component.
 - Added Morpheus562's Tougher Githyanki component.
 - Added Morpheus562's Tougher Yuan-ti component.
+- Added Morpheus562's Improved Drizzt (BG2EE) component.
 - Kuroisan rewards tied to the difficulty slider.
 
 ## Version 0.5.1-alpha

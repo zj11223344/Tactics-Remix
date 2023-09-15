@@ -309,7 +309,7 @@ REQUIRE_PREDICATE GAME_IS ~bgee eet~ @3002
 INCLUDE ~tactics-remix/components/drizzt_bgee.tpa~
 
 ///////////////////////////////////////////////////////////////////////////
-// Morpheus562's Improved Drizzt (BGEE)                                  //
+// Morpheus562's Improved Drizzt (BG2EE)                                 //
 ///////////////////////////////////////////////////////////////////////////
 BEGIN @39 DESIGNATED 39 GROUP @3011 LABEL TacticsRemix-DrizztBG2EE
 
@@ -380,6 +380,15 @@ INCLUDE ~tactics-remix/components/iwdee_shadow.tpa~
 ///////////////////////////////////////////////////////////////////////////
 // Improve All Enemies Hit Points                                        //
 ///////////////////////////////////////////////////////////////////////////
+BEGIN @40 DESIGNATED 40 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints6 
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
+
+OUTER_SET dmg_multiplier = 1.5 // x1.5 multiplier
+OUTER_SET dmg_bonus = 0      // Damage bonus +0
+INCLUDE ~tactics-remix/components/hit_points.tpa~
+
+////////////////////////////////////////////////////
+
 BEGIN @25 DESIGNATED 25 SUBCOMPONENT @24 GROUP @3012 LABEL TacticsRemix-HitPoints1 
 REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @3000
 
