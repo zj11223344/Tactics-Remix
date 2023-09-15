@@ -424,6 +424,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
   NumCreatureLT([GOODCUTOFF],4)
   See(NearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
@@ -455,6 +456,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
   NumCreatureLT([GOODCUTOFF],4)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
@@ -486,6 +488,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
   NumCreatureLT([GOODCUTOFF],4)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
@@ -517,6 +520,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
   NumCreatureLT([GOODCUTOFF],4)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
@@ -548,6 +552,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
   NumCreatureLT([GOODCUTOFF],4)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
@@ -579,6 +584,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_TimeStopTimer","LOCALS")
   NumCreatureLT([GOODCUTOFF],4)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
   Allegiance(Myself,ENEMY)
@@ -3166,6 +3172,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SlowTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSlow","LOCALS",1)
   See(NearestEnemyOfType([GOODCUTOFF]))
@@ -3187,6 +3194,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SlowTimer","LOCALS",18)
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
@@ -3197,6 +3205,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SlowTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSlow","LOCALS",1)
   See(SecondNearestEnemyOfType([GOODCUTOFF]))
@@ -3218,6 +3227,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SlowTimer","LOCALS",18)
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
@@ -3228,6 +3238,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SlowTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSlow","LOCALS",1)
   See(ThirdNearestEnemyOfType([GOODCUTOFF]))
@@ -3249,6 +3260,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SlowTimer","LOCALS",18)
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
@@ -3259,6 +3271,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SlowTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSlow","LOCALS",1)
   See(FourthNearestEnemyOfType([GOODCUTOFF]))
@@ -3280,6 +3293,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SlowTimer","LOCALS",18)
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
@@ -3290,6 +3304,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SlowTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSlow","LOCALS",1)
   See(FifthNearestEnemyOfType([GOODCUTOFF]))
@@ -3311,6 +3326,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SlowTimer","LOCALS",18)
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
@@ -3321,6 +3337,7 @@ IF
   OR(2)
     !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
     CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SlowTimer","LOCALS")
   Global("MO_Offensive","LOCALS",0)
   Global("MO_CastSlow","LOCALS",1)
   See(SixthNearestEnemyOfType([GOODCUTOFF]))
@@ -3342,6 +3359,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetGlobalTimer("MO_SlowTimer","LOCALS",18)
     IncrementGlobal("Slow","LOCALS",-1)
     SetInterrupt(FALSE)
     SpellNoDec(LastSeenBy(Myself),WIZARD_SLOW)
