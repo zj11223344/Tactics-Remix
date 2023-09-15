@@ -130,7 +130,7 @@ COPY_EXISTING ~BALDUR.BCS~ ~override~
       strict = 1
       verbose = 0
       STR_VAR
-      pattern = ~~~~~!Exists("c6harp")  // Malchor Harpell~~~~~
+      pattern = ~~~~~!Exists("c6harp")~~~~~
       string = ~~~~~!Exists("c6harp")  // Malchor Harpell
       !Dead("c6harp1")~~~~~ //"
     END
