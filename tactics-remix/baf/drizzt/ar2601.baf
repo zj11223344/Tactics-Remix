@@ -1,0 +1,16 @@
+IF
+  Global("DrizztEncounter","GLOBAL",1)
+  DifficultyGT(HARD)
+THEN
+  RESPONSE #100
+    SetGlobal("DrizztEncounter","GLOBAL",2)
+    CreateCreature("c6harp1",[837.273],SW)  // Malchor Harpell
+END
+
+IF
+  Global("DrizztEncounter","GLOBAL",1)
+  DifficultyLT(HARDEST)
+THEN
+  RESPONSE #100
+    SetGlobal("DrizztEncounter","GLOBAL",2)
+END

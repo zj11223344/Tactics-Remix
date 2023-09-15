@@ -94,14 +94,20 @@ COPY_EXISTING ~c6guen.CRE~ ~override~
   REPLACE_CRE_ITEM ~AMUL22~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~  EQUIP // Periapt of Proof Against Poison
 
 ///////////////////////////////////////////////////////////////////////////
-// Update Guenhwyvar                                                     //
+// Update Malchor Harpell                                                //
 ///////////////////////////////////////////////////////////////////////////
-COPY_EXISTING ~c6harp.CRE~ ~override~
+COPY_EXISTING ~c6harp.CRE~ ~override/c6harp1.CRE~
   WRITE_ASCII 0x248 ~drizzsht~ #8 // Override Script
   WRITE_ASCII 0x250 ~~         #8 // Clear Class Script
   WRITE_ASCII 0x260 ~~         #8 // Clear General Script
   WRITE_ASCII 0x268 ~mo_har1~  #8 // Add Default Script
   WRITE_ASCII 0x2cc ~~         #8 // Clear Dialogue
+  WRITE_ASCII 0x280 ~c6harp1~  #8 // Script Name
+  REPLACE_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~   EQUIP // The Guard's Ring +2
+  REPLACE_CRE_ITEM ~BRAC15~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~GLOVES~  EQUIP // Bracers of Defense AC 3
+  REPLACE_CRE_ITEM ~CLCK15~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~   EQUIP // Robe of the Good Archmagi
+  REPLACE_CRE_ITEM ~CLCK03~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~CLOAK~   EQUIP // Cloak of Displacement
+  REPLACE_CRE_ITEM ~STAF17~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Staff of Fire +2
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
@@ -115,6 +121,8 @@ COPY ~tactics-remix/baf/drizzt/mo_dri1.baf~ ~override/mo_dri1.bcs~
      ~tactics-remix/baf/drizzt/mo_har1.baf~ ~override/mo_har1.bcs~
   COMPILE_BAF_TO_BCS
 
+EXTEND_BOTTOM ~AR2601.bcs~ ~tactics-remix/baf/drizzt/ar2601.baf~
+
 COPY_EXISTING ~BALDUR.BCS~ ~override~
   DECOMPILE_AND_PATCH BEGIN
     LPF REPLACE_MULTILINE
@@ -124,10 +132,11 @@ COPY_EXISTING ~BALDUR.BCS~ ~override~
       STR_VAR
       pattern = ~~~~~!Exists("c6harp")  // Malchor Harpell~~~~~
       string = ~~~~~!Exists("c6harp")  // Malchor Harpell
-      False()~~~~~ //"
+      !Dead("c6harp1")~~~~~ //"
     END
   END
 
+/*
 COPY_EXISTING ~AR2601.BCS~ ~override~
   DECOMPILE_AND_PATCH BEGIN
     LPF REPLACE_MULTILINE
@@ -136,7 +145,8 @@ COPY_EXISTING ~AR2601.BCS~ ~override~
       verbose = 0
       STR_VAR
       pattern = ~~~~~CreateCreature("c6regis",[741.225],SW)  // Regis~~~~~
-      string = ~~~~~CreateCreature("c6harp",[732.296],SW)  // Malchor Harpell
+      string = ~~~~~CreateCreature("c6harp1",[732.296],SW)  // Malchor Harpell
       CreateCreature("c6regis",[741.225],SW)  // Regis~~~~~ //"
     END
   END
+  */
