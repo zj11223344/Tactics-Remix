@@ -15,6 +15,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("Spawn","LOCALS",30)
-    CreateCreatureObjectOffScreen("behold01",Myself,0,0,0)
+    //CreateCreatureObjectOffScreen("behold01",Myself,0,0,0)
+    CreateCreature("behold01",[2238.1106],NW)  // Beholder
     Continue()
 END

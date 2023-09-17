@@ -28,7 +28,8 @@ IF ~~ THEN BEGIN s1
   SAY @520 = @521 = @523
   IF ~~ THEN DO
           ~CreateVisualEffectObject("SPPLANAR",Player1)
-           ActionOverride(Player1,JumpToPoint([1900.2100])) 
+           ActionOverride(Player1,JumpToPoint([1900.2100]))
+           MoveViewPoint([1900.2100],INSTANT) 
            Enemy()~ EXIT
 END
 
@@ -45,6 +46,6 @@ END
 IF ~~ THEN BEGIN s1
   SAY @528 = @529
   IF ~~ THEN DO ~CreateVisualEffectObject("SPPLANAR",Myself)
-           CreateCreature("shadow01",[1900.2100],0)
+           CreateCreature("moshad01",[1900.2100],0)
            JumpToPoint([1900.2100])~ EXIT
 END

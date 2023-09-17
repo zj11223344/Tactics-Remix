@@ -1,60 +1,63 @@
 IF
-    True()
+  True()
 THEN
   RESPONSE #100
-      CutSceneId("ii4")
-      CreateVisualEffectObject("SPPLANAR",Myself)
-      SmallWait(10)
-      CreateCreature("shadow01",[700.700],0)
-      JumpToPoint([700.700]) // wrath
+    CutSceneId("ii4")  // Wraith of Wrath
+    CreateVisualEffectObject("SPPLANAR",Myself)
+    SmallWait(10)
+    CreateCreature("moshad01",[1373.785],S)  // Shadow
+    JumpToPoint([1373.785])
+    Enemy()
 END
 
 IF
-    True()
+  True()
 THEN
   RESPONSE #100
-      CutSceneId("ii3")
-      SmallWait(2)
-      CreateVisualEffectObject("SPPLANAR",Myself)
-      SmallWait(10)
-      CreateCreature("shadow01",[800.1700],0)
-      JumpToPoint([800.1700])  // greed
+    CutSceneId("ii3")  // Sword of Greed
+    SmallWait(2)
+    CreateVisualEffectObject("SPPLANAR",Myself)
+    SmallWait(10)
+    CreateCreature("moshad01",[1488.1109],S)  // Shadow
+    JumpToPoint([1488.1109])
+    Enemy()
 END
 
 IF
-    True()
+  True()
 THEN
   RESPONSE #100
-
-      CutSceneId("ii0")
-      CreateVisualEffectObject("SPPLANAR",Myself)
-      SmallWait(10)
-      CreateCreature("shadow01",[1900.2100],0)
-      JumpToPoint([1900.2100]) // selfish
+    CutSceneId("ii0")  // Jon Irenicus
+    CreateVisualEffectObject("SPPLANAR",Myself)
+    SmallWait(10)
+    CreateCreature("moshad01",[1933.1348],S)  // Shadow
+    JumpToPoint([1933.1348])
+    Enemy()
 END
 
 IF
-    True()
+  True()
 THEN
   RESPONSE #100
-      CutSceneId("ii1")
-
-      CreateVisualEffectObject("SPPLANAR",Myself)
-      SmallWait(10)
-      CreateCreature("shadow01",[3000.1700],0)
-      JumpToPoint([3000.1700]) // fear
+    CutSceneId("ii1")  // Orb of Fear
+    CreateVisualEffectObject("SPPLANAR",Myself)
+    SmallWait(10)
+    CreateCreature("moshad01",[2413.1167],S)  // Shadow
+    JumpToPoint([2413.1167])
+    Enemy()
 END
 
 IF
-    True()
+  True()
 THEN
   RESPONSE #100
-      CutSceneId("ii2")
-      CreateVisualEffectObject("SPPLANAR",Myself)
-      SmallWait(10)
-      CreateCreature("shadow01",[3300.900],0)
-//      JumpToPoint([3300.900]) // pride
-        JumpToPoint([2611.1054]) // pride
+    CutSceneId("ii2")  // Dragon of Pride
+    CreateVisualEffectObject("SPPLANAR",Myself)
+    SmallWait(10)
+    CreateCreature("moshad01",[2502.820],S)  // Shadow
+    JumpToPoint([2502.820])
+    Enemy()
     Wait(2)
     EndCutSceneMode()
 END
+

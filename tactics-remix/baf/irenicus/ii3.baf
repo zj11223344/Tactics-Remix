@@ -11,12 +11,12 @@ END
 
 IF
   !GlobalTimerNotExpired("Spawn","LOCALS")
-  !InMyArea("sword01")
+  !InMyArea("moswo01")
   Difficulty(HARDEST)
 THEN
   RESPONSE #100
     SetGlobalTimer("Spawn","LOCALS",25)
-    ReallyForceSpell(Myself,WIZARD_MORDENKAINENS_SWORD)
+    CreateCreature("moswo01",[1704.1093],NE)
     Continue()
 END
 

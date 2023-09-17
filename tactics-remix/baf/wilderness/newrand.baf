@@ -74,8 +74,8 @@ THEN
     CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
     CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
     CreateCreature("ORC05",[589.542],10)  // ~Orog~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
     CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
     CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
 END
@@ -98,7 +98,7 @@ THEN
     CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
     CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
     CreateCreature("ORC05",[589.542],10)  // ~Orog~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
 END
 
 IF
@@ -194,24 +194,24 @@ THEN
   RESPONSE #100
     SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
     SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
-    CreateCreature("SHADOW01",[488.558],10)  // ~Shadow~
-    CreateCreature("SHADOW01",[500.454],10)  // ~Shadow~
+    CreateCreature("moshad01",[488.558],10)  // ~Shadow~
+    CreateCreature("moshad01",[500.454],10)  // ~Shadow~
     CreateCreature("REFIGH01",[552.476],10)  // ~Slaver~
     CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
     CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
     CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
-    CreateCreature("SHADOW01",[589.542],10)  // ~Shadow~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[589.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
   RESPONSE #100
     SetGlobalTimer("REINFORCEMENTS","GLOBAL",300)
     SetGlobal("KR_SPAWNED_ONCE","GLOBAL",0)
     CreateCreature("MAGE14T",[488.558],10)  // MAGE14T
-    CreateCreature("SHADOW01",[500.454],10)  // ~Shadow~
+    CreateCreature("moshad01",[500.454],10)  // ~Shadow~
     CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
     CreateCreature("REFIGH01",[525.591],10)  // ~Slaver~
     CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
-    CreateCreature("SHADOW01",[589.542],10)  // ~Shadow~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[589.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
 END
 
 IF
@@ -494,27 +494,27 @@ THEN
     ActionOverride("LICH01",CreateItem("MISC07",1500,0,0))  // ~Gold Piece~
     CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
     CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
-    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
-    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+    CreateCreature("moshad01",[552.476],10)  // ~Shadow~
+    CreateCreature("moshad01",[552.476],10)  // ~Shadow~
   RESPONSE #100
     CreateCreature("LICH01",[488.558],10)  // ~Lich~
     ActionOverride("LICH01",CreateItem("MISC07",2500,0,0))  // ~Gold Piece~
     CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
     CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
-    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+    CreateCreature("moshad01",[552.476],10)  // ~Shadow~
   RESPONSE #100
     CreateCreature("LICH01",[488.558],10)  // ~Lich~
     ActionOverride("LICH01",CreateItem("MISC07",3500,0,0))  // ~Gold Piece~
     CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
     CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
-    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+    CreateCreature("moshad01",[552.476],10)  // ~Shadow~
   RESPONSE #100
     CreateCreature("LICH01",[488.558],10)  // ~Lich~
     ActionOverride("LICH01",CreateItem("MISC07",1900,0,0))  // ~Gold Piece~
     CreateCreature("VAMPIF01",[500.454],10)  // ~Vampire~
     CreateCreature("VAMANC01",[552.476],10)  // ~Vampire~
-    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
-    CreateCreature("SHADOW01",[552.476],10)  // ~Shadow~
+    CreateCreature("moshad01",[552.476],10)  // ~Shadow~
+    CreateCreature("moshad01",[552.476],10)  // ~Shadow~
   RESPONSE #100
     CreateCreature("LICH01",[488.558],10)  // ~Lich~
     ActionOverride("LICH01",CreateItem("MISC07",2900,0,0))  // ~Gold Piece~
@@ -755,7 +755,7 @@ THEN
     CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
     CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
     CreateCreature("ORC05",[589.542],10)  // ~Orog~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
 END
 
 IF
@@ -774,6 +774,6 @@ THEN
     CreateCreature("REFIGH01",[427.548],10)  // ~Slaver~
     CreateCreature("REFIGH01",[585.542],10)  // ~Slaver~
     CreateCreature("ORC05",[589.542],10)  // ~Orog~
-    CreateCreature("SHADOW01",[592.542],10)  // ~Shadow~
+    CreateCreature("moshad01",[592.542],10)  // ~Shadow~
 END
 

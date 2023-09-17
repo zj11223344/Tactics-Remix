@@ -112,7 +112,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("Spawn","LOCALS",30)
-    CreateCreatureObjectOffScreen("lich01",Myself,0,0,0)
+    CreateCreature("lich01",[1943.1087],N)
+    //CreateCreatureObjectOffScreen("lich01",Myself,0,0,0)
     Continue()
 END
 

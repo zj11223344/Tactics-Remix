@@ -15,9 +15,12 @@ IF
 THEN
   RESPONSE #100
     SetGlobalTimer("Spawn","LOCALS",25)
-    CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
-    CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
-    CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    //CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    //CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    //CreateCreatureObjectOffScreen("wraith01",Myself,0,0,0)
+    CreateCreature("wraith01",[1580.737],E)
+    CreateCreature("wraith01",[1580.737],E)
+    CreateCreature("wraith01",[1580.737],E)
     Continue()
 END
 

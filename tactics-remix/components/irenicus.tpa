@@ -16,12 +16,33 @@ COPY ~tactics-remix/itm/bracalac.itm~ ~override~
 COPY ~tactics-remix/itm/ii3.itm~      ~override~
 COPY ~tactics-remix/itm/ii4.itm~      ~override~
 COPY ~tactics-remix/cre/ii0.cre~      ~override~ // Irenicus - Phase 1
+  WRITE_BYTE 0x270 128 // set allegiance to Neutral
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~ii0~      #8 // Clear Default Script
 COPY ~tactics-remix/cre/ii3.cre~      ~override~ // Sword of Greed
   SAY NAME1 @2039
-  SAY NAME2 @2039 
+  SAY NAME2 @2039
+  WRITE_BYTE  0x270 128      // set allegiance to Neutral
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~ii3~      #8 // Clear Default Script
+  WRITE_ASCII 0x2cc ~ii3~ #8 // Dialogue
 COPY ~tactics-remix/cre/ii4.cre~      ~override~ // Wraith of Wrath
   SAY NAME1 @2040
   SAY NAME2 @2040 
+  WRITE_ASCII 0x2cc ~ii4~ #8 // Dialogue
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~ii4~      #8 // Clear Default Script
+  WRITE_BYTE  0x270 128      // set allegiance to Neutral
+
 COPY ~tactics-remix/cre/ii5.cre~      ~override~ // Irenicus the Slayer - Phase 2
   SAY NAME1 @2041
   SAY NAME2 @2041
@@ -33,42 +54,70 @@ COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/helljon.d~
 COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/ii5.d~
 
 ///////////////////////////////////////////////////////////////////////////
+// Shadow                                                                //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~shadow01.CRE~ ~override/moshad01.cre~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+
+///////////////////////////////////////////////////////////////////////////
+// Generic Beholder Name Check                                           //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~behold01.CRE~ ~override~
+  WRITE_ASCII 0x280 ~behold01~ #8 // Script Name
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+
+///////////////////////////////////////////////////////////////////////////
+// Magic Sword                                                           //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~sword01.CRE~ ~override/moswo01.cre~
+  WRITE_ASCII 0x280 ~moswo01~ #8  // Script Name
+  WRITE_BYTE  0x60  90            // Slashing Resistance
+  WRITE_BYTE  0x61  90            // Crushing Resistance
+  WRITE_BYTE  0x62  90            // Piercing Resistance
+  WRITE_BYTE  0x63  90            // Missile Resistance
+  WRITE_BYTE  0x270 255           // set allegiance to ENEMY
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+
+///////////////////////////////////////////////////////////////////////////
 // Elder Orb of Fear                                                     //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~beheld01.CRE~ ~override/ii1.cre~
   SAY NAME1 @2037
   SAY NAME2 @2037  
-  WRITE_LONG  0x14  50000    // XP value
-  WRITE_BYTE  0x24  200      // Current HP
-  WRITE_BYTE  0x26  200      // Max HP
-  WRITE_SHORT 0x46  ~-10~    // Natural AC
-  WRITE_SHORT 0x48  ~-10~    // Effective AC
-  WRITE_SHORT 0x4c  ~-4~     // Missile AC Modifier
-  WRITE_BYTE  0x52  3        // thac0
-  WRITE_BYTE  0x54  4        // Save vs. Death
-  WRITE_BYTE  0x55  4        // Save vs. Wand
-  WRITE_BYTE  0x56  3        // Save vs. Polymorph
-  WRITE_BYTE  0x57  3        // Save vs. Breath
-  WRITE_BYTE  0x58  5        // Save vs. Spell
-  WRITE_BYTE  0x59  75       // Fire Resistance
-  WRITE_BYTE  0x5a  75       // Cold Resistance
-  WRITE_BYTE  0x5b  75       // Electricity Resistance
-  WRITE_BYTE  0x5c  75       // Acid Resistance
-  WRITE_BYTE  0x5d  75       // Magic Resistance
-  WRITE_BYTE  0x5e  75       // Magic Fire Resistance
-  WRITE_BYTE  0x5f  75       // Magic Cold Resistance
-  WRITE_BYTE  0x60  50       // Slashing Resistance
-  WRITE_BYTE  0x61  50       // Crushing Resistance
-  WRITE_BYTE  0x62  50       // Piercing Resistance
-  WRITE_BYTE  0x63  50       // Missile Resistance
-  WRITE_BYTE  0x238 20       // Strength
-  WRITE_BYTE  0x23a 20       // Intelligence
-  WRITE_BYTE  0x23b 14       // Wisdom
-  WRITE_BYTE  0x23c 15       // Dexterity
-  WRITE_BYTE  0x23d 18       // Constitution
-  WRITE_BYTE  0x23e 12       // Charisma
-  WRITE_ASCII 0x250 ~ii1~ #8 // Class Script
-  WRITE_ASCII 0x280 ~ii1~ #8 // Script Name
+  WRITE_LONG  0x14  50000         // XP value
+  WRITE_BYTE  0x24  200           // Current HP
+  WRITE_BYTE  0x26  200           // Max HP
+  WRITE_SHORT 0x46  ~-10~         // Natural AC
+  WRITE_SHORT 0x48  ~-10~         // Effective AC
+  WRITE_SHORT 0x4c  ~-4~          // Missile AC Modifier
+  WRITE_BYTE  0x52  3             // thac0
+  WRITE_BYTE  0x54  4             // Save vs. Death
+  WRITE_BYTE  0x55  4             // Save vs. Wand
+  WRITE_BYTE  0x56  3             // Save vs. Polymorph
+  WRITE_BYTE  0x57  3             // Save vs. Breath
+  WRITE_BYTE  0x58  5             // Save vs. Spell
+  WRITE_BYTE  0x59  75            // Fire Resistance
+  WRITE_BYTE  0x5a  75            // Cold Resistance
+  WRITE_BYTE  0x5b  75            // Electricity Resistance
+  WRITE_BYTE  0x5c  75            // Acid Resistance
+  WRITE_BYTE  0x5d  75            // Magic Resistance
+  WRITE_BYTE  0x5e  75            // Magic Fire Resistance
+  WRITE_BYTE  0x5f  75            // Magic Cold Resistance
+  WRITE_BYTE  0x60  50            // Slashing Resistance
+  WRITE_BYTE  0x61  50            // Crushing Resistance
+  WRITE_BYTE  0x62  50            // Piercing Resistance
+  WRITE_BYTE  0x63  50            // Missile Resistance
+  WRITE_BYTE  0x238 20            // Strength
+  WRITE_BYTE  0x23a 20            // Intelligence
+  WRITE_BYTE  0x23b 14            // Wisdom
+  WRITE_BYTE  0x23c 15            // Dexterity
+  WRITE_BYTE  0x23d 18            // Constitution
+  WRITE_BYTE  0x23e 12            // Charisma
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+  WRITE_ASCII 0x250 ~ii1~      #8 // Class Script
+  WRITE_ASCII 0x280 ~ii1~      #8 // Script Name
+  WRITE_ASCII 0x2cc ~ii1~      #8 // Dialogue
+  WRITE_BYTE  0x270 128           // set allegiance to Neutral
 
 ///////////////////////////////////////////////////////////////////////////
 // Dragon of Pride                                                       //
@@ -98,14 +147,14 @@ COPY_EXISTING ~dragblac.CRE~ ~override/ii2.cre~
   WRITE_BYTE  0x23c 15            // Dexterity
   WRITE_BYTE  0x23d 15            // Constitution
   WRITE_BYTE  0x23e 13            // Charisma
-  WRITE_ASCII 0x248 ~ii2~      #8 // Override Script
-  WRITE_ASCII 0x250 ~DRAGBLAC~ #8 // Class Script
+  WRITE_ASCII 0x248 ~gensht01~ #8 // Override Script
+  WRITE_ASCII 0x250 ~ii2~      #8 // Class Script
   WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~         #8 // Clear General Script
-  WRITE_ASCII 0x268 ~~         #8 // Clear Default Script
-  WRITE_ASCII 0x2cc ~~         #8 // Clear Dialogue
+  WRITE_ASCII 0x268 ~DRAGBLAC~ #8 // Clear Default Script
+  WRITE_ASCII 0x2cc ~ii2~      #8 // Dialogue
   WRITE_ASCII 0x280 ~ii2~      #8 // Script Name
-  WRITE_BYTE  0x270 255           // set allegiance to ENEMY
+  WRITE_BYTE  0x270 128           // set allegiance to Neutral
   REMOVE_CRE_ITEM   ~BOLT06~
   REMOVE_CRE_ITEM   ~BULL03~
   REMOVE_CRE_ITEM   ~AROW11~

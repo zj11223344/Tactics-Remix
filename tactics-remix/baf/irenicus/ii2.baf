@@ -32,12 +32,13 @@ END
 /////////////////////////////////////////////////////////////////////
 IF
   !GlobalTimerNotExpired("Spawn","LOCALS")
-  !InMyArea("wyvern01")
+  !InMyArea("wyvern")
   Difficulty(HARDEST)
 THEN
   RESPONSE #100
     SetGlobalTimer("Spawn","LOCALS",12)
     CreateCreatureObjectOffScreen("wyvern01",Myself,0,0,0)
+    CreateCreature("wyvern01",[2321.763],SW)
     Continue()
 END
 

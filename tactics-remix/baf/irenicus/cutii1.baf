@@ -108,10 +108,6 @@ THEN
         CreateVisualEffect("SPMETSWA",[1954.642])
         CreateVisualEffect("SPMETSWA",[2006.657])
         SmallWait(7)
-        CreateCreature("shadow01",[2009.513],0) // shadow
-        CreateCreature("shadow01",[2009.513],0) // shadow
-        CreateCreature("shadow01",[2009.513],0) // shadow
-        SmallWait(7)
         CreateCreature("ii5",[2009.553],0) // Jon Irenicus Slayer
 END
 
