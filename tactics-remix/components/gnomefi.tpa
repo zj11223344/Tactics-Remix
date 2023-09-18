@@ -41,6 +41,7 @@ COPY ~tactics-remix/dlg/mognome.dlg~ ~override~
 ///////////////////////////////////////////////////////////////////////////
 // Create and Add Spell State to Track Prior Target                      //
 ///////////////////////////////////////////////////////////////////////////
+/*
 ACTION_IF !target_tracking BEGIN
   OUTER_SET target_tracking=1
   ACTION_IF (FILE_CONTAINS_EVALUATED (~splstate.ids~ ~PRIOR_TARGET~)) BEGIN
@@ -66,6 +67,7 @@ ACTION_IF !target_tracking BEGIN
   COPY ~tactics-remix/spl/motrgt.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 2 special = 1 parameter2 = %pr_trgt% timing = 0 duration = 10 END
 END
+*/
 
 ///////////////////////////////////////////////////////////////////////////
 // Update AI Scripts Based on Installed Mods                             //

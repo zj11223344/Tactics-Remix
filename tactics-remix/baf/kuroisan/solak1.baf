@@ -166,7 +166,7 @@ END
 IF
   See(MostDamagedOf([PC]))
   HPPercentLT(LastSeenBy(Myself),30)
-  CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
+  //CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
@@ -180,7 +180,7 @@ END
 IF
   See(MostDamagedOf([PC]))
   !HPPercentLT(LastSeenBy(Myself),30)
-  CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
+  //CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
   !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
   WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
@@ -190,6 +190,7 @@ THEN
     SetGlobal("MO_DamagedTarget","LOCALS",0)
     Continue()
 END
+
 
 IF
   !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
@@ -765,10 +766,11 @@ THEN
   RESPONSE #50
 END
 
+/*
 IF
   ActionListEmpty()
   See(MostDamagedOf([PC]))
-  CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
+  //CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
   CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
@@ -777,14 +779,14 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
 
 IF
   ActionListEmpty()
   See(WorstAC([PC]))
-  CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
+  //CheckSpellState(LastSeenBy(Myself),PRIOR_TARGET)
   CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
   CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
   CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
@@ -793,9 +795,10 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
+*/
 
 IF
   ActionListEmpty()
@@ -809,9 +812,10 @@ IF
   WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(LastSeenBy(Myself))
 END
+
 /*
 IF
   ActionListEmpty()
@@ -840,7 +844,7 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(NearestEnemyOf(Myself))
 END
 
@@ -856,7 +860,7 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
@@ -872,7 +876,7 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
@@ -888,7 +892,7 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
@@ -904,7 +908,7 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
@@ -920,7 +924,7 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
 
@@ -933,7 +937,7 @@ IF
   WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(NearestEnemyOf(Myself))
 END
 
@@ -946,7 +950,7 @@ IF
   WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SecondNearestEnemyOf(Myself))
 END
 
@@ -959,7 +963,7 @@ IF
   WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(ThirdNearestEnemyOf(Myself))
 END
 
@@ -972,7 +976,7 @@ IF
   WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FourthNearestEnemyOf(Myself))
 END
 
@@ -985,7 +989,7 @@ IF
   WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(FifthNearestEnemyOf(Myself))
 END
 
@@ -998,6 +1002,6 @@ IF
   WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
 THEN
   RESPONSE #100
-    ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
+    //ApplySpellRES("MOTRGT",LastSeenBy(Myself)) 
     AttackOneRound(SixthNearestEnemyOf(Myself))
 END
