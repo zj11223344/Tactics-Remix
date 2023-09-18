@@ -118,7 +118,7 @@ THEN
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
     ReallyForceSpell(Myself,WIZARD_SPIRIT_ARMOR)
     ReallyForceSpell("hlkoshi",WIZARD_SPIRIT_ARMOR)
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    ReallyForceSpell(Myself,WIZARD_ABSOLUTE_IMMUNITY)
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
     ReallyForceSpell(Myself,WIZARD_SPELL_TURNING)
     SetGlobal("Prep","LOCALS",1)

@@ -56,7 +56,7 @@ THEN
     SetGlobal("Contingency","LOCALS",0)
     SetGlobal("Sequencer","LOCALS",0)
     DisplayString(Myself,39968) // Spell Trigger - Fired
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    ReallyForceSpell(Myself,WIZARD_ABSOLUTE_IMMUNITY)
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
     ReallyForceSpell(Myself,WIZARD_IMPROVED_HASTE)
     SetGlobalTimer("RecastProMagWeap","LOCALS",24)

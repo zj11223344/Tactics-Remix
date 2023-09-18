@@ -90,7 +90,7 @@ THEN
     ApplySpell(Myself,WIZARD_STONE_SKIN)
     SetGlobalTimer("TimeStop","LOCALS",1)
     DisplayString(Myself,39968) // Spell Trigger - Fired
-    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+    ReallyForceSpell(Myself,WIZARD_ABSOLUTE_IMMUNITY)
     ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
     ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)
     SetGlobalTimer("RecastProMagWeap","LOCALS",24)
