@@ -54,8 +54,8 @@ THEN
     CutSceneId("ii2")  // Dragon of Pride
     CreateVisualEffectObject("SPPLANAR",Myself)
     SmallWait(10)
-    CreateCreature("moshad01",[2502.820],S)  // Shadow
-    JumpToPoint([2502.820])
+    CreateCreature("moshad01",[2534.899],S)  // Shadow
+    JumpToPoint([2534.899])
     Enemy()
     Wait(2)
     EndCutSceneMode()
