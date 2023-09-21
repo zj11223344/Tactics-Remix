@@ -48,7 +48,7 @@ This challenge is triggered if you have more than 3 million XP, have either kill
 
 A new lich can be found in the Docks district with an endless supply of undead minions to call upon. You may find her by entering the door to the north of the main Shadow Thief guildhouse entrance. 
 
-WARNING: Reported to be *incompatible* with Back to Brynnlaw. 
+WARNING: Reported to be *incompatible* with Back to Brynnlaw. If Back to Brynnlaw is installed, the Lich in the Docks needs to be defeated prior to going to Spellhold.
 
 #### Kensai Ryu's Gnome Fighter/Illusionist in the Docks
 
@@ -58,11 +58,11 @@ A gnome fighter/illusionist full of tricks is looking to collect upon the bounty
 
 These components will check if SCS is present and update accordingly to prevent any compatibility issues.
 
-#### Improved Sahuagin City (COMING SOON)
+#### Improved Sahuagin City
 
 This component makes all Sahuagin fiercer opponents. It also updates the fight against the Priestess at the heart of the City of Caverns who will now summon allies to come to her aid. Beware, on Insane Difficulty she will summon the Minor Avatar of Sekolah.
 
-#### Morpheus562's Improved Planar Prison Bounty Hunters (COMING SOON)
+#### Morpheus562's Improved Planar Prison Bounty Hunters
 
 This component makes the fight against the Planar Prison bounty hunters a bit more difficult. Aawill the Bard is now a Blade and will use spells commensurate with his level. His companions will also be better equipped, and an additional companion may join the fight at higher difficulties.
 
@@ -102,23 +102,27 @@ Adds three dragons to Small Teeth Pass (AR1700).
 
 WARNING: Reported to be *incompatible* with TDD. 
 
+#### Morpheus562's Improved Drizzt (BGEE)
+
+This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
+
+#### Morpheus562's Improved Drizzt (BG2EE)
+
+This makes the BG2EE version of Drizzt and his companions more formidable. Additionally, if playing on Insane difficulty or higher he will bring in a familiar mage to aid him. Should the mage be defeated, any gear acquired from the battle will not be taken from the party at a later time. 
+
 #### Tougher Fire Giants
 
 Damage output and difficulty for fire giants is greatly increased.
 
-#### Morpheus 562's Tougher Githyanki (COMING SOON)
+#### Morpheus 562's Tougher Githyanki
 
 Githyanki will now be better equipped, better leveled, and overall pose more of a challenge to the player. 
 
-#### Morpheus 562's Tougher Yuan-ti (COMING SOON)
+#### Morpheus 562's Tougher Yuan-ti
 
 Yuan-ti will receive a number of immunities, to include some magic resistance (40%) and complete resistance to poison. Additionally, they receive some snake like enhancements to include infravision, faster casting speed, faster weapon speed, and an extra 0.5 apr. Yuan-ti fighters will now be wielding magical scimitars and leather armors.
 
 PLEASE NOTE: With my Skills and Abilities Proficiency overhaul and Forgotten Armament's NWN Style Weapons and Updates to Existing Weapons will greatly increase the deadliness of Yuan-ti fighters. The average Yuan-ti fighter and Greater Yuan-ti will have a crit range of 16-20, and Yuan-ti Elites will have a crit range of 15-20. 
-
-#### Morpheus562's Improved Drizzt (BGEE)
-
-This makes the BGEE version of Drizzt more formidable. If he goes hostile, he will prioritize attack the player instead of the gnolls. 
 
 #### More encounters will be added.
 

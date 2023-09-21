@@ -7,7 +7,7 @@
 BACKUP ~tactics-remix/backup~
 AUTHOR ~morpheus562~
 
-VERSION ~v0.6-alpha~
+VERSION ~v0.6-beta~
 README ~tactics-remix/readme.%LANGUAGE%.html~ ~tactics-remix/readme.html~
 AUTO_EVAL_STRINGS
 
@@ -344,6 +344,7 @@ REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @3000
 
 INCLUDE ~tactics-remix/components/yuanti.tpa~
 
+/*
 ///////////////////////////////////////////////////////////////////////////
 // Morpheus562's Improved General Enemies for IWDEE                      //
 ///////////////////////////////////////////////////////////////////////////
@@ -370,6 +371,7 @@ BEGIN @38 DESIGNATED 38 GROUP @3011 LABEL TacticsRemix-IWDEEShadow
 REQUIRE_PREDICATE GAME_IS ~iwdee~ @3003
 
 INCLUDE ~tactics-remix/components/iwdee_shadow.tpa~
+*/
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
