@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.6.1-beta
+
+October xx, 2023
+
+### Changed
+
+- Slight correction to Improved Fire Giants if MiH - Item Pack is installed.
+
 ## Version 0.6-beta
 
 September 20, 2023
