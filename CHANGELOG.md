@@ -2,7 +2,7 @@
 
 ## Version 0.6.1-beta
 
-October xx, 2023
+September 26, 2023
 
 ### Changed
 
