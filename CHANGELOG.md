@@ -8,6 +8,8 @@ October xx, 2023
 
 - Spanish translation courtesy of alaisFcZ.
 - Slight correction to Improved Fire Giants if MiH - Item Pack is installed.
+- Twisted Rune difficulty is now better tied to the difficulty slider.
+- Kangaxx guardians difficulty is now better tied to the difficulty slider.
 
 ## Version 0.6-beta
 

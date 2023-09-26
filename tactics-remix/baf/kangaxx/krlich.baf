@@ -140,6 +140,7 @@ IF
   See(NearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
@@ -157,6 +158,7 @@ IF
   See(SecondNearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
@@ -174,6 +176,7 @@ IF
   See(ThirdNearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
@@ -191,6 +194,7 @@ IF
   See(FourthNearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
@@ -208,6 +212,7 @@ IF
   See(FifthNearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
@@ -225,6 +230,7 @@ IF
   See(SixthNearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
@@ -242,6 +248,7 @@ IF
   See(TenthNearestEnemyOf(Myself))
   Global("MO_SpTrig","LOCALS",0)
   !HasBounceEffects(LastSeenBy(Myself))
+  DifficultyGT(HARD)
 THEN
   RESPONSE #100
     DisplayString(Myself,39968)  // Spell Trigger—Fired
