@@ -1,0 +1,9 @@
+// Tactics Remix, Spell Descriptions
+
+// Improved Irenicus
+@6000 = ~Romper la magia~
+@6001 = ~Magia destrozada~
+@6002 = ~Cuerpo destrozado~
+
+// Tougher Yetis
+@6003 = ~Mirada escalofriante~

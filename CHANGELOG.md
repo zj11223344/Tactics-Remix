@@ -6,6 +6,7 @@ October xx, 2023
 
 ### Changed
 
+- Spanish translation courtesy of alaisFcZ.
 - Slight correction to Improved Fire Giants if MiH - Item Pack is installed.
 
 ## Version 0.6-beta

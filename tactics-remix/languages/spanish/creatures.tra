@@ -1,0 +1,48 @@
+// Tactics Remix, Criaturas
+
+// Gnome Fighter/Illusionist
+@2000 = ~Valtor Hechizoscuro~
+@2001 = ~Zrap~
+@2002 = ~Velpuk~
+
+// Acid Kensai
+@2003 = ~Kuroisan~
+@2004 = ~Kori no Shi~
+@2005 = ~Maho no Owari~
+@2006 = ~Hogo Nashi~
+
+// Red Badge
+@2011 = ~Serpiente mordaz~
+@2012 = ~Hechicero de sangre~
+@2013 = ~Bruma de vacío~
+@2014 = ~Espina roja~
+@2015 = ~Lanza de sangre~
+
+// The Ritual
+@2016 = ~Acechador del Ritual~
+@2017 = ~Theurgeon del Ritual~
+@2018 = ~Mago de Batalla del Ritual~
+@2019 = ~Totemista del Ritual~
+@2022 = ~Ender, Capitán del Ritual~
+@2023 = ~Berséker del Ritual~
+@2024 = ~Disrruptor del Ritual~
+@2025 = ~Chanur, Cambiaformas del Ritual~
+@2026 = ~Vryce, Inquisidor del Ritual~
+@2027 = ~Ox Número Diez, Monje Ritual~
+@2028 = ~Li Kao, Wu Jen del Ritual~
+@2029 = ~Calavera Ritual~
+@2030 = ~Pontifex~
+@2031 = ~Manifestacion~
+@2032 = ~La Condesa Merentha~
+@2033 = ~Unidad Cero~
+@2034 = ~Unidad Uno~
+@2035 = ~Unidad Dos~
+@2036 = ~Ira'kiou'dneg~
+
+//Improved Irenicus
+@2037 = ~Orbe del Miedo~
+@2038 = ~Dragón del orgullo~
+@2039 = ~Espada de la avaricia~
+@2040 = ~Espectro de la Ira~
+@2041 = ~Irenicus el Asesino~
+@2042 = ~Irenicus, el Destrozado~

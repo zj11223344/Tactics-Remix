@@ -1,0 +1,26 @@
+// Tactics Remix, Script Dialog
+
+// Crypt King
+@5000 = ~Levántate... levántate y escucha lo que te tengo que decir.~
+@5001 = ~¡Pelea! ¡Matadle!~
+@5002 = ~¡La esencia de tu vida me pertenece!~
+@5003 = ~¡Me alimentaré de tu energía!~
+
+// Kuroisan
+@5004 = ~¡Soy coleccionista de espadas!~
+
+// Ritual
+@5005 = ~Parte del ritual se ha completo~
+@5006 = ~El ritual fue interrumpido.~
+@5007 = ~El Ritual se completó.~
+@5008 = ~Extraña transformación~
+@5009 = ~(chanting) In nomine seclorum, omnia solum devenir ...~
+@5010 = ~Sí. Todo por lo que hemos trabajado se hará realidad.~
+@5011 = ~Con las calaveras destruidas, la Manifestación desaparece.~
+@5012 = ~El poder de la Manifestación bloquea la entrada.~
+
+// Sahuagin
+@5013 = ~Sekolah, ven en nuestra ayuda!~
+
+// Mae'Var
+@5100 = ~Para cumplir tu tarea, Mae'Var debe morir. Ya no hay vuelta atrás.~

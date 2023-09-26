@@ -1,0 +1,55 @@
+// Tactics Remix, Español
+
+@1 = ~El ritual~
+@2 = ~"Kuroisan", el Kensai Ácido~
+@3 = ~"Encuentro basado en veneno "Insignia Roja~
+@4 = ~El Liche en los muelles de Gebhard Blucher~
+@5 = ~Luchador gnomo/ilusionista Kensai Ryu en los muelles~
+@6 = ~Rey de la Cripta Mejorado Kensai Ryu~
+@7 = ~Mejoras en TorGal y Castillo De'Arnisse~
+@8 = ~Mejoras en la ciudad de Sahuagin~
+@9 = ~Bodhi mejorada~
+@10 = ~Irenicus mejorado~
+@11 = ~Recinto vigilado mejorado en el distrito del Templo~
+@12 = ~Runa torcida mejorada~
+@13 = ~Mae'Var mejorado de Gebhard Blucher~
+@14 = ~Caballeros Demonio Mejorados de Gebhard Blucher~
+@15 = ~Kangaxx y guardianes más duros de Kensai Ryu~
+@16 = ~Dragones más inteligentes en SoA~
+@17 = ~Corona de Cobre Mejorada de Kensai Ryu~
+@18 = ~Oasis mejorado de SimDing0~
+@19 = ~Paso de los dientes afilados mejorado de Mike Barnes~
+@20 = ~Bosque Norte mejorado de Mike Barnes~
+@21 = ~Montañas en marcha de Mike Barnes~
+@22 = ~Arboleda Druida más dura~
+@23 = ~Gigantes de fuego más duros~
+@24 = ~Mejora los puntos de vida de todos los enemigos~
+@25 = ~Enemigos tienen x2 puntos de golpe~
+@26 = ~Enemigos tienen x2+20 puntos de golpe~
+@27 = ~Enemigos tienen x3 puntos de golpe~
+@28 = ~Enemigos tienen x3+30 puntos de golpe~
+@29 = ~Drizzt mejorado (BGEE) de Morpheus562~
+@30 = ~Usar ini en Modificaciones Personalizadas de Puntos de Golpe Enemigos~
+@31 = ~Encuentros aleatorios en la naturaleza de Kensai Ryu~
+@32 = ~Githyanki más duros de Morpheus562's~
+@33 = ~Yuan-ti más duros de Morpheus562's~
+@34 = ~Samia mejorada y su grupo de en la mazmorra de las colinas del viento de Morpheus562~
+@35 = ~Cazarrecompensas de la prisión planar mejorada de Morpheus562~
+@36 = ~IA general mejorada para IWDEE de Morpheus562~
+@37 = ~Los Yetis más duros IWDEE de Morpheus562~
+@38 = ~Sombras más duras IWDEE de Morpheus562~
+@39 = ~Drizzt mejorado de Morpheus562 (BG2EE)~
+@40 = ~Enemigos tienen 1,5 veces más puntos de vida~
+
+@3000 = ~Componente requiere BGII: EE o EET~
+@3001 = ~DLCMerger es necesario antes de modificar juego SoD~
+@3002 = ~Componente requiere BG: EE o EET~
+@3003 = ~Componente requiere IWD: EE~
+
+///////////////////////////////////////////////////////////////////////////
+// Groups                                                                //
+///////////////////////////////////////////////////////////////////////////
+@3010 = ~Añadir nuevos encuentros - Instalar ANTES DE SCS~
+@3011 = ~Actualizar encuentros existentes - Instalar después de SCS~
+@3012 = ~Mejoras enemigas - Instalar DESPUÉS de SCS~
+@3013 = ~Componentes de IWDEE~

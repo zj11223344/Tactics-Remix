@@ -1,0 +1,544 @@
+// Tactics Remix, Items
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Short Swords                                                          //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Short Sword                                                           //
+///////////////////////////////////////////////////////////////////////////
+@4000 = ~Espada Corta~
+@4001 = ~La espada corta es el primer tipo de espada que surgió. En los términos más sencillos, una espada corta puede considerarse una daga con una hoja tan larga que ya no puede llamarse daga. El término espada corta no existe en las clasificaciones de espadas. Sin embargo, se ha llegado a utilizar para describir una hoja de doble filo de unos dos pies de longitud. La punta de la espada suele ser puntiaguda, ideal para asestar estocadas.
+
+ESTADÍSTICAS:
+
+Daño: 1d6
+Tipo de daño: Perforante
+Factor de velocidad: 3
+Tipo de competencia: Espada corta
+Tipo: Espada corta A una mano
+Requiere
+ 5 Fuerza
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Littlefang                                                            //
+///////////////////////////////////////////////////////////////////////////
+@4002 = ~Pequeño colmillo +2~
+@4003 = ~Aunque el brillo de la hoja de la espada es metálico, el peso del arma parece haber sido tallada en el diente de alguna gran bestia y enfundada en una empuñadura de metal para protegerla de la mano del usuario. Una esencia codiciosa parece habitar en esta arma, con agujeros en forma de poros en la hoja que absorben la sangre que tocan.
+
+ESTADÍSTICAS:
+
+Habilidades de combate:
+- Cada golpe drena 1 punto de vida del objetivo y lo transfiere al portador. Esto no curará más allá del máximo del portador.
+
+THAC0: +2
+Daño: 1d6+2
+Tipo de daño: Perforante
+Factor de velocidad: 1
+Tipo de competencia: Espada corta
+Tipo: Espada corta A una mano
+Requiere
+ 5 Fuerza
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// The Lucky One                                                         //
+///////////////////////////////////////////////////////////////////////////
+@4004 = ~El afortunado +1~
+@4005 = ~Se trata de una espada de espadachín que se ha utilizado sin cesar en grandes combates contra "grandes enemigos" enviados por quien sea. La compañía de mercenarios Los afortunados se encargaron estas espadas cuando aún no se había recuperado de su último gran golpe. Después de sus ganancias, sólo se aventuraron por la emoción de hacerlo, desafiándose unos a otros a hazañas cada vez mayores. ¿Por qué ya no tienen estas armas? A veces gana el "más asqueroso.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Suerte: +1
+
+THAC0: +1
+Daño: 1d6+1
+Tipo de daño: Perforante
+Factor de velocidad: 2
+Tipo de competencia: Espada corta
+Tipo: Espada corta A una mano
+Requiere
+ 5 Fuerza
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Katanas                                                               //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Katana                                                                //
+///////////////////////////////////////////////////////////////////////////
+@4100 = ~Katana~
+@4101 = ~La katana es una espada de un solo filo, ligeramente curvada, que termina en punta de cincel. La katana es quizás una de las espadas más finas jamás fabricadas; los pasos para su creación son un proceso largo y secreto que es más una forma de arte que otra cosa. Esta hoja es una faceta importante de la cultura kara-turana. Tocar o blandir la katana de un samurái es insultarle e incitar su ira. Para un gaijin, o extranjero, poseer una espada así es algo poco común. O bien el gaijin es un amigo muy honrado de un ministro importante, o bien ha asesinado a un samurái.
+
+ESTADÍSTICAS:
+
+Daño: 1d10
+Tipo de daño: Cuchillada
+Factor de velocidad: 4
+Tipo de competencia: Katana
+Tipo: Katana A una mano
+Requiere
+ 6 Fuerza
+
+Peso: 6~
+
+///////////////////////////////////////////////////////////////////////////
+// Sanchuudoku +4                                                        //
+///////////////////////////////////////////////////////////////////////////
+@4102 = ~Sanchuudoku +4~
+/*
+@4103 = ~Esta espada verde fue forjada por un Wu Jen de Kara-Tur como regalo para su paranoico señor; su nombre significa "Envenenamiento ácido". La espada fue encantada con la sangre fresca de un Dragón Negro y la guarda de la empuñadura está decorada con fragmentos de hueso de Wolfwere. La hoja cura las heridas de su usuario a una velocidad alarmante y de ella parece salir un poderoso ácido cada vez que se ataca al usuario. 
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Regeneración (1 punto de vida cada dos segundos)
+- Inmunidad al ácido
+
+Habilidades de combate:
+- Cada golpe reduce la resistencia al ácido del objetivo un 25% durante 18 segundos e inflige 2d4 puntos de daño de ácido. 
+
+THAC0: +4
+Daño 1d10+4
+Tipo de daño: Cuchillada
+Factor de velocidad: 4
+Tipo de competencia: Katana
+Tipo: Katana A una mano
+Requiere
+ 6 Fuerza
+
+Peso: 8~
+*/
+
+@4103 = ~Esta espada verde fue forjada por un Wu Jen de Kara-Tur como regalo para su paranoico señor; su nombre significa "Envenenamiento ácido". La espada fue encantada con la sangre fresca de un Dragón Negro y la guarda de la empuñadura está decorada con fragmentos de hueso de Wolfwere. La hoja cura las heridas de su usuario a una velocidad alarmante y de ella parece salir un poderoso ácido cada vez que se ataca al usuario.. 
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Regeneración (1 punto de vida cada dos segundos)
+- Inmunidad al ácido
+- 2 puntos de daño de ácido a cualquiera que dañe al portador
+
+Habilidades de combate:
+- Cada golpe reduce la resistencia al ácido del objetivo en un 10% durante 18 segundos
+
+THAC0: +4
+Daño 1d10+4, +1d8 daño ácido
+Tipo de daño: Cuchillada
+Factor de velocidad: 0
+Tipo de competencia: Katana
+Tipo: Katana Una mano
+Requiere
+ 6 Fuerza
+
+Peso: 8~
+
+@4104 = ~Contragolpe ácido~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Robes                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Robe                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4200 = ~Túnica de mago~
+@4201 = ~Desde la era de Netheril, los magos han aprendido a otorgar una amplia variedad de propiedades mágicas a los objetos cotidianos que los rodean. Uno de los objetos favoritos de este tipo de encantamiento es la túnica común. Es ligera, asequible y mantiene bien su encantamiento, por lo que es el equipo ideal para un mago. Sin embargo, debido a su herencia mágica, sólo los magos de una, dos y varias clases pueden llevar estas túnicas encantadas.
+
+ESTADÍSTICAS:
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Greater Robe of Eyes                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4202 = ~Gran Túnica de los Ojos~
+@4203 = ~La túnica de ojos mayores proporciona a su portador una visión mejorada y la capacidad de detectar muchas cosas ocultas. La invisibilidad y los efectos etéreos no pueden nublar la visión del portador.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Clase de Armadura: 5
+- Encontrar Trampas: +10%
+- Detectar Ilusión: +10%
+- Vista Verdadera
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Boots                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Boot                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4300 = ~Botas~
+@4301 = ~Las botas suelen estar hechas a mano por zapateros. Las botas comunes se hacen utilizando un molde, pero las buenas botas se diseñan para el pie de un individuo. 
+
+ESTADÍSTICAS:
+
+Peso: 4~
+
+///////////////////////////////////////////////////////////////////////////
+// Resilient Trodders                                                    //
+///////////////////////////////////////////////////////////////////////////
+@4302 = ~Trotamundos resistentes~
+@4303 = ~Aunque llevan un nombre poco elegante, estas robustas botas encierran una poderosa magia. Fabricadas por un joven herrero de talento, iban a ser la obra maestra que le daría derecho a estudiar con el mejor herrero de la ciudad. Sin embargo, quedó prendado de una clériga de Helm, y sus compañeros se burlaron de él, ya que era medio orco y feo a sus ojos. A diferencia de ellos, el joven herrero vio la belleza de la clériga reflejada en su bondad e inquebrantable devoción, y se dedicó a la iglesia poco después de regalarle estas botas. Desgraciadamente, el herrero no vivió mucho tiempo en sus duelos como Helmita - pereciendo en la defensa de una caravana de mercaderes que había pedido protección a la iglesia contra los bandidos - pero sus botas fueron encantadas para honrar su memoria y dedicación, y la clériga a la que se las regaló las llevó puestas hasta el día de su muerte.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Clase de Armadura: +1
+- Constitución: +2
+- Tiradas de Salvación: +2
+- Protege contra todas las formas de pánico y sube la moral
+
+Peso: 4~
+
+///////////////////////////////////////////////////////////////////////////
+// Dragon Slippers                                                      //
+///////////////////////////////////////////////////////////////////////////
+@4304 = ~Dragon Slippers~
+@4305 = ~Feryl Dragonhunter was a monster of a man who, with four kills to his credit, thought he had perfected the art of dragon slaying. He aided his efforts by creating magical equipment from his previous victories, including several different boots he mockingly called his Dragon Slippers. Amazingly, Feryl was not defeated by his preferred enemy, but was surprised by a small band of goblins on his way to a hunt.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Destreza: +2
+- Protege contra todas las formas de pánico y sube la moral
+- Inmunidad a Golpe de Aliento
+- Resistencia mágica +10%
+
+Peso: 4~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Cloaks                                                                //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Cloak                                                                 //
+///////////////////////////////////////////////////////////////////////////
+@4400 = ~Capa~
+@4401 = ~La capa puede hacerse de todas las formas posibles con casi cualquier tipo de tela. Las formas más comunes son una pieza circular de tela con un agujero en el centro para la cabeza, y tela drapeada desde el cuello, unida por una cadena, broche, cordón, o alfileres.
+
+ESTADÍSTICAS:
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+// Shroud of Elder Doom                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4402 = ~Sudario del Anciano de la Perdición~
+@4403 = ~Intimidantes tanto por su tamaño como por su forma, las capas de esta naturaleza sólo las llevaban los más altos del clero myrkulita, aquellos conocidos por el sombrío honorífico de "Anciano de la Perdición". Desde la muerte de Myrkul, pocos de ellos han conseguido salir al mundo exterior y escapar de las garras del antiguo Dios de la Muerte... algo sorprendente, ya que muchos Ancianos de la Perdición supuestamente se quemaron vivos en sus propias túnicas, reacios a permitir que ellos o sus artefactos tocaran las manos de los indignos.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Inmunidad a todas las formas de magia de muerte
+
+Habilidades de carga:
+- Dedo de la Muerte dos veces al día
+
+Peso: 3~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Rings                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Ring                                                                  //
+///////////////////////////////////////////////////////////////////////////
+@4500 = ~Anillo~
+@4501 = ~Un anillo es una pequeña banda de metal precioso que se utiliza como joya. Algunos anillos raros tienen encantamientos que les confieren diversas habilidades mágicas. Estos anillos son muy codiciados, sobre todo por los aventureros.
+
+ESTADÍSTICAS:
+
+Peso: 0~
+
+///////////////////////////////////////////////////////////////////////////
+// Ring of Leeched Abjuration                                            //
+///////////////////////////////////////////////////////////////////////////
+@4502 = ~Anillo de Abjuración de la sanguijuela~
+@4503 = ~Este potente anillo consume parte de la energía de su portador para proporcionar un impresionante conjunto de defensas contra la magia enemiga.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Fuerza: -3
+- Destreza: -3
+- Constitución: -3
+- Puntos de golpe: -20
+- Inmunidad a hechizos de nivel 2 o inferior
+- Inmunidad a la Escuela de Conjuros Evocación
+- Resistencia Mágica +20%
+- Sólo puede eliminarse con un hechizo Eliminar Maldición
+
+Habilidades de carga:
+- Manto una vez al día
+  Especial: Confiere invulnerabilidad completa a todas las armas de encantamiento +2 o inferior.
+  Duración: 4 asaltos
+
+- Globo de Invulnerabilidad una vez al día
+  Especial: El usuario es inmune a hechizos de 1º, 2º, 3º y 4º nivel.
+  Duración: 2 turnos
+
+Peso: 0~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Spears                                                                //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Spear                                                                 //
+///////////////////////////////////////////////////////////////////////////
+@4600 = ~Lanza~
+@4601 = ~Una de las armas más antiguas, que se remonta a los tiempos más primitivos, las primeras lanzas eran simples palos de madera o varas afiladas en un extremo. Cuando las razas civilizadas dominaron los metales, las puntas de lanza se fabricaron con hierro y acero. Alcanzado este fin, los armeros empezaron a experimentar con diferentes tipos de puntas de lanza, lo que condujo al desarrollo de ciertos tipos de armas de asta.
+
+ESTADÍSTICAS:
+
+Daño: 1d6 (perforante)
+Factor de velocidad: 6
+Tipo de competencia: Lanza
+Tipo: Lanza A dos manos
+Requiere
+ 5 Fuerza
+
+Peso: 5~
+
+///////////////////////////////////////////////////////////////////////////
+// Bloodbane +5                                                          //
+///////////////////////////////////////////////////////////////////////////
+@4602 = ~Perdición de la sangre +5~
+@4603 = ~Perdición de la sangre +5: Lanza arrojadiza
+Esta lanza encarnadina se encontró en el cuerpo de uno de los asaltantes de <CHARNAME>, un autodenominado "Avatar del Veneno". La lanza en sí está caliente al tacto y parece vibrar ligeramente bajo tus dedos, latiendo a un ritmo stacatto como un pulso irregular. El efecto es bastante desconcertante, pero es mucho más cómodo que estar en el extremo receptor. Las víctimas atravesadas por la lanza suelen sufrir convulsiones paralizantes cuando su magia intenta coagular la sangre de sus venas.  
+
+A diferencia de muchas otras lanzas que has encontrado, esta lanza fue diseñada para ser lanzada. La lanza vuelve instantáneamente a las manos de su portador después de cada ataque. Bloodbane también puede usarse como arma cuerpo a cuerpo. 
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- 1 ataque extra por asalto
+
+Habilidades de combate:
+- Cada impacto exitoso inflige 6 puntos de daño de veneno al objetivo en el transcurso de 6 segundos (sin salvación) y aturde al objetivo durante 10 segundos si se falla una salvación vs. armas de aliento a -4. 
+
+THAC0: +5
+Daño 1d6+5
+Tipo de daño: Perforante
+Factor de velocidad: 0
+Tipo de competencia: Lanza
+Tipo: Lanza A dos manos
+Requiere
+ 5 Fuerza
+
+Peso: 5~
+///////////////////////////////////////////////////////////////////////////
+// Minor Avatar of Sekolah Spear                                         //
+///////////////////////////////////////////////////////////////////////////
+@4604 = ~Then we have nothing more to discuss.~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Amulets                                                               //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Amulet                                                                //
+///////////////////////////////////////////////////////////////////////////
+@4700 = ~Amuleto~
+@4701 = ~Los amuletos suelen ser dispositivos mágicos que se suelen llevar colgados del cuello, suspendidos de una cadena. El tipo de cadena que acompaña a un amuleto suele aumentar el valor estético del objeto, no sus propiedades mágicas. Sólo puede colgarse del cuello un amuleto a la vez.
+
+ESTADÍSTICAS:
+
+Peso: 1~
+
+///////////////////////////////////////////////////////////////////////////
+// Lillith Amulet                                                        //
+///////////////////////////////////////////////////////////////////////////
+@4702 = ~Amuleto de Lillim~
+@4703 = ~Amuleto de Lillim
+Este amuleto maldito huele fuertemente a sangre y polvo. Llegó a tus manos durante tu participación en el asunto del Ritual. Tanto el Ritual como este amuleto permanecen rodeados de misterio, pero algunos de los poderes del amuleto pueden ser comprendidos. Parece conceder al portador todas las inmunidades y defensas mágicas normalmente asociadas a un vampiro joven: regeneración; resistencia al frío y a la electricidad; inmunidad al veneno, al miedo, al sueño, al drenaje de nivel, al agarre, al encantamiento y a las armas no mágicas. Los corazones verdaderamente nobles no soportan ponerse el amuleto y éste no puede quitarse sin ayuda clerical. Estás seguro de que los poderes del amuleto tienen un precio terrible, pero no detectas ninguna desventaja. De hecho, el amuleto te parece extrañamente natural y despierta algo en lo más profundo de tu memoria.
+
+*OBJETO MALDITO*
+
+ESTADÍSTICAS:
+
+Proporciona defensas vampíricas~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Armor                                                                 //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Studded Leather                                                       //
+///////////////////////////////////////////////////////////////////////////
+@4800 = ~Armadura de cuero tachonado~
+@4801 = ~La armadura de cuero tachonado tiene poco en común con la armadura de cuero normal. En lugar de una coraza endurecida, la armadura de cuero con tachuelas ofrece cientos de remaches metálicos fijados a un soporte flexible. Las numerosas tachuelas forman una capa flexible de metal que ayuda a rechazar los ataques cortantes, mientras que el cuero es poco más que un medio para asegurar los remaches en su sitio. 
+
+ESTADÍSTICAS:
+
+Clase de Armadura: 7 (5 vs. cortante, 6 vs. perforante y proyectil)
+Requiere:
+ 6 Fuerza
+
+Peso: 25~
+
+///////////////////////////////////////////////////////////////////////////
+// Yellow Dragon Armor                                                   //
+///////////////////////////////////////////////////////////////////////////
+@4802 = ~Armadura del Dragón Amarillo~
+@4803 = ~Armadura del Dragón Amarillo
+Esta armadura está formada por escamas entrelazadas de Dragón Amarillo. Los dragones amarillos son conocidos por sus ataques de arena ardiente y su resistencia a las armas perforantes. Este traje en particular fue obtenido por <CHARNAME> mientras <PRO_HESHE> investigaba el Ritual. La armadura es mágicamente ligera y libre de carga. 
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- +50% de resistencia a perforante y proyectil
+
+Clase de armadura: -1 (-3 vs. cortante, -2 vs. perforante y proyectil)
+Requiere:
+ 6 Fuerza
+
+Peso: 10~
+
+///////////////////////////////////////////////////////////////////////////
+// Plate Mail                                                            //
+///////////////////////////////////////////////////////////////////////////
+@4804 = ~Armadura de placas~
+@4805 = ~La cota de malla es una combinación de armadura de cadenas con placas de metal que cubren las zonas vitales, como el pecho, el abdomen y la ingle. De construcción similar a la cota de malla de bronce, la cota de malla verdadera se compone de cadenas y cuero.
+
+ESTADÍSTICAS:
+
+Clase de Armadura: 3 (0 vs. cuchillada)
+Requiere
+ 12 Fuerza
+
+Peso: 50~
+
+///////////////////////////////////////////////////////////////////////////
+// Deep Guardian's Plate (NWN2)                                          //
+///////////////////////////////////////////////////////////////////////////
+@4806 = ~Placa del Guardián Profundo~
+@4807 = ~En un esfuerzo por proteger mejor a sus soldados, los artífices de la antigua Imaskar se propusieron crear una especie de simbionte viviente, algo que se uniera a su usuario y lo protegiera de cualquier daño. Utilizando especímenes extraídos de las fosas más profundas del océano, los hechiceros imaskari empezaron a injertar poco a poco estas criaturas mejoradas mágicamente en cotas de malla, destetándolas del agua salada y obligándolas a depender de la magia para alimentarse. Esta técnica funcionaba bien, permitiendo al usuario una resistencia a los hechizos mucho mayor de lo normal... pero otros magos miraban esta creación con creciente temor, preocupados de que una criatura que se alimentaba de magia pronto se volviera demasiado hambrienta y se alimentara de sus amos. Por ello, sólo se fabricaron unos pocos trajes de esta armadura, y las criaturas creadas por los Imaskari fueron selladas y olvidadas. Cuando Imaskar cayó, es probable que volvieran a la silenciosa oscuridad de la que habían salido... o que se transformaran en otra cosa...
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Resistencia mágica: +10%
+- Inmunidad a sujeción y parálisis
+
+Clase de Armadura: 1 (-2 vs. cuchillada)
+Requiere
+ 12 Fuerza
+
+Peso: 20~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Bastard Swords                                                        //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Bastard Sword                                                         //
+///////////////////////////////////////////////////////////////////////////
+@4900 = ~Espada Bastarda~
+@4901 = ~También conocida como espada de mano y media, la espada bastarda debe su nombre a que se encuentra a medio camino entre la espada de dos manos y la espada larga. La espada bastarda tiene una hoja de doble filo y una empuñadura larga, en la que caben las dos manos si se prefiere. La longitud total de la espada bastarda oscila entre cuatro pies y cuatro pies y diez pulgadas.
+
+ESTADÍSTICAS:
+
+Daño: 2d4
+Tipo de daño: Cuchillada
+Factor de velocidad: 8
+Tipo de competencia: Espada Bastarda
+Tipo: A una mano
+Requiere
+ 11 Fuerza
+
+Peso: 10~
+
+///////////////////////////////////////////////////////////////////////////
+// Bloodletter +4 (NWN2) Non-Good ONLY                                   //
+///////////////////////////////////////////////////////////////////////////
+@4902 = ~Carta de sangre +4~
+@4903 = ~Forjada en humeantes fuegos de azufre y enfriada en la sangre de su creador, la hoja de una Letra de Sangre es un arma típicamente maligna, el tipo de espada que ha inspirado más de una risa diabólica al ser blandida en la cara de algún que otro caballero virtuoso. Posee energías que roban vidas atroces, pero si los destinos de sus anteriores propietarios son una indicación, su principal característica podría ser la atracción por la "venganza."
+
+ESTADÍSTICAS:
+
+Habilidades de combate:
+- Inflige 2 puntos de daño sangrante por impacto (un punto por asalto).
+- Cada golpe drena 1 punto de vida del objetivo y lo transfiere al portador. No cura más allá del máximo del portador.
+
+THAC0: +4
+Daño 2d4+4
+Tipo de daño: Cuchillada
+Factor de velocidad: 5
+Tipo de competencia: Espada Bastarda
+Tipo: A una mano
+Requiere
+ 11 Fuerza
+
+Peso: 5~
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+// Medium Shields                                                        //
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// Medium Shield                                                         //
+///////////////////////////////////////////////////////////////////////////
+@50000 = ~Escudo mediano~
+@50001 = ~Los amuletos suelen ser dispositivos mágicos que se suelen llevar colgados del cuello, suspendidos de una cadena. El tipo de cadena que acompaña a un amuleto suele aumentar el valor estético del objeto, no sus propiedades mágicas. Sólo puede colgarse del cuello un amuleto a la vez.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Clase de Armadura: +1
+
+Requiere
+ 12 Fuerza
+
+Peso: 7~
+
+///////////////////////////////////////////////////////////////////////////
+// Uthgardt Holy Shield +2 (NWN2)                                        //
+///////////////////////////////////////////////////////////////////////////
+@50002 = ~Escudo sagrado Uthgardt +2~
+@50003 = ~Los Uthgardt valoran la fuerza por encima de todo, y estos escudos proporcionan fuerza de sobra. También desdeñan la palabrería y las buenas palabras, y los escudos hacen todo lo posible para que su portador sea tan bárbaro como los hombres salvajes del norte.
+
+ESTADÍSTICAS:
+
+Habilidades equipadas:
+- Clase de Armadura: +3
+- Fuerza: +2
+- Carisma: -2
+
+Requiere
+ 12 Fuerza
+
+Peso: 7~

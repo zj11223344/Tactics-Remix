@@ -137,7 +137,8 @@ There are a couple options for the player to select to increase the HP of all en
 - Wes thank you for your permission to update such an amazing mod! I appreciate being a steward of your work, and I hope you find it enjoyable.
 - Gebhard Blucher, Kensai Ryu, Xyx, Mike Barnes, and Ishan, thank you for all your amazing work on the original Tactics mod. I hope you too enjoy the work I have put into it.
 - Cam for all of your help and assistance. The reasons are many, thank you.
-- JohnBob for providing French translation.
+- JohnBob for providing the French translation.
+- alaisFcZ for providing the Spanish translation.
 - All those who assisted in testing and providing feedback! I appreciate every single one of you for all that you do!
 
 ## Further Reading

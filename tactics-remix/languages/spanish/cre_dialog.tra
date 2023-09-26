@@ -1,0 +1,250 @@
+// Acid Kensai Dialogue
+@101      = ~Por fin nos conocemos. Eres tan impresionante como había imaginado.~
+@102              = ~¿Quién eres tú?~
+@103              = ~¿Qué quieres de mí?~
+@104              = ~Déjame adivinar, ni siquiera vas a escuchar lo que digo.~
+@105      = ~Soy Kuroisan, un Kensai y Wu Jen de no poco mérito. He venido a esta tierra persiguiendo una densetsu no katana. La katana, verás, es mi especialidad particular y mi particular obsesión.~
+@106      = ~Por supuesto que te escucharé. ¿La gente que conoces normalmente te ignora? Créeme, probablemente sea más una bendición que una maldición.~
+@107      = ~Tienes una katana muy poderosa, una que he estado buscando durante bastante tiempo.~
+@108      = ~Te agradecería mucho que me entregaras la katana Furia Celestial. Preferiría arreglar las cosas pacíficamente, pero no descarto el uso de la fuerza.~
+@109              = ~Vale, claro, puedes quedártela.~
+@110             = ~No lo creo.~
+@111      = ~Apreciaría mucho que me entregaras la katana Malakar. Preferiría arreglar las cosas pacíficamente, pero no descarto el uso de la fuerza.~
+@112     = ~Muy bien. Iku yo!~
+@114     = ~¡Lo que estás haciendo está mal! ¿Por qué me amenazas con robarme?~
+@113     = ~¡Gracias, amigo! Que los Kami nos cuiden a los dos. Tu generosidad no será olvidada. Sayonara.~
+
+@115     = ~¿Incorrecto? ¿Según qué criterios? Ciertamente no según mi sensibilidad interna. ¿Quizás hablas de los Kami? Algunos estarían de acuerdo, otros no. No veo a ninguno claramente superior a los demás.~
+@116     = ~¿Por qué no debería tomar lo que quiero, aquí en esta tierra bárbara? Lo único que temo es el castigo de sus leyes. Sus guardias hacen cumplir sus reglas locales con la amenaza de la violencia, imponiendo su moral a los visitantes como yo.~ 
+@117     = ~Bueno, he sobornado a los ejecutores locales. Así que ahora lo único que se interpone entre yo y mi deseo ... eres tú. ¿Y eres mucho mejor? ¿Exactamente cómo conseguiste esta katana? ¿Comprada legalmente? Creo que no: la saqueaste de un cadáver.~ 
+@118     = ~Entonces, ¿lo entregarás pacíficamente?~
+
+@120     = ~Una vez más nos embarcamos en nuestra retorcida danza.~
+
+@121     = ~Ah ... Claramente estoy equivocado. Aquí no hay ninguna katana legendaria. Perdona a este humilde servidor por entrometerse. Adiós.~
+
+// Red Badge Dialog
+@201 = ~"HIsss".. Bienvenido, <CHARNAME>. Te creías a salvo en tu ...~
+[SNAKE01]
+// @202 = ~... Bolsa Planar, no es así. La mancha de tu Padre es como el ...~
+@203 = ~... canto de Ssirena, una deliciosa promesa. A medida que te haces más fuerte ...~
+@204 = ~... nosotros también, y nuestra hambre también. El poder fluye como un veneno ...~
+@205 = ~... a través de tu venas, a través de tu mente. Tu débil mente mortal ...~
+@206 = ~... y tu frágil cuerpo mortal ... Yo me estremezco en la expectación.~
+@207 = ~Siempre habrá quien busque matarte, igual que tú ...~
+[SNAKE03]
+@208 = ~... han buscado la muerte de otrosss. Pero pocos son como nosotrosss.~
+@209 = ~Pocosss son avatares del Veneno. Algunos creen ...~ [SNAKE04]
+@210 = ~... pero nosotros Destruimos. algunosss son Frágilesss en sus deseosss ...~
+@211 = ~... pero somos como Uno. Nuestro único corazón late por tu sangre.~
+@212 = ~Pero ahora no es el momento. Engordarás para ...~ [SNAKE01]
+@213 = ~... la matanza. Esperaremosss.~
+
+@214 = ~Suspiro. ¿Por qué siempre me pasan estas cosas?~
+@215 = ~No eres la primera en buscar mi perdición, serpiente, y no serás la última.~
+@216 = ~Sabes, he oído que las criaturas como tú son muy sabrosas con un marinado de salvia.~
+@217 = ~¿Por qué esperar? ¡Hagámoslo ya!~
+
+@218 = ~Tus palabrasss no son nada para nosotrosss. Esperaremos.~ [SNAKE02]
+
+@219 = ~Ahora... es... el momento. Tú llamas a nuestra hambre ...~ [SNAKE01]
+@220 = ~... y venimos para el banquete.~
+
+@222 = ~... mundo mortal, pero no es así. La mancha de tu Padre es como me gusta ...~
+
+// Ritual Dialog
+@301 = ~¿Intrusos en el terreno más sagrado?. ¡Esto es intolerable!. Había oído el ruido de fuera, pero estaba convencido de que los Defensores y la Manifestación nos protegerían durante el tiempo suficiente para completar el Ritual. Parece que tendré que castigar a  Ira'kiou'dneg. (suspiro). Y luego, esa defensa con calaveras parecía tan eficaz sobre el pergamino.~
+@302 = ~De todos modos, o mucho me equivoco o, para empezar, fue ÉL quien te envió. Mi bello y traidor Estratega ha enviado una banda de harapientos forajidos para interrumpir el Ritual. Suena como salido del relato de un bardo. Tendría que haber sido mucho más cuidadosa con ese Geas que le impuse.~
+@303 = ~No obstante, forastero, me veo obligado a preguntarte el motivo. ¿Por qué irrumpiste aquí y aplastaste mis fuerzas?. ¿Sabes, siquiera, qué es el Ritual?~
+@304 = ~Lo cierto es que no. Ese "Pontifex" nunca nos lo explicó con calma, sólo nos dijo que era muy importante y que haría temblar el mundo.~
+@305 = ~¡Me basta con saber que debo evitar que llevéis a cabo un acto tan vil!~
+@306 = ~No tengo intención alguna de heriros, pero a mí mismo se me ha impuesto un Geas y debo parar el Ritual.~
+
+@307 = ~No me sorprende. Lo cierto es que si os hubiera explicado lo que estaba sucediendo, jamás habríais accedido a ayudarle.~
+@308 = ~Estoy convencido de que, en cuanto os lo explique, os daréis cuenta de que compartimos los mismos objetivos. No tenemos por qué pelearnos, la verdad es que incluso puedo utilizar el poder del Ritual para anular la coacción que te afecta.~
+@309 = ~Sólo queremos eliminar las barreras y mejorar la comunicación. Son tantos los problemas que genera la desconfianza y el temor, el odio y los celos. Confiamos en mitigar tales causas.~
+@310 = ~Por desgracia, y en vista de que realmente no hay tiempo para ello, ahora no puedo explicártelo. Podemos hablar después, una vez se haya cumplido mi destino. No te preocupes, sólo me llevará un minuto.~
+
+@311 = ~¡Te he engañado, a ti, y a  Ira'kiou'dneg! ¡Has llegado demasiado tarde, ya he terminado el Ritual! Ahora, habrá un solo espíritu entre todos nosotros. Espero al ... ¡Instrumento!~
+
+// Ender
+@312 = ~¡Necio!. ¿Por qué luchas contra nosotros?. ¿Acaso no aprecias el arte?.  Si te opones al Ritual, nunca más volverán a oírse canciones en Faerun.~
+@313 = ~He oído historias sobre tribus de Elfos silvestres que llaman a su deidad maligna el No Cantor pues su deber es no cantar la canción de la creación, la canción de la vida. Y ése es el papel que tú asumes con tu oposición a nuestra sagrada tarea.~
+@314 = ~¡Espero, intruso, que éste sea tu último baile!. ¡Mi verdadero nombre es Tabris, y ordenaré a mis legiones que te aplasten!~
+
+
+// Li Kao
+@315 = ~¿Acaso hace un grano de mostaza un montón?~
+  @316 = ~¿Qué cosa?~
+    @317 = ~La pregunta no es complicada, intruso. Si tengo un grano de semilla de mostaza ante mí, ¿tengo un montón de semilla de mostaza ante mí?~
+  @318 = ~Si.~
+    @319 = ~Me temo que estás haciendo una montaña de un grano de arena, pero puede que tengas razón. Ah, ojalá pudiésemos entendernos mejor.~
+  @320 = ~No.~
+    @321 = ~Ah, pero si un grano no es un montón, entonces, si añades  un solo grano al primer grano original tampoco haces un montón. De modo que dos granos de semilla de mostaza no son un montón. Y, en consecuencia, tampoco lo son tres, y cuatro ... y diez mil. Parece que no hay cantidad de mostaza suficiente para hacer un montón, así que ¿es posible hacer un montón?~
+      @322 = ~¿Por qué te paras con esas sutilezas semánticas? ¿No deberías intentar detenerme?~
+      @323 = ~Quizá existe un punto concreto en el que la pila de semillas de mostaza se convierte en un montón.~
+      @324 = ~Quizá "montón" sea un término ambiguo que no debería emplearse en una conversación lógica.~
+        @325 = ~Puede que tengas razón. Sólo pretendía saber cómo piensas, ya que pareces tan decidido a destruir todo lo que amo. Ahora, sin embargo, ha llegado la hora de que ponga fin a tu malvada incursión. ¡Saca tus armas!~
+
+// RIT Pont
+@326    = ~Ah, aventureros, y duros de pelar. Exactamente el tipo de gente que estaba buscando. Por supuesto, por eso estoy esperando aquí frente a la Fortaleza del Vigilante, un imán de aventureros legendarios. ¿Puedo molestarte un momento de tu tiempo?~
+@327    = ~Desde luego.~
+@328    = ~Podríamos, pero mi experiencia es que la gente amable suele acabar apuñalándome por la espalda.~
+@329    = ~La verdad es que no es un buen momento. Quizá más tarde.~
+@330    = ~Hmmm, parece que hemos tenido experiencias similares en el pasado. Y soy del todo consciente de que, a vuestros ojos, mi actitud comprensiva os hace dudar más de la honestidad de mis intenciones.~
+@331    = ~Tengo que pediros un favor. No obstante, mi intención es ser del todo honesto y deciros claramente que pretendo traicionaros.~
+@332    = ~¿Por qué tendría que confiar en alguien que quiere traicionarme?~
+@333    = ~Lo cierto es que eso es bastante normal. Sigue.~
+
+@334    = ~¿Confiar en mí? Podéis confiar o no en mí, a vuestra elección. Pero tendríais que aceptar mi gesta. Seguro que, a estas alturas, ya os habréis dado cuenta de que casi todo el mundo que intenta contrataros tiene un motivo oculto, y por lo general, acaba traicionándoos~
+@335    = ~Y me lo huelo a leguas. ¿Habéis hablado con ese tipo que anda por aquí, Odren? Apesta a traición. ¿Y mi primo, Lord Firkraag? Exuda maquinaciones. ¿Ese Gaal, en las alcantarillas? No le hagáis ningún favor, y si alguna vez os encontráis con  Saemon Havarian os habréis topado con un paradigma perfecto de ello.~
+@336    = ~¿Os habéis encontrado con algún drow?. Unos chaqueteros perfectos. ¿Los Ladrones de las Sombras? Esos dan la puñalada por la espalda, todos y cada uno de ellos. Incluso se sabe que hay Arpistas que piden favores alegando falsos motivos. Y puede que os encontréis a una muchacha muy astuta que responde al nombre de Amel ... bueno, dejaremos esa historia para otro día. Basta con que sepáis que todo el que os pida un favor, seguramente os oculta algo.~
+@337    = ~Así que no debéis confiar en mí. Pero tendríais que hacer lo que os pido. Y en verdad, como hemos dejado bien claro esto de la traición desde el princiipio, tendríais que confiar en mí un poquitín más que en el resto, puesto que al menos ya sabéis cómo irán las coas y, en consecuencia, podéis tomar medidas al respecto.~
+@338    = ~¿Estás siempre tan desquiciado?~
+@339    = ~Bien, oigamos tu propuesta.~
+@340    = ~No, normalmente soy muy fino y elegante. Pero admito a las claras que el Ritual me trae loco. Ahora, en cuanto a esa gesta ...~
+
+@341    = ~Deseo contratarte a ti y a tus nobles seguidores para que realicéis una gesta peligrosa e importante. No es descabellado afirmar que el destino de la región depende de vosotros. Pero puesto que la posibilidad de salvar un sinnúmero de vidas no suele bastar para atraer aventureros a una causa, os diré que también os aguardan grandes y misteriosamente arcanas recompensas.~
+@342    = ~De modo que ésta no es la tontería habitual de "cruzad la ciudad, conseguid este tesoro y traédmelo" a la que sin duda estáis acostumbrados. ¡Mi deseo es, nada más y nada menos, que interrumpir el Ritual! (mientras habla un relámpago azul rasga con dramatismo el cielo)~
+@343    = ~¿"El Ritual"?~
+@344    = ~Sí, sí, supón que estoy impresionado. Y ¿los detalles?~
+
+@345    = ~Ya veo que comprendes el significado del desafío al que nos enfrentamos.~     
+@346    = ~Te convendría prestar atención, <RACE>. No se trata de lo típico, de irrumpir en una fortaleza Gnoll.~
+
+@347    = ~En un Claro oculto, no muy lejos de aquí, con una larga y bien documentada reputación de lugar mágico, hay quien ya ha comenzado a ocuparse del Ritual. Se esfuerzan sin descanso, convencidos de que su causa es noble y de que sus acciones ostentan el sello de los justos.~
+@348    = ~Es preciso interrumpir el  Ritual. La gesta es relativamente simple: infiltraros en el Claro, derrotar a los equivocados guardias y guardianes del Ritual e interrumpid el Ritual sin matar a la Alta Sacerdotisa. Oh, y luego, salid de allí.~
+
+@349    = ~¿Qué dices, <CHARNAME>? ¿Aceptarás mi gesta y pararás el Ritual?~
+
+@350    = ~Cuéntame más sobre las defensas del Ritual en general.~
+
+@351    = ~El Ritual en sí, lo lleva a cabo la Alta Sacerdotisa, en algún terreno sagrado del Claro oculto. Sin embargo, el terreno sagrado cuenta con muros mágicos, y una puerta la guardan espíritus sumisos de los muertos.~
+@352    = ~En un rito muy similar al de la transformación de mago a lich, siete jóvenes aspirantes permiten que sus almas se desgajen de sus cuerpos y formen una poderosa Manifestación que vigila las puertas. Hasta que los úlitmos restos de sus cuerpos, sus Calaveras no muertas, hayan sido destrozadas, no es posible derrotar a la Manifestación.~
+@353    = ~Tanto las Calaveras como la Manifestación pueden sacarte de la zona del ritual, así que han de ser destruidas. Espero que estés tomando notas sobre el tema. Vamos a ver, resumamos: primero las Calaveras, luego la Manifestación de las puertas.~
+@354    = ~Claro que si se tratase simplemente de aplastar unas calaveras polvorientas en un banco y luego, de entrar bailando un vals por la puerta, ya lo habría hecho alguien. El Estratega del Ritual esperaba un ataque al ritual en el último momento, y reunió un escuadrón de fanáticos para defenderlo.~
+@355    = ~Las Calaveras están esparcidas por todo el Claro. Cada una de ellas está cerca de una gran calavera grabada en piedra. Y un grupo de unos siete guardias honorables guarda cada Calavera. Las Calaveras obtienen su oder de la fe de los guardianes y no pueden derrotarse mientras haya un guardián vivo cerca. De modo que no hagáis prisioneros.~
+@356    = ~Los demás Guardianes aportaron parte de sus propias energías vitales a los magos que se sacrificaron para convertirse en las Calaveras del Ritual. Esto, a su vez, tuvo el efecto de unir las vidas de los guardianes a las calaveras. Es un puente entre la vida y la muerte que protege a la calavera hasta que todos sus esbirros vivos sean asesinados.~
+@357    = ~Tenéis que encontrar cada Calavera, matar a todos los defensores que haya cerca, y luego destrozar la propia Calavera. Cuando hayáis aplastado todas las calaveras, podréis atravesar las puertas e interrumpir el Ritual.~
+
+// 
+@358    = ~Cuéntame más cosas sobre los defensores mortales del Ritual.~
+@359    = ~El Estratega del Ritual formó el Ejército del Ritual a partir de aventureros con cierta experiencia. Cada uno de ellos tiene dos o tres veces más experiencia que tú cuando te capturó Irenicus (sí, claro que lo sé, todos hemos estado siguiendo tu carrera con mucho interés). Por consiguiente, cada uno de ellos es un poco más poderoso que tú cuando te capturaron.~
+@360    = ~Aparte de unos cuantos líderes bastante especiales, los miembros del Ejército del Ritual se dividen en unas cuantas categorías bien definidas:~
+@361    = ~Los Acechadores, entrenados por Kara-Turan en el arte del combate sin armadura y en las puñaladas a traición de los ladrones. Patrullan el perímetro oculto del Claro y harán sonar la alarma si os descubren . En el combate, suelen hacerse invisibles, dando golpes certeros desde atrás y luego desapareciendo.~
+@362    = ~Los Theurgeons Instintivos son guardabosques capacitados que disparan con sus hondas mortales. También se han formado como sacerdotes y no dudarán en invocar el poder divino para derrotarte. Juegan un papel de apoyo, con sus armas de tiro y su magia de clérigos.~
+@363    = ~Los Magos de Batalla se han entrenado en el combate sin armadura y la magia. Sus defensas mágicas les protegen mejor que la cota de mallas convencional y pueden lanzar golpes y hechizos discapacitantes con igual facilidad.~
+@364    = ~Los Totemistas eran druidas que sucumbieron a la atracción del Ritual. Su espíritu les protege y la magia de naturaleza druídica que emplean resulta muy adecuada para la defensa del Claro del bosque al aire libre.~
+@365    = ~Los Bersékers son hombretones desquiciados, una tropa de choque de primera línea de primera clase. Cuentan con la ayuda de los Disrruptores de Hechizos, guerreros entrenados específicamente para derrotar a los conjuradores de hechizos y evitar sus encantamientos arcanos. Los Bersékers cargan de frente y atacan al enemigo mientras los Disrruptores de Hechizos lanzan dardos envenenados y otros misiles desde atrás.~
+@366    = ~Por último hay un puñado de Comandantes, entre las fuerzas base que protegen el Ritual. Mis últimas noticias son que un Inquisidor, un Bardo, un Hombre Lobo, un Monje y un Wu Jen se han unido a la causa. No creo que estos líderes posean más experiencia que el resto de su tropa, pero sí que tienen habilidades especiales.~
+@367    = ~En cuanto al armamento, las tropas están excepcionalmente bien equipadas, y emplean cotas de malla mágicas, anillos encantados y espadas aracanas. No obstante, pese a  su naturaleza mágica, todo ese equipamiento parecerá "corriente" a un grupo como el tuyo. No creo que en todo el ejército haya una sola arma única.~
+
+@368    = ~¿Qué táctica nos aconsejarías seguir?~
+@369    = ~Mi consejo es que exploréis subrepticiamente o con medios mágicas la zona, en la medida de lo posible. No dividas a tu grupo sin motivo, a menos que os dividáis para que os venzan. Intentad eludir la vigilancia de las patrullas.~
+@370    = ~Intentad que no os descubran en medio de su campamento, donde podrían derrotaros. Luchad en los bordes de los claros, en la medida de lo posible. Además de los Acechadores, habrá guardias del Ritual cerca de los grabados de piedra y de sus Calaveras.~
+@371    = ~Por desgracia, la mayoría de las tácticas convenientes para derrotar grupos pequeños, aquí no sirven a causa de las Calaveras. Éstas, por su carácter mortal, pueden derrotar rápidamente a las criaturas convocadas, y su cualidad etérea les confiere una especial eficacia en la disipación de ciertos tipos de magia. Aguardan los hechizos de Nube y hacen que se desvanezcan.~
+@372    = ~Intentad separarlas y luchad contra ellas una a una siempre que podáis. Tendréis que engañar a los soldados, que prefieren más el combate en grupo, para que os persigan. Y resultará mucho más difícil conseguir que los arqueros dejen sus puestos.~
+@373    = ~Recordad que no es posible matar una Calavera mientras haya enemigos cerca, aun cuando se trate de enemigos invisibles. De los druidas y los protectores de los bosques podéis esperar que empleen una cierta "magia natural": enjambres de insectos, relámpagos que os ataquen. Y los Magos de Batalla emplearán los típicos ataques mágicos, como confusión, y flechas ácidas.~
+@374    = ~Aparte de ello, no tengo ningún consejo especial que daros. En mi opinión, sesgada, como todas, los defensores están de hecho batante bien entrenados y lo están haciendo lo mejor posible, dados el material con que cuentan y las circunstancias. Su Estratega les ha enseñado bien, así que tendréis que ser muy astutos o muy hábiles para derrotarlos.~
+
+@375    = ~¿Qué más nos puedes contar sobre el Ritual?~
+
+@376    = ~¡Hay que pararlo!. El Ritual del Instrumento no puede continuar. Esos locos mal aconsejados creen que están sirviendo al Bien más absoluto con su Ritual. En cuanto a mí, me doy cuenta de qué ingenuo es este punto de vista. Si no conseguimos pararlos, quedarán sorprendidos y desmoralizados al descubrir los horrores que ha traído su precioso Ritual.~
+@377    = ~Sí, pero ¿qué hace?~
+@378    = ~Las consecuencias más amplias son demasiado terribles como para ser contempladas. Tiemblo sólo con intentar expresar todos los efectos del Ritual. Me estremezco cada vez que pienso en cuáles serán las consecuencias del Ritual sobre Faerun.~
+@379    = ~De acuerdo, "Ritual = Malo", eso me ha quedado claro. Pero quizá podrías explicar un poco más sobre la composición y el origen del Ritual~
+@380    = ~Se trata de la obra de un gran Mal disfrazado de herramienta del Mal. El Ritual es seductor; a primera vista, y quizá también a segunda y tercera, parece ser la materialización de muchas esperanzas y sueños.~
+@381    = ~De acuerdo, creo que ya lo cojo.~
+@382    = ~No creerías que iba a darte más detalles, ¿verdad? No deseo que te veas siquiera tentado a recrear, más adelante, tú mismo el Ritual. Siempre y cuando sobrevivas al asalto al Claro y a mi probable traición.~
+
+@383    = ~¿Qué es eso de tu traición?~
+@384    = ~Nada demasiado emocionante; de veras. Algo así como yo tomándote no del todo por sorpresa, intentando matarte cuando vuelvas aquí por la recompensa y tú viéndote obligado a matarme y a llevarte mi montón de tesoro mágico.~
+@385    = ~¿Así que ya sabes que va a suceder, no?~
+
+@386    = ~¿Qué recompensa nos ofreces por esta gesta?~
+@387    = ~Si interrumpes el Ritual y no le haces daño a la Alta Sacerdotisa, podrás conservar cualquier arma, mágica o no, que tomes de los defensores derrotados. Además, cuando aceptes llevar a cabo la gesta, te daré unos cuantos objetos de protección que te ayudarán a infiltrarte en el Claro.~
+@388    = ~Y no hace falta ni que diga que te ganarás un buen lugar en mi corazón y los hermosos recuerdos de un trabajo bien hecho. Estos recuerdos perdurarán siempre, ya lo sabes. Y éstas son cosas que no tienen precio, la verdad.~ 
+@389    = ~Desde un punto de vista práctico, tengo un objeto mágico no especificado, pero con una magia poderosa, que estará neutralizado hasta que se interrumpa el Ritual. De modo que no tienes motivos para robármelo, y todas las razones del mundo para creer en mi palabra como dra--er-- español, de que te lo entregaré en cuanto termines tu labor y vuelvas a contármelo.~
+
+@390    = ~¿Quién eres, de todos modos?~
+@391    = ~El nombre que han dado es de difícil pronunciación para los de tu especie, con  esas apóstrofes, dobles consonantes y todo eso. Puedes llamarme Pontifex, que significa "constructor de puentes". Como habrás deducido de mis no tan sutiles indirectas ...~
+@392    = ~En un tiempo, formé parte del Ritual. De hecho, lo apoyé de todo corazón y fui el Estratega de la operación: planeé todas las defensas tácticas e intenté prepararme para cualquier posible ataque realizado durante el ritual.~ 
+@393    = ~De modo que me veo, en la nada envidiable posición de contratar a una banda de villanos para que destrocen mi red de defensa. Es algo así como contratar a un asesino para que elimine a mi propio bebé. Por desgracia, los otros miembros del Ritual saben de mi deserción y han conjurado el Terreno Sagrado en mi contra.~
+@394    = ~No hace mucho que me percaté de lo equivocado de mi posición y de la auténtica importancia del Ritual. No podemos permitir que ella lo termine. Por favor, te lo  imploro: acepta mi gesta. Al principio, lo sentirás, pero luego, te alegrará haberlo hecho.~
+
+@395    = ~Necesito más tiempo para pensar sobre ello.~
+@396    = ~Muy bien, tómate tu tiempo. ¡Pero no demasiado.! La preparación del Ritual ya se está realizando. Te necesito (a tí o a otro grupo de poderosos aventurareros cerca de aquí, con lo que sobre todo te necesito a tí) para detenerlo~
+
+@397    = ~Acepto tu gesta.~
+@398    = ~¡Excelente! Sólo necesito que aceptes un Geas mágico, un juramento vinculante, de que (1) interrumpirás el Ritual (2) sin dañar a la Alta Sacerdotisa y luego (3) me informarás.~
+@399    = ~¿Un Geas? ¿No confías en mí?~
+@400    = ~No. No más de lo que confías en mí. Pero te necesito.~
+@401    = ~Necesito un poco más de tiempo para pensar en esto.~
+@402    = ~Muy bien.~
+@403    = ~¿Aceptas un Geas mágico para interrumpir el Ritual sin dañar a la Alta Sacerdotisa y luego volver a contármelo?~
+@404    = ~Sí, acepto el Geas.~
+
+@405    = ~Y justo a tiempo. Me han llegado noticias (aunque podrían llegar más) de que el Ritual ya se está llevando a cabo. No me llevará casi tiempo teletransportaros al Claro oculto. Una vez allí, según mis cálculos, tendréis 7 horas antes de que se complete el Ritual. Pero no os estreséis, por supuesto.~
+  @406  = ~No hay tiempo que perder, comencemos el viaje. Cuando hayáis acabado, simplemente, volved al Torreón del Vigilante, y hablad de nuevo conmigo. Sólo los afines al Ritual pueden entrar en el Claro desde fuera, así que no os vayáis hasta que lo hayáis interrumpido.~
+    @407 = ~Hmm. Ahora que lo mencionas, parece que olvidé llevar los dos. Hay, de hecho, quince horas antes de que el Ritual se complete. Lo siento. No volverá a ocurrir.~
+    @408 = ~Lo que sea.~
+  @409  = ~Bien.~
+  @410  = ~¿Por qué tengo la sensación de que si me hubiera presentado mañana aún quedarían exactamente siete horas?~
+    @411 = ~No seas absurdo. El calendario del Ritual se establece de forma bastante explícita en los Pergaminos del Mare Mortuus. Tabris ha llegado recientemente para unirse a ellos. Con su presencia, la etapa final del Ritual comenzará.~
+
+@412    = ~No hay tiempo que perder, ¡empecemos el viaje! Cuando hayas terminado, sólo tienes que volver a la Fortaleza del Vigilante y hablar conmigo de nuevo. Sólo aquellos que estén en sintonía con el Ritual pueden entrar en el Claro desde el exterior, así que no te vayas hasta que lo hayas interrumpido.~
+
+@413    = ~Hemos llegado. Ahora coged estos objetos mágicos que os ayudarán en vuestro asalto. Al contrario que otros patrones que os han enviado a la lucha prácticamente desnudos, yo estoy de veras interesado en vuestro éxito. Os veré del otro lado.~
+
+@414    = ~Veo que habéis vuelto.~
+
+@415    = ~No habéis conseguido interrumpir el Ritual. De hecho, mis adivinaciones revelan que no habéis conseguido ir más allá de la Manifestación antes de que se completase el ritual. Y, en consecuencia, no sois conscientes de la mayor de las tragedias: la Alta Sacerdotisa está muerta.~
+@416    = ~aquí tenéis, llevaros vuestra maldita recompensa. Soy fiel a mi palabra, como ya veréis. En circunstancias normales, simplemente usaría el Geas que jurasteis para acabar con vuestras vidas, pero ahora ... no tengo mucho más por lo que vivir, de modo que bien podemos gastar nuestras energías en luchar el uno contra el otro.~
+
+@417    = ~¡No habéis conseguido interrumpir el Ritual, y lo sepáis o no, la Alta Sacerdotisa está muerta!. Sin embargo, mis adivinaciones revelan que conseguísteis ir más allá de la Manifestación antes de que terminase el Ritual. Estuvísteis a pulgadas de materialziar mi sueño, y aún así, fallastéis. Una lástima.~
+@418    = ~Soy fiel a mi palabra, aquí tenéis la primera parte de vuestra recompensa. Cuando os sintáis fuertes como para hacer un buen uso de ella, no dudes en decirme que quieres la otra parte de la recompensa.~
+
+@419    = ~Conseguisteis interrumpir el ritual, pero la Alta Sacerdotisa está muerta. Casi hicistéis realidad mi sueño, pero fracasasteis. Una lástima. ¿No podríais haber contenido vuestra ansia d sangre por una vez?. ¿Acaso tenéis que destruir todo lo que se encuentra en vuestro camino?~
+
+@420    = ~¡Conseguisteis interrumpir el Ritual y la Alta Sacerdotisa aún vive!. Habéis sobrepasado mis más grandes expectativas. No puedo agradecéroslo lo suficiente: mi alma está redimida. Tomad mi recompensa y mi bendición.~
+@421    = ~Ahora tengo que irme, y encontrar a Merentha antes de que los Ángeles la alcancen. ¡Buen viaje <RACE>!~
+
+@422    = ~¡Ah, habéis vuelto!. Como ya os he mencionado en mi primer encuentro, de veras pretendo traicionaros. Vuestro fracaso a la hora de desbaratar correctamente el Ritual sólo ha alimentado mi ira. Con poco por lo que vivir, mis pensamientos se inclinan a desgarrar vuestra carne de sus huesos.~
+@423    = ~Incluso puede que consigáis derrotarme. Intento convencerme a mí mismo de que la encontraré al otro lado ... pero después de lo que ha sucedido, sé que eso es imposible. Tú, <RACE> has estropeado todos mis planes y maquinaciones.~
+@424    = ~Ha llegado la hora de pagues el precio.~
+
+// Improved Irenicus
+@500 = ~Ah, estás despierto. Parece que el último poco de magia fue demasiado fuerte para ti. No importa, la fragmentación esta completa.~
+@501 = ~Sé testigo de la verdadera amplitud de mi poder, <CHARNAME>. Creías que me sentaba solo tras estas puertas, inmóvil e irreflexivo mientras tú luchabas en tus patéticas pruebas autocreadas para las Lágrimas de Bhaal?~
+@502 = ~No seas ingenuo. Mientras tú saltabas a través de esos pequeños obstáculos en tu mente, yo estaba usando tu alma... que pronto será MI alma... para encontrar algunas Lágrimas propias.~
+@503 = ~Ya es hora de que haga honor al nombre que he elegido: El Destrozado. He desgarrado mi propio espíritu para aprovechar mejor el poder de este lugar.~
+@504 = ~Esta sección de los Nueve Infiernos está dedicada a los Vicios del Miedo, la Avaricia, la Ira, el Orgullo y el Egoísmo. En lugar de intentar incorporarlos todos (o sus opuestos) en un solo ser, como has hecho tú ...~
+@505 = ~Me he dividido en fragmentos, cada uno la esencia misma del mal, la esencia misma de la malicia, la esencia misma del vicio.~
+@506 = ~Sus formas deberían resultarte familiares por las pruebas a las que acabas de someterte. Sus poderes son las antítesis de las recompensas que deberías haberte proporcionado.~
+
+@507 = ~El Orbe del Miedo, con su mirada que abate la fortaleza ...~
+@508 = ~El Dragón del Orgullo, con el poder de minar tu experiencia ...~
+@509 = ~El Espectro de la Ira, con sus golpes que agotan la fuerza ...~
+@510 = ~La espada de la codicia, Hojanegra conoce a Mordenkainen ...~
+@511 = ~Y, como habrás comprobado, me quedé con Egoísmo para este formulario. Me pareció apropiado.~
+@512 = ~Con cuerpos y mentes mejor adaptados a este entorno, estoy libre de las mezquinas limitaciones que os atan. Puedo canalizar energía mágica con un solo pensamiento: sin retrasos ni límites. La ira sólo puede ser vencida por el músculo, la codicia sólo puede ser vencida por el cerebro.~ 
+@513 = ~Te haces una idea... o quizás no. Realmente, <CHARNAME>, me decepcionas. Desperdiciaste tu oportunidad aquí en el Infierno. ¿Músculos más fuertes? ¿Un cerebro un poco más rápido? Sin valor al final. He aprovechado el verdadero poder de las pruebas mientras tú desperdiciabas tu tiempo en moralinas mezquinas.~
+@514 = ~Y ahora es hora de morir.~
+@515 = ~Oh, no te sorprendas si encuentras que falta algo de tu equipo.  Mientras dormías me tomé la libertad de apropiarme de algunas de tus pertenencias más selectas. Por alguna razón no pude matarte mientras estabas inconsciente... y créeme, lo intenté. Tendrás que matarme si quieres recuperarlo. Por supuesto, ibas a intentarlo de todos modos.~
+@516 = ~Pero si esta es la forma en que debe ser, entonces estoy listo. Enfréntame, <CHARNAME>. ¡Lucha por tu alma!~
+
+@517 = ~Impresionante, <CHARNAME>. Espero que no esperaras que ese fuera mi final~
+  @518 = ~No, de alguna manera sabía que no había terminado.~
+  @519 = ~¿Por qué no te mueres de una vez?~
+@520 = ~Como puedes ver, me he hecho añicos en unos cuantos fragmentos más de los cinco de los que te hablé antes. Parece que el asalto coordinado contra ti no funcionó. Lástima.~
+@521 = ~Así que esta vez creo que lucharemos con uñas y dientes. Depende de ti y depende de mí. Tus lacayos no pueden ayudarte: esta lucha es entre nosotros dos y lo que está en juego es tu alma.~
+@522 = ~Antes de empezar, sin embargo, me parece un poco injusto que yo esté ante ti desnudo como el día en que nació Bhaal... y tú lleves equipo suficiente para poner celoso a Elminster. Veamos que podemos hacer al respecto.~
+@523 = ~Y ahora, <CHARNAME>, es hora de bailar. ¡Espero que mueras lentamente, cortado en mil pedazos!~
+
+
+@524 = ~Muy bien, <CHARNAME>. Empiezo a considerar la posibilidad de que no te derrotaré.~
+  @525 = ~¿Cuál fue tu primera indicio?~
+  @526 = ~¡Devuélveme mi alma, monstruo!~
+  @527 = ~Cállate y muérete de una vez.~
+@528 = ~En cualquier caso, es hora de que ponga mi última esquirla. No más trucos, <CHARNAME>, esta es realmente mi última encarnación en el Infierno. Me falta incluso el poder sobre tu alma para mantener a tus compañeros fuera de la lucha.~
+@529 = ~De una forma u otra, esta será nuestra última pequeña charla. Adiós, <CHARNAME>.~
