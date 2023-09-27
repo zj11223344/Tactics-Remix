@@ -18,6 +18,7 @@ It is with great pleasure I have been given permission from Wes to update his or
 Many of these components have been drawn from different mod authors; I did not write everything here. In particular, Wes Weimer, Gebhard Blucher, Kensai Ryu, Xyx and Ishan have made contributions. I have gone through, updated the components for the EE's, and redid most of the AI from the ground up. The goal is for the encounters to feel similar to their oBG counterparts with more challenging enemy AI.
 
 ## Compatibility
+
 If you are upgrading from an earlier version of this mod, I recommend uninstalling all mod components and replacing all files with the new ones before doing a fresh install. If you choose to use SCS, parts of this mod should be installed before it while other parts should be installed after. These will be clearly outlined during the install process.
 
 These scripts are currently written for a vanilla/SCS understanding of the spells/abilities. Tactics Remix does not take into account other mods that alter existing spells. Some mods do lighter edits that shouldn't impact the scripts, but others, such as Spell Revisions, do a complete overhaul and will cause issues, inconsistencies, and undesired results. As such, I would not recommend install of Tactics Remix if you are playing with Spell Revisions. This may change in the future, but for now I would list these as incompatible.
@@ -114,11 +115,11 @@ This makes the BG2EE version of Drizzt and his companions more formidable. Addit
 
 Damage output and difficulty for fire giants is greatly increased.
 
-#### Morpheus 562's Tougher Githyanki
+#### Morpheus562's Tougher Githyanki
 
 Githyanki will now be better equipped, better leveled, and overall pose more of a challenge to the player. 
 
-#### Morpheus 562's Tougher Yuan-ti
+#### Morpheus562's Tougher Yuan-ti
 
 Yuan-ti will receive a number of immunities, to include some magic resistance (40%) and complete resistance to poison. Additionally, they receive some snake like enhancements to include infravision, faster casting speed, faster weapon speed, and an extra 0.5 apr. Yuan-ti fighters will now be wielding magical scimitars and leather armors.
 
