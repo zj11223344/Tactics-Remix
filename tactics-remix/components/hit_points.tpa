@@ -63,3 +63,26 @@ PATCH_IF !FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~) AND ("%SOURCE_RES%
   PATCH_PRINT ~Hit Points for %source% improved to %current_hp%~
 END
 BUT_ONLY
+
+///////////////////////////////////////////////////////////////////////////
+// Copy .BCS file to override folder                                     //
+///////////////////////////////////////////////////////////////////////////
+ACTION_IF FILE_EXISTS_IN_GAME ~HARPER.BCS~ BEGIN
+  COPY_EXISTING ~HARPER.BCS~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        LPF REPLACE_MULTILINE
+          INT_VAR
+          strict = 1
+          verbose = 0
+          STR_VAR
+          pattern = ~~~~~OR(3)
+    HPPercentLT(Myself,100)
+    AttackedBy([GOODCUTOFF],DEFAULT)
+    Allegiance(Myself,ENEMY)~~~~~
+          string = ~~~~~OR(2)
+    AttackedBy([GOODCUTOFF],DEFAULT)
+    Allegiance(Myself,ENEMY)~~~~~ //"
+        END
+      END 
+      BUT_ONLY
+END
