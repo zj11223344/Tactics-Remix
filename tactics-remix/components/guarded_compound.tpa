@@ -4,6 +4,7 @@
 // Adds Action to Use a Specific Item Ability                            //
 ///////////////////////////////////////////////////////////////////////////
 APPEND ~action.ids~ ~34 UseItemAbility(S:Object*,O:Target*,I:Slot*SLOTS,I:Ability*)~ UNLESS ~34 UseItemAbility(S:Object*,O:Target*,I:Slot*SLOTS,I:Ability*)~
+CLEAR_IDS_MAP
 
 ///////////////////////////////////////////////////////////////////////////
 // Update Maferan                                                        //
