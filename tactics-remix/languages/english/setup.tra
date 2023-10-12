@@ -15,7 +15,7 @@
 @13 = ~Gebhard Blucher's Improved Mae'Var~
 @14 = ~Gebhard Blucher's Improved Demon Knights~
 @15 = ~Kensai Ryu's Tougher Kangaxx and Guardians~
-@16 = ~Smarter Dragons in SoA~
+@16 = ~Smarter Dragons~
 @17 = ~Kensai Ryu's Improved Copper Coronet~
 @18 = ~SimDing0's Improved Oasis~
 @19 = ~Mike Barnes' Improved Small Teeth Pass~
@@ -45,6 +45,7 @@
 @3001 = ~DLCMerger is needed before modding SoD games~
 @3002 = ~Component requires BG: EE or EET~
 @3003 = ~Component requires IWD: EE~
+@3004 = ~Mod Conflict~
 
 ///////////////////////////////////////////////////////////////////////////
 // Groups                                                                //
