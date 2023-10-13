@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.7-beta
+
+November xx, 2023
+
+### Changed
+
+- Added Tougher Dragons component.
+- Updated Lich in the Docks to not overwrite the area script if one already exists.
+
 ## Version 0.6.1-beta
 
 September 26, 2023

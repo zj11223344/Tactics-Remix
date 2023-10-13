@@ -21,7 +21,9 @@ END
 // Progress to Phase 3 once timer ends
 /////////////////////////////////////////////////////////////////////
 IF 
-  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  OR(2)
+    !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+    HPLT(Myself,2)
   Global("MO_FirkraagPhaseCheck","LOCALS",1)
   Global("MO_FirkraagFinalPhase","LOCALS",0)
 THEN 
