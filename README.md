@@ -49,7 +49,7 @@ This challenge is triggered if you have more than 3 million XP, have either kill
 
 A new lich can be found in the Docks district with an endless supply of undead minions to call upon. You may find her by entering the door to the north of the main Shadow Thief guildhouse entrance. 
 
-WARNING: Reported to be *incompatible* with Back to Brynnlaw. If Back to Brynnlaw is installed, the Lich in the Docks needs to be defeated prior to going to Spellhold.
+WARNING: Reported to be *incompatible* with Back to Brynnlaw. 
 
 #### Kensai Ryu's Gnome Fighter/Illusionist in the Docks
 
