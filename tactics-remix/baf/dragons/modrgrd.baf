@@ -1,0 +1,244 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//                Improved Smarter Firkraag Script (Phase 2+)
+/////////////////////////////////////////////////////////////////////
+// morpheus562
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+// Initialize Phase
+/////////////////////////////////////////////////////////////////////
+IF 
+  Global("MO_FirkraagPhaseCheck","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_FirkraagPhaseCheck","LOCALS",1)
+    SetGlobalTimer("MO_FirkraagPhaseTimer","LOCALS",60)
+    DisplayString(Myself,@5200) // "Come my minions, kill this intruder!"
+END
+
+/////////////////////////////////////////////////////////////////////
+// Progress to Phase 3 once timer ends
+/////////////////////////////////////////////////////////////////////
+IF 
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  Global("MO_FirkraagPhaseCheck","LOCALS",1)
+  Global("MO_FirkraagFinalPhase","LOCALS",0)
+THEN 
+  RESPONSE #100
+    SetGlobal("MO_FirkraagFinalPhase","LOCALS",1)
+    ApplySpell(Myself,CLERIC_HEAL)
+    ApplySpell(Myself,DRAGON_STONE_SKIN)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ApplySpell(Myself,WIZARD_MANTLE)
+    DisplayString(Myself,@5201) // "Enough, you die today!"
+    DestroyItem("MIN1HP")
+END
+
+/////////////////////////////////////////////////////////////////////
+// If damaged launch an earthquake centered on self.
+// Delay 1 round between uses.
+/////////////////////////////////////////////////////////////////////
+IF
+  !GlobalTimerNotExpired("MO_FirkraagQuakeTimer","LOCALS")
+  TookDamage()
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_FirkraagQuakeTimer","LOCALS",6)
+    ReallyForceSpell(Myself,CLERIC_EARTHQUAKE)
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Red Dragon Breath
+// Spell Range 320, Speed 3, Once Every 18 seconds
+/////////////////////////////////////////////////////////////////////
+// Phase 2 Casting
+IF
+  Allegiance(Myself,ENEMY)
+  GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  !GlobalTimerNotExpired("MO_REDDRAGONBREATH","LOCALS")
+  Detect([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_REDDRAGONBREATH","LOCALS",12)
+    // "ReallyForce" allows us to take advantage of the full range of
+    // this spell (which exceeds conventional line of sight). FK is
+    // at least 40' tall and should have no trouble seeing to the end
+    // of his cavern. 
+    ReallyForceSpell(LastSeenBy(Myself),RED_DRAGON_BREATH)
+    ReallyForceSpell(LastSeenBy(Myself),RED_DRAGON_HIT)
+    SetGlobal("MO_FirkraagTaunt","LOCALS",1)  // gloat!
+    Continue()  // continue after innate actions
+END
+
+// Phase 3 Casting
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  !GlobalTimerNotExpired("MO_REDDRAGONBREATH","LOCALS")
+  Exists(StrongestOf)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_REDDRAGONBREATH","LOCALS",18)
+    // "ReallyForce" allows us to take advantage of the full range of
+    // this spell (which exceeds conventional line of sight). FK is
+    // at least 40' tall and should have no trouble seeing to the end
+    // of his cavern. 
+    ReallyForceSpell(StrongestOf,RED_DRAGON_BREATH)
+    ReallyForceSpell(StrongestOf,RED_DRAGON_HIT)
+    SetGlobal("MO_FirkraagTaunt","LOCALS",1)  // gloat!
+    Continue()  // continue after innate actions
+END
+
+/////////////////////////////////////////////////////////////////////
+// Hoots and Catcalls.
+/////////////////////////////////////////////////////////////////////
+IF
+  Global("MO_FirkraagTaunt","LOCALS",1)
+  Global("MO_IsFirkraag","LOCALS",1) 
+THEN
+  RESPONSE #20
+    DisplayString(Myself,60511) // Time to perish, manling!
+    SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
+    Continue()
+  RESPONSE #20
+    DisplayString(Myself,19063) // Your life shall be mine!
+    SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
+    Continue()
+  RESPONSE #20
+    DisplayString(Myself,19054) // Your life ends here.
+    SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
+    Continue()
+  RESPONSE #20
+    DisplayString(Myself,60715) // Your life ends with this!
+    SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
+    Continue()
+  RESPONSE #20
+    DisplayString(Myself,21728) // Run down the road on fire
+    SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
+    Continue()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Wing Buffet
+// Spell Range 30, Speed 1, Unlimited 
+// This is at the top of the list because we don't ever want to
+// get hit (if at all possible). Keep pushing them back.
+/////////////////////////////////////////////////////////////////////
+// Phase 2 Casting
+IF
+  Allegiance(Myself,ENEMY)
+  GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  Range(NearestEnemyOf(Myself),25)
+  !GlobalTimerNotExpired("Buffet","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Buffet","LOCALS",1)
+    ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)
+    Continue()  // continue after innate actions
+END
+
+// Phase 3 Casting
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  Range(NearestEnemyOf(Myself),25)
+  !GlobalTimerNotExpired("Buffet","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Buffet","LOCALS",3)
+    ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)
+    Continue()  // continue after innate actions
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attacking (Phase 2 ONLY)
+/////////////////////////////////////////////////////////////////////
+IF 
+  GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attacking (Phase 3 ONLY)
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(SecondNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END

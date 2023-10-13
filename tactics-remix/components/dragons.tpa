@@ -1,12 +1,28 @@
 // Tactics Remix, Smarter Dragons
 
 ///////////////////////////////////////////////////////////////////////////
-// Import                                                                //
+// Import/Updates                                                        //
 ///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~dragring.ITM~ ~override~
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 206 target = 1 timing = 2 resist_dispel = 0 probability1 = 100 STR_VAR resource = ~sppr720~ END // Immunity to Earthquake
 
+///////////////////////////////////////////////////////////////////////////
+// Firkraag Updates                                                      //
+///////////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~firkra02.CRE~ ~override~
+  WRITE_ASCII 0x248 ~shoutdlg~ #8 // Override Script
+  WRITE_ASCII 0x250 ~dragred~  #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~~         #8 // Clear Default Script
+  ADD_CRE_ITEM ~MIN1HP~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~INV10~ // Add MIN1HP to Firkraag inventory. Will equip via scripts. 
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
+EXTEND_TOP ~ar1203.bcs~ ~tactics-remix/baf/dragons/ar1203.baf~
+
 COPY ~tactics-remix/baf/dragons/dragred.baf~ ~override/dragred.bcs~
+     ~tactics-remix/baf/dragons/modrgrd.baf~ ~override/modrgrd.bcs~
+     ~tactics-remix/baf/dragons/mocut01.baf~ ~override/mocut01.bcs~
   COMPILE_BAF_TO_BCS

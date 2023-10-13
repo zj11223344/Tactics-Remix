@@ -1,0 +1,14 @@
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+IF 
+  HPLT("FIRKRA02",2)
+  Global("MO_SpawnPhase","AR1203",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_SpawnPhase","AR1203",1)
+    ApplySpell("firkra02",CLERIC_HEAL)
+    ActionOverride("firkra02",ChangeAIScript("modrgrd",CLASS))
+    StartCutSceneMode()
+    StartCutScene("mocut01")
+    //Start timer
+END

@@ -1,0 +1,69 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("FIRKRA02")
+        MoveViewPoint([970.1039],INSTANT)
+        ScreenShake([5.5],30)
+        CreateVisualEffect("SPFIREPI",[970.1039])
+        Wait(1)
+        JumpToPoint([878.940])
+        //ChangeAIScript("modrgrd",CLASS)
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        JumpToPoint([1069.1109])
+        Wait(3)
+        EndCutSceneMode()
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player2)
+        Wait(1)
+        JumpToPoint([994.1180])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player3)
+        Wait(1)
+        JumpToPoint([1120.1053])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player4)
+        Wait(1)
+        JumpToPoint([1050.1242])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player5)
+        Wait(1)
+        JumpToPoint([1183.1117])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player6)
+        Wait(1)
+        JumpToPoint([1118.1179])
+END
+
