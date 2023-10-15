@@ -1,6 +1,74 @@
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 IF 
+  !Dead("FIRKRA02")
+  Global("MO_SpawnPhase","AR1203",1)
+  Global("MO_InitialSpawn","AR1203",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MO_InitialSpawn","AR1203",1)
+    SetGlobalTimer("MO_SpawnGroupOne","AR1203",6)
+    SetGlobalTimer("MO_SpawnGroupTwo","AR1203",2)
+    SetGlobalTimer("MO_SpawnGroupThree","AR1203",4)
+    CreateCreature("PPGUARD1",[1134.1485],NE)
+    CreateCreature("PPGUARD2",[1369.1648],NE)
+    CreateCreature("PPGUARD3",[1893.1434],SW)
+    CreateCreature("PPGUARD4",[1632.1255],SW)
+END
+
+IF 
+  !Dead("FIRKRA02")
+  Global("MO_SpawnPhase","AR1203",1)
+  GlobalTimerExpired("MO_SpawnGroupOne","AR1203")
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpawnGroupOne","AR1203",6)
+    CreateCreature("PPGUARD1",[1134.1485],NE)
+    CreateCreature("PPGUARD2",[1369.1648],NE)
+    CreateCreature("PPGUARD3",[1893.1434],SW)
+    CreateCreature("PPGUARD4",[1632.1255],SW)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpawnGroupOne","AR1203",6)
+    CreateCreature("PPGUARD1",[860.1242],NE)
+    CreateCreature("PPGUARD2",[1640.1831],NE)
+    CreateCreature("PPGUARD4",[2204.1689],SW)
+END
+
+IF 
+  !Dead("FIRKRA02")
+  Global("MO_SpawnPhase","AR1203",1)
+  GlobalTimerExpired("MO_SpawnGroupTwo","AR1203")
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpawnGroupTwo","AR1203",6)
+    CreateCreature("PPGUARD1",[948.1351],NE)
+    CreateCreature("PPGUARD4",[1552.1775],NE)
+    CreateCreature("PPGUARD3",[1382.1111],SW)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpawnGroupTwo","AR1203",6)
+    CreateCreature("PPGUARD1",[1229.1545],NE)
+    CreateCreature("PPGUARD2",[1514.1175],SW)
+    CreateCreature("PPGUARD3",[2193.1620],SW)
+END
+
+IF 
+  !Dead("FIRKRA02")
+  Global("MO_SpawnPhase","AR1203",1)
+  GlobalTimerExpired("MO_SpawnGroupThree","AR1203")
+THEN
+  RESPONSE #50
+    SetGlobalTimer("MO_SpawnGroupThree","AR1203",6)
+    CreateCreature("PPGUARD1",[1454.1707],NE)
+    CreateCreature("PPGUARD2",[1764.1893],NE)
+    CreateCreature("PPGUARD3",[1253.979],SW)
+  RESPONSE #50
+    SetGlobalTimer("MO_SpawnGroupThree","AR1203",6)
+    CreateCreature("PPGUARD1",[1059.1431],NE)
+    CreateCreature("PPGUARD2",[1769.1359],SW)
+    CreateCreature("PPGUARD4",[2010.1508],SW)
+END
+
+IF 
   HPLT("FIRKRA02",2)
   Global("MO_SpawnPhase","AR1203",0)
 THEN
