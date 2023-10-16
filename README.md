@@ -89,6 +89,10 @@ This component makes the Demon Knights at the Demogorgon altar in the Underdark 
 
 The tomb of Kangaxx is protected by a new set of guardians above. They are looking to acquire his ring and will kill any they perceive as getting in the way. If SCS is installed, Kangaxx will revert to SCS AI; however, the guardians will still remain.
 
+#### Smarter Dragons
+
+As Wes stated: "Dragons clearly got the short end of the stick somewhere. They're just not awe-inspiring in BGII. In fact, they're pretty much pushovers, especially with half-decent tactics on your part." We are not playing Dungeons and Demiliches, or Dungeons and Fire Giants, or Dungeons and Mindflayers. The aim of this component is to vasty improve the power and challenge when facing a dragon.
+
 #### Kensai Ryu's Improved Crypt King
 
 The Crypt King is now more worthy of that name and will summon more undead minions every now and then. I have overhauled the fight mechanics to make it even more challenging than the original Tactics version.

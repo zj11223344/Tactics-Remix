@@ -51,6 +51,7 @@ THEN
     //ApplySpell(Myself,WIZARD_MANTLE)
     DisplayString(Myself,@5201) // "Enough, you die today!"
     DestroyItem("MIN1HP")
+    ReallyForceSpell(Player1,CLERIC_FIRE_STORM)
 END
 
 /////////////////////////////////////////////////////////////////////

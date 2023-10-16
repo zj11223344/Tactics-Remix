@@ -80,6 +80,7 @@ COPY_EXISTING ~ppguard4.cre~ ~override/mokobo04.cre~
   WRITE_BYTE 0x23e 15 // Charisma
   WRITE_BYTE 0x59  40 // Fire resistance
   WRITE_BYTE 0x5e  40 // Magic fire resistance
+  WRITE_BYTE 0x234 10  // Level
   WRITE_BYTE 0x273 19 // Class (Sorcerer)
   WRITE_ASCII 0x248 ~~         #8 // Override Script
   WRITE_ASCII 0x250 ~~         #8 // Class Script
@@ -125,6 +126,7 @@ EXTEND_TOP ~ar1203.bcs~ ~tactics-remix/baf/dragons/ar1203.baf~
 COPY ~tactics-remix/baf/dragons/dragred.baf~  ~override/dragred.bcs~
      ~tactics-remix/baf/dragons/modrgrd.baf~  ~override/modrgrd.bcs~
      ~tactics-remix/baf/dragons/mocut01.baf~  ~override/mocut01.bcs~
+     ~tactics-remix/baf/dragons/mocut02.baf~  ~override/mocut02.bcs~
      ~tactics-remix/baf/dragons/mo_kob01.baf~ ~override/mo_kob01.bcs~
      ~tactics-remix/baf/dragons/mo_kob02.baf~ ~override/mo_kob02.bcs~
   COMPILE_BAF_TO_BCS
