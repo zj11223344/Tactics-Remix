@@ -14,7 +14,23 @@ THEN
   RESPONSE #100
     SetGlobal("MO_FirkraagPhaseCheck","LOCALS",1)
     SetGlobalTimer("MO_FirkraagPhaseTimer","LOCALS",60)
-    DisplayString(Myself,@5200) // "Come my minions, kill this intruder!"
+    StartDialogueNoSet(Player1)
+    //DisplayString(Myself,@5200) // "Come my minions, kill this intruder!"
+END
+
+/////////////////////////////////////////////////////////////////////
+// Throw Protection if Damaged During Phase 2
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  See(NearestEnemyOf(Myself))
+  Global("Contingency","LOCALS",0)
+  TookDamage()
+THEN 
+  RESPONSE #100
+    SetGlobal("Contingency","LOCALS",1)
+    DisplayString(Myself,40252)  // ~Contingency - Protection from Magical Weapons~
+    ApplySpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -32,7 +48,7 @@ THEN
     ApplySpell(Myself,CLERIC_HEAL)
     ApplySpell(Myself,DRAGON_STONE_SKIN)
     ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
-    ApplySpell(Myself,WIZARD_MANTLE)
+    //ApplySpell(Myself,WIZARD_MANTLE)
     DisplayString(Myself,@5201) // "Enough, you die today!"
     DestroyItem("MIN1HP")
 END

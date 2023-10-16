@@ -3,26 +3,128 @@
 ///////////////////////////////////////////////////////////////////////////
 // Import/Updates                                                        //
 ///////////////////////////////////////////////////////////////////////////
+
+// Firkraag/Red Dragons -------------------------------------------------//
+// Dragon Resistance Ring - Add Immunity to Earthquake
 COPY_EXISTING ~dragring.ITM~ ~override~
   LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 206 target = 1 timing = 2 resist_dispel = 0 probability1 = 100 STR_VAR resource = ~sppr720~ END // Immunity to Earthquake
+
+// Dragon Bite - Base damage of 2d10+8 slashing + 2d6 fire
+COPY_EXISTING ~dragred1.ITM~ ~override/modrgrd1.ITM~
+  WRITE_LONG 0x60 5
+  LPF DELETE_EFFECT INT_VAR header_type = 1 match_opcode = 12 END // Remove any existing on-hit elemental damage
+  LPF ALTER_ITEM_HEADER INT_VAR header_type = 1 dicesize = 10 dicenumber = 2 damage_bonus = 8  range = 5 END
+  LPF ADD_ITEM_EFFECT INT_VAR opcode = 12 type = 1 target = 2 parameter2 = 524288 timing = 1 resist_dispel = 0 probability1 = 100 dicenumber = 2 dicesize = 6 special = 1 END
+
+// Dragon Claws - Change Base Damage to 2d6+8 slashing
+COPY_EXISTING ~dragred1.ITM~ ~override~
+  WRITE_LONG 0x60 5
+  LPF DELETE_EFFECT INT_VAR header_type = 1 match_opcode = 12 END // Remove any existing on-hit elemental damage
+  LPF ALTER_ITEM_HEADER INT_VAR header_type = 1 dicesize = 6 dicenumber = 2 damage_type = 3 damage_bonus = 8 range = 5 END
+
+// Dragon Breath Damage - Changing to 18d6 Fire
+COPY_EXISTING ~spin693.SPL~ ~override~
+  LPF ALTER_SPELL_EFFECT INT_VAR match_opcode = 12 dicenumber = 18 dicesize = 6 END
+
+// Dragonwrought Kobold
+COPY_EXISTING ~ppguard2.cre~ ~override/mokobo01.cre~
+  WRITE_BYTE 0x238 17 // Strength
+  WRITE_BYTE 0x23c 17 // Dexterity
+  WRITE_BYTE 0x23d 16 // Constitution
+  WRITE_BYTE 0x59  90 // Fire resistance
+  WRITE_BYTE 0x5e  90 // Magic fire resistance
+  WRITE_ASCII 0x248 ~~         #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~MO_KOB01~ #8 // Clear Default Script
+  REPLACE_CRE_ITEM ~sw1h09~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Short Sword +2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSHORTSWORD~ 2
+
+// Kobold (Archer)
+COPY_EXISTING ~ppguard3.cre~ ~override/mokobo02.cre~
+  WRITE_BYTE 0x23c 17 // Dexterity
+  WRITE_BYTE 0x23d 14 // Constitution
+  WRITE_BYTE 0x59  40 // Fire resistance
+  WRITE_BYTE 0x5e  40 // Magic fire resistance
+  WRITE_ASCII 0x248 ~~         #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~MO_KOB01~ #8 // Clear Default Script
+  REPLACE_CRE_ITEM ~BOW18~  #0 #0 #0  ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Shortbow +2
+  REPLACE_CRE_ITEM ~AROW08~ #40 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~QUIVER1~ EQUIP // Arrow of Fire
+  SET_BG2_PROFICIENCY ~PROFICIENCYSHORTBOW~ 2
+
+// Kobold
+COPY_EXISTING ~ppguard3.cre~ ~override/mokobo03.cre~
+  WRITE_BYTE 0x238 13 // Strength
+  WRITE_BYTE 0x23c 17 // Dexterity
+  WRITE_BYTE 0x23d 14 // Constitution
+  WRITE_BYTE 0x59  40 // Fire resistance
+  WRITE_BYTE 0x5e  40 // Magic fire resistance
+  WRITE_ASCII 0x248 ~~         #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~MO_KOB01~ #8 // Clear Default Script
+  REPLACE_CRE_ITEM ~sw1h08~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP // Short Sword +1
+  SET_BG2_PROFICIENCY ~PROFICIENCYSINGLEWEAPON~ 2
+  SET_BG2_PROFICIENCY ~PROFICIENCYSHORTSWORD~ 2
+
+// Kobold Sorcerer
+COPY_EXISTING ~ppguard4.cre~ ~override/mokobo04.cre~
+  WRITE_BYTE 0x23c 17 // Dexterity
+  WRITE_BYTE 0x23d 14 // Constitution
+  WRITE_BYTE 0x23e 15 // Charisma
+  WRITE_BYTE 0x59  40 // Fire resistance
+  WRITE_BYTE 0x5e  40 // Magic fire resistance
+  WRITE_BYTE 0x273 19 // Class (Sorcerer)
+  WRITE_ASCII 0x248 ~~         #8 // Override Script
+  WRITE_ASCII 0x250 ~~         #8 // Class Script
+  WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
+  WRITE_ASCII 0x260 ~~         #8 // Clear General Script
+  WRITE_ASCII 0x268 ~MO_KOB02~ #8 // Clear Default Script
 
 ///////////////////////////////////////////////////////////////////////////
 // Firkraag Updates                                                      //
 ///////////////////////////////////////////////////////////////////////////
 COPY_EXISTING ~firkra02.CRE~ ~override~
+  WRITE_BYTE 0x24 256  // Current HP
+  WRITE_BYTE 0x26 256  // Maximum HP
+  WRITE_BYTE 0x238 25 // Strength
+  WRITE_BYTE 0x23a 20 // Intelligence
+  WRITE_BYTE 0x23b 16 // Wisdom
+  WRITE_BYTE 0x23c 19 // Dexterity
+  WRITE_BYTE 0x23d 24 // Constitution
+  WRITE_BYTE 0x23e 15 // Charisma
+  WRITE_BYTE 0x52  ~-8~  // thac0
   WRITE_ASCII 0x248 ~shoutdlg~ #8 // Override Script
   WRITE_ASCII 0x250 ~dragred~  #8 // Class Script
   WRITE_ASCII 0x258 ~~         #8 // Clear Race Script
   WRITE_ASCII 0x260 ~~         #8 // Clear General Script
-  WRITE_ASCII 0x268 ~~         #8 // Clear Default Script
-  ADD_CRE_ITEM ~MIN1HP~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~INV10~ // Add MIN1HP to Firkraag inventory. Will equip via scripts. 
+  WRITE_ASCII 0x268 ~~         #8 // Clear Default Script  
+  REPLACE_CRE_ITEM ~dragred1~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~     EQUIP // Dragon Claws
+  REPLACE_CRE_ITEM ~modrgrd1~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~SHIELD~      EQUIP // Dragon Bite
+  ADD_CRE_ITEM     ~MIN1HP~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING LRING~ EQUIP // Add MIN1HP to Firkraag. 
+// Attempted scripting in; however, scripts only triggered it the first time entering the area and not the saves. 
+// Adding it as equipped as we are late in the install with low risk of other Firkraags floating around.
+// Added catch check in dragred scripts to destroy this item if NOT in the appropriate area.
+
+///////////////////////////////////////////////////////////////////////////
+// Dialog                                                                //
+///////////////////////////////////////////////////////////////////////////
+COMPILE EVALUATE_BUFFER ~tactics-remix/dlg/firkra02.d~
 
 ///////////////////////////////////////////////////////////////////////////
 // Copy .BCS file to override folder                                     //
 ///////////////////////////////////////////////////////////////////////////
 EXTEND_TOP ~ar1203.bcs~ ~tactics-remix/baf/dragons/ar1203.baf~
 
-COPY ~tactics-remix/baf/dragons/dragred.baf~ ~override/dragred.bcs~
-     ~tactics-remix/baf/dragons/modrgrd.baf~ ~override/modrgrd.bcs~
-     ~tactics-remix/baf/dragons/mocut01.baf~ ~override/mocut01.bcs~
+COPY ~tactics-remix/baf/dragons/dragred.baf~  ~override/dragred.bcs~
+     ~tactics-remix/baf/dragons/modrgrd.baf~  ~override/modrgrd.bcs~
+     ~tactics-remix/baf/dragons/mocut01.baf~  ~override/mocut01.bcs~
+     ~tactics-remix/baf/dragons/mo_kob01.baf~ ~override/mo_kob01.bcs~
+     ~tactics-remix/baf/dragons/mo_kob02.baf~ ~override/mo_kob02.bcs~
   COMPILE_BAF_TO_BCS
