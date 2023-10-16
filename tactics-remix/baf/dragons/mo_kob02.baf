@@ -1,10 +1,10 @@
 // Use Secret Word, Fireball, Fire Arrows, Magic Missiles, Breach, Haste, etc. 
-/
+
 /////////////////////////////////////////////////////////////////////
 // Prep Spells Per Level
 /////////////////////////////////////////////////////////////////////
 IF
-    Global("Prep","LOCALS",0)
+  Global("Prep","LOCALS",0)
 THEN
   RESPONSE #100
     SetGlobal("Prep","LOCALS",1)
