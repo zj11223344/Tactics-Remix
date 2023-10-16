@@ -196,7 +196,7 @@ THEN
   RESPONSE #100
     DisplayString(Myself,45920)	// Your lackeys will not save you!
     SetGlobal("MO_FirkraagScoff","LOCALS",1) 
-    Continue()
+    //Continue()
 END
  
 /////////////////////////////////////////////////////////////////////
@@ -209,7 +209,7 @@ THEN
   RESPONSE #100
     ApplySpell(Myself,DRAGON_STONE_SKIN)
     SetGlobalTimer("MO_RedDragStone","LOCALS",600) // can recast
-    Continue()
+    //Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -254,23 +254,23 @@ THEN
   RESPONSE #20
     DisplayString(Myself,60511)	// Time to perish, manling!
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,19063)	// Your life shall be mine!
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,19054)	// Your life ends here.
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,60715)	// Your life ends with this!
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,21728)	// Run down the road on fire
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -288,7 +288,7 @@ THEN
   RESPONSE #100
     SetGlobalTimer("Buffet","LOCALS",3)
     ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)
-    Continue()	// continue after innate actions
+    //Continue()	// continue after innate actions
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -355,7 +355,7 @@ THEN
     ReallyForceSpell(Player1,DRAGON_FEAR)
     ReallyForceSpell(Player1,DRAGON_LOWER_FIRE)
     SetGlobal("MO_RedDragonLower","LOCALS",1)
-    Continue()	// continue after innate actions
+    //Continue()	// continue after innate actions
 END
 
 /////////////////////////////////////////////////////////////////////

@@ -41,6 +41,7 @@ END
 // If damaged launch an earthquake centered on self.
 // Delay 1 round between uses.
 /////////////////////////////////////////////////////////////////////
+/*
 IF
   !GlobalTimerNotExpired("MO_FirkraagQuakeTimer","LOCALS")
   TookDamage()
@@ -49,6 +50,20 @@ THEN
     SetGlobalTimer("MO_FirkraagQuakeTimer","LOCALS",6)
     ReallyForceSpell(Myself,CLERIC_EARTHQUAKE)
     Continue()
+END
+*/
+
+/////////////////////////////////////////////////////////////////////
+// If unable to find good aligned in phase 3, attack player1
+// This should cause Firkraag to find him.
+/////////////////////////////////////////////////////////////////////
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_FirkraagPhaseTimer","LOCALS")
+  !See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    AttackOneRound(Player1)
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -103,23 +118,23 @@ THEN
   RESPONSE #20
     DisplayString(Myself,60511) // Time to perish, manling!
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,19063) // Your life shall be mine!
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,19054) // Your life ends here.
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,60715) // Your life ends with this!
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
   RESPONSE #20
     DisplayString(Myself,21728) // Run down the road on fire
     SetGlobal("MO_FirkraagTaunt","LOCALS",0) 
-    Continue()
+    //Continue()
 END
 
 /////////////////////////////////////////////////////////////////////
@@ -138,7 +153,7 @@ THEN
   RESPONSE #100
     SetGlobalTimer("Buffet","LOCALS",1)
     ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)
-    Continue()  // continue after innate actions
+    //Continue()  // continue after innate actions
 END
 
 // Phase 3 Casting
@@ -151,7 +166,7 @@ THEN
   RESPONSE #100
     SetGlobalTimer("Buffet","LOCALS",3)
     ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)
-    Continue()  // continue after innate actions
+    //Continue()  // continue after innate actions
 END
 
 /////////////////////////////////////////////////////////////////////
