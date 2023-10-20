@@ -396,13 +396,6 @@ END
 /////////////////////////////////////////////////////////////////////
 // Find them!
 /////////////////////////////////////////////////////////////////////
-IF 
-  !Detect([GOODCUTOFF])
-  TookDamage()
-THEN 
-  RESPONSE #100
-END 
-
 IF
   Heard([ENEMY],125)
   !Detect([GOODCUTOFF])
@@ -410,5 +403,3 @@ THEN
   RESPONSE #100
     MoveToObject(LastHeardBy(Myself))
 END
-
-// Do check if being cloudkilled to move out into the hall and away from danger
